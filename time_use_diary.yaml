@@ -3,634 +3,367 @@ entityDefinitions:
   ol.surveymetadata:
     ol.completed:
       column: Finished
-      type: ol.completed
-    ol.completed_1:
-      column: Finished
       notes: .nan
       type: ol.completed
     ol.datetimeend:
-      column: EndDate
-      type: ol.datetimeend
-    ol.datetimeend_1:
       column: EndDate
       notes: .nan
       type: ol.datetimeend
     ol.datetimestart:
       column: StartDate
-      type: ol.datetimestart
-    ol.datetimestart_1:
-      column: StartDate
       notes: .nan
       type: ol.datetimestart
     ol.duration:
-      column: Duration (in seconds)
-      type: ol.duration
-    ol.duration_1:
       column: Duration (in seconds)
       notes: .nan
       type: ol.duration
     ol.language:
       column: UserLanguage
-      type: ol.language
-    ol.language_1:
-      column: UserLanguage
       notes: .nan
       type: ol.language
     ol.status:
-      column: Progress
-      type: ol.status
-    ol.status_1:
       column: Progress
       notes: + statusdetails "followup question progress"
       type: ol.status
   ol.recordedvia:
     date.completeddatetime:
       column: RecordedDate
-      type: date.completeddatetime
-    date.completeddatetime_1:
-      column: RecordedDate
       notes: .nan
       type: date.completeddatetime
   general.person:
     ol.id:
-      column: PrimaryResponseID
-      type: ol.id
-    ol.id_1:
       column: PrimaryResponseID
       notes: .nan
       type: ol.id
   ol.engagedin:
     date.completeddatetime:
       column: ActionTime
-      type: date.completeddatetime
-    date.completeddatetime_1:
-      column: ActionTime
       notes: .nan
       type: date.completeddatetime
   ol.primaryactivity:
     ol.activity:
       column: Section
-      type: ol.activity
-    ol.activity_1:
-      column: Section
       notes: .nan
       type: ol.activity
     ol.datetimeend:
-      column: EndTime
-      type: ol.datetimeend
-    ol.datetimeend_1:
       column: EndTime
       notes: 'note: these are *just* times, not datetimes'
       type: ol.datetimeend
     ol.datetimestart:
       column: StartTime
-      type: ol.datetimestart
-    ol.datetimestart_1:
-      column: StartTime
       notes: 'note: these are *just* times, not datetimes'
       type: ol.datetimestart
     ol.id:
-      column: DiaryEntryID
-      type: ol.id
-    ol.id_1:
       column: DiaryEntryID
       notes: .nan
       type: ol.id
     ol.participant:
       column: Q6
-      type: ol.participant
-    ol.participant_1:
-      column: Q18
-      type: ol.participant
-    ol.participant_2:
-      column: Q6
       notes: .nan
       type: ol.participant
-    ol.participant_3:
+    ol.participant_1:
       column: Q18
       notes: ol.primaryactivity
       type: ol.participant
     setting:
       column: Q42
-      type: setting
-    setting_1:
-      column: Q42
       notes: .nan
       type: setting
     supervision / participant:
       column: Q35
+      notes: ol.primaryactivity
       type: supervision / participant
     supervision / participant_1:
       column: Q41
-      type: supervision / participant
-    supervision / participant_2:
-      column: Q49
-      type: supervision / participant
-    supervision / participant_3:
-      column: Q35
-      notes: ol.primaryactivity
-      type: supervision / participant
-    supervision / participant_4:
-      column: Q41
       notes: .nan
       type: supervision / participant
-    supervision / participant_5:
+    supervision / participant_2:
       column: Q49
       notes: .nan
       type: supervision / participant
   .nan:
     .nan:
       column: Site
-      type: .nan
-    nan_1:
-      column: Site
       notes: .nan
       type: .nan
   ol.mediaexposure:
     agecategory:
       column: Q22
+      notes: ol.mediaexposure
       type: agecategory
     agecategory_1:
       column: Q22_5_TEXT
-      type: agecategory
-    agecategory_10:
-      column: Q22_5_TEXT
       notes: ol.mediaexposure
-      type: agecategory
-    agecategory_11:
-      column: Q31
-      notes: ol.mediaexposure
-      type: agecategory
-    agecategory_12:
-      column: Q31_5_TEXT
-      notes: ol.mediaexposure
-      type: agecategory
-    agecategory_13:
-      column: Q44
-      notes: .nan
-      type: agecategory
-    agecategory_14:
-      column: Q44_5_TEXT
-      notes: .nan
-      type: agecategory
-    agecategory_15:
-      column: Q52
-      notes: ' priority: secondary; '
-      type: agecategory
-    agecategory_16:
-      column: Q59
-      notes: .nan
-      type: agecategory
-    agecategory_17:
-      column: Q59_5_TEXT
-      notes: .nan
       type: agecategory
     agecategory_2:
       column: Q31
+      notes: ol.mediaexposure
       type: agecategory
     agecategory_3:
       column: Q31_5_TEXT
+      notes: ol.mediaexposure
       type: agecategory
     agecategory_4:
       column: Q44
+      notes: .nan
       type: agecategory
     agecategory_5:
       column: Q44_5_TEXT
+      notes: .nan
       type: agecategory
     agecategory_6:
       column: Q52
+      notes: ' priority: secondary; '
       type: agecategory
     agecategory_7:
       column: Q59
+      notes: .nan
       type: agecategory
     agecategory_8:
       column: Q59_5_TEXT
-      type: agecategory
-    agecategory_9:
-      column: Q22
-      notes: ol.mediaexposure
+      notes: .nan
       type: agecategory
     behaviorafter:
       column: Q17
-      type: behaviorafter
-    behaviorafter_1:
-      column: Q63
-      type: behaviorafter
-    behaviorafter_2:
-      column: Q17
       notes: ' priority: background; type: audio; subtype:___.'
       type: behaviorafter
-    behaviorafter_3:
+    behaviorafter_1:
       column: Q63
       notes: ' priority: background; type: audio; subtype:___.'
       type: behaviorafter
     behaviorbefore:
       column: Q16
-      type: behaviorbefore
-    behaviorbefore_1:
-      column: Q62
-      type: behaviorbefore
-    behaviorbefore_2:
-      column: Q16
       notes: ' priority: background; type: audio; subtype:___.'
       type: behaviorbefore
-    behaviorbefore_3:
+    behaviorbefore_1:
       column: Q62
       notes: ' priority: background; type: audio; subtype:___.'
       type: behaviorbefore
     duration + units:
       column: Q34_1
-      type: duration + units
-    duration + units_1:
-      column: Q34_1
       notes: .nan
       type: duration + units
     name:
-      column: Q53
-      type: name
-    name_1:
       column: Q53
       notes: .nan
       type: name
     ol.category:
       column: Q4
+      notes: 'priority=primary;  type=tv agecategory = _____; '
       type: ol.category
     ol.category_1:
       column: Q13
-      type: ol.category
-    ol.category_2:
-      column: Q13_5_TEXT
-      type: ol.category
-    ol.category_3:
-      column: Q4
-      notes: 'priority=primary;  type=tv agecategory = _____; '
-      type: ol.category
-    ol.category_4:
-      column: Q13
       notes: ol.mediaexposure
       type: ol.category
-    ol.category_5:
+    ol.category_2:
       column: Q13_5_TEXT
       notes: ol.mediaexposure
       type: ol.category
     ol.name:
       column: Q5
-      type: ol.name
-    ol.name_1:
-      column: Q5
       notes: 'priority=primary;  type=tv ol.name = _____; '
       type: ol.name
     ol.type:
       column: Q3
+      notes: 'priority=primary;  type= _____; '
       type: ol.type
     ol.type_1:
       column: Q3_9_TEXT
+      notes: 'priority=primary;  type= _____; '
       type: ol.type
     ol.type_2:
       column: Q11
-      type: ol.type
-    ol.type_3:
-      column: Q12
-      type: ol.type
-    ol.type_4:
-      column: Q3
-      notes: 'priority=primary;  type= _____; '
-      type: ol.type
-    ol.type_5:
-      column: Q3_9_TEXT
-      notes: 'priority=primary;  type= _____; '
-      type: ol.type
-    ol.type_6:
-      column: Q11
       notes: ol.mediaexposure
       type: ol.type
-    ol.type_7:
+    ol.type_3:
       column: Q12
       notes: ' priority: background; type: tv;'
       type: ol.type
     'status: yes/no/don''tknow/noanswer':
       column: Q14
+      notes: ' priority: background; type: audio;'
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_1':
       column: Q20
+      notes: ol.mediaexposure
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_10':
       column: Q45
+      notes: ' priority: background; type: audio;'
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_11':
       column: Q50
+      notes: ' priority: secondary; '
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_12':
       column: Q57
+      notes: ' priority: secondary; '
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_13':
       column: Q58
+      notes: ' priority: background; type: tv;'
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_14':
       column: Q60
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_15':
-      column: Q14
       notes: ' priority: background; type: audio;'
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_16':
-      column: Q20
-      notes: ol.mediaexposure
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_17':
-      column: Q21
-      notes: ' priority: background; type: tv;'
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_18':
-      column: Q23
-      notes: ' priority: background; type: audio;'
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_19':
-      column: Q29
-      notes: ' priority: secondary; '
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_2':
       column: Q21
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_20':
-      column: Q30
       notes: ' priority: background; type: tv;'
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_21':
-      column: Q32
-      notes: ' priority: background; type: audio;'
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_22':
-      column: Q36
-      notes: ' priority: secondary; '
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_23':
-      column: Q37
-      notes: ' priority: background; type: audio;'
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_24':
-      column: Q43
-      notes: ' priority: secondary; '
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_25':
-      column: Q45
-      notes: ' priority: background; type: audio;'
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_26':
-      column: Q50
-      notes: ' priority: secondary; '
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_27':
-      column: Q57
-      notes: ' priority: secondary; '
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_28':
-      column: Q58
-      notes: ' priority: background; type: tv;'
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_29':
-      column: Q60
-      notes: ' priority: background; type: audio;'
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_3':
       column: Q23
+      notes: ' priority: background; type: audio;'
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_4':
       column: Q29
+      notes: ' priority: secondary; '
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_5':
       column: Q30
+      notes: ' priority: background; type: tv;'
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_6':
       column: Q32
+      notes: ' priority: background; type: audio;'
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_7':
       column: Q36
+      notes: ' priority: secondary; '
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_8':
       column: Q37
+      notes: ' priority: background; type: audio;'
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_9':
       column: Q43
+      notes: ' priority: secondary; '
       type: 'status: yes/no/don''tknow/noanswer'
     'subtype: _______.':
       column: Q15
+      notes: ' priority: background; type: audio;'
       type: 'subtype: _______.'
     'subtype: _______._1':
       column: Q15_4_TEXT
-      type: 'subtype: _______.'
-    'subtype: _______._10':
-      column: Q24
-      notes: ' priority: background; type: audio;'
-      type: 'subtype: _______.'
-    'subtype: _______._11':
-      column: Q24_4_TEXT
-      notes: ' priority: background; type: audio;'
-      type: 'subtype: _______.'
-    'subtype: _______._12':
-      column: Q33
-      notes: ' priority: background; type: audio;'
-      type: 'subtype: _______.'
-    'subtype: _______._13':
-      column: Q33_4_TEXT
-      notes: ' priority: background; type: audio;'
-      type: 'subtype: _______.'
-    'subtype: _______._14':
-      column: Q61
-      notes: ' priority: background; type: audio;'
-      type: 'subtype: _______.'
-    'subtype: _______._15':
-      column: Q61_4_TEXT
       notes: ' priority: background; type: audio;'
       type: 'subtype: _______.'
     'subtype: _______._2':
       column: Q24
+      notes: ' priority: background; type: audio;'
       type: 'subtype: _______.'
     'subtype: _______._3':
       column: Q24_4_TEXT
+      notes: ' priority: background; type: audio;'
       type: 'subtype: _______.'
     'subtype: _______._4':
       column: Q33
+      notes: ' priority: background; type: audio;'
       type: 'subtype: _______.'
     'subtype: _______._5':
       column: Q33_4_TEXT
+      notes: ' priority: background; type: audio;'
       type: 'subtype: _______.'
     'subtype: _______._6':
       column: Q61
+      notes: ' priority: background; type: audio;'
       type: 'subtype: _______.'
     'subtype: _______._7':
       column: Q61_4_TEXT
-      type: 'subtype: _______.'
-    'subtype: _______._8':
-      column: Q15
-      notes: ' priority: background; type: audio;'
-      type: 'subtype: _______.'
-    'subtype: _______._9':
-      column: Q15_4_TEXT
       notes: ' priority: background; type: audio;'
       type: 'subtype: _______.'
     type:
       column: Q51
-      type: type
-    type_1:
-      column: Q51_9_TEXT
-      type: type
-    type_2:
-      column: Q51
       notes: ' priority: secondary; '
       type: type
-    type_3:
+    type_1:
       column: Q51_9_TEXT
       notes: ' priority: secondary; '
       type: type
   ol.location:
     location.address:
       column: Q7
-      type: location.address
-    location.address_1:
-      column: Q7
       notes: .nan
       type: location.address
   ol.deviceuse:
     '?':
       column: Q28
-      type: '?'
-    ?_1:
-      column: Q28
       notes: .nan
       type: '?'
     ol.description:
-      column: .nan
-      type: ol.description
-    ol.description_1:
       column: .nan
       notes: .nan
       type: ol.description
     ol.duration + ol.units:
       column: Q9
+      notes: '% time / duration'
       type: ol.duration + ol.units
     ol.duration + ol.units_1:
       column: Q26_1
+      notes: '% time / duration'
       type: ol.duration + ol.units
     ol.duration + ol.units_2:
       column: Q39_1
+      notes: '% time / duration'
       type: ol.duration + ol.units
     ol.duration + ol.units_3:
       column: Q47_1
+      notes: '% time / duration'
       type: ol.duration + ol.units
     ol.duration + ol.units_4:
-      column: Q55
-      type: ol.duration + ol.units
-    ol.duration + ol.units_5:
-      column: Q9
-      notes: '% time / duration'
-      type: ol.duration + ol.units
-    ol.duration + ol.units_6:
-      column: Q26_1
-      notes: '% time / duration'
-      type: ol.duration + ol.units
-    ol.duration + ol.units_7:
-      column: Q39_1
-      notes: '% time / duration'
-      type: ol.duration + ol.units
-    ol.duration + ol.units_8:
-      column: Q47_1
-      notes: '% time / duration'
-      type: ol.duration + ol.units
-    ol.duration + ol.units_9:
       column: Q55
       notes: '% time / duration'
       type: ol.duration + ol.units
     ol.reason:
       column: Q10_1
+      notes: adultmediause
       type: ol.reason
     ol.reason_1:
       column: Q27
+      notes: .nan
       type: ol.reason
     ol.reason_2:
       column: Q40
+      notes: .nan
       type: ol.reason
     ol.reason_3:
       column: Q48
+      notes: adultmediause
       type: ol.reason
     ol.reason_4:
-      column: Q56_1
-      type: ol.reason
-    ol.reason_5:
-      column: Q10_1
-      notes: adultmediause
-      type: ol.reason
-    ol.reason_6:
-      column: Q27
-      notes: .nan
-      type: ol.reason
-    ol.reason_7:
-      column: Q40
-      notes: .nan
-      type: ol.reason
-    ol.reason_8:
-      column: Q48
-      notes: adultmediause
-      type: ol.reason
-    ol.reason_9:
       column: Q56_1
       notes: .nan
       type: ol.reason
     ol.status:
       column: Q8
+      notes: 'status: yes/no/don''tknow/noanswer'
       type: ol.status
     ol.status_1:
       column: Q25
+      notes: 'status: yes/no/don''tknow/noanswer'
       type: ol.status
     ol.status_2:
       column: Q38
+      notes: 'status: yes/no/don''tknow/noanswer'
       type: ol.status
     ol.status_3:
       column: Q46
+      notes: 'status: yes/no/don''tknow/noanswer'
       type: ol.status
     ol.status_4:
-      column: Q54
-      type: ol.status
-    ol.status_5:
-      column: Q8
-      notes: 'status: yes/no/don''tknow/noanswer'
-      type: ol.status
-    ol.status_6:
-      column: Q25
-      notes: 'status: yes/no/don''tknow/noanswer'
-      type: ol.status
-    ol.status_7:
-      column: Q38
-      notes: 'status: yes/no/don''tknow/noanswer'
-      type: ol.status
-    ol.status_8:
-      column: Q46
-      notes: 'status: yes/no/don''tknow/noanswer'
-      type: ol.status
-    ol.status_9:
       column: Q54
       notes: 'status: yes/no/don''tknow/noanswer'
       type: ol.status
   ol.device:
     .nan:
       column: Q2
-      type: .nan
-    nan_1:
-      column: Q2_11_TEXT
-      type: .nan
-    nan_2:
-      column: Q2
       notes: .nan
       type: .nan
-    nan_3:
+    nan_1:
       column: Q2_11_TEXT
       notes: .nan
       type: .nan
   locatedat--> location:
     unparsed location address:
-      column: Q19
-      type: unparsed location address
-    unparsed location address_1:
       column: Q19
       notes: .nan
       type: unparsed location address
