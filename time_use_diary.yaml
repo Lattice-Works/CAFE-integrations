@@ -6,7 +6,7 @@
 entityDefinitions:
   survey_metadata:
     entitySetName: CAFE_TUD_survey_metadata
-    entityTypeFqn: ol.surveymetadata
+    fqn: ol.surveymetadata
     name: survey_metadata
     propertyDefinitions:
       ol.id:
@@ -29,19 +29,44 @@ entityDefinitions:
         type: ol.language
       ol.status:
         column: Progress
-        # notes: + statusdetails "followup question progress"
         type: ol.status
+      ol.statusdetails:
+        type: ol.statusdetails
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "followup question progress"
   people:
     entitySetName: CAFE_people
-    entityTypeFqn: general.person
+    fqn: general.person
     name: people
     propertyDefinitions:
-      ol.id:
+      nc.SubjectIdentification:
         column: PrimaryResponseID
-        type: ol.id
+        type: nc.SubjectIdentification
+  relatives:
+    entitySetName: CAFE_relatives
+    fqn: ol.relative
+    name: relatives
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: nc.SubjectIdentification
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q6, Q35, Q18, Q41, Q42, Q49]
+        - !<transforms.ReplaceTransform>
+          target: [1, 2, 3, 4, 5, 6, 7, 8]
+          goal:
+          - Mother/Mother figure
+          - Father/Father figure
+          - Grandparent
+          - Sibling
+          - Other relative
+          - Childcare provider/nanny/babysitter
+          - Other kids
+          - No one
   primary_activity:
     entitySetName: CAFE_TUD_primary_activity
-    entityTypeFqn: ol.primaryactivity
+    fqn: ol.primaryactivity
     name: primary_activity
     propertyDefinitions:
       ol.activity:
@@ -58,29 +83,9 @@ entityDefinitions:
       ol.id:
         column: DiaryEntryID
         type: ol.id
-      ol.participant:
-        column: Q6
-        # notes: ol.primaryactivity
-        type: ol.participant
-      ol.participant_1:
-        column: Q18
-        type: ol.participant
-      setting:
-        column: Q42
-        type: setting
-      supervision / participant:
-        column: Q35
-        # notes: ol.primaryactivity
-        type: supervision / participant
-      supervision / participant_1:
-        column: Q41
-        type: supervision / participant
-      supervision / participant_2:
-        column: Q49
-        type: supervision / participant
   media_exposure:
     entitySetName: CAFE_TUD_media_exposure
-    entityTypeFqn: ol.mediaexposure
+    fqn: ol.mediaexposure
     name: media_exposure
     propertyDefinitions:
       agecategory:
@@ -252,14 +257,14 @@ entityDefinitions:
         type: type
   location:
     entitySetName: CAFE_TUD_primary_activity
-    entityTypeFqn: ol.primaryactivity
+    fqn: ol.location
     name: location
     propertyDefinitions:
       ol.id:
         type: ol.id
         transforms:
         - !<transforms.ConcatTransform>
-          columns: [Q7, Q19]
+          columns: [Q7, Q19, Q42]
       location.name:
         column: Q7
         type: location.name
@@ -268,12 +273,9 @@ entityDefinitions:
         type: location.name
   adult_use:
     entitySetName: CAFE_TUD_adult_use
-    entityTypeFqn: ol.deviceuse
+    fqn: ol.deviceuse
     name: adult_use
     propertyDefinitions:
-      ol.description:
-        column: .nan
-        type: ol.description
       ol.duration + ol.units:
         column: Q9
         # notes: '% time / duration'
@@ -325,14 +327,16 @@ entityDefinitions:
 associationDefinitions:
   recorded_via:
     entitySetName: CAFE_TUD_recorded_via
+    fqn: ol.recordedvia
     src: primary_activity
     dst: survey_metadata
-    date.completeddatetime:
-      column: RecordedDate
-      type: date.completeddatetime
+    propertyDefinitions:
+      date.completeddatetime:
+        column: RecordedDate
+        type: date.completeddatetime
   engaged_in:
     entitySetName: CAFE_TUD_engaged_in
-    entityTypeFqn: ol.engagedin
+    fqn: ol.engagedin
     src: people
     dst: primary_activity
     propertyDefinitions:
@@ -344,7 +348,8 @@ associationDefinitions:
         type: date.completeddatetime
   concurrent_to_1:
     entitySetName:  CAFE_TUD_concurrent_to
-    entityTypeFqn: ol.concurrentto
+    name: concurrent_to_1
+    fqn: ol.concurrentto
     src: primary_activity
     dst: media_exposure
     propertyDefinitions:
@@ -353,7 +358,8 @@ associationDefinitions:
         column: DiaryEntryID
   concurrent_to_2:
     entitySetName:  CAFE_TUD_concurrent_to
-    entityTypeFqn: ol.concurrentto
+    name: concurrent_to_2
+    fqn: ol.concurrentto
     src: primary_activity
     dst: adult_use
     propertyDefinitions:
@@ -362,7 +368,8 @@ associationDefinitions:
         column: DiaryEntryID
   concurrent_to_3:
     entitySetName:  CAFE_TUD_concurrent_to
-    entityTypeFqn: ol.concurrentto
+    fqn: ol.concurrentto
+    name: concurrent_to_3
     src: media_exposure
     dst: adult_use
     propertyDefinitions:
@@ -371,7 +378,7 @@ associationDefinitions:
         column: DiaryEntryID
   located_at:
     entitySetName: CAFE_TUD_located
-    entityTypeFqn: ol.locatedat
+    fqn: ol.locatedat
     src: primary_activity
     dst: location
     propertyDefinitions:
