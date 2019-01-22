@@ -18,7 +18,7 @@ entityDefinitions:
       type: ol.language
     ol.status:
       column: Progress
-      notes: + statusdetails "followup question progress"
+      # notes: + statusdetails "followup question progress"
       type: ol.status
   ol.recordedvia:
     date.completeddatetime:
@@ -38,18 +38,18 @@ entityDefinitions:
       type: ol.activity
     ol.datetimeend:
       column: EndTime
-      notes: 'note: these are *just* times, not datetimes'
+      # notes: 'note: these are *just* times, not datetimes'
       type: ol.datetimeend
     ol.datetimestart:
       column: StartTime
-      notes: 'note: these are *just* times, not datetimes'
+      # notes: 'note: these are *just* times, not datetimes'
       type: ol.datetimestart
     ol.id:
       column: DiaryEntryID
       type: ol.id
     ol.participant:
       column: Q6
-      notes: ol.primaryactivity
+      # notes: ol.primaryactivity
       type: ol.participant
     ol.participant_1:
       column: Q18
@@ -59,7 +59,7 @@ entityDefinitions:
       type: setting
     supervision / participant:
       column: Q35
-      notes: ol.primaryactivity
+      # notes: ol.primaryactivity
       type: supervision / participant
     supervision / participant_1:
       column: Q41
@@ -74,7 +74,7 @@ entityDefinitions:
   ol.mediaexposure:
     agecategory:
       column: Q22
-      notes: ' priority: secondary; '
+      # notes: ' priority: secondary; '
       type: agecategory
     agecategory_1:
       column: Q22_5_TEXT
@@ -102,14 +102,14 @@ entityDefinitions:
       type: agecategory
     behaviorafter:
       column: Q17
-      notes: ' priority: background; type: audio; subtype:___.'
+      # notes: ' priority: background; type: audio; subtype:___.'
       type: behaviorafter
     behaviorafter_1:
       column: Q63
       type: behaviorafter
     behaviorbefore:
       column: Q16
-      notes: ' priority: background; type: audio; subtype:___.'
+      # notes: ' priority: background; type: audio; subtype:___.'
       type: behaviorbefore
     behaviorbefore_1:
       column: Q62
@@ -122,7 +122,7 @@ entityDefinitions:
       type: name
     ol.category:
       column: Q4
-      notes: ol.mediaexposure
+      # notes: ol.mediaexposure
       type: ol.category
     ol.category_1:
       column: Q13
@@ -132,11 +132,11 @@ entityDefinitions:
       type: ol.category
     ol.name:
       column: Q5
-      notes: 'priority=primary;  type=tv ol.name = _____; '
+      # notes: 'priority=primary;  type=tv ol.name = _____; '
       type: ol.name
     ol.type:
       column: Q3
-      notes: ' priority: background; type: tv;'
+      # notes: ' priority: background; type: tv;'
       type: ol.type
     ol.type_1:
       column: Q3_9_TEXT
@@ -149,7 +149,7 @@ entityDefinitions:
       type: ol.type
     'status: yes/no/don''tknow/noanswer':
       column: Q14
-      notes: ' priority: background; type: audio;'
+      # notes: ' priority: background; type: audio;'
       type: 'status: yes/no/don''tknow/noanswer'
     'status: yes/no/don''tknow/noanswer_1':
       column: Q20
@@ -195,7 +195,7 @@ entityDefinitions:
       type: 'status: yes/no/don''tknow/noanswer'
     'subtype: _______.':
       column: Q15
-      notes: ' priority: background; type: audio;'
+      # notes: ' priority: background; type: audio;'
       type: 'subtype: _______.'
     'subtype: _______._1':
       column: Q15_4_TEXT
@@ -220,7 +220,7 @@ entityDefinitions:
       type: 'subtype: _______.'
     type:
       column: Q51
-      notes: ' priority: secondary; '
+      # notes: ' priority: secondary; '
       type: type
     type_1:
       column: Q51_9_TEXT
@@ -238,7 +238,7 @@ entityDefinitions:
       type: ol.description
     ol.duration + ol.units:
       column: Q9
-      notes: '% time / duration'
+      # notes: '% time / duration'
       type: ol.duration + ol.units
     ol.duration + ol.units_1:
       column: Q26_1
@@ -254,7 +254,7 @@ entityDefinitions:
       type: ol.duration + ol.units
     ol.reason:
       column: Q10_1
-      notes: adultmediause
+      # notes: adultmediause
       type: ol.reason
     ol.reason_1:
       column: Q27
@@ -270,7 +270,7 @@ entityDefinitions:
       type: ol.reason
     ol.status:
       column: Q8
-      notes: 'status: yes/no/don''tknow/noanswer'
+      # notes: 'status: yes/no/don''tknow/noanswer'
       type: ol.status
     ol.status_1:
       column: Q25
