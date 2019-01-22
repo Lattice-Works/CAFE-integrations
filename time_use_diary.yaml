@@ -1,4 +1,8 @@
-associationDefinitions: {}
+# columns not integrated:
+# - Site
+# - Q28 (device use?)
+# - Q2, Q2_11_TEXT (device?)
+
 entityDefinitions:
   ol.surveymetadata:
     ol.completed:
@@ -67,10 +71,6 @@ entityDefinitions:
     supervision / participant_2:
       column: Q49
       type: supervision / participant
-  .nan:
-    .nan:
-      column: Site
-      type: .nan
   ol.mediaexposure:
     agecategory:
       column: Q22
@@ -147,77 +147,91 @@ entityDefinitions:
     ol.type_3:
       column: Q12
       type: ol.type
-    'status: yes/no/don''tknow/noanswer':
+    ol.status_1:
       column: Q14
-      # notes: ' priority: background; type: audio;'
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_1':
+      type: ol.status
+      # notes: ' priority: background; type: audio;', yes/no/don't know
+    ol.status_2:
       column: Q20
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_10':
+      type: ol.status
+      # notes: yes/no/don't know
+    ol.status_3:
+      type: ol.status
+      # notes: yes/no/don't know
       column: Q45
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_11':
+    ol.status_4:
+      type: ol.status
+      # notes: yes/no/don't know
       column: Q50
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_12':
+    ol.status_5:
+      type: ol.status
+      # notes: yes/no/don't know
       column: Q57
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_13':
+    ol.status_6:
+      type: ol.status
+      # notes: yes/no/don't know
       column: Q58
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_14':
+    ol.status_7:
+      type: ol.status
+      # notes: yes/no/don't know
       column: Q60
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_2':
+    ol.status_8:
+      type: ol.status
+      # notes: yes/no/don't know
       column: Q21
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_3':
+    ol.status_9:
+      type: ol.status
+      # notes: yes/no/don't know
       column: Q23
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_4':
+    ol.status_10:
+      type: ol.status
+      # notes: yes/no/don't know
       column: Q29
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_5':
+    ol.status_11:
+      type: ol.status
+      # notes: yes/no/don't know
       column: Q30
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_6':
+    ol.status_12:
+      type: ol.status
+      # notes: yes/no/don't know
       column: Q32
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_7':
+    ol.status_13:
+      type: ol.status
+      # notes: yes/no/don't know
       column: Q36
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_8':
+    ol.status_14:
+      type: ol.status
+      # notes: yes/no/don't know
       column: Q37
-      type: 'status: yes/no/don''tknow/noanswer'
-    'status: yes/no/don''tknow/noanswer_9':
+    ol.status_15:
+      type: ol.status
+      # notes: yes/no/don't know
       column: Q43
-      type: 'status: yes/no/don''tknow/noanswer'
-    'subtype: _______.':
-      column: Q15
+    ol.subtype:
+      type: ol.subtype
       # notes: ' priority: background; type: audio;'
-      type: 'subtype: _______.'
-    'subtype: _______._1':
+      column: Q15
+    ol.subtype_1:
+      type: ol.subtype
       column: Q15_4_TEXT
-      type: 'subtype: _______.'
-    'subtype: _______._2':
+    ol.subtype_2:
+      type: ol.subtype
       column: Q24
-      type: 'subtype: _______.'
-    'subtype: _______._3':
+    ol.subtype_3:
+      type: ol.subtype
       column: Q24_4_TEXT
-      type: 'subtype: _______.'
-    'subtype: _______._4':
+    ol.subtype_4:
+      type: ol.subtype
       column: Q33
-      type: 'subtype: _______.'
-    'subtype: _______._5':
+    ol.subtype_5:
+      type: ol.subtype
       column: Q33_4_TEXT
-      type: 'subtype: _______.'
-    'subtype: _______._6':
+    ol.subtype_6:
+      type: ol.subtype
       column: Q61
-      type: 'subtype: _______.'
-    'subtype: _______._7':
+    ol.subtype_7:
+      type: ol.subtype
       column: Q61_4_TEXT
-      type: 'subtype: _______.'
     type:
       column: Q51
       # notes: ' priority: secondary; '
@@ -229,10 +243,11 @@ entityDefinitions:
     location.address:
       column: Q7
       type: location.address
+  ol.location_2:
+    location.name:
+      column: Q19
+      type: location.name
   ol.deviceuse:
-    '?':
-      column: Q28
-      type: '?'
     ol.description:
       column: .nan
       type: ol.description
@@ -284,14 +299,4 @@ entityDefinitions:
     ol.status_4:
       column: Q54
       type: ol.status
-  ol.device:
-    .nan:
-      column: Q2
-      type: .nan
-    nan_1:
-      column: Q2_11_TEXT
-      type: .nan
-  locatedat--> location:
-    unparsed location address:
-      column: Q19
-      type: unparsed location address
+associationDefinitions: {}
