@@ -1,302 +1,380 @@
 # columns not integrated:
 # - Site
-# - Q28 (device use?)
+# - Q28 (adult use?)
 # - Q2, Q2_11_TEXT (device?)
 
 entityDefinitions:
-  ol.surveymetadata:
-    ol.completed:
-      column: Finished
-      type: ol.completed
-    ol.datetimeend:
-      column: EndDate
-      type: ol.datetimeend
-    ol.datetimestart:
-      column: StartDate
-      type: ol.datetimestart
-    ol.duration:
-      column: Duration (in seconds)
-      type: ol.duration
-    ol.language:
-      column: UserLanguage
-      type: ol.language
-    ol.status:
-      column: Progress
-      # notes: + statusdetails "followup question progress"
-      type: ol.status
-  ol.recordedvia:
+  survey_metadata:
+    entitySetName: CAFE_TUD_survey_metadata
+    entityTypeFqn: ol.surveymetadata
+    name: survey_metadata
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+      ol.completed:
+        column: Finished
+        type: ol.completed
+      ol.datetimeend:
+        column: EndDate
+        type: ol.datetimeend
+      ol.datetimestart:
+        column: StartDate
+        type: ol.datetimestart
+      ol.duration:
+        column: Duration (in seconds)
+        type: ol.duration
+      ol.language:
+        column: UserLanguage
+        type: ol.language
+      ol.status:
+        column: Progress
+        # notes: + statusdetails "followup question progress"
+        type: ol.status
+  people:
+    entitySetName: CAFE_people
+    entityTypeFqn: general.person
+    name: people
+    propertyDefinitions:
+      ol.id:
+        column: PrimaryResponseID
+        type: ol.id
+  primary_activity:
+    entitySetName: CAFE_TUD_primary_activity
+    entityTypeFqn: ol.primaryactivity
+    name: primary_activity
+    propertyDefinitions:
+      ol.activity:
+        column: Section
+        type: ol.activity
+      ol.datetimeend:
+        column: EndTime
+        # notes: 'note: these are *just* times, not datetimes'
+        type: ol.datetimeend
+      ol.datetimestart:
+        column: StartTime
+        # notes: 'note: these are *just* times, not datetimes'
+        type: ol.datetimestart
+      ol.id:
+        column: DiaryEntryID
+        type: ol.id
+      ol.participant:
+        column: Q6
+        # notes: ol.primaryactivity
+        type: ol.participant
+      ol.participant_1:
+        column: Q18
+        type: ol.participant
+      setting:
+        column: Q42
+        type: setting
+      supervision / participant:
+        column: Q35
+        # notes: ol.primaryactivity
+        type: supervision / participant
+      supervision / participant_1:
+        column: Q41
+        type: supervision / participant
+      supervision / participant_2:
+        column: Q49
+        type: supervision / participant
+  media_exposure:
+    entitySetName: CAFE_TUD_media_exposure
+    entityTypeFqn: ol.mediaexposure
+    name: media_exposure
+    propertyDefinitions:
+      agecategory:
+        column: Q22
+        # notes: ' priority: secondary; '
+        type: agecategory
+      agecategory_1:
+        column: Q22_5_TEXT
+        type: agecategory
+      agecategory_2:
+        column: Q31
+        type: agecategory
+      agecategory_3:
+        column: Q31_5_TEXT
+        type: agecategory
+      agecategory_4:
+        column: Q44
+        type: agecategory
+      agecategory_5:
+        column: Q44_5_TEXT
+        type: agecategory
+      agecategory_6:
+        column: Q52
+        type: agecategory
+      agecategory_7:
+        column: Q59
+        type: agecategory
+      agecategory_8:
+        column: Q59_5_TEXT
+        type: agecategory
+      behaviorafter:
+        column: Q17
+        # notes: ' priority: background; type: audio; subtype:___.'
+        type: behaviorafter
+      behaviorafter_1:
+        column: Q63
+        type: behaviorafter
+      behaviorbefore:
+        column: Q16
+        # notes: ' priority: background; type: audio; subtype:___.'
+        type: behaviorbefore
+      behaviorbefore_1:
+        column: Q62
+        type: behaviorbefore
+      duration + units:
+        column: Q34_1
+        type: duration + units
+      name:
+        column: Q53
+        type: name
+      ol.category:
+        column: Q4
+        # notes: ol.mediaexposure
+        type: ol.category
+      ol.category_1:
+        column: Q13
+        type: ol.category
+      ol.category_2:
+        column: Q13_5_TEXT
+        type: ol.category
+      ol.name:
+        column: Q5
+        # notes: 'priority=primary;  type=tv ol.name = _____; '
+        type: ol.name
+      ol.type:
+        column: Q3
+        # notes: ' priority: background; type: tv;'
+        type: ol.type
+      ol.type_1:
+        column: Q3_9_TEXT
+        type: ol.type
+      ol.type_2:
+        column: Q11
+        type: ol.type
+      ol.type_3:
+        column: Q12
+        type: ol.type
+      ol.status_1:
+        column: Q14
+        type: ol.status
+        # notes: ' priority: background; type: audio;', yes/no/don't know
+      ol.status_2:
+        column: Q20
+        type: ol.status
+        # notes: yes/no/don't know
+      ol.status_3:
+        type: ol.status
+        # notes: yes/no/don't know
+        column: Q45
+      ol.status_4:
+        type: ol.status
+        # notes: yes/no/don't know
+        column: Q50
+      ol.status_5:
+        type: ol.status
+        # notes: yes/no/don't know
+        column: Q57
+      ol.status_6:
+        type: ol.status
+        # notes: yes/no/don't know
+        column: Q58
+      ol.status_7:
+        type: ol.status
+        # notes: yes/no/don't know
+        column: Q60
+      ol.status_8:
+        type: ol.status
+        # notes: yes/no/don't know
+        column: Q21
+      ol.status_9:
+        type: ol.status
+        # notes: yes/no/don't know
+        column: Q23
+      ol.status_10:
+        type: ol.status
+        # notes: yes/no/don't know
+        column: Q29
+      ol.status_11:
+        type: ol.status
+        # notes: yes/no/don't know
+        column: Q30
+      ol.status_12:
+        type: ol.status
+        # notes: yes/no/don't know
+        column: Q32
+      ol.status_13:
+        type: ol.status
+        # notes: yes/no/don't know
+        column: Q36
+      ol.status_14:
+        type: ol.status
+        # notes: yes/no/don't know
+        column: Q37
+      ol.status_15:
+        type: ol.status
+        # notes: yes/no/don't know
+        column: Q43
+      ol.subtype:
+        type: ol.subtype
+        # notes: ' priority: background; type: audio;'
+        column: Q15
+      ol.subtype_1:
+        type: ol.subtype
+        column: Q15_4_TEXT
+      ol.subtype_2:
+        type: ol.subtype
+        column: Q24
+      ol.subtype_3:
+        type: ol.subtype
+        column: Q24_4_TEXT
+      ol.subtype_4:
+        type: ol.subtype
+        column: Q33
+      ol.subtype_5:
+        type: ol.subtype
+        column: Q33_4_TEXT
+      ol.subtype_6:
+        type: ol.subtype
+        column: Q61
+      ol.subtype_7:
+        type: ol.subtype
+        column: Q61_4_TEXT
+      type:
+        column: Q51
+        # notes: ' priority: secondary; '
+        type: type
+      type_1:
+        column: Q51_9_TEXT
+        type: type
+  location:
+    entitySetName: CAFE_TUD_primary_activity
+    entityTypeFqn: ol.primaryactivity
+    name: location
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q7, Q19]
+      location.name:
+        column: Q7
+        type: location.name
+      location.name_2:
+        column: Q19
+        type: location.name
+  adult_use:
+    entitySetName: CAFE_TUD_adult_use
+    entityTypeFqn: ol.deviceuse
+    name: adult_use
+    propertyDefinitions:
+      ol.description:
+        column: .nan
+        type: ol.description
+      ol.duration + ol.units:
+        column: Q9
+        # notes: '% time / duration'
+        type: ol.duration + ol.units
+      ol.duration + ol.units_1:
+        column: Q26_1
+        type: ol.duration + ol.units
+      ol.duration + ol.units_2:
+        column: Q39_1
+        type: ol.duration + ol.units
+      ol.duration + ol.units_3:
+        column: Q47_1
+        type: ol.duration + ol.units
+      ol.duration + ol.units_4:
+        column: Q55
+        type: ol.duration + ol.units
+      ol.reason:
+        column: Q10_1
+        # notes: adultmediause
+        type: ol.reason
+      ol.reason_1:
+        column: Q27
+        type: ol.reason
+      ol.reason_2:
+        column: Q40
+        type: ol.reason
+      ol.reason_3:
+        column: Q48
+        type: ol.reason
+      ol.reason_4:
+        column: Q56_1
+        type: ol.reason
+      ol.status:
+        column: Q8
+        # notes: 'status: yes/no/don''tknow/noanswer'
+        type: ol.status
+      ol.status_1:
+        column: Q25
+        type: ol.status
+      ol.status_2:
+        column: Q38
+        type: ol.status
+      ol.status_3:
+        column: Q46
+        type: ol.status
+      ol.status_4:
+        column: Q54
+        type: ol.status
+associationDefinitions:
+  recorded_via:
+    entitySetName: CAFE_TUD_recorded_via
+    src: primary_activity
+    dst: survey_metadata
     date.completeddatetime:
       column: RecordedDate
       type: date.completeddatetime
-  general.person:
-    ol.id:
-      column: PrimaryResponseID
-      type: ol.id
-  ol.engagedin:
-    date.completeddatetime:
-      column: ActionTime
-      type: date.completeddatetime
-  ol.primaryactivity:
-    ol.activity:
-      column: Section
-      type: ol.activity
-    ol.datetimeend:
-      column: EndTime
-      # notes: 'note: these are *just* times, not datetimes'
-      type: ol.datetimeend
-    ol.datetimestart:
-      column: StartTime
-      # notes: 'note: these are *just* times, not datetimes'
-      type: ol.datetimestart
-    ol.id:
-      column: DiaryEntryID
-      type: ol.id
-    ol.participant:
-      column: Q6
-      # notes: ol.primaryactivity
-      type: ol.participant
-    ol.participant_1:
-      column: Q18
-      type: ol.participant
-    setting:
-      column: Q42
-      type: setting
-    supervision / participant:
-      column: Q35
-      # notes: ol.primaryactivity
-      type: supervision / participant
-    supervision / participant_1:
-      column: Q41
-      type: supervision / participant
-    supervision / participant_2:
-      column: Q49
-      type: supervision / participant
-  ol.mediaexposure:
-    agecategory:
-      column: Q22
-      # notes: ' priority: secondary; '
-      type: agecategory
-    agecategory_1:
-      column: Q22_5_TEXT
-      type: agecategory
-    agecategory_2:
-      column: Q31
-      type: agecategory
-    agecategory_3:
-      column: Q31_5_TEXT
-      type: agecategory
-    agecategory_4:
-      column: Q44
-      type: agecategory
-    agecategory_5:
-      column: Q44_5_TEXT
-      type: agecategory
-    agecategory_6:
-      column: Q52
-      type: agecategory
-    agecategory_7:
-      column: Q59
-      type: agecategory
-    agecategory_8:
-      column: Q59_5_TEXT
-      type: agecategory
-    behaviorafter:
-      column: Q17
-      # notes: ' priority: background; type: audio; subtype:___.'
-      type: behaviorafter
-    behaviorafter_1:
-      column: Q63
-      type: behaviorafter
-    behaviorbefore:
-      column: Q16
-      # notes: ' priority: background; type: audio; subtype:___.'
-      type: behaviorbefore
-    behaviorbefore_1:
-      column: Q62
-      type: behaviorbefore
-    duration + units:
-      column: Q34_1
-      type: duration + units
-    name:
-      column: Q53
-      type: name
-    ol.category:
-      column: Q4
-      # notes: ol.mediaexposure
-      type: ol.category
-    ol.category_1:
-      column: Q13
-      type: ol.category
-    ol.category_2:
-      column: Q13_5_TEXT
-      type: ol.category
-    ol.name:
-      column: Q5
-      # notes: 'priority=primary;  type=tv ol.name = _____; '
-      type: ol.name
-    ol.type:
-      column: Q3
-      # notes: ' priority: background; type: tv;'
-      type: ol.type
-    ol.type_1:
-      column: Q3_9_TEXT
-      type: ol.type
-    ol.type_2:
-      column: Q11
-      type: ol.type
-    ol.type_3:
-      column: Q12
-      type: ol.type
-    ol.status_1:
-      column: Q14
-      type: ol.status
-      # notes: ' priority: background; type: audio;', yes/no/don't know
-    ol.status_2:
-      column: Q20
-      type: ol.status
-      # notes: yes/no/don't know
-    ol.status_3:
-      type: ol.status
-      # notes: yes/no/don't know
-      column: Q45
-    ol.status_4:
-      type: ol.status
-      # notes: yes/no/don't know
-      column: Q50
-    ol.status_5:
-      type: ol.status
-      # notes: yes/no/don't know
-      column: Q57
-    ol.status_6:
-      type: ol.status
-      # notes: yes/no/don't know
-      column: Q58
-    ol.status_7:
-      type: ol.status
-      # notes: yes/no/don't know
-      column: Q60
-    ol.status_8:
-      type: ol.status
-      # notes: yes/no/don't know
-      column: Q21
-    ol.status_9:
-      type: ol.status
-      # notes: yes/no/don't know
-      column: Q23
-    ol.status_10:
-      type: ol.status
-      # notes: yes/no/don't know
-      column: Q29
-    ol.status_11:
-      type: ol.status
-      # notes: yes/no/don't know
-      column: Q30
-    ol.status_12:
-      type: ol.status
-      # notes: yes/no/don't know
-      column: Q32
-    ol.status_13:
-      type: ol.status
-      # notes: yes/no/don't know
-      column: Q36
-    ol.status_14:
-      type: ol.status
-      # notes: yes/no/don't know
-      column: Q37
-    ol.status_15:
-      type: ol.status
-      # notes: yes/no/don't know
-      column: Q43
-    ol.subtype:
-      type: ol.subtype
-      # notes: ' priority: background; type: audio;'
-      column: Q15
-    ol.subtype_1:
-      type: ol.subtype
-      column: Q15_4_TEXT
-    ol.subtype_2:
-      type: ol.subtype
-      column: Q24
-    ol.subtype_3:
-      type: ol.subtype
-      column: Q24_4_TEXT
-    ol.subtype_4:
-      type: ol.subtype
-      column: Q33
-    ol.subtype_5:
-      type: ol.subtype
-      column: Q33_4_TEXT
-    ol.subtype_6:
-      type: ol.subtype
-      column: Q61
-    ol.subtype_7:
-      type: ol.subtype
-      column: Q61_4_TEXT
-    type:
-      column: Q51
-      # notes: ' priority: secondary; '
-      type: type
-    type_1:
-      column: Q51_9_TEXT
-      type: type
-  ol.location:
-    location.address:
-      column: Q7
-      type: location.address
-  ol.location_2:
-    location.name:
-      column: Q19
-      type: location.name
-  ol.deviceuse:
-    ol.description:
-      column: .nan
-      type: ol.description
-    ol.duration + ol.units:
-      column: Q9
-      # notes: '% time / duration'
-      type: ol.duration + ol.units
-    ol.duration + ol.units_1:
-      column: Q26_1
-      type: ol.duration + ol.units
-    ol.duration + ol.units_2:
-      column: Q39_1
-      type: ol.duration + ol.units
-    ol.duration + ol.units_3:
-      column: Q47_1
-      type: ol.duration + ol.units
-    ol.duration + ol.units_4:
-      column: Q55
-      type: ol.duration + ol.units
-    ol.reason:
-      column: Q10_1
-      # notes: adultmediause
-      type: ol.reason
-    ol.reason_1:
-      column: Q27
-      type: ol.reason
-    ol.reason_2:
-      column: Q40
-      type: ol.reason
-    ol.reason_3:
-      column: Q48
-      type: ol.reason
-    ol.reason_4:
-      column: Q56_1
-      type: ol.reason
-    ol.status:
-      column: Q8
-      # notes: 'status: yes/no/don''tknow/noanswer'
-      type: ol.status
-    ol.status_1:
-      column: Q25
-      type: ol.status
-    ol.status_2:
-      column: Q38
-      type: ol.status
-    ol.status_3:
-      column: Q46
-      type: ol.status
-    ol.status_4:
-      column: Q54
-      type: ol.status
-associationDefinitions: {}
+  engaged_in:
+    entitySetName: CAFE_TUD_engaged_in
+    entityTypeFqn: ol.engagedin
+    src: people
+    dst: primary_activity
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+      date.completeddatetime:
+        column: ActionTime
+        type: date.completeddatetime
+  concurrent_to_1:
+    entitySetName:  CAFE_TUD_concurrent_to
+    entityTypeFqn: ol.concurrentto
+    src: primary_activity
+    dst: media_exposure
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  concurrent_to_2:
+    entitySetName:  CAFE_TUD_concurrent_to
+    entityTypeFqn: ol.concurrentto
+    src: primary_activity
+    dst: adult_use
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  concurrent_to_3:
+    entitySetName:  CAFE_TUD_concurrent_to
+    entityTypeFqn: ol.concurrentto
+    src: media_exposure
+    dst: adult_use
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  located_at:
+    entitySetName: CAFE_TUD_located
+    entityTypeFqn: ol.locatedat
+    src: primary_activity
+    dst: location
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
