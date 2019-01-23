@@ -43,220 +43,596 @@ entityDefinitions:
       nc.SubjectIdentification:
         column: PrimaryResponseID
         type: nc.SubjectIdentification
-  relatives:
+  mothers:
     entitySetName: CAFE_relatives
     fqn: ol.relative
-    name: relatives
+    name: mothers
     propertyDefinitions:
-      nc.SubjectIdentification:
-        type: nc.SubjectIdentification
+      ol.id:
+        type: ol.id
         transforms:
-        - !<transforms.ConcatTransform>
-          columns: [Q6, Q35, Q18, Q41, Q42, Q49]
-        - !<transforms.ReplaceTransform>
-          target: [1, 2, 3, 4, 5, 6, 7, 8]
-          goal:
-          - Mother/Mother figure
-          - Father/Father figure
-          - Grandparent
-          - Sibling
-          - Other relative
-          - Childcare provider/nanny/babysitter
-          - Other kids
-          - No one
+        - !<transforms.ValueTransform>
+          value: Mother/Mother figure
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Mother/Mother figure
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q6_1
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q18_1
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q35_1
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q41_1
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q49_1
+      reverse: true
+  fathers:
+    entitySetName: CAFE_relatives
+    fqn: ol.relative
+    name: fathers
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Father/Father figure
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Father/Father figure
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q6_2
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q18_2
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q35_2
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q41_2
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q49_2
+      reverse: true
+  grandparents:
+    entitySetName: CAFE_relatives
+    fqn: ol.relative
+    name: grandparents
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Grandparent
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Grandparent
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q6_3
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q18_3
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q35_3
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q41_3
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q49_3
+      reverse: true
+  siblings:
+    entitySetName: CAFE_relatives
+    fqn: ol.relative
+    name: siblings
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Sibling
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Sibling
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q6_4
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q18_4
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q35_4
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q41_4
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q49_4
+      reverse: true
+  otherrelatives:
+    entitySetName: CAFE_relatives
+    fqn: ol.relative
+    name: otherrelatives
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Other relative
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Other relative
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q6_5
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q18_5
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q35_5
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q41_5
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q49_5
+      reverse: true
+  childcareprovider:
+    entitySetName: CAFE_relatives
+    fqn: ol.relative
+    name: childcareprovider
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Childcare provider/nanny/babysitter
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Childcare provider/nanny/babysitter
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q6_6
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q18_6
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q35_6
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q41_6
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q49_6
+      reverse: true
+  otherkids:
+    entitySetName: CAFE_relatives
+    fqn: ol.relative
+    name: otherkids
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Other kids
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Other kids
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q6_7
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q18_7
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q35_7
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q41_7
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: Q49_7
+      reverse: true
+  TV:
+    entitySetName: CAFE_TUD_devices
+    fqn: ol.device
+    name: TV
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: TV
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: TV
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q2_1
+      reverse: true
+  Theater:
+    entitySetName: CAFE_TUD_devices
+    fqn: ol.device
+    name: Theater
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Theater
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Theater
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q2_2
+      reverse: true
+  Other:
+    entitySetName: CAFE_TUD_devices
+    fqn: ol.device
+    name: Other
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Other
+      ol.name:
+        type: ol.name
+        column: Q2_11_TEXT
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q2_11
+      reverse: true
+  Computer:
+    entitySetName: CAFE_TUD_devices
+    fqn: ol.device
+    name: Computer
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Computer
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Computer
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q2_2
+      reverse: true
+  Smartphone:
+    entitySetName: CAFE_TUD_devices
+    fqn: ol.device
+    name: Smartphone
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Smartphone
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Smartphone
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q2_3
+      reverse: true
+  Tablet:
+    entitySetName: CAFE_TUD_devices
+    fqn: ol.device
+    name: Tablet
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Tablet
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Tablet
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q2_4
+      reverse: true
+  PrintedBook:
+    entitySetName: CAFE_TUD_devices
+    fqn: ol.device
+    name: PrintedBook
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: PrintedBook
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: PrintedBook
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q2_5
+      reverse: true
+  VideoPlayer:
+    entitySetName: CAFE_TUD_devices
+    fqn: ol.device
+    name: VideoPlayer
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: VideoPlayer
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: VideoPlayer
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q2_6
+      reverse: true
+  Console:
+    entitySetName: CAFE_TUD_devices
+    fqn: ol.device
+    name: Console
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Console
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Console
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q2_7
+      reverse: true
+  HandheldGamingDevice:
+    entitySetName: CAFE_TUD_devices
+    fqn: ol.device
+    name: HandheldGamingDevice
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: HandheldGamingDevice
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: HandheldGamingDevice
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q2_8
+      reverse: true
+  RadioCD:
+    entitySetName: CAFE_TUD_devices
+    fqn: ol.device
+    name: RadioCD
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ValueTransform>
+          value: RadioCD
+      ol.name:
+        type: ol.name
+        transforms:
+        - !<transforms.ValueTransform>
+          value: RadioCD
+    conditionXs:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q2_9
+      reverse: true
   primary_activity:
     entitySetName: CAFE_TUD_primary_activity
     fqn: ol.primaryactivity
     name: primary_activity
     propertyDefinitions:
       ol.activity:
-        column: Section
         type: ol.activity
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Section, Q32]
+          separator: ": "
       ol.datetimeend:
         column: EndTime
-        # notes: 'note: these are *just* times, not datetimes'
         type: ol.datetimeend
       ol.datetimestart:
         column: StartTime
-        # notes: 'note: these are *just* times, not datetimes'
         type: ol.datetimestart
       ol.id:
         column: DiaryEntryID
         type: ol.id
-  media_exposure:
+      ol.behaviorafter:
+        type: ol.behaviorafter
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q17, Q63]
+      ol.behaviorbefore:
+        type: ol.behaviorbefore
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q16, Q62]
+  primary_media_exposure:
     entitySetName: CAFE_TUD_media_exposure
     fqn: ol.mediaexposure
-    name: media_exposure
+    name: primary_media_exposure
     propertyDefinitions:
-      agecategory:
-        column: Q22
-        # notes: ' priority: secondary; '
-        type: agecategory
-      agecategory_1:
-        column: Q22_5_TEXT
-        type: agecategory
-      agecategory_2:
-        column: Q31
-        type: agecategory
-      agecategory_3:
-        column: Q31_5_TEXT
-        type: agecategory
-      agecategory_4:
-        column: Q44
-        type: agecategory
-      agecategory_5:
-        column: Q44_5_TEXT
-        type: agecategory
-      agecategory_6:
-        column: Q52
-        type: agecategory
-      agecategory_7:
-        column: Q59
-        type: agecategory
-      agecategory_8:
-        column: Q59_5_TEXT
-        type: agecategory
-      behaviorafter:
-        column: Q17
-        # notes: ' priority: background; type: audio; subtype:___.'
-        type: behaviorafter
-      behaviorafter_1:
-        column: Q63
-        type: behaviorafter
-      behaviorbefore:
-        column: Q16
-        # notes: ' priority: background; type: audio; subtype:___.'
-        type: behaviorbefore
-      behaviorbefore_1:
-        column: Q62
-        type: behaviorbefore
-      duration + units:
-        column: Q34_1
-        type: duration + units
-      name:
-        column: Q53
-        type: name
       ol.category:
+        type: ol.category
         column: Q4
-        # notes: ol.mediaexposure
-        type: ol.category
-      ol.category_1:
-        column: Q13
-        type: ol.category
-      ol.category_2:
-        column: Q13_5_TEXT
-        type: ol.category
       ol.name:
-        column: Q5
-        # notes: 'priority=primary;  type=tv ol.name = _____; '
         type: ol.name
+        column: Q5
       ol.type:
-        column: Q3
-        # notes: ' priority: background; type: tv;'
         type: ol.type
-      ol.type_1:
-        column: Q3_9_TEXT
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q3, Q3_9_TEXT]
+      ol.priority:
+        type: ol.priority
+        transforms:
+        - !<transforms.ValueTransform>
+          value: primary
+  secondary_tv:
+    entitySetName: CAFE_TUD_media_exposure
+    fqn: ol.mediaexposure
+    name: secondary_tv
+    propertyDefinitions:
+      ol.category:
+        type: ol.category
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q22, Q22_5_TEXT, Q31, Q31_5_TEXT, Q52, Q59, Q59_5_TEXT, Q13, Q13_TEXT]
+      ol.priority:
+        type: ol.priority
+        transforms:
+        - !<transforms.ValueTransform>
+          value: secondary
+      ol.type:
         type: ol.type
-      ol.type_2:
-        column: Q11
+        transforms:
+        - !<transforms.ValueTransform>
+          value: television
+      ol.duration:
+        type: ol.duration
+        column: Q34_1
+      ol.status:
+        type: ol.status
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q12, Q21, Q30, Q58]
+    conditions:
+    - !<conditions.BooleanTransformationRegexCondition>
+      pattern: "1"
+      transforms:
+      - !<transform.ConcatTransform>
+        columns: [Q22, Q22_5_TEXT, Q31, Q31_5_TEXT, Q52, Q59, Q59_5_TEXT, Q13, Q13_TEXT, Q12, Q21, Q30, Q58]
+  secondary_audio:
+    entitySetName: CAFE_TUD_media_exposure
+    fqn: ol.mediaexposure
+    name: secondary_audio
+    propertyDefinitions:
+      ol.priority:
+        type: ol.priority
+        transforms:
+        - !<transforms.ValueTransform>
+          value: false
+      ol.type:
         type: ol.type
-      ol.type_3:
-        column: Q12
-        type: ol.type
-      ol.status_1:
-        column: Q14
-        type: ol.status
-        # notes: ' priority: background; type: audio;', yes/no/don't know
-      ol.status_2:
-        column: Q20
-        type: ol.status
-        # notes: yes/no/don't know
-      ol.status_3:
-        type: ol.status
-        # notes: yes/no/don't know
-        column: Q45
-      ol.status_4:
-        type: ol.status
-        # notes: yes/no/don't know
-        column: Q50
-      ol.status_5:
-        type: ol.status
-        # notes: yes/no/don't know
-        column: Q57
-      ol.status_6:
-        type: ol.status
-        # notes: yes/no/don't know
-        column: Q58
-      ol.status_7:
-        type: ol.status
-        # notes: yes/no/don't know
-        column: Q60
-      ol.status_8:
-        type: ol.status
-        # notes: yes/no/don't know
-        column: Q21
-      ol.status_9:
-        type: ol.status
-        # notes: yes/no/don't know
-        column: Q23
-      ol.status_10:
-        type: ol.status
-        # notes: yes/no/don't know
-        column: Q29
-      ol.status_11:
-        type: ol.status
-        # notes: yes/no/don't know
-        column: Q30
-      ol.status_12:
-        type: ol.status
-        # notes: yes/no/don't know
-        column: Q32
-      ol.status_13:
-        type: ol.status
-        # notes: yes/no/don't know
-        column: Q36
-      ol.status_14:
-        type: ol.status
-        # notes: yes/no/don't know
-        column: Q37
-      ol.status_15:
-        type: ol.status
-        # notes: yes/no/don't know
-        column: Q43
+        transforms:
+        - !<transforms.ValueTransform>
+          value: audio
       ol.subtype:
         type: ol.subtype
-        # notes: ' priority: background; type: audio;'
-        column: Q15
-      ol.subtype_1:
-        type: ol.subtype
-        column: Q15_4_TEXT
-      ol.subtype_2:
-        type: ol.subtype
-        column: Q24
-      ol.subtype_3:
-        type: ol.subtype
-        column: Q24_4_TEXT
-      ol.subtype_4:
-        type: ol.subtype
-        column: Q33
-      ol.subtype_5:
-        type: ol.subtype
-        column: Q33_4_TEXT
-      ol.subtype_6:
-        type: ol.subtype
-        column: Q61
-      ol.subtype_7:
-        type: ol.subtype
-        column: Q61_4_TEXT
-      type:
-        column: Q51
-        # notes: ' priority: secondary; '
-        type: type
-      type_1:
-        column: Q51_9_TEXT
-        type: type
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q15, Q15_4_TEXT, Q24, Q24_4_TEXT, Q33, Q33_TEXT, Q61, Q61_TEXT]
+      ol.duration:
+        type: ol.duration
+        column: Q34_1
+      ol.status:
+        type: ol.status
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q14, Q23, Q32, Q37, Q45, Q60]
+    conditions:
+    - !<conditions.BooleanTransformationRegexCondition>
+      pattern: "1"
+      transforms:
+      - !<transform.ConcatTransform>
+        columns: [Q15, Q15_4_TEXT, Q24, Q24_4_TEXT, Q33, Q33_TEXT, Q61, Q61_TEXT, Q14, Q23, Q32, Q37, Q45, Q60]
+  secondary_media_other:
+    entitySetName: CAFE_TUD_media_exposure
+    fqn: ol.mediaexposure
+    name: secondary_media_other
+    propertyDefinitions:
+      ol.priority:
+        type: ol.priority
+        transforms:
+        - !<transforms.ValueTransform>
+          value: false
+      ol.name:
+        type: ol.name
+        column: Q53
+      ol.type:
+        type: ol.type
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ValueTransform>
+            value: other
+          - !<transforms.ConcatTransform>
+            columns: [Q51, Q51_9_TEXT]
+      ol.category:
+        type: ol.category
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q44, Q44_5_TEXT, Q52]
+      ol.duration:
+        type: ol.duration
+        column: Q34_1
+      ol.status:
+        type: ol.status
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q11, Q20, Q29, Q36, Q43, Q50, Q47]
+    conditions:
+      - !<conditions.BooleanIsNullCondition>
+        columns: [Q21, Q23, Q30, Q32, Q37]
+        # media in this entityset iff:
+        # - Q11
+        # - Q20 but not Q21, Q23 (TV/audio)
+        # - Q29 but not Q30, Q32 (TV/audio)
+        # - Q36 but not Q37 (audio)
+        # -Q 47
+        # - Q50
   location:
-    entitySetName: CAFE_TUD_primary_activity
+    entitySetName: CAFE_TUD_locations
     fqn: ol.location
     name: location
     propertyDefinitions:
@@ -266,64 +642,34 @@ entityDefinitions:
         - !<transforms.ConcatTransform>
           columns: [Q7, Q19, Q42]
       location.name:
-        column: Q7
         type: location.name
-      location.name_2:
-        column: Q19
-        type: location.name
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q7, Q19, Q42]
   adult_use:
     entitySetName: CAFE_TUD_adult_use
     fqn: ol.deviceuse
     name: adult_use
-    propertyDefinitions:
-      ol.duration + ol.units:
-        column: Q9
-        # notes: '% time / duration'
-        type: ol.duration + ol.units
-      ol.duration + ol.units_1:
-        column: Q26_1
-        type: ol.duration + ol.units
-      ol.duration + ol.units_2:
-        column: Q39_1
-        type: ol.duration + ol.units
-      ol.duration + ol.units_3:
-        column: Q47_1
-        type: ol.duration + ol.units
-      ol.duration + ol.units_4:
-        column: Q55
-        type: ol.duration + ol.units
+    propertyDefinitions: ## NOTE: MULTIPLICITY TO BE DONE
+      ol.duration:
+        type: ol.duration
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q9, Q26_1, Q39_1, Q47_1, Q55]
       ol.reason:
-        column: Q10_1
-        # notes: adultmediause
         type: ol.reason
-      ol.reason_1:
-        column: Q27
-        type: ol.reason
-      ol.reason_2:
-        column: Q40
-        type: ol.reason
-      ol.reason_3:
-        column: Q48
-        type: ol.reason
-      ol.reason_4:
-        column: Q56_1
-        type: ol.reason
-      ol.status:
-        column: Q8
-        # notes: 'status: yes/no/don''tknow/noanswer'
-        type: ol.status
-      ol.status_1:
-        column: Q25
-        type: ol.status
-      ol.status_2:
-        column: Q38
-        type: ol.status
-      ol.status_3:
-        column: Q46
-        type: ol.status
-      ol.status_4:
-        column: Q54
-        type: ol.status
+        transforms:
+          - !<transforms.ConcatTransform>
+            columns: [
+              Q10_1, Q10_2, Q10_3, Q10_4, Q10_5, Q10_6, Q10_7,
+              Q27_1, Q27_2, Q27_3, Q27_4, Q27_5, Q27_6, Q27_7,
+              Q40_1, Q40_2, Q40_3, Q40_4, Q40_5, Q40_6, Q40_7,
+              Q48_1, Q48_2, Q48_3, Q48_4, Q48_5, Q48_6, Q48_7,
+              Q56_1, Q56_2, Q56_3, Q56_4, Q56_5, Q56_6, Q56_7]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      reverse: true
+      columns: [Q8, Q25, Q38, Q46, Q54]
 associationDefinitions:
   recorded_via:
     entitySetName: CAFE_TUD_recorded_via
@@ -346,22 +692,32 @@ associationDefinitions:
       date.completeddatetime:
         column: ActionTime
         type: date.completeddatetime
+  involved_in_1:
+    entitySetName:  CAFE_TUD_involved_in
+    name: involved_in_1
+    fqn: ol.involvedin
+    src: primary_media_exposure
+    dst: primary_activity
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
   concurrent_to_1:
     entitySetName:  CAFE_TUD_concurrent_to
     name: concurrent_to_1
     fqn: ol.concurrentto
     src: primary_activity
-    dst: media_exposure
+    dst: adult_use
     propertyDefinitions:
       ol.id:
         type: ol.id
         column: DiaryEntryID
   concurrent_to_2:
     entitySetName:  CAFE_TUD_concurrent_to
-    name: concurrent_to_2
     fqn: ol.concurrentto
-    src: primary_activity
-    dst: adult_use
+    name: concurrent_to_2
+    src: primary_media_exposure
+    dst: secondary_tv
     propertyDefinitions:
       ol.id:
         type: ol.id
@@ -370,7 +726,27 @@ associationDefinitions:
     entitySetName:  CAFE_TUD_concurrent_to
     fqn: ol.concurrentto
     name: concurrent_to_3
-    src: media_exposure
+    src: primary_media_exposure
+    dst: secondary_audio
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  concurrent_to_4:
+    entitySetName:  CAFE_TUD_concurrent_to
+    fqn: ol.concurrentto
+    name: concurrent_to_4
+    src: primary_media_exposure
+    dst: secondary_media_other
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  concurrent_to_5:
+    entitySetName:  CAFE_TUD_concurrent_to
+    fqn: ol.concurrentto
+    name: concurrent_to_5
+    src: primary_media_exposure
     dst: adult_use
     propertyDefinitions:
       ol.id:
@@ -381,6 +757,185 @@ associationDefinitions:
     fqn: ol.locatedat
     src: primary_activity
     dst: location
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  used_with_1:
+    entitySetName: CAFE_TUD_used_with
+    fqn: ol.usedwith
+    src: TV
+    name: used_with_1
+    dst: primary_media_exposure
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  used_with_2:
+    entitySetName: CAFE_TUD_used_with
+    fqn: ol.usedwith
+    src: Theater
+    name: used_with_2
+    dst: primary_media_exposure
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  used_with_3:
+    entitySetName: CAFE_TUD_used_with
+    fqn: ol.usedwith
+    src: Other
+    name: used_with_3
+    dst: primary_media_exposure
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  used_with_4:
+    entitySetName: CAFE_TUD_used_with
+    fqn: ol.usedwith
+    src: Computer
+    name: used_with_4
+    dst: primary_media_exposure
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  used_with_5:
+    entitySetName: CAFE_TUD_used_with
+    fqn: ol.usedwith
+    src: Smartphone
+    name: used_with_5
+    dst: primary_media_exposure
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  used_with_6:
+    entitySetName: CAFE_TUD_used_with
+    fqn: ol.usedwith
+    src: Tablet
+    name: used_with_6
+    dst: primary_media_exposure
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  used_with_7:
+    entitySetName: CAFE_TUD_used_with
+    fqn: ol.usedwith
+    src: PrintedBook
+    name: used_with_7
+    dst: primary_media_exposure
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  used_with_8:
+    entitySetName: CAFE_TUD_used_with
+    fqn: ol.usedwith
+    src: VideoPlayer
+    name: used_with_8
+    dst: primary_media_exposure
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  used_with_9:
+    entitySetName: CAFE_TUD_used_with
+    fqn: ol.usedwith
+    src:  Console
+    name: used_with_9
+    dst: primary_media_exposure
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  used_with_10:
+    entitySetName: CAFE_TUD_used_with
+    fqn: ol.usedwith
+    src:  HandheldGamingDevice
+    name: used_with_10
+    dst: primary_media_exposure
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  used_with_11:
+    entitySetName: CAFE_TUD_used_with
+    fqn: ol.usedwith
+    src:  RadioCD
+    name: used_with_11
+    dst: primary_media_exposure
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  involved_in_2:
+    entitySetName: CAFE_TUD_involved_in
+    fqn: ol.involvedin
+    name: involved_in_2
+    src: mothers
+    dst: primary_activity
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  involved_in_3:
+    entitySetName: CAFE_TUD_involved_in
+    name: involved_in_3
+    fqn: ol.involvedin
+    src: fathers
+    dst: primary_activity
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  involved_in_4:
+    entitySetName: CAFE_TUD_involved_in
+    name: involved_in_4
+    fqn: ol.involvedin
+    src: grandparents
+    dst: primary_activity
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  involved_in_5:
+    entitySetName: CAFE_TUD_involved_in
+    name: involved_in_5
+    fqn: ol.involvedin
+    src: siblings
+    dst: primary_activity
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  involved_in_6:
+    entitySetName: CAFE_TUD_involved_in
+    name: involved_in_6
+    fqn: ol.involvedin
+    src: otherrelatives
+    dst: primary_activity
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  involved_in_7:
+    entitySetName: CAFE_TUD_involved_in
+    name: involved_in_7
+    fqn: ol.involvedin
+    src: childcareprovider
+    dst: primary_activity
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: DiaryEntryID
+  involved_in_8:
+    entitySetName: CAFE_TUD_involved_in
+    fqn: ol.involvedin
+    src: otherkids
+    dst: primary_activity
     propertyDefinitions:
       ol.id:
         type: ol.id
