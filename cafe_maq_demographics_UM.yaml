@@ -1,0 +1,367 @@
+# for demographics: DS_PTS_RedcapDemog_021519.csv
+
+entityDefinitions: 
+
+  respondent: 
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions: 
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        # column: "appcode"
+        column: "clean_ID"
+      nc.PersonRace:
+        type: "nc.PersonRace"
+        column: "parentrace"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6", "9999999"]
+          goal: ["White", "Black", "American Indian or Alaska Native", "Asian or Pacific Islander", "Biracial", "Other", "Prefer not to answer"]
+      nc.PersonEthnicity: 
+        type: "nc.PersonEthnicity"
+        column: "parenteth"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3"]
+          goal: ["hispanic", "nonhispanic", ""]
+      nc.PersonBirthPlace: 
+        type: "nc.PersonBirthPlace"
+        column: "parentbirthplace"
+    name: "respondent"
+
+  respondentdetails: 
+    fqn: "ol.persondetails"
+    entitySetName: "CAFE_MAQ_RespondentDetails"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["appcode"]
+          hashFunction: "sha256"
+      ol.language: 
+        type: "ol.language"
+        column: "UserLanguage"
+    name: "respondentdetails"
+
+  employment: 
+    fqn: "ol.employment"
+    entitySetName: "CAFE_MAQ_Employment"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["appcode"]
+          hashFunction: "sha256"
+      ol.status: 
+        type: "ol.status"
+        column: "parentemployed"
+    conditions: 
+    - !<conditions.BooleanIsNullCondition>
+      column: "parentemployed"
+      reverse: true
+    name: "employment"
+
+  education: 
+    fqn: "ol.education"
+    entitySetName: "CAFE_MAQ_Education"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["appcode"]
+          hashFunction: "sha256"
+      person.highesteducation: 
+        type: "person.highesteducation"
+        column: "parentedu"
+    conditions: 
+    - !<conditions.BooleanIsNullCondition>
+      column: "parentedu"
+      reverse: true
+    name: "education"
+
+  childsubject: 
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions: 
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms: 
+        - !<transforms.ConcatTransform>
+          columns: ["appcode", "demographics_timestamp"] #can be multiple children per appcode
+      nc.PersonSex: 
+        type: "nc.PersonSex"
+        column: "childsex"
+    name: "childsubject"
+
+  subjectdetails:
+    fqn: "ol.persondetails"
+    entitySetName: "CAFE_MAQ_ChildrenDetails"
+    propertyDefinitions: 
+      general.id: 
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
+      person.ageatevent: 
+        type: "person.ageatevent"
+        column: "childage"
+    conditions: 
+    - !<conditions.BooleanIsNullCondition>
+      column: "childage"
+      reverse: true
+    name: "subjectdetails"
+
+  subjectdetailshealth: 
+    fqn: "ol.persondetailshealth"
+    entitySetName: "CAFE_MAQ_ChildrenDetailsHealth"
+    propertyDefinitions:
+      ol.birthweight: 
+        type: "ol.birthweight"
+        column: "childbirthwt"
+        transforms: 
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6"]
+          goal: ["Less than 2 pounds", "2 lbs - 3 lbs, 5 oz", "3 lbs, 6 oz - 4 lbs, 7 oz", "4 lbs, 8 oz - 5 lbs, 8 oz", "5 lbs, 9 oz - 6 lbs, 9 oz", "6 lbs, 10 oz or above"]
+      ol.prematurebirth: 
+        type: "ol.prematurebirth"
+        column: "bornpremature"
+        transforms: 
+        - !<transforms.ReplaceTransform>
+          target: ["0", "1"]
+          goal: ["no", "yes"]
+      ol.gestationalage: 
+        type: "ol.gestationalage"
+        column: "wkspremature"
+    name: "subjectdetailshealth"
+
+  publicassistance: 
+    fqn: "ol.income"
+    entitySetName: "CAFE_MAQ_Incomes"
+    propertyDefinitions:
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
+      # ol.notes: 
+      #   type: "ol.notes"
+      #   transforms: 
+      #   - !<transforms.ValueTransform> 
+      #     value: "public assistance"
+      ol.type: 
+        type: "ol.type"
+        column: "publicassistance"
+        transforms: 
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3"]
+          goal: ["public assistant", "", ""] 
+    conditions: 
+    - !<conditions.BooleanIsNullCondition>
+      column: "publicassistance"
+      reverse: true 
+    name: "publicassistance"
+
+  incomerange:
+    fqn: "ol.income"
+    entitySetName: "CAFE_MAQ_Incomes"
+    propertyDefinitions:
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["appcode"]
+          hashFunction: "sha256"
+      ol.type: 
+        type: "ol.type"
+        column: "householdincome"
+        transforms: 
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "9999999"]
+          goal: ["Less than $10,000", "$10,000 - $19,999", "$20,000 - $29,999", "$30,000 - $39,999", "$40,000 - $49,999", "$50,000 - $59,999", "$60,000 - $69,999", "$70,000 - $79,999", "$80,000 - $89,999", "$90,000 - $99,999", "$100,000 - $149,999", "More than $150,000", "Don't Know/Prefer not to answer"]
+    conditions: 
+    - !<conditions.BooleanIsNullCondition>
+      column: "householdincome"
+      reverse: true
+    name: "incomerange"
+
+  childcare_weekdays: 
+    fqn: "ol.childcare"
+    entitySetName: "CAFE_MAQ_ChildCare_Weekdays"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
+      ol.type: 
+        type: "ol.type"
+        column: "school"
+        transforms: 
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4"]
+          goal: ["Yes, a center-based program (for example, Head Start, Kindercare, Montessori or church based program)", "Yes, home-based childcare", "No, child stays at home with parent or caregiver", "Other"] 
+      ol.type2: 
+        type: "ol.type"
+        column: "school_other"
+      ol.durationhours: 
+        type: "ol.durationhours"
+        column: "childinhome"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["100% of the time", "75% of the time", "50% of the time", "25% of the time", "Does not reside with me"]
+      ol.relationship: 
+        type: "ol.relationship"
+        column: "childcare"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6"]
+          goal: ["Child's mother", "Child's father", "Other family member", "Babysitter", "Childcare/preschool", "Other"]
+    name: "childcare_weekdays"
+
+associationDefinitions: 
+  has1: 
+    fqn: "ol.has"
+    entitySetName: "CAFE_MAQ_Has"
+    src: "childsubject"
+    dst: "subjectdetails"
+    propertyDefinitions: 
+      ol.id:
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
+    name: "has1"
+
+  has2: 
+    fqn: "ol.has"
+    entitySetName: "CAFE_MAQ_Has"
+    src: "childsubject"
+    dst: "subjectdetailshealth"
+    propertyDefinitions: 
+      ol.id:
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
+    name: "has2"
+
+  reported1: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "publicassistance"
+    propertyDefinitions: 
+      general.id: 
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
+    name: "reported1"
+
+  has: 
+    fqn: "ol.has"
+    entitySetName: "CAFE_MAQ_Has"
+    src: "respondent"
+    dst: "respondentdetails"
+    propertyDefinitions: 
+      ol.id:
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
+    name: "has"
+
+  reported2:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "education"
+    propertyDefinitions: 
+      general.id: 
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
+    name: "reported2"
+
+  reported3:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "employment"
+    propertyDefinitions: 
+      general.id: 
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
+    name: "reported3"
+
+  reported4: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "incomerange"
+    propertyDefinitions: 
+      general.id: 
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
+    name: "reported4"
+
+  reported5: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "childcare_weekdays"
+    propertyDefinitions: 
+      general.id: 
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
+    name: "reported5"
+
+  relatedto: 
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "respondent"
+    dst: "childsubject"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
+    name: "relatedto"
+
+  subjectof: 
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "childsubject"
+    dst: "childcare_weekdays"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
+    name: "subjectof"

@@ -1,0 +1,333 @@
+# cafe MAQ UMichigan
+# csv filename: DS_PTS_MAQS_V3.1_021519.csv 
+# Parent's Mediation of Child's Use section of survey (PTS_MAQS V3.1_Data Dictionary_Questions)
+
+entityDefinitions:
+  respondent: 
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification: 
+        type: "nc.SubjectIdentification"
+        column: "clean_ID" #Person ID
+      ol.idnumber: 
+        type: "ol.idnumber"
+        column: "ResponseId" #not sure if this or Person ID should be PK. 
+    name: "respondent"
+
+  subject: 
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions: 
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms: 
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "Q281"]
+          separator: "_"
+    name: "subject"
+
+  household:
+    fqn: "demographics.household"
+    entitySetName: "CAFE_MAQ_Households"
+    propertyDefinitions: 
+      household.id: 
+        type: "household.id"
+        transforms: 
+        - !<transforms.HashTransform> 
+          columns: ["ResponseId"]
+          hashFunction: "sha256"
+    name: "household"
+
+# *************** RESTRICTING MEDIA FOR CHILD **********
+  parentrestrictionchild:
+    fqn: "ol.parentmediationscale"
+    entitySetName: "CAFE_MAQ_ParentMediationScale"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parental_restriction_child"
+      ol.usesparentalcontrols: 
+        type: "ol.usesparentalcontrols"
+        column: "Q68_1"
+      ol.usesparentalmediawebsite: 
+        type: "ol.usesparentalmediawebsite"
+        column: "Q68_2"
+      ol.restrictschildmedia: 
+        type: "ol.restrictschildmedia"
+        column: "Q68_3"
+      ol.usesratingsystem: 
+        type: "ol.usesratingsystem"
+        column: "Q68_4"
+      ol.parentalcoviewing:
+        type: "ol.parentalcoviewing"
+        column: "Q68_5"
+      ol.limitations: 
+        type: "ol.limitations"
+        transforms: 
+        - !<transforms.BooleanContainsTransform>
+          column: "Q68_6_TEXT"
+          string: ""
+          transformsIfTrue: 
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse: 
+          - !<transforms.ColumnTransform> 
+            column: "Q68_6_TEXT"
+      ol.restrictions: 
+        type: "ol.restrictions"
+        transforms: 
+        - !<transforms.BooleanContainsTransform>
+          column: "Q68_6"
+          string: " "
+          transformsIfTrue: 
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse: 
+          - !<transforms.ColumnTransform> 
+            column: "Q68_6"
+    name: "parentrestrictionchild"
+
+  parenttimelimitshousehold:
+    fqn: "ol.parentmediationscale"
+    entitySetName: "CAFE_MAQ_ParentMediationScale"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parental_timelimits_household"
+      ol.limitations: 
+        type: "ol.limitations"
+        column: "Q69_1"
+      ol.restrictedactivities: 
+        type: "ol.restrictedactivities"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "time limits consistently enforced"
+    conditions: 
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q69_1"
+      reverse: true
+    name: "parenttimelimitshousehold"
+
+  parentcontentruleshousehold:
+    fqn: "ol.parentmediationscale"
+    entitySetName: "CAFE_MAQ_ParentMediationScale"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parental_contentrules_household"
+      ol.limitations: 
+        type: "ol.limitations"
+        column: "Q69_2"
+      ol.restrictedactivities: 
+        type: "ol.restrictedactivities"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "content rules consistently enforced"
+    conditions: 
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q69_2"
+      reverse: true
+    name: "parentcontentruleshousehold"
+
+# **************** EXPOSURE TO NON ENGLISH MEDIA *******************
+  
+  nonenglishmediaexposure: 
+    fqn: "ol.mediaexposure"
+    entitySetName: "CAFE_MAQ_MediaExposure"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "nonenglish_mediaexposure"
+      ol.type: 
+        type: "ol.type"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "videos, TV shows, movies, music, and books"
+      ol.status: 
+        type: "ol.status"
+        column: "Q72"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q73"
+      ol.units: 
+        type: "ol.units"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "percentage/proportion"
+      ol.language: 
+        type: "ol.language"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "non-English"
+    conditions: 
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q73"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q72"
+      reverse: true
+    name: "nonenglishmediaexposure"
+
+# ******************** MEDIA USE IN HOME *******************
+
+  qualitycontrol: 
+    fqn: "ol.qualitycontrol"
+    entitySetName: "CAFE_MAQ_QualityControl"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "quality_control"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "respondents told to select 'Often'"
+      ol.selection: 
+        type: "ol.selection"
+        column: "Q70_2"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q70_2"
+      reverse: true
+    name: "qualitycontrol"
+
+associationDefinitions: 
+  reported1: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "parentrestrictionchild"
+    propertyDefinitions: 
+      general.id: 
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported1"
+
+  subjectof1: 
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "parentrestrictionchild"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof1"
+
+  reported2: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "parenttimelimitshousehold"
+    propertyDefinitions: 
+      general.id: 
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported2"
+
+  subjectof2: 
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "household"
+    dst: "parenttimelimitshousehold"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof2"
+
+  reported3: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "parentcontentruleshousehold"
+    propertyDefinitions: 
+      general.id: 
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported3"
+
+  subjectof3: 
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "household"
+    dst: "parentcontentruleshousehold"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof3"
+
+  reported4: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "nonenglishmediaexposure"
+    propertyDefinitions: 
+      general.id: 
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported4"
+
+  subjectof4: 
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "nonenglishmediaexposure"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof4"
+
+  reported5: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "qualitycontrol"
+    propertyDefinitions: 
+      general.id: 
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported5"
+
+
