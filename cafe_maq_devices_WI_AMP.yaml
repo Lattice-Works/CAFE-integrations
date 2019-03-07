@@ -17,7 +17,7 @@ entityDefinitions:
 
   subject: 
     fqn: "general.person"
-    entitySetName: "CAFE_MAQ_Subjects"
+    entitySetName: "CAFE_MAQ_Children"
     propertyDefinitions: 
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
