@@ -247,173 +247,212 @@ entityDefinitions:
 
 # *************** PARENT CONCERNS OVER CHILDS MEDIA USE *********
 
-  mediaconcerninappropriate: 
-    fqn: "ol.mediauseattitude"
-    entitySetName: "CAFE_MAQ_MediaAttitudes"
-    propertyDefinitions: 
+  
+  mediauseconcerns:
+    fqn: "ol.mediauseconcerns"
+    entitySetName: "CAFE_MAQ_MediaUseConcerns"
+    propertyDefinitions:
       ol.id: 
         type: "ol.id"
         transforms:
         - !<transforms.ValueTransform>
-          value: "mediaconcern_inappropriate"
-      ol.levelofagreement:
-        type: "ol.levelofagreement"
+          value: "mediaconcerns"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parent concern for child"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how much concern"
+      ol.inappropriatecontent: 
+        type: "ol.inappropriatecontent"
         column: "Q56_1"
-      ol.subject: 
-        type: "ol.subject"
-        transforms: 
-        - !<transforms.ValueTransform>
-          value: "parent concern for child"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "that child will be exposed to inappropriate content in screen media, such as violence, sex, and drugs"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q56_1"
-      reverse: true
-    name: "mediaconcerninappropriate"
-
-  mediaconcerninattentive: 
-    fqn: "ol.mediauseattitude"
-    entitySetName: "CAFE_MAQ_MediaAttitudes"
-    propertyDefinitions: 
-      ol.id: 
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "mediaconcern_inattentive"
-      ol.levelofagreement:
-        type: "ol.levelofagreement"
+      ol.inattention: 
+        type: "ol.inattention"
         column: "Q56_2"
-      ol.subject: 
-        type: "ol.subject"
-        transforms: 
-        - !<transforms.ValueTransform>
-          value: "parent concern for child"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "that child will become inattentive because of screen media"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q56_2"
-      reverse: true
-    name: "mediaconcerninattentive"
-
-  mediaconcernaddicted: 
-    fqn: "ol.mediauseattitude"
-    entitySetName: "CAFE_MAQ_MediaAttitudes"
-    propertyDefinitions: 
-      ol.id: 
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "mediaconcern_addicted"
-      ol.levelofagreement:
-        type: "ol.levelofagreement"
+      ol.addictionpotential: 
+        type: "ol.addictionpotential"
         column: "Q56_3"
-      ol.subject: 
-        type: "ol.subject"
-        transforms: 
-        - !<transforms.ValueTransform>
-          value: "parent concern for child"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "that child will become addicted to screen media"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q56_3"
-      reverse: true
-    name: "mediaconcernaddicted"
-
-  mediaconcernopportunities: 
-    fqn: "ol.mediauseattitude"
-    entitySetName: "CAFE_MAQ_MediaAttitudes"
-    propertyDefinitions: 
-      ol.id: 
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "mediaconcern_opportunities"
-      ol.levelofagreement:
-        type: "ol.levelofagreement"
+      ol.opportunitycost: 
+        type: "ol.opportunitycost"
         column: "Q56_4"
-      ol.subject: 
-        type: "ol.subject"
-        transforms: 
-        - !<transforms.ValueTransform>
-          value: "parent concern for child"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "that child will miss out on opportunities more valuable than screen media"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q56_4"
-      reverse: true
-    name: "mediaconcernopportunities"
-
-  mediaconcernelectromagnetic: 
-    fqn: "ol.mediauseattitude"
-    entitySetName: "CAFE_MAQ_MediaAttitudes"
-    propertyDefinitions: 
-      ol.id: 
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "mediaconcern_electromagnetic"
-      ol.levelofagreement:
-        type: "ol.levelofagreement"
+      ol.exposuretoradiation: 
+        type: "ol.exposuretoradiation"
         column: "Q56_5"
-      ol.subject: 
-        type: "ol.subject"
-        transforms: 
-        - !<transforms.ValueTransform>
-          value: "parent concern for child"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "that child will be exposed to dangerous electromagnetic waves"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q56_5"
-      reverse: true
-    name: "mediaconcernelectromagnetic"
-
-  mediaconcernlanguage: 
-    fqn: "ol.mediauseattitude"
-    entitySetName: "CAFE_MAQ_MediaAttitudes"
-    propertyDefinitions: 
-      ol.id: 
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "mediaconcern_language"
-      ol.levelofagreement:
-        type: "ol.levelofagreement"
+      ol.languagedevelopment: 
+        type: "ol.languagedevelopment"
         column: "Q56_6"
-      ol.subject: 
-        type: "ol.subject"
-        transforms: 
-        - !<transforms.ValueTransform>
-          value: "parent concern for child"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "that child will have poorer language development because of screen media"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q56_6"
-      reverse: true
-    name: "mediaconcernlanguage"
+    name: "mediauseconcerns"
+  # mediaconcerninappropriate: 
+  #   fqn: "ol.mediauseattitude"
+  #   entitySetName: "CAFE_MAQ_MediaAttitudes"
+  #   propertyDefinitions: 
+  #     ol.id: 
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.ValueTransform>
+  #         value: "mediaconcern_inappropriate"
+  #     ol.levelofagreement:
+  #       type: "ol.levelofagreement"
+  #       column: "Q56_1"
+  #     ol.subject: 
+  #       type: "ol.subject"
+  #       transforms: 
+  #       - !<transforms.ValueTransform>
+  #         value: "parent concern for child"
+  #     ol.description:
+  #       type: "ol.description"
+  #       transforms:
+  #       - !<transforms.ValueTransform>
+  #         value: "that child will be exposed to inappropriate content in screen media, such as violence, sex, and drugs"
+  #   conditions:
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q56_1"
+  #     reverse: true
+  #   name: "mediaconcerninappropriate"
+
+  # mediaconcerninattentive: 
+  #   fqn: "ol.mediauseattitude"
+  #   entitySetName: "CAFE_MAQ_MediaAttitudes"
+  #   propertyDefinitions: 
+  #     ol.id: 
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.ValueTransform>
+  #         value: "mediaconcern_inattentive"
+  #     ol.levelofagreement:
+  #       type: "ol.levelofagreement"
+  #       column: "Q56_2"
+  #     ol.subject: 
+  #       type: "ol.subject"
+  #       transforms: 
+  #       - !<transforms.ValueTransform>
+  #         value: "parent concern for child"
+  #     ol.description:
+  #       type: "ol.description"
+  #       transforms:
+  #       - !<transforms.ValueTransform>
+  #         value: "that child will become inattentive because of screen media"
+  #   conditions:
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q56_2"
+  #     reverse: true
+  #   name: "mediaconcerninattentive"
+
+  # mediaconcernaddicted: 
+  #   fqn: "ol.mediauseattitude"
+  #   entitySetName: "CAFE_MAQ_MediaAttitudes"
+  #   propertyDefinitions: 
+  #     ol.id: 
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.ValueTransform>
+  #         value: "mediaconcern_addicted"
+  #     ol.levelofagreement:
+  #       type: "ol.levelofagreement"
+  #       column: "Q56_3"
+  #     ol.subject: 
+  #       type: "ol.subject"
+  #       transforms: 
+  #       - !<transforms.ValueTransform>
+  #         value: "parent concern for child"
+  #     ol.description:
+  #       type: "ol.description"
+  #       transforms:
+  #       - !<transforms.ValueTransform>
+  #         value: "that child will become addicted to screen media"
+  #   conditions:
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q56_3"
+  #     reverse: true
+  #   name: "mediaconcernaddicted"
+
+  # mediaconcernopportunities: 
+  #   fqn: "ol.mediauseattitude"
+  #   entitySetName: "CAFE_MAQ_MediaAttitudes"
+  #   propertyDefinitions: 
+  #     ol.id: 
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.ValueTransform>
+  #         value: "mediaconcern_opportunities"
+  #     ol.levelofagreement:
+  #       type: "ol.levelofagreement"
+  #       column: "Q56_4"
+  #     ol.subject: 
+  #       type: "ol.subject"
+  #       transforms: 
+  #       - !<transforms.ValueTransform>
+  #         value: "parent concern for child"
+  #     ol.description:
+  #       type: "ol.description"
+  #       transforms:
+  #       - !<transforms.ValueTransform>
+  #         value: "that child will miss out on opportunities more valuable than screen media"
+  #   conditions:
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q56_4"
+  #     reverse: true
+  #   name: "mediaconcernopportunities"
+
+  # mediaconcernelectromagnetic: 
+  #   fqn: "ol.mediauseattitude"
+  #   entitySetName: "CAFE_MAQ_MediaAttitudes"
+  #   propertyDefinitions: 
+  #     ol.id: 
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.ValueTransform>
+  #         value: "mediaconcern_electromagnetic"
+  #     ol.levelofagreement:
+  #       type: "ol.levelofagreement"
+  #       column: "Q56_5"
+  #     ol.subject: 
+  #       type: "ol.subject"
+  #       transforms: 
+  #       - !<transforms.ValueTransform>
+  #         value: "parent concern for child"
+  #     ol.description:
+  #       type: "ol.description"
+  #       transforms:
+  #       - !<transforms.ValueTransform>
+  #         value: "that child will be exposed to dangerous electromagnetic waves"
+  #   conditions:
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q56_5"
+  #     reverse: true
+  #   name: "mediaconcernelectromagnetic"
+
+  # mediaconcernlanguage: 
+  #   fqn: "ol.mediauseattitude"
+  #   entitySetName: "CAFE_MAQ_MediaAttitudes"
+  #   propertyDefinitions: 
+  #     ol.id: 
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.ValueTransform>
+  #         value: "mediaconcern_language"
+  #     ol.levelofagreement:
+  #       type: "ol.levelofagreement"
+  #       column: "Q56_6"
+  #     ol.subject: 
+  #       type: "ol.subject"
+  #       transforms: 
+  #       - !<transforms.ValueTransform>
+  #         value: "parent concern for child"
+  #     ol.description:
+  #       type: "ol.description"
+  #       transforms:
+  #       - !<transforms.ValueTransform>
+  #         value: "that child will have poorer language development because of screen media"
+  #   conditions:
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q56_6"
+  #     reverse: true
+  #   name: "mediaconcernlanguage"
 
 associationDefinitions:
 

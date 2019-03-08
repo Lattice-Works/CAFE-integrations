@@ -119,6 +119,12 @@ entityDefinitions:
     fqn: "ol.persondetailshealth"
     entitySetName: "CAFE_MAQ_ChildrenDetailsHealth"
     propertyDefinitions:
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["appcode", "demographics_timestamp"]
+          hashFunction: "sha256"
       ol.birthweight: 
         type: "ol.birthweight"
         column: "childbirthwt"
