@@ -462,7 +462,7 @@ associationDefinitions:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
-    dst: "mediaconcerninappropriate"
+    dst: "mediauseconcerns"
     propertyDefinitions: 
       general.id:
         type: "general.id"
@@ -472,81 +472,81 @@ associationDefinitions:
           hashFunction: "sha256"
     name: "reported1"
 
-  reported2: 
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "mediaconcerninattentive"
-    propertyDefinitions: 
-      general.id:
-        type: "general.id"
-        transforms: 
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported2"
+  # reported2: 
+  #   fqn: "ol.reported"
+  #   entitySetName: "CAFE_MAQ_Reported"
+  #   src: "respondent"
+  #   dst: "mediaconcerninattentive"
+  #   propertyDefinitions: 
+  #     general.id:
+  #       type: "general.id"
+  #       transforms: 
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   name: "reported2"
 
-  reported3: 
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "mediaconcernaddicted"
-    propertyDefinitions: 
-      general.id:
-        type: "general.id"
-        transforms: 
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported3"
+  # reported3: 
+  #   fqn: "ol.reported"
+  #   entitySetName: "CAFE_MAQ_Reported"
+  #   src: "respondent"
+  #   dst: "mediaconcernaddicted"
+  #   propertyDefinitions: 
+  #     general.id:
+  #       type: "general.id"
+  #       transforms: 
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   name: "reported3"
 
-  reported4: 
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "mediaconcernopportunities"
-    propertyDefinitions: 
-      general.id:
-        type: "general.id"
-        transforms: 
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported4"
+  # reported4: 
+  #   fqn: "ol.reported"
+  #   entitySetName: "CAFE_MAQ_Reported"
+  #   src: "respondent"
+  #   dst: "mediaconcernopportunities"
+  #   propertyDefinitions: 
+  #     general.id:
+  #       type: "general.id"
+  #       transforms: 
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   name: "reported4"
 
-  reported5: 
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "mediaconcernelectromagnetic"
-    propertyDefinitions: 
-      general.id:
-        type: "general.id"
-        transforms: 
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported5"
+  # reported5: 
+  #   fqn: "ol.reported"
+  #   entitySetName: "CAFE_MAQ_Reported"
+  #   src: "respondent"
+  #   dst: "mediaconcernelectromagnetic"
+  #   propertyDefinitions: 
+  #     general.id:
+  #       type: "general.id"
+  #       transforms: 
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   name: "reported5"
 
-  reported6: 
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "mediaconcernlanguage"
-    propertyDefinitions: 
-      general.id:
-        type: "general.id"
-        transforms: 
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported6"
+  # reported6: 
+  #   fqn: "ol.reported"
+  #   entitySetName: "CAFE_MAQ_Reported"
+  #   src: "respondent"
+  #   dst: "mediaconcernlanguage"
+  #   propertyDefinitions: 
+  #     general.id:
+  #       type: "general.id"
+  #       transforms: 
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   name: "reported6"
 
   subjectof1: 
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
     src: "subject"
-    dst: "mediaconcerninappropriate"
+    dst: "mediauseconcerns"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -556,75 +556,75 @@ associationDefinitions:
           hashFunction: "sha256"
     name: "subjectof1"
 
-  subjectof2: 
-    fqn: "ol.subjectof"
-    entitySetName: "CAFE_MAQ_SubjectOf"
-    src: "subject"
-    dst: "mediaconcerninattentive"
-    propertyDefinitions: 
-      ol.id: 
-        type: "ol.id"
-        transforms: 
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof2"
+  # subjectof2: 
+  #   fqn: "ol.subjectof"
+  #   entitySetName: "CAFE_MAQ_SubjectOf"
+  #   src: "subject"
+  #   dst: "mediaconcerninattentive"
+  #   propertyDefinitions: 
+  #     ol.id: 
+  #       type: "ol.id"
+  #       transforms: 
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   name: "subjectof2"
 
-  subjectof3: 
-    fqn: "ol.subjectof"
-    entitySetName: "CAFE_MAQ_SubjectOf"
-    src: "subject"
-    dst: "mediaconcernaddicted"
-    propertyDefinitions: 
-      ol.id: 
-        type: "ol.id"
-        transforms: 
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof3"
+  # subjectof3: 
+  #   fqn: "ol.subjectof"
+  #   entitySetName: "CAFE_MAQ_SubjectOf"
+  #   src: "subject"
+  #   dst: "mediaconcernaddicted"
+  #   propertyDefinitions: 
+  #     ol.id: 
+  #       type: "ol.id"
+  #       transforms: 
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   name: "subjectof3"
 
-  subjectof4: 
-    fqn: "ol.subjectof"
-    entitySetName: "CAFE_MAQ_SubjectOf"
-    src: "subject"
-    dst: "mediaconcernopportunities"
-    propertyDefinitions: 
-      ol.id: 
-        type: "ol.id"
-        transforms: 
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof4"
+  # subjectof4: 
+  #   fqn: "ol.subjectof"
+  #   entitySetName: "CAFE_MAQ_SubjectOf"
+  #   src: "subject"
+  #   dst: "mediaconcernopportunities"
+  #   propertyDefinitions: 
+  #     ol.id: 
+  #       type: "ol.id"
+  #       transforms: 
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   name: "subjectof4"
 
-  subjectof5: 
-    fqn: "ol.subjectof"
-    entitySetName: "CAFE_MAQ_SubjectOf"
-    src: "subject"
-    dst: "mediaconcernelectromagnetic"
-    propertyDefinitions: 
-      ol.id: 
-        type: "ol.id"
-        transforms: 
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof5"
+  # subjectof5: 
+  #   fqn: "ol.subjectof"
+  #   entitySetName: "CAFE_MAQ_SubjectOf"
+  #   src: "subject"
+  #   dst: "mediaconcernelectromagnetic"
+  #   propertyDefinitions: 
+  #     ol.id: 
+  #       type: "ol.id"
+  #       transforms: 
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   name: "subjectof5"
 
-  subjectof6: 
-    fqn: "ol.subjectof"
-    entitySetName: "CAFE_MAQ_SubjectOf"
-    src: "subject"
-    dst: "mediaconcernlanguage"
-    propertyDefinitions: 
-      ol.id: 
-        type: "ol.id"
-        transforms: 
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof6"
+  # subjectof6: 
+  #   fqn: "ol.subjectof"
+  #   entitySetName: "CAFE_MAQ_SubjectOf"
+  #   src: "subject"
+  #   dst: "mediaconcernlanguage"
+  #   propertyDefinitions: 
+  #     ol.id: 
+  #       type: "ol.id"
+  #       transforms: 
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   name: "subjectof6"
 
 
 # ******************** PARENTS USE OF MEDIA FOR CHILD ASSOCIATIONS ***************
