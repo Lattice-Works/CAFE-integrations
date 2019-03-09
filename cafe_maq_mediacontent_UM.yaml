@@ -1,0 +1,306 @@
+# cafe MAQ UMichigan
+# csv filename: DS_PTS_MAQS_V3.1_021519.csv 
+# Media Content section of survey (PTS_MAQS V3.1_Data Dictionary_Questions)
+
+
+entityDefinitions: 
+  subject: 
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions: 
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms: 
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "Q262"]
+          separator: "_"
+    name: "subject"
+
+  tvservicesnetworkbroadcast: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_MediaDeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "networkuse_tvservices"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Network broadcast (e.g., PBS, ABC, NBC, Fox)"
+      general.frequency: 
+        type: "general.frequency"
+        column: "Q45_1"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "television services"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+    conditions: 
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q45_1"
+      reverse: true
+    name: "tvservicesnetworkbroadcast"
+
+  tvservicescable: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_MediaDeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "cableuse_tvservices"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Cable television (e.g., Disney Channel, Nickelodeon, Cartoon Network)"
+      general.frequency: 
+        type: "general.frequency"
+        column: "Q45_2"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "television services"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+    conditions: 
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q45_2"
+      reverse: true
+    name: "tvservicescable"
+
+  tvservicesstreaming: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_MediaDeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "streaminguse_tvservices"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Streaming service (e.g., Netflix, Hulu, etc.)"
+      general.frequency: 
+        type: "general.frequency"
+        column: "Q45_3"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "television services"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+    conditions: 
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q45_3"
+      reverse: true
+    name: "tvservicesstreaming"
+
+  tvservicesyoutube: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_MediaDeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "youtubeuse_tvservices"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "YouTube"
+      general.frequency: 
+        type: "general.frequency"
+        column: "Q45_4"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "television services"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+    conditions: 
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q45_4"
+      reverse: true
+    name: "tvservicesyoutube"
+
+  tvservicesother: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_MediaDeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "otheruse_tvservices"
+      ol.description: 
+        type: "ol.description"
+        column: "Q45_5_TEXT"
+      general.frequency: 
+        type: "general.frequency"
+        column: "Q45_5"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "television services"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+    conditions:
+    - !<conditions.ConditionalOr> 
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q45_5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q45_5_TEXT"
+      reverse: true
+    name: "tvservicesother"
+
+  
+
+associationDefinitions: 
+  involvedin1:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "tvservicesnetworkbroadcast"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q45_1"
+      reverse: true
+    name: "involvedin1"
+
+  involvedin2:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "tvservicescable"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q45_2"
+      reverse: true
+    name: "involvedin2"
+
+  involvedin3:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "tvservicesstreaming"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q45_3"
+      reverse: true
+    name: "involvedin3"
+
+  involvedin4:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "tvservicesyoutube"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q45_4"
+      reverse: true
+    name: "involvedin4"
+
+  involvedin5:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "tvservicesother"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q45_5_TEXT"
+      reverse: true
+    name: "involvedin5"
+
+
+
+

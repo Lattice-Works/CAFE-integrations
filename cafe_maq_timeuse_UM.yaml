@@ -1,0 +1,1155 @@
+# cafe MAQ Umichigan survey
+# csv filename: DS_PTS_MAQS_V3.1_021519.csv 
+# Time Use section of survey (PTS_MAQS V3.1_Data Dictionary_Questions)
+
+
+entityDefinitions:
+  respondent: 
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification: 
+        type: "nc.SubjectIdentification"
+        column: "clean_ID" #Person ID
+      ol.idnumber: 
+        type: "ol.idnumber"
+        column: "ResponseId" #not sure if this or Person ID should be PK. 
+    name: "respondent"
+
+  subject: 
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions: 
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms: 
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "Q281"]
+          separator: "_"
+    name: "subject"
+
+  timespentweekdayTVorDVD: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekday_tvdvd"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent watching TV or DVDs on typical weekday"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q49_1"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "Watch TV or DVDs"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekday (Monday-Friday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q49_1"
+      reverse: true
+    name: "timespentweekdayTVorDVD"
+
+  timespentweekdaycomputer: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekday_computer"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent using the computer on typical weekday"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q49_2"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "Computer"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekday (Monday-Friday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q49_2"
+      reverse: true
+    name: "timespentweekdaycomputer"
+
+  timespentweekdayebooks: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekday_ebooks"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent viewing or browsing electronic books on typical weekday"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q49_3"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "electronic books"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekday (Monday-Friday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q49_3"
+      reverse: true
+    name: "timespentweekdayebooks"
+
+  timespentweekdaybooks: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekday_books"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent viewing or browsing traditional paper books on typical weekday"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q49_4"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "paper books"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekday (Monday-Friday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q49_4"
+      reverse: true
+    name: "timespentweekdaybooks"
+
+  timespentweekdayconsolegames: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekday_consolegame"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent playing console video games on typical weekday"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q49_5"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "console video games"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekday (Monday-Friday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q49_5"
+      reverse: true
+    name: "timespentweekdayconsolegames"
+
+  timespentweekdaymobilesdevices: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekday_mobiledevices"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent using a kind of mobile device on typical weekday"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q49_6"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "iPad, tablet, LeapPad, iTouch, or similar mobile device"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekday (Monday-Friday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q49_6"
+      reverse: true
+    name: "timespentweekdaymobilesdevices"
+
+  qualitycontrol: 
+    fqn: "ol.qualitycontrol"
+    entitySetName: "CAFE_MAQ_QualityControl"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "quality_control"
+      ol.description: 
+        type: "ol.description"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "respondents told to select '2-3 hours'"
+      ol.selection: 
+        type: "ol.selection"
+        column: "Q49_7"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q49_7"
+      reverse: true
+    name: "qualitycontrol"
+
+  timespentweekdaysmartphone: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekday_smartphone"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent using smartphone (not including talking on the phone) on typical weekday"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q49_8"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "Smartphone for texting, playing games, watching videos, internet"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekday (Monday-Friday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q49_8"
+      reverse: true
+    name: "timespentweekdaysmartphone"
+
+  timespentweekdayvirtualassistant: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekday_virtualassistant"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent using virtual assistant (Alexa/Google Home) on typical weekday"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q49_9"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "Virtual assistant such as Alexa/Google Home"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekday (Monday-Friday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q49_9"
+      reverse: true
+    name: "timespentweekdayvirtualassistant"
+
+  timespentweekendTVorDVD: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekend_tvdvd"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent watching TV or DVDs on typical weekend"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q274_1"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "Watch TV or DVDs"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekend (Saturday-Sunday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_1"
+      reverse: true
+    name: "timespentweekendTVorDVD"
+
+  timespentweekendcomputer: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekend_computer"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent using the computer on typical weekend"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q274_2"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "Computer"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekend (Saturday-Sunday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_2"
+      reverse: true
+    name: "timespentweekendcomputer"
+
+  timespentweekendebooks: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekend_ebooks"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent viewing or browsing electronic books on typical weekend"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q274_3"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "electronic books"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekend (Saturday-Sunday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_3"
+      reverse: true
+    name: "timespentweekendebooks"
+
+  timespentweekendbooks: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekend_books"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent viewing or browsing traditional paper books on typical weekend"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q274_4"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "paper books"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekend (Saturday-Sunday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_4"
+      reverse: true
+    name: "timespentweekendbooks"
+
+  timespentweekendconsolegames: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekend_consolegame"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent playing console video games on typical weekend"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q274_5"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "console video games"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekend (Saturday-Sunday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_5"
+      reverse: true
+    name: "timespentweekendconsolegames"
+
+  timespentweekendmobilesdevices: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekend_mobiledevices"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent using a kind of mobile device on typical weekend"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q274_6"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "iPad, tablet, LeapPad, iTouch, or similar mobile device"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekend (Saturday-Sunday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_6"
+      reverse: true
+    name: "timespentweekendmobilesdevices"
+
+  timespentweekendsmartphone: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekend_smartphone"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent using smartphone (not including talking on the phone) on typical weekend"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q274_7"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "Smartphone for texting, playing games, watching videos, internet"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekend (Saturday-Sunday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_7"
+      reverse: true
+    name: "timespentweekendsmartphone"
+
+  timespentweekendvirtualassistant: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_DeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "timespent_weekend_virtualassistant"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent using virtual assistant (Alexa/Google Home) on typical weekend"
+      ol.duration: 
+        type: "ol.duration"
+        column: "Q274_8"
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "Virtual assistant such as Alexa/Google Home"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "typical weekend (Saturday-Sunday)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_8"
+      reverse: true
+    name: "timespentweekendvirtualassistant"
+
+associationDefinitions: 
+  involvedin1: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekendTVorDVD"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_1"
+      reverse: true
+    name: "involvedin1"
+
+  involvedin2: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekendcomputer"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_2"
+      reverse: true
+    name: "involvedin2"
+
+  involvedin3: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekendebooks"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_3"
+      reverse: true
+    name: "involvedin3"
+
+  involvedin4: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekendbooks"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_4"
+      reverse: true
+    name: "involvedin4"
+
+  involvedin5: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekendconsolegames"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_5"
+      reverse: true
+    name: "involvedin5"
+
+  involvedin6: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekendmobilesdevices"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_6"
+      reverse: true
+    name: "involvedin6"
+
+  involvedin7: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekendsmartphone"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_7"
+      reverse: true
+    name: "involvedin7"
+
+  involvedin8: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekendvirtualassistant"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q274_8"
+      reverse: true
+    name: "involvedin8"
+
+  involvedin9: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekdayTVorDVD"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin9"
+
+  involvedin10: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekdaycomputer"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin10"
+
+  involvedin11: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekdayebooks"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin11"
+
+  involvedin12: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekdaybooks"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin12"
+
+  involvedin13: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekdayconsolegames"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin13"
+
+  involvedin14: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekdaymobilesdevices"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin14"
+
+  involvedin15: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekdaysmartphone"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin15"
+
+  involvedin16: 
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "timespentweekdayvirtualassistant"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin16"
+
+  reported1: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekendTVorDVD"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported1"
+
+  reported2: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekendcomputer"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported2"
+
+  reported3: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekendebooks"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported3"
+
+  reported4: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekendbooks"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported4"
+
+  reported5: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekendconsolegames"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported5"
+
+  reported6: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekendmobilesdevices"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported6"
+
+  reported7: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekendsmartphone"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported7"
+
+  reported8: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekendvirtualassistant"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported8"
+
+  reported9: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekdayTVorDVD"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported9"
+
+  reported10: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekdaycomputer"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported10"
+
+  reported11: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekdayebooks"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported11"
+
+  reported12: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekdaybooks"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported12"
+
+  reported13: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekdayconsolegames"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported13"
+
+  reported14: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekdaymobilesdevices"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported14"
+
+  reported15: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekdaysmartphone"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported15"
+
+  reported16: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "timespentweekdayvirtualassistant"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported16"
+
+  reported17: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "qualitycontrol"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported17"

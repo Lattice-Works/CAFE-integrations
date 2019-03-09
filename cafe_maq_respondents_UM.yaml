@@ -1,0 +1,47 @@
+# UMichigan
+# csv filename: DS_PTS_MAQS_V3.1_021519.csv 
+# for demographics: DS_PTS_RedcapDemog_021519.csv
+
+entityDefinitions:
+  respondent: 
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification: 
+        type: "nc.SubjectIdentification"
+        column: "Q281" #Person ID
+      ol.idnumber: 
+        type: "ol.idnumber"
+        column: "ResponseId" #not sure if this or Person ID should be PK. 
+    name: "respondent"
+
+  respondentdetails: 
+    fqn: "ol.persondetails"
+    entitySetName: "CAFE_MAQ_RespondentDetails"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281"]
+          hashFunction: "sha256"
+      ol.language: 
+        type: "ol.language"
+        column: "UserLanguage"
+    name: "respondentdetails"
+
+
+associationDefinitions: 
+  has: 
+    fqn: "ol.has"
+    entitySetName: CAFE_MAQ_Reported
+    src: "respondent"
+    dst: "respondentdetails"
+    propertyDefinitions: 
+      ol.id:
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["ResponseId", "RecordedDate"]
+          hashFunction: "sha256"
+    name: "has"

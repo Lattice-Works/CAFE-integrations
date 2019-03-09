@@ -1,3 +1,5 @@
+# Wisconsin-Madison
+# csv filename: CAFE+Questionnaire+v.2+-+Physio+Study+(WI-AMP-BTV)_February+6,+2019_09.01 - CHOICE TEXT.csv
 
 
 entityDefinitions:
@@ -247,7 +249,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["ResponseId", "clean_ID"]
           separator: "_"
     name: "has"
 
