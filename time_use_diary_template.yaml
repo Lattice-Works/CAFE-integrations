@@ -19,12 +19,14 @@ entityDefinitions:
         transforms:
         - !<transforms.DateTimeTransform>
           pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+          timezone: Etc/GMT
       ol.datetimestart:
         column: StartDate
         type: ol.datetimestart
         transforms:
         - !<transforms.DateTimeTransform>
           pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+          timezone: Etc/GMT
       ol.duration:
         column: Duration (in seconds)
         type: ol.duration
@@ -39,6 +41,14 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "followup question progress"
+  recruitment:
+    entitySetName: CAFE_ES_survey_recruitment
+    fqn: ol.surveymetadata
+    name: recruitment
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: recruitment
   visits:
     entitySetName: CAFE_ES_survey_visits
     fqn: ol.surveymetadata
@@ -48,7 +58,8 @@ entityDefinitions:
         type: ol.id
         transforms:
         - !<transforms.HashTransform>
-          columns: [visit, newday, day, ActionDate, num_midnight]
+          columns: [day, day_filled, num_midnight]
+          # columns: [day, day_filled, num_midnight, newday]
   respondents:
     entitySetName: CAFE_ES_survey_respondents
     fqn: ol.surveymetadata
@@ -66,7 +77,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: nc.SubjectIdentification
-        column: PrimaryResponseID
+        column: child_id
   mothers:
     entitySetName: CAFE_ES_relatives
     fqn: ol.relative
@@ -465,9 +476,10 @@ entityDefinitions:
             column: StartDate
             pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
           - !<transforms.ColumnTransform>
-            column: EndTime
+            column: endfixed
         - !<transforms.DateTimeTransform>
           pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+          timezone: Etc/GMT
       ol.datetimestart:
         type: ol.datetimestart
         transforms:
@@ -478,9 +490,10 @@ entityDefinitions:
             column: StartDate
             pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
           - !<transforms.ColumnTransform>
-            column: StartTime
+            column: startfixed
         - !<transforms.DateTimeTransform>
           pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+          timezone: Etc/GMT
       ol.behaviorbefore:
         # How was your child behaving just before this activity began?
         type: ol.behaviorbefore
@@ -827,6 +840,7 @@ associationDefinitions:
         transforms:
         - !<transforms.DateTimeTransform>
           pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+          timezone: Etc/GMT
   engaged_in:
     entitySetName: CAFE_ES_engagedin
     fqn: ol.engagedin
@@ -842,6 +856,7 @@ associationDefinitions:
         transforms:
         - !<transforms.DateTimeTransform>
           pattern: ["yyyy-MM-dd HH:mm:ss"]
+          timezone: Etc/GMT
   involved_in_1: # primary media exposure in activity
     entitySetName:  CAFE_ES_involvedin
     name: involved_in_1
@@ -1272,6 +1287,22 @@ associationDefinitions:
             column: unique_id
           - !<transforms.ValueTransform>
             value: "_5"
+  involved_in_26:
+    entitySetName: CAFE_ES_involvedin
+    name: involved_in_26
+    fqn: ol.involvedin
+    src: recruitment
+    dst: primary_activity
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: unique_id
+          - !<transforms.ValueTransform>
+            value: "_26"
   located_at: # primary activity to location
     entitySetName: CAFE_ES_located
     fqn: ol.locatedat
@@ -1296,11 +1327,7 @@ associationDefinitions:
             column: unique_id
           - !<transforms.ValueTransform>
             value: "_5"
-conditions: # making sure the first two rows are not integrated
-- !<conditions.ConditionalAnd> {}
-- !<conditions.BooleanRegexCondition>
-  column: "delete"
-  pattern: "FALSE"
+conditions:
 - !<conditions.BooleanRegexCondition>
   column: study_ID
   pattern: CAFE_CONDITION_STUDY
