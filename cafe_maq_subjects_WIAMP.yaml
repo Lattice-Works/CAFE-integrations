@@ -84,30 +84,18 @@ entityDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
         column: "clean_ID" #Person ID
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
       ol.idnumber:
-=======
-      ol.idnumber:
->>>>>>> master:cafe_maq_subjects.yaml
         type: "ol.idnumber"
-        column: "ResponseId" #not sure if this or Person ID should be PK.
+        column: respondent_id
     name: "respondent"
 
   childsubject1:
     fqn: "general.person"
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
     entitySetName: "CAFE_MAQ_Children"
     propertyDefinitions:
-=======
-    entitySetName: "CAFE_MAQ_Subjects"
-    propertyDefinitions:
->>>>>>> master:cafe_maq_subjects.yaml
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "Q2_1_3"]
-          separator: "_"
+        column: child_id
       nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "Q2_1_1_TEXT"
@@ -138,7 +126,6 @@ entityDefinitions:
 
   childsubjectdetails:
     fqn: "ol.persondetailshealth"
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
     entitySetName: "CAFE_MAQ_ChildrenDetailsHealth"
     propertyDefinitions:
       ol.id:
@@ -148,14 +135,6 @@ entityDefinitions:
           columns: ["clean_ID", "Q2_1_3"]
           hashFunction: "sha256"
       ol.prematurebirth:
-=======
-    entitySetName: "CAFE_MAQ_Subject_Details"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        column: "ResponseId"
-      ol.prematurebirth:
->>>>>>> master:cafe_maq_subjects.yaml
         type: "ol.prematurebirth"
         column: "Q18"
       ol.gestationalage:
@@ -173,17 +152,10 @@ entityDefinitions:
     propertyDefinitions:
       household.id:
         type: "household.id"
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
         transforms:
         - !<transforms.HashTransform>
           columns: ["ResponseId", "clean_ID"]
           hashFunction: "sha256"
-=======
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "clean_ID"]
-          separator: "_"
->>>>>>> master:cafe_maq_subjects.yaml
       ol.numberofchildren:
         type: "ol.numberofchildren"
         transforms:
@@ -238,11 +210,7 @@ entityDefinitions:
       ol.relationship1:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Child's mother
         type: "ol.relationship"
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
         transforms:
-=======
-        transforms:
->>>>>>> master:cafe_maq_subjects.yaml
         - !<transforms.BooleanContainsTransform>
           column: "Q21_1"
           string: "1"
@@ -255,11 +223,7 @@ entityDefinitions:
       ol.relationship2:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Child's father
         type: "ol.relationship"
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
         transforms:
-=======
-        transforms:
->>>>>>> master:cafe_maq_subjects.yaml
         - !<transforms.BooleanContainsTransform>
           column: "Q21_2"
           string: "1"
@@ -272,11 +236,7 @@ entityDefinitions:
       ol.relationship3:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Other family member
         type: "ol.relationship"
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
         transforms:
-=======
-        transforms:
->>>>>>> master:cafe_maq_subjects.yaml
         - !<transforms.BooleanContainsTransform>
           column: "Q21_3"
           string: "1"
@@ -289,11 +249,7 @@ entityDefinitions:
       ol.relationship4:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Babysitter
         type: "ol.relationship"
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
         transforms:
-=======
-        transforms:
->>>>>>> master:cafe_maq_subjects.yaml
         - !<transforms.BooleanContainsTransform>
           column: "Q21_4"
           string: "1"
@@ -306,11 +262,7 @@ entityDefinitions:
       ol.relationship5:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Childcare/Preschool
         type: "ol.relationship"
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
         transforms:
-=======
-        transforms:
->>>>>>> master:cafe_maq_subjects.yaml
         - !<transforms.BooleanContainsTransform>
           column: "Q21_5"
           string: "1"
@@ -380,11 +332,7 @@ entityDefinitions:
       ol.relationship1:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Child's mother
         type: "ol.relationship"
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
         transforms:
-=======
-        transforms:
->>>>>>> master:cafe_maq_subjects.yaml
         - !<transforms.BooleanContainsTransform>
           column: "Q22_1"
           string: "1"
@@ -397,11 +345,7 @@ entityDefinitions:
       ol.relationship2:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Child's father
         type: "ol.relationship"
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
         transforms:
-=======
-        transforms:
->>>>>>> master:cafe_maq_subjects.yaml
         - !<transforms.BooleanContainsTransform>
           column: "Q22_2"
           string: "1"
@@ -414,11 +358,7 @@ entityDefinitions:
       ol.relationship3:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Other family member
         type: "ol.relationship"
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
         transforms:
-=======
-        transforms:
->>>>>>> master:cafe_maq_subjects.yaml
         - !<transforms.BooleanContainsTransform>
           column: "Q22_3"
           string: "1"
@@ -431,11 +371,7 @@ entityDefinitions:
       ol.relationship4:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Babysitter
         type: "ol.relationship"
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
         transforms:
-=======
-        transforms:
->>>>>>> master:cafe_maq_subjects.yaml
         - !<transforms.BooleanContainsTransform>
           column: "Q22_4"
           string: "1"
@@ -448,11 +384,7 @@ entityDefinitions:
       ol.relationship5:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Childcare/Preschool
         type: "ol.relationship"
-<<<<<<< HEAD:cafe_maq_subjects_WI_AMP.yaml
         transforms:
-=======
-        transforms:
->>>>>>> master:cafe_maq_subjects.yaml
         - !<transforms.BooleanContainsTransform>
           column: "Q22_5"
           string: "1"
