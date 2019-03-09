@@ -9,7 +9,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: "clean_ID" #Person ID
+        column: respondent_id #Person ID
       ol.idnumber:
         type: "ol.idnumber"
         column: "ResponseId" #not sure if this or Person ID should be PK.
@@ -21,10 +21,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "Q2_1_3"]
-          separator: "_"
+        column: child_id
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
