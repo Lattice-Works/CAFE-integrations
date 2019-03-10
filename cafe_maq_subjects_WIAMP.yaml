@@ -83,7 +83,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: "clean_ID" #Person ID
+        column: "respondent_id" #Person ID
       ol.idnumber:
         type: "ol.idnumber"
         column: respondent_id
@@ -132,7 +132,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["clean_ID", "Q2_1_3"]
+          columns: ["respondent_id", "Q2_1_3"]
           hashFunction: "sha256"
       ol.prematurebirth:
         type: "ol.prematurebirth"
@@ -154,7 +154,7 @@ entityDefinitions:
         type: "household.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["ResponseId", "clean_ID"]
+          columns: ["ResponseId", "respondent_id"]
           hashFunction: "sha256"
       ol.numberofchildren:
         type: "ol.numberofchildren"
@@ -652,159 +652,161 @@ entityDefinitions:
       # What is the main language spoken in your home? - Selected Choice
         type: "ol.language"
         transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_45"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Arabic"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_46"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Cantonese"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_47"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "English"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_48"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Dutch"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_49"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "French"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_50"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Czech"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_51"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "German"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_52"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Hebrew"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_53"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Italian"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_54"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Korean"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_55"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Mandarin"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_56"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Polish"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_57"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Portuguese"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_58"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Spanish"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_59"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Swedish"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_60"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Portuguese"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_44"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ColumnTransform>
-            column: "Q29_44_TEXT"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_45"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Arabic"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_46"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Cantonese"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_47"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "English"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_48"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Dutch"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_49"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "French"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_50"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Czech"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_51"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "German"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_52"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Hebrew"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_53"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Italian"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_54"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Korean"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_55"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Mandarin"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_56"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Polish"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_57"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Portuguese"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_58"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Spanish"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_59"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Swedish"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          # - !<transforms.BooleanContainsTransform>
+          #   column: "Q29_60" --> column doesn't exist?
+          #   string: "1"
+          #   transformsIfTrue:
+          #   - !<transforms.ValueTransform>
+          #     value: "Portuguese"
+          #   transformsIfFalse:
+          #   - !<transforms.ValueTransform>
+          #     value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_44"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ColumnTransform>
+              column: "Q29_44_TEXT"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
       ol.pcttime: # Percent of time main language is spoken in home - %
         type: "ol.pcttime"
         column: "Q30_1"
@@ -812,69 +814,71 @@ entityDefinitions:
       # Who speaks the main language to [Field-kid1]? Please check all that apply. - Selected Choice
         type: "ol.status"
         transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_3"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Mom"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_6"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Dad"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_2"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Grandfather"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_7"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Grandmother"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_4"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Chilcare"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_9"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Siblings"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_8"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ColumnTransform>
-            column: "Q31_8_TEXT"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_3"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Mom"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_6"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Dad"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_2"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Grandfather"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_7"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Grandmother"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_4"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Chilcare"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_9"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Siblings"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_8"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ColumnTransform>
+              column: "Q31_8_TEXT"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
     name: "communication_household"
 
   communication_caregiver:
@@ -925,7 +929,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"]
+          columns: ["respondent_id", "ResponseId"]
           separator: "_"
     name: "has"
 
@@ -1038,7 +1042,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
       ol.role1:
         type: "ol.role"
         column: "Q15_x1_1_1"
@@ -1083,7 +1087,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
       ol.role1:
         type: "ol.role"
         column: "Q15_x2_1_1"
@@ -1128,7 +1132,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
       ol.role1:
         type: "ol.role"
         column: "Q15_x3_1_1"
@@ -1173,7 +1177,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
       ol.role1:
         type: "ol.role"
         column: "Q15_x4_1_1"
@@ -1264,7 +1268,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
       ol.role1:
         type: "ol.role"
         column: "Q15_x5_1_1"
@@ -1355,7 +1359,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
       ol.role1:
         type: "ol.role"
         column: "Q15_x6_1_1"
