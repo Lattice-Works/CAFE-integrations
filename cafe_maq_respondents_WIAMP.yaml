@@ -104,6 +104,8 @@ entityDefinitions:
       person.ageatevent:
         type: "person.ageatevent"
         column: "Q2"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
       person.maritalstatus:
         type: "person.maritalstatus"
         column: "Q7"

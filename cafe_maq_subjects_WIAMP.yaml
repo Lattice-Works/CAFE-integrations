@@ -108,6 +108,8 @@ entityDefinitions:
       ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_1_3"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -140,6 +142,8 @@ entityDefinitions:
       ol.gestationalage:
         type: "ol.gestationalage"
         column: "Q19"
+        transforms:
+        - !<transforms.ParseDoubleTransform> {}
       ol.birthweight:
         type: "ol.birthweight"
         column: "Q20"
@@ -156,9 +160,9 @@ entityDefinitions:
         - !<transforms.HashTransform>
           columns: ["ResponseId", "respondent_id"]
           hashFunction: "sha256"
-      ol.numberofchildren:
-        type: "ol.numberofchildren"
-        transforms:
+      # ol.numberofchildren:
+      #   type: ol.numberofchildren
+      #   transforms:
       demographics.hhtype:
         # Does [Field-kid1] live in two households?
         type: "demographics.hhtype"
@@ -203,10 +207,10 @@ entityDefinitions:
       # How old was [Field-kid1] when he/she started childcare?
         type: "ol.ageatonset"
         column: "Q26"
-      ol.durationhours:
-      # How many hours per week, on average, is [Field-kid1] in childcare?
-        type: "ol.durationhours"
-        column: "Q27"
+      # ol.durationhours:
+      # # How many hours per week, on average, is [Field-kid1] in childcare?
+      #   type: "ol.durationhours"
+      #   column: "Q27"
       ol.relationship1:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Child's mother
         type: "ol.relationship"
@@ -465,6 +469,8 @@ entityDefinitions:
       ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_2_3"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -503,6 +509,8 @@ entityDefinitions:
       ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_3_3"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -541,6 +549,8 @@ entityDefinitions:
       ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_4_3"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -579,6 +589,8 @@ entityDefinitions:
       ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_5_3"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -617,6 +629,8 @@ entityDefinitions:
       ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_6_3"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -646,8 +660,9 @@ entityDefinitions:
         column: "Q28"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["1", "2"] # means yes, no
-          goal: ["2", "1"]
+          target: ["1", "2", "Yes", "No"] # means yes, no
+          goal: ["2", "1", "2", "1"]
+        - !<transforms.ParseIntTransform> {}
       ol.language:
       # What is the main language spoken in your home? - Selected Choice
         type: "ol.language"
@@ -810,6 +825,8 @@ entityDefinitions:
       ol.pcttime: # Percent of time main language is spoken in home - %
         type: "ol.pcttime"
         column: "Q30_1"
+        transforms:
+        - !<transforms.ParseDoubleTransform> {}
       ol.status:
       # Who speaks the main language to [Field-kid1]? Please check all that apply. - Selected Choice
         type: "ol.status"
