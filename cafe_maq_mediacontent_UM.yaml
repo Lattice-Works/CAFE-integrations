@@ -196,7 +196,7 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "2 weeks"
     conditions:
-    - !<conditions.ConditionalOr>
+    - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q45_5"
       reverse: true
