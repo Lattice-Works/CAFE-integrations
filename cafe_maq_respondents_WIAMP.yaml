@@ -97,13 +97,15 @@ entityDefinitions:
     propertyDefinitions:
       general.id:
         type: "general.id"
-        column: "clean_ID"
+        column: "respondent_id"
       ol.language:
         type: "ol.language"
         column: "UserLanguage"
       person.ageatevent:
         type: "person.ageatevent"
         column: "Q2"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
       person.maritalstatus:
         type: "person.maritalstatus"
         column: "Q7"
@@ -249,7 +251,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "clean_ID"]
+          columns: ["ResponseId", "respondent_id"]
           separator: "_"
     name: "has"
 
