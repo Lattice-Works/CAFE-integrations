@@ -342,8 +342,11 @@ entityDefinitions:
       general.id: 
         type: "general.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "childs_room_location"
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "Q281"]
+          separator: "_"
+          - !<transforms.ValueTransform>
+            value: "childsroom"
     name: "childsroom"
 
 # ************** SUBJECT DEVICE LOCATION IN ROOM - NO ***********
@@ -3347,33 +3350,6 @@ associationDefinitions:
       pattern: "(?i)(\\bNever\\b)"
       reverse: true
     name: "usedby16"
-
-  usedby17: 
-    fqn: "ol.usedby"
-    entitySetName: "CAFE_MAQ_UsedBy"
-    src: "mobilephone" 
-    dst: "subject"
-    propertyDefinitions: 
-      general.stringid:
-        type: "general.stringid"
-        transforms: 
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-      ol.relevantperiod: 
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "hour before bedtime"
-    conditions: 
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_5"
-      reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40a2_5"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    name: "usedby17"
 
   usedby17: 
     fqn: "ol.usedby"

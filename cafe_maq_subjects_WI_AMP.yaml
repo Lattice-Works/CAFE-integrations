@@ -161,7 +161,7 @@ entityDefinitions:
           hashFunction: "sha256"
       ol.numberofchildren:
         type: "ol.numberofchildren"
-        transforms: 
+        column: "Q13"
       demographics.hhtype: 
         # Does [Field-kid1] live in two households?
         type: "demographics.hhtype"
