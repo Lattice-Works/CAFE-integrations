@@ -253,44 +253,6 @@ entityDefinitions:
       reverse: true
     name: "mobileactivitiesaudio"
 
-  mobileactivitiesaudio:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_MobileDeviceUse"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "audio_mobileactivities"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Listen to music or audiobooks"
-      general.frequency:
-        type: "general.frequency"
-        column: "Q46_6"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "a cell phone, iPod Touch, iPad, or similar mobile device"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q46_6"
-      reverse: true
-    name: "mobileactivitiesaudio"
-
   qualitycontrol:
     fqn: "ol.qualitycontrol"
     entitySetName: "CAFE_MAQ_QualityControl"

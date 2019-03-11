@@ -339,8 +339,11 @@ entityDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "childs_room_location"
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "Q281"]
+          separator: "_"
+          - !<transforms.ValueTransform>
+            value: "childsroom"
     name: "childsroom"
 
 # ************** SUBJECT DEVICE LOCATION IN ROOM - NO ***********
@@ -3372,7 +3375,7 @@ associationDefinitions:
       reverse: true
     name: "usedby17"
 
-  usedby17:
+  usedby18: 
     fqn: "ol.usedby"
     entitySetName: "CAFE_MAQ_UsedBy"
     src: "mobilephone"

@@ -34,9 +34,6 @@ entityDefinitions:
         - !<transforms.HashTransform>
           columns: ["ResponseId"]
           hashFunction: "sha256"
-      ol.numberofchildren:
-        type: "ol.numberofchildren"
-        transforms:
       demographics.hhtype:
         # Does [Field-kid1] live in two households?
         type: "demographics.hhtype"
