@@ -1,67 +1,61 @@
 # UMichigan
-# csv filename: DS_PTS_MAQS_V3.1_021519.csv 
+# csv filename: DS_PTS_MAQS_V3.1_021519.csv
 
 
 entityDefinitions:
-  respondent: 
+  respondent:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Respondents"
     propertyDefinitions:
-      nc.SubjectIdentification: 
-        type: "nc.SubjectIdentification"
-        column: "Q281" #Person ID
-      ol.idnumber: 
-        type: "ol.idnumber"
-        column: "ResponseId" #not sure if this or Person ID should be PK. 
-    name: "respondent"
-
-  childsubject: 
-    fqn: "general.person"
-    entitySetName: "CAFE_MAQ_Children"
-    propertyDefinitions: 
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms: 
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "Q281"]
-          separator: "_"
+        column: respondent_id
+      ol.idnumber:
+        type: "ol.idnumber"
+        column: "ResponseId" #not sure if this or Person ID should be PK.
+    name: "respondent"
+
+  childsubject:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        column: child_id
     name: "childsubject"
 
   household:
     fqn: "demographics.household"
     entitySetName: "CAFE_MAQ_Households"
-    propertyDefinitions: 
-      household.id: 
+    propertyDefinitions:
+      household.id:
         type: "household.id"
-        transforms: 
-        - !<transforms.HashTransform> 
+        transforms:
+        - !<transforms.HashTransform>
           columns: ["ResponseId"]
           hashFunction: "sha256"
-      # ol.numberofchildren:
-      #   type: "ol.numberofchildren"
-      #   transforms: 
-      demographics.hhtype: 
+      demographics.hhtype:
         # Does [Field-kid1] live in two households?
         type: "demographics.hhtype"
         column: "Q23"
-        transforms: 
+        transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2"] #in some surveys it is ["Yes", "No"]
           goal: ["split/two households", "single household"]
-      ol.timeestimate: 
+      ol.timeestimate:
         # How much time does your child spend in your household?
         type: "ol.timeestimate"
         column: "Q24"
     name: "household"
 
-  communication_household: 
+  communication_household:
     fqn: "ol.communication"
     entitySetName: "CAFE_MAQ_Household_Communication"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms: 
-        - !<transforms.HashTransform> 
+        transforms:
+        - !<transforms.HashTransform>
           columns: ["ResponseId"]
           hashFunction: "sha256"
       ol.number:
@@ -74,14 +68,14 @@ entityDefinitions:
       ol.language:
         type: "ol.language"
         column: "Q29"
-      ol.language_text: 
+      ol.language_text:
         type: "ol.language"
         column: "Q29_44_TEXT"
       ol.pcttime: # Percent of time main language is spoken in home - %
         type: "ol.pcttime"
         column: "Q30_1"
       ol.status1:
-      # Who speaks the main language to [Field-kid1]? Please check all that apply. - Selected Choice 
+      # Who speaks the main language to [Field-kid1]? Please check all that apply. - Selected Choice
         type: "ol.status"
         column: "Q31"
         transforms:
@@ -134,43 +128,43 @@ entityDefinitions:
 associationDefinitions:
 
 #******************* HOUSEHOLD & RELATIONS ASSOCIATIONS ************************
-  partof_a: 
+  partof_a:
     fqn: "ol.partof"
     entitySetName: "CAFE_MAQ_PartOf"
     src: "respondent"
     dst: "household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["ResponseId", "RecordedDate"]
           hashFunction: "sha256"
     name: "partof_a"
 
-  partof_b: 
+  partof_b:
     fqn: "ol.partof"
     entitySetName: "CAFE_MAQ_PartOf"
     src: "childsubject"
     dst: "household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["ResponseId", "RecordedDate"]
           hashFunction: "sha256"
     name: "partof_b"
 
-  relatedto: 
+  relatedto:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "respondent"
     dst: "childsubject"
     propertyDefinitions:
-      ol.id: 
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -178,36 +172,36 @@ associationDefinitions:
 
 
 # ************************** COMMUNICATION ASSOCIATIONS **********************
-  
-  reported: 
+
+  reported:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "communication_household"
     propertyDefinitions:
-      general.id: 
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["ResponseId", "RecordedDate"]
           hashFunction: "sha256"
     name: "reported"
 
-  involvedin: 
+  involvedin:
     fqn: "ol.involvedin"
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "childsubject"
     dst: "communication_household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["ResponseId", "RecordedDate"]
           hashFunction: "sha256"
-      ol.role: 
+      ol.role:
         type: "ol.role"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "child"
     name: "involvedin"

@@ -9,7 +9,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: ol.id
-        column: DiaryEntryID
+        column: unique_id
       ol.completed:
         column: Finished
         type: ol.completed
@@ -19,12 +19,14 @@ entityDefinitions:
         transforms:
         - !<transforms.DateTimeTransform>
           pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+          timezone: Etc/GMT
       ol.datetimestart:
         column: StartDate
         type: ol.datetimestart
         transforms:
         - !<transforms.DateTimeTransform>
           pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+          timezone: Etc/GMT
       ol.duration:
         column: Duration (in seconds)
         type: ol.duration
@@ -39,6 +41,35 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "followup question progress"
+  recruitment:
+    entitySetName: CAFE_ES_survey_recruitment
+    fqn: ol.surveymetadata
+    name: recruitment
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        column: recruitment
+  visits:
+    entitySetName: CAFE_ES_survey_visits
+    fqn: ol.surveymetadata
+    name: visits
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.HashTransform>
+          columns: [day, day_filled, num_midnight]
+          # columns: [day, day_filled, num_midnight, newday]
+  respondents:
+    entitySetName: CAFE_ES_survey_respondents
+    fqn: ol.surveymetadata
+    name: respondents
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.HashTransform>
+          columns: [respondent]
   people:
     entitySetName: CAFE_ES_people
     fqn: general.person
@@ -46,15 +77,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: nc.SubjectIdentification
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          separator: ""
-          transforms:
-          - !<transforms.DateTimeAsDateTransform>
-            column: StartDate
-            pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
-          - !<transforms.ColumnTransform>
-            column: PrimaryResponseID
+        column: child_id
   mothers:
     entitySetName: CAFE_ES_relatives
     fqn: ol.relative
@@ -249,7 +272,7 @@ entityDefinitions:
     conditions:
     # Specifically, what device(s) was your child using? Select all applicable. - Selected Choice - Went to a movie in a movie theater or outdoor theater
     - !<conditions.BooleanIsNullCondition>
-      column: Q2_2
+      column: Q2_10
       reverse: true
   Other:
     entitySetName: CAFE_ES_devices
@@ -435,8 +458,8 @@ entityDefinitions:
     name: primary_activity
     propertyDefinitions:
       ol.id:
-        column: DiaryEntryID
         type: ol.id
+        column: unique_id
       ol.activity:
         type: ol.activity
         transforms:
@@ -453,9 +476,10 @@ entityDefinitions:
             column: StartDate
             pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
           - !<transforms.ColumnTransform>
-            column: EndTime
+            column: endfixed
         - !<transforms.DateTimeTransform>
           pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+          timezone: Etc/GMT
       ol.datetimestart:
         type: ol.datetimestart
         transforms:
@@ -466,9 +490,10 @@ entityDefinitions:
             column: StartDate
             pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
           - !<transforms.ColumnTransform>
-            column: StartTime
+            column: startfixed
         - !<transforms.DateTimeTransform>
           pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+          timezone: Etc/GMT
       ol.behaviorbefore:
         # How was your child behaving just before this activity began?
         type: ol.behaviorbefore
@@ -492,7 +517,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_primary"
       ol.category:
@@ -548,14 +573,14 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_tv"
       ol.category:
         type: ol.category
         transforms:
         - !<transforms.ConcatTransform>
-          columns: [Q22, Q22_5_TEXT, Q31, Q31_5_TEXT, Q52, Q59, Q59_5_TEXT, Q13, Q13_5_TEXT]
+          columns: [Q13, Q22, Q31, Q59]
         - !<transforms.ReplaceTransform>
           target: [1, 2, 3, 4, 5]
           goal:
@@ -564,6 +589,11 @@ entityDefinitions:
           - Younger children
           - Adults
           - Don't know/other
+      ol.notes:
+        type: ol.notes
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q13_5_TEXT, Q22_5_TEXT, Q31_5_TEXT, Q59_5_TEXT]
       ol.priority:
         type: ol.priority
         transforms:
@@ -589,7 +619,7 @@ entityDefinitions:
     conditions:
     - !<conditions.BooleanAreNotNullCondition>
       type: any
-      columns: [Q22, Q22_5_TEXT, Q31, Q31_5_TEXT, Q52, Q59, Q59_5_TEXT, Q13, Q13_5_TEXT, Q12, Q21, Q30, Q58]
+      columns: [Q12, Q21, Q30, Q58]
   secondary_audio:
     entitySetName: CAFE_ES_media_exposure
     fqn: ol.mediaexposure
@@ -601,7 +631,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_audio"
       ol.priority:
@@ -636,7 +666,7 @@ entityDefinitions:
     conditions:
     - !<conditions.BooleanAreNotNullCondition>
       type: any
-      columns: [Q15, Q15_4_TEXT, Q24, Q24_4_TEXT, Q33, Q33_4_TEXT, Q61, Q61_4_TEXT, Q14, Q23, Q32, Q37, Q45, Q60]
+      columns: [Q14, Q23, Q32, Q37, Q45, Q60]
   secondary_media_other:
     entitySetName: CAFE_ES_media_exposure
     fqn: ol.mediaexposure
@@ -648,7 +678,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_other"
       ol.priority:
@@ -672,7 +702,12 @@ entityDefinitions:
         type: ol.category
         transforms:
         - !<transforms.ConcatTransform> #44: out of house
-          columns: [Q44, Q44_5_TEXT, Q52]
+          columns: [Q44, Q52]
+      ol.notes:
+        type: ol.notes
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: [Q44_5_TEXT]
       ol.duration: # Approximately what proportion of time that the child was sleeping was the background media in use. For example, if your child slept for 10 hours and the radio was on for 1, mark 10%; if on the full time, mark 100%. - Proportion of time background media in use
         type: ol.duration
         column: Q34_1
@@ -687,21 +722,14 @@ entityDefinitions:
     conditions:
     - !<conditions.BooleanAreNotNullCondition>
       type: any
-      columns: [Q44, Q44_5_TEXT, Q52,Q51, Q51_9_TEXT, Q53, Q11, Q20, Q29, Q36, Q43, Q50]
-      # media in this entityset iff: --> removed conditions
-      # - Q11
-      # - Q20 but not Q21, Q23 (TV/audio)
-      # - Q29 but not Q30, Q32 (TV/audio)
-      # - Q36 but not Q37 (audio)
-      # -Q 47
-      # - Q50
+      columns: [Q53, Q11, Q20, Q29, Q36, Q43, Q50]
   location:
-    entitySetName: CAFE_TUD_locations
+    entitySetName: CAFE_ES_locations
     fqn: ol.location
     name: location
     propertyDefinitions:
-      ol.id:
-        type: ol.id
+      general.id:
+        type: general.id
         transforms:
         - !<transforms.ConcatTransform>
           columns: [Q7, Q19, Q42]
@@ -710,6 +738,14 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatTransform>
           columns: [Q7, Q19, Q42]
+  studylocation:
+    entitySetName: CAFE_ES_sites
+    fqn: ol.location
+    name: studylocation
+    propertyDefinitions:
+      general.id:
+        type: general.id
+        column: study_ID
   adult_use:
     entitySetName: CAFE_ES_adult_use
     fqn: ol.deviceuse
@@ -717,7 +753,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: ol.id
-        column: DiaryEntryID
+        column: unique_id
       ol.status:
         type: ol.status
         transforms:
@@ -804,6 +840,7 @@ associationDefinitions:
         transforms:
         - !<transforms.DateTimeTransform>
           pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+          timezone: Etc/GMT
   engaged_in:
     entitySetName: CAFE_ES_engagedin
     fqn: ol.engagedin
@@ -812,13 +849,14 @@ associationDefinitions:
     propertyDefinitions:
       ol.id:
         type: ol.id
-        column: DiaryEntryID
+        column: unique_id
       date.completeddatetime:
         column: ActionTime
         type: date.completeddatetime
         transforms:
         - !<transforms.DateTimeTransform>
-          pattern: ["yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"]
+          pattern: ["yyyy-MM-dd HH:mm:ss"]
+          timezone: Etc/GMT
   involved_in_1: # primary media exposure in activity
     entitySetName:  CAFE_ES_involvedin
     name: involved_in_1
@@ -832,7 +870,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_1"
   involved_in_2: # mothers in activity
@@ -848,7 +886,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_2"
   involved_in_3: # fathers in activity
@@ -864,7 +902,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_3"
   involved_in_4: # grandparents in activity
@@ -880,7 +918,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_4"
   involved_in_5: # siblings in activity
@@ -896,7 +934,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_5"
   involved_in_6: # other relatives in activity
@@ -912,7 +950,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_6"
   involved_in_7: # childcare provider in activity
@@ -928,7 +966,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_7"
   involved_in_8: # other kids in activity
@@ -943,7 +981,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_8"
   involved_in_9: # alone in activity
@@ -958,7 +996,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_20"
   concurrent_to_1: # primary activity to adult use
@@ -974,7 +1012,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_1"
   involved_in_20: # gaming device in media exposure
@@ -990,7 +1028,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_9"
   involved_in_10: # radio in media exposure
@@ -1006,7 +1044,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_10"
   involved_in_11: # tv in media exposure
@@ -1022,7 +1060,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_11"
   involved_in_12: # theater in media exposure
@@ -1038,7 +1076,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_12"
   involved_in_13: # other in media exposure
@@ -1054,7 +1092,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_13"
   involved_in_14: # computer in media exposure
@@ -1070,7 +1108,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_14"
   involved_in_15: # smartphone in media exposure
@@ -1086,7 +1124,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_15"
   involved_in_16: # tablet in media exposure
@@ -1102,7 +1140,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_16"
   involved_in_17: # books in media exposure
@@ -1118,7 +1156,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_17"
   involved_in_18: # videoplayer in media exposure
@@ -1134,7 +1172,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_18"
   involved_in_19: # console in media exposure
@@ -1150,7 +1188,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_19"
   involved_in_21: # primary activity in secondary tv
@@ -1166,7 +1204,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_21"
   involved_in_22: # media exposure in secondary audio
@@ -1182,7 +1220,7 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_22"
   involved_in_23: # media exposure to secondary media other
@@ -1198,9 +1236,41 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_23"
+  involved_in_24: # primary media exposure in activity
+    entitySetName:  CAFE_ES_involvedin
+    name: involved_in_24
+    fqn: ol.involvedin
+    src: visits
+    dst: primary_activity
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: unique_id
+          - !<transforms.ValueTransform>
+            value: "_24"
+  involved_in_25: # primary media exposure in activity
+    entitySetName:  CAFE_ES_involvedin
+    name: involved_in_25
+    fqn: ol.involvedin
+    src: respondents
+    dst: primary_activity
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: unique_id
+          - !<transforms.ValueTransform>
+            value: "_25"
   concurrent_to_5: # media exposure to adult use
     entitySetName:  CAFE_ES_concurrentto
     fqn: ol.concurrentto
@@ -1214,24 +1284,50 @@ associationDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ColumnTransform>
-            column: DiaryEntryID
+            column: unique_id
           - !<transforms.ValueTransform>
             value: "_5"
+  involved_in_26:
+    entitySetName: CAFE_ES_involvedin
+    name: involved_in_26
+    fqn: ol.involvedin
+    src: recruitment
+    dst: primary_activity
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: unique_id
+          - !<transforms.ValueTransform>
+            value: "_26"
   located_at: # primary activity to location
-    entitySetName: CAFE_TUD_located
+    entitySetName: CAFE_ES_located
     fqn: ol.locatedat
     src: primary_activity
     dst: location
     propertyDefinitions:
       ol.id:
         type: general.id
-        column: DiaryEntryID
-conditions: # making sure the first two rows are not integrated
-- !<conditions.ConditionalAnd> {}
+        column: unique_id
+  located_at_2: # primary activity to location
+    entitySetName: CAFE_ES_located
+    fqn: ol.locatedat
+    src: primary_activity
+    dst: studylocation
+    propertyDefinitions:
+      ol.id:
+        type: general.id
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: unique_id
+          - !<transforms.ValueTransform>
+            value: "_5"
+conditions:
 - !<conditions.BooleanRegexCondition>
-  column: "StartDate"
-  pattern: "Start|startDate"
-  reverse: true
-- !<conditions.BooleanIsNullCondition>
-  column: "delete"
-  reverse: true
+  column: study_ID
+  pattern: CAFE_CONDITION_STUDY

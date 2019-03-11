@@ -1,21 +1,21 @@
 # UMichigan
-# csv filename: DS_PTS_MAQS_V3.1_021519.csv 
+# csv filename: DS_PTS_MAQS_V3.1_021519.csv
 # for demographics: DS_PTS_RedcapDemog_021519.csv
 
 entityDefinitions:
-  respondent: 
+  respondent:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Respondents"
     propertyDefinitions:
-      nc.SubjectIdentification: 
+      nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: "Q281" #Person ID
-      ol.idnumber: 
+        column: respondent_id
+      ol.idnumber:
         type: "ol.idnumber"
-        column: "ResponseId" #not sure if this or Person ID should be PK. 
+        column: "ResponseId" #not sure if this or Person ID should be PK.
     name: "respondent"
 
-  respondentdetails: 
+  respondentdetails:
     fqn: "ol.persondetails"
     entitySetName: "CAFE_MAQ_RespondentDetails"
     propertyDefinitions:
@@ -25,22 +25,22 @@ entityDefinitions:
         - !<transforms.HashTransform>
           columns: ["Q281"]
           hashFunction: "sha256"
-      ol.language: 
+      ol.language:
         type: "ol.language"
         column: "UserLanguage"
     name: "respondentdetails"
 
 
-associationDefinitions: 
-  has: 
+associationDefinitions:
+  has:
     fqn: "ol.has"
     entitySetName: CAFE_MAQ_Reported
     src: "respondent"
     dst: "respondentdetails"
-    propertyDefinitions: 
+    propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["ResponseId", "RecordedDate"]
           hashFunction: "sha256"

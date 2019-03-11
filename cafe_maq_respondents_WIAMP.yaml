@@ -3,26 +3,26 @@
 
 
 entityDefinitions:
-  respondent: 
+  respondent:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Respondents"
     propertyDefinitions:
-      nc.SubjectIdentification: 
+      nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: "clean_ID" #Person ID
-      ol.idnumber: 
+        column: respondent_id
+      ol.idnumber:
         type: "ol.idnumber"
-        column: "ResponseId" #not sure if this or Person ID should be PK. 
-      nc.PersonGivenName: 
+        column: "ResponseId" #not sure if this or Person ID should be PK.
+      nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "RecipientFirstName"
-      nc.PersonSurName: 
+      nc.PersonSurName:
         type: "nc.PersonSurName"
         column: "RecipientLastName"
       nc.PersonRace1:
         type: "nc.PersonRace"
         column: "Q4_1"
-        # transforms: 
+        # transforms:
         # - !<transforms.ReplaceTransform>
         #   target: ["1"]
         #   goal: ["amindian"]
@@ -51,7 +51,7 @@ entityDefinitions:
         #   target: ["1"]
         #   goal: ["white"]
         #   partial: true
-      nc.PersonRace5: 
+      nc.PersonRace5:
         type: "nc.PersonRace"
         column: "Q4_8"
         # transforms:
@@ -59,7 +59,7 @@ entityDefinitions:
         #   target: ["1"]
         #   goal: ["other"]
         #   partial: true
-      nc.PersonRace6: 
+      nc.PersonRace6:
         type: "nc.PersonRace"
         column: "Q4_6"
         # transforms:
@@ -67,7 +67,7 @@ entityDefinitions:
         #   target: ["1"]
         #   goal: ["Don't Know"]
         #   partial: true
-      nc.PersonRace7: 
+      nc.PersonRace7:
         type: "nc.PersonRace"
         column: "Q4_7"
         # transforms:
@@ -75,10 +75,10 @@ entityDefinitions:
         #   target: ["1"]
         #   goal: ["Prefer not to answer"]
         #   partial: true
-      nc.PersonRace8: 
+      nc.PersonRace8:
         type: "nc.PersonRace"
         column: "Q4_8_TEXT"
-      nc.PersonEthnicity: 
+      nc.PersonEthnicity:
         type: "nc.PersonEthnicity"
         # Are you of Hispanic, Latino, or Spanish origin?
         column: "Q3"
@@ -86,70 +86,72 @@ entityDefinitions:
         # - !<transforms.ReplaceTransform>
         #   target: ["1", "2"]
         #   goal: ["hispanic", "nonhispanic"]
-      nc.PersonBirthPlace: 
+      nc.PersonBirthPlace:
         type: "nc.PersonBirthPlace"
         column: "Q5"
     name: "respondent"
 
-  respondentdetails: 
+  respondentdetails:
     fqn: "ol.persondetails"
     entitySetName: "CAFE_MAQ_RespondentDetails"
     propertyDefinitions:
       general.id:
         type: "general.id"
-        column: "clean_ID"
-      ol.language: 
+        column: "respondent_id"
+      ol.language:
         type: "ol.language"
         column: "UserLanguage"
-      person.ageatevent: 
+      person.ageatevent:
         type: "person.ageatevent"
         column: "Q2"
-      person.maritalstatus: 
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+      person.maritalstatus:
         type: "person.maritalstatus"
         column: "Q7"
         # transforms:
         # - !<transforms.ReplaceTransform>
         #   target: ["1", "2", "3"]
         #   goal: ["Not Married", "Married", "Live-in Partner"] #not sure of this order of what is what.
-      ol.nationality: 
+      ol.nationality:
         type: "ol.nationality"
         column: "Q5" #Where were you born
-      ol.numberofchildren: 
+      ol.numberofchildren:
         type: "ol.numberofchildren"
         column: "Q13"
     name: "respondentdetails"
 
 
-  immigrationstatus: 
+  immigrationstatus:
     fqn: "ol.immigrationstatus"
     entitySetName: "CAFE_MAQ_ImmigrationStatus"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         column: "ResponseId"
-      ol.status: 
+      ol.status:
         type: "ol.status"
         column: "Q6"
-      ol.description: 
+      ol.description:
         type: "ol.description"
         column: "Q5"
-    conditions: 
+    conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q6"
       reverse: true
     name: "immigrationstatus"
 
-  employment: 
+  employment:
     fqn: "ol.employment"
     entitySetName: "CAFE_MAQ_Employment"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         column: "ResponseId"
-      ol.status: 
+      ol.status:
         type: "ol.status"
         column: "Q10"
-    conditions: 
+    conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q10"
       reverse: true
@@ -159,72 +161,97 @@ entityDefinitions:
     fqn: "ol.income"
     entitySetName: "CAFE_MAQ_Incomes"
     propertyDefinitions:
-      ol.id: 
+      ol.id:
         type: "ol.id"
         column: "ResponseId"
-      ol.type: 
+      ol.type:
         type: "ol.type"
         column: "Q11"
-    conditions: 
+      # In which of these ranges does your familyâ€™s yearly income before taxes for 2016 fall?
+      # ol.value:
+      #   type: "ol.value"
+      #   transforms:
+      #   - !<transforms.ReplaceTransform>
+      #     target: []
+      #     goal: []
+      # ol.minimumvalue:
+      #   type: "ol.minimumvalue"
+      #   transforms:
+      #   - !<transforms.ReplaceTransform>
+      #     target: []
+      #     goal: []
+      # ol.maximumvalue:
+      #   type: "ol.maximumvalue"
+      #   transforms:
+      #   - !<transforms.ReplaceTransform>
+      #     target: []
+      #     goal: []
+      # ol.qualifier:
+      #   type: "ol.qualifier"
+      #   transforms:
+      #   - !<transforms.ReplaceTransform>
+      #     target: []
+      #     goal: []
+    conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q11"
       reverse: true
     name: "incomerange"
 
-  publicassistance: 
+  publicassistance:
     fqn: "ol.income"
     entitySetName: "CAFE_MAQ_Incomes"
       # Do you receive public assistance (WIC, SNAP, etc.), or have you received public assistance in the last year?
     propertyDefinitions:
-      ol.id: 
+      ol.id:
         type: "ol.id"
         column: "ResponseId"
-      ol.notes: 
+      ol.notes:
         type: "ol.notes"
-        transforms: 
-        - !<transforms.ValueTransform> 
+        transforms:
+        - !<transforms.ValueTransform>
           value: "public assistance"
-      ol.type: 
+      ol.type:
         type: "ol.type"
         column: "Q12"
-        # transforms: 
+        # transforms:
         # - !<transforms.ReplaceTransform>
         #   target: ["1", "2"]
         #   goal: ["Yes", "No"] #not sure how the data will look. i think 1 = yes
-    conditions: 
+    conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q12"
-      reverse: true 
+      reverse: true
     name: "publicassistance"
 
-  education: 
+  education:
     fqn: "ol.education"
     entitySetName: "CAFE_MAQ_Education"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
         column: "ResponseId"
-      person.highesteducation: 
+      person.highesteducation:
         type: "person.highesteducation"
         column: "Q9"
-    conditions: 
+    conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q9"
       reverse: true
     name: "education"
 
-associationDefinitions: 
-  has: 
+associationDefinitions:
+  has:
     fqn: "ol.has"
     entitySetName: CAFE_MAQ_Has
     src: "respondent"
     dst: "respondentdetails"
-    propertyDefinitions: 
+    propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "clean_ID"]
+          columns: ["ResponseId", "respondent_id"]
           separator: "_"
     name: "has"
 
@@ -233,10 +260,10 @@ associationDefinitions:
     entitySetName: CAFE_MAQ_Reported
     src: "respondent"
     dst: "employment"
-    propertyDefinitions: 
+    propertyDefinitions:
       general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "RecordedDate"]
           separator: "_"
@@ -247,10 +274,10 @@ associationDefinitions:
     entitySetName: CAFE_MAQ_Reported
     src: "respondent"
     dst: "education"
-    propertyDefinitions: 
+    propertyDefinitions:
       general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "RecordedDate"]
           separator: "_"
@@ -261,10 +288,10 @@ associationDefinitions:
     entitySetName: CAFE_MAQ_Reported
     src: "respondent"
     dst: "incomerange"
-    propertyDefinitions: 
+    propertyDefinitions:
       general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "RecordedDate"]
           separator: "_"
@@ -275,10 +302,10 @@ associationDefinitions:
     entitySetName: CAFE_MAQ_Reported
     src: "respondent"
     dst: "publicassistance"
-    propertyDefinitions: 
+    propertyDefinitions:
       general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "RecordedDate"]
           separator: "_"
@@ -289,10 +316,10 @@ associationDefinitions:
     entitySetName: CAFE_MAQ_Reported
     src: "respondent"
     dst: "immigrationstatus"
-    propertyDefinitions: 
+    propertyDefinitions:
       general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "RecordedDate"]
           separator: "_"

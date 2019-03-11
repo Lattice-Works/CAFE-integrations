@@ -35,115 +35,116 @@ entityDefinitions:
   #       column: "UserLanguage"
   #   name: "surveymetadata"
 
-  # answermetadata: 
+  # answermetadata:
   #   fqn: "ol.answermetadata"
   #   entitySetName: "CAFE_MAQ_Answer_Metadata"
   #   propertyDefinitions:
-  #     ol.id: 
+  #     ol.id:
   #       type: "ol.id"
   #       column: # not sure
-  #     ol.subject: 
+  #     ol.subject:
   #       type: "ol.subject"
-  #     ol.relevantperiod: 
+  #     ol.relevantperiod:
   #       type: "ol.relevantperiod"
-  #     ol.datasource: 
+  #     ol.datasource:
   #       type: "ol.datasource"
-  #     ol.recorder: 
+  #     ol.recorder:
   #       type: "ol.recorder"
   #   name: "answermetadata"
 
-  # cafesurvey: 
+  # cafesurvey:
   #   fqn: "ol.survey"
   #   entitySetName: "CAFE_MAQ_Survey"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       column: 
+  #       column:
   #     ol.name:
   #       type: "ol.name"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ValueTransform>
   #         value: "Cafe MAQ Survey"
   #   name: "cafesurvey"
 
-  # respondent_questions: 
+  # respondent_questions:
   #   fqn: # not sure
   #   entitySetName: "CAFE_MAQ_Respodent_Questions"
-  #   propertyDefinitions: 
-  #     #: 
+  #   propertyDefinitions:
+  #     #:
   #       type: #
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ValueTransform>
   #         value: "questions_asked_to_respondents"
   #   name: "respondent_questions"
 
-  respondent: 
+  respondent:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Respondents"
     propertyDefinitions:
-      nc.SubjectIdentification: 
-        type: "nc.SubjectIdentification"
-        column: "clean_ID" #Person ID
-      ol.idnumber: 
-        type: "ol.idnumber"
-        column: "ResponseId" #not sure if this or Person ID should be PK. 
-    name: "respondent"
-
-  childsubject1: 
-    fqn: "general.person"
-    entitySetName: "CAFE_MAQ_Children"
-    propertyDefinitions: 
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms: 
-        - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "Q2_1_3"]
-          separator: "_"
-      nc.PersonGivenName: 
+        column: "respondent_id" #Person ID
+      ol.idnumber:
+        type: "ol.idnumber"
+        column: respondent_id
+    name: "respondent"
+
+  childsubject1:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        column: child_id
+      nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "Q2_1_1_TEXT"
-      ol.birthmonth: 
+      ol.birthmonth:
         type: "ol.birthmonth"
         column: "Q2_1_1"
-      nc.PersonSex: 
+      nc.PersonSex:
         type: "nc.PersonSex"
         column: "Q2_1_2"
-      ol.birthyear: 
+      ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_1_3"
-    conditions: 
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    conditions:
     - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_1_1_TEXT"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_1_1"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_1_2"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_1_3"
       reverse: true
     name: "childsubject1"
 
-  childsubjectdetails: 
+  childsubjectdetails:
     fqn: "ol.persondetailshealth"
     entitySetName: "CAFE_MAQ_ChildrenDetailsHealth"
-    propertyDefinitions: 
+    propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms: 
-        - !<transforms.HashTransform> 
-          columns: ["clean_ID", "Q2_1_3"]
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q2_1_3"]
           hashFunction: "sha256"
-      ol.prematurebirth: 
+      ol.prematurebirth:
         type: "ol.prematurebirth"
         column: "Q18"
-      ol.gestationalage: 
+      ol.gestationalage:
         type: "ol.gestationalage"
         column: "Q19"
-      ol.birthweight: 
+        transforms:
+        - !<transforms.ParseDoubleTransform> {}
+      ol.birthweight:
         type: "ol.birthweight"
         column: "Q20"
     name: "childsubjectdetails"
@@ -152,68 +153,65 @@ entityDefinitions:
   household:
     fqn: "demographics.household"
     entitySetName: "CAFE_MAQ_Households"
-    propertyDefinitions: 
-      household.id: 
+    propertyDefinitions:
+      household.id:
         type: "household.id"
-        transforms: 
-        - !<transforms.HashTransform> 
-          columns: ["ResponseId", "clean_ID"]
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId", "respondent_id"]
           hashFunction: "sha256"
-      ol.numberofchildren:
-        type: "ol.numberofchildren"
-        column: "Q13"
-      demographics.hhtype: 
+      demographics.hhtype:
         # Does [Field-kid1] live in two households?
         type: "demographics.hhtype"
         column: "Q23"
-        transforms: 
+        transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2"] #in some surveys it is ["Yes", "No"]
           goal: ["split/two households", "single household"]
-      ol.timeestimate: 
+      ol.timeestimate:
         # How much time does your child spend in your household?
         type: "ol.timeestimate"
         column: "Q24"
     name: "household"
 
-  # household_questions: 
+  # household_questions:
   #   fqn: #"" ?????
   #   entitySetName: "CAFE_MAQ_Household_Questions"
-  #   propertyDefinitions: 
+  #   propertyDefinitions:
   #     #whatever entity type to use here
   #   name: "household_questions"
 
-  childcare_weekdays: 
+  childcare_weekdays:
     fqn: "ol.childcare"
     entitySetName: "CAFE_MAQ_ChildCare_Weekdays"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         column: "ResponseId"
       ol.persontoassist:
       # Do you have someone in your life who could help you care for your child if you were sick?
         type: "ol.persontoassist"
         column: "Q8"
-      ol.type: 
+      ol.type:
       # What type of childcare does [Field-kid1] attend for the most hours each week? - Selected Choice
         type: "ol.type"
         column: "Q25"
-      ol.type2: 
+      ol.type2:
       # What type of childcare does [Field-kid1] attend for the most hours each week? - Other - Text
         type: "ol.type"
         column: "Q25_5_TEXT"
-      ol.ageatonset: 
+      ol.ageatonset:
       # How old was [Field-kid1] when he/she started childcare?
         type: "ol.ageatonset"
         column: "Q26"
-      ol.durationhours: 
-      # How many hours per week, on average, is [Field-kid1] in childcare?
-        type: "ol.durationhours"
-        column: "Q27"
-      ol.relationship1: 
+      # ol.durationhours:
+      # # How many hours per week, on average, is [Field-kid1] in childcare?
+      #   type: "ol.durationhours"
+      #   column: "Q27"
+      ol.relationship1:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Child's mother
         type: "ol.relationship"
-        transforms: 
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q21_1"
           string: "1"
@@ -223,10 +221,10 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
-      ol.relationship2: 
+      ol.relationship2:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Child's father
         type: "ol.relationship"
-        transforms: 
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q21_2"
           string: "1"
@@ -236,10 +234,10 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
-      ol.relationship3: 
+      ol.relationship3:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Other family member
         type: "ol.relationship"
-        transforms: 
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q21_3"
           string: "1"
@@ -249,10 +247,10 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
-      ol.relationship4: 
+      ol.relationship4:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Babysitter
         type: "ol.relationship"
-        transforms: 
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q21_4"
           string: "1"
@@ -262,10 +260,10 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
-      ol.relationship5: 
+      ol.relationship5:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Childcare/Preschool
         type: "ol.relationship"
-        transforms: 
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q21_5"
           string: "1"
@@ -275,7 +273,7 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
-      ol.relationship6: 
+      ol.relationship6:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Other + Other - Text
         type: "ol.relationship"
         transforms:
@@ -288,54 +286,54 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
-    conditions: 
+    conditions:
     - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q8"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q25"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q25_5_TEXT"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q26"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q27"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q21_1"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q21_2"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q21_3"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q21_4"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q21_5"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q21_7"
       reverse: true
     name: "childcare_weekdays"
 
-  childcare_weekends: 
+  childcare_weekends:
     fqn: "ol.childcare"
     entitySetName: "CAFE_MAQ_ChildCare_Weekends"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         column: "ResponseId"
-      ol.relationship1: 
+      ol.relationship1:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Child's mother
         type: "ol.relationship"
-        transforms: 
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q22_1"
           string: "1"
@@ -345,10 +343,10 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
-      ol.relationship2: 
+      ol.relationship2:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Child's father
         type: "ol.relationship"
-        transforms: 
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q22_2"
           string: "1"
@@ -361,7 +359,7 @@ entityDefinitions:
       ol.relationship3:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Other family member
         type: "ol.relationship"
-        transforms: 
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q22_3"
           string: "1"
@@ -371,10 +369,10 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
-      ol.relationship4: 
+      ol.relationship4:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Babysitter
         type: "ol.relationship"
-        transforms: 
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q22_4"
           string: "1"
@@ -387,7 +385,7 @@ entityDefinitions:
       ol.relationship5:
       # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Childcare/Preschool
         type: "ol.relationship"
-        transforms: 
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q22_5"
           string: "1"
@@ -410,233 +408,243 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
-    conditions: 
+    conditions:
     - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q22_1"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q22_2"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q22_3"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q22_4"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q22_5"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q22_7"
       reverse: true
     name: "childcare_weekends"
 
-  # childcare_questions: 
+  # childcare_questions:
   #   fqn: #??
   #   entitySetName: "CAFE_MAQ_Childcare_Questions"
-  #   propertyDefinitions: 
+  #   propertyDefinitions:
 
   #   name: "childcare_questions"
 
-  # subject_questions: 
+  # subject_questions:
   #   fqn: #"" ?????
   #   entitySetName: "CAFE_MAQ_Subject_Questions"
-  #   propertyDefinitions: 
+  #   propertyDefinitions:
   #     #whatever entity type to use here
   #   name: "subject_questions"
 
-  childsubject2: 
+  childsubject2:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Subjects"
-    propertyDefinitions: 
+    propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "Q2_2_3"]
           separator: "_"
-      nc.PersonGivenName: 
+      nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "Q2_2_1_TEXT"
-      ol.birthmonth: 
+      ol.birthmonth:
         type: "ol.birthmonth"
         column: "Q2_2_1"
-      nc.PersonSex: 
+      nc.PersonSex:
         type: "nc.PersonSex"
         column: "Q2_2_2"
-      ol.birthyear: 
+      ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_2_3"
-    conditions: 
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    conditions:
     - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_2_1_TEXT"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_2_1"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_2_2"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_2_3"
       reverse: true
     name: "childsubject2"
 
-  childsubject3: 
+  childsubject3:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Subjects"
-    propertyDefinitions: 
+    propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "Q2_3_3"]
           separator: "_"
-      nc.PersonGivenName: 
+      nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "Q2_3_1_TEXT"
-      ol.birthmonth: 
+      ol.birthmonth:
         type: "ol.birthmonth"
         column: "Q2_3_1"
-      nc.PersonSex: 
+      nc.PersonSex:
         type: "nc.PersonSex"
         column: "Q2_3_2"
-      ol.birthyear: 
+      ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_3_3"
-    conditions: 
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    conditions:
     - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_3_1_TEXT"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_3_1"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_3_2"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_3_3"
       reverse: true
     name: "childsubject3"
 
-  childsubject4: 
+  childsubject4:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Subjects"
-    propertyDefinitions: 
+    propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "Q2_4_3"]
           separator: "_"
-      nc.PersonGivenName: 
+      nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "Q2_4_1_TEXT"
-      ol.birthmonth: 
+      ol.birthmonth:
         type: "ol.birthmonth"
         column: "Q2_4_1"
-      nc.PersonSex: 
+      nc.PersonSex:
         type: "nc.PersonSex"
         column: "Q2_4_2"
-      ol.birthyear: 
+      ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_4_3"
-    conditions: 
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    conditions:
     - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_4_1_TEXT"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_4_1"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_4_2"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_4_3"
       reverse: true
     name: "childsubject4"
 
-  childsubject5: 
+  childsubject5:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Subjects"
-    propertyDefinitions: 
+    propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "Q2_5_3"]
           separator: "_"
-      nc.PersonGivenName: 
+      nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "Q2_5_1_TEXT"
-      ol.birthmonth: 
+      ol.birthmonth:
         type: "ol.birthmonth"
         column: "Q2_5_1"
-      nc.PersonSex: 
+      nc.PersonSex:
         type: "nc.PersonSex"
         column: "Q2_5_2"
-      ol.birthyear: 
+      ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_5_3"
-    conditions: 
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    conditions:
     - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_5_1_TEXT"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_5_1"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_5_2"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_5_3"
       reverse: true
     name: "childsubject5"
 
-  childsubject6: 
+  childsubject6:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Subjects"
-    propertyDefinitions: 
+    propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "Q2_6_3"]
           separator: "_"
-      nc.PersonGivenName: 
+      nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "Q2_6_1_TEXT"
-      ol.birthmonth: 
+      ol.birthmonth:
         type: "ol.birthmonth"
         column: "Q2_6_1"
-      nc.PersonSex: 
+      nc.PersonSex:
         type: "nc.PersonSex"
         column: "Q2_6_2"
-      ol.birthyear: 
+      ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_6_3"
-    conditions: 
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    conditions:
     - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_6_1_TEXT"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_6_1"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_6_2"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "Q2_6_3"
       reverse: true
     name: "childsubject6"
 
-  communication_household: 
+  communication_household:
     fqn: "ol.communication"
     entitySetName: "CAFE_MAQ_Household_Communication"
     propertyDefinitions:
@@ -649,245 +657,252 @@ entityDefinitions:
         column: "Q28"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["1", "2"] # means yes, no
-          goal: ["2", "1"]
+          target: ["1", "2", "Yes", "No"] # means yes, no
+          goal: ["2", "1", "2", "1"]
+        - !<transforms.ParseIntTransform> {}
       ol.language:
       # What is the main language spoken in your home? - Selected Choice
         type: "ol.language"
         transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_45"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "Arabic"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_46"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "Cantonese"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_47"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "English"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_48"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "Dutch"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_49"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "French"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_50"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "Czech"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_51"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "German"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_52"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "Hebrew"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_53"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "Italian"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_54"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "Korean"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_55"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "Mandarin"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_56"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "Polish"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_57"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "Portuguese"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_58"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "Spanish"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_59"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "Swedish"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_60"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ValueTransform>
-            value: "Portuguese"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q29_44"
-          string: "1"
-          transformsIfTrue: 
-          - !<transforms.ColumnTransform>
-            column: "Q29_44_TEXT"
-          transformsIfFalse: 
-          - !<transforms.ValueTransform>
-            value: null
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_45"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Arabic"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_46"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Cantonese"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_47"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "English"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_48"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Dutch"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_49"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "French"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_50"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Czech"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_51"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "German"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_52"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Hebrew"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_53"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Italian"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_54"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Korean"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_55"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Mandarin"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_56"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Polish"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_57"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Portuguese"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_58"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Spanish"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_59"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Swedish"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          # - !<transforms.BooleanContainsTransform>
+          #   column: "Q29_60" --> column doesn't exist?
+          #   string: "1"
+          #   transformsIfTrue:
+          #   - !<transforms.ValueTransform>
+          #     value: "Portuguese"
+          #   transformsIfFalse:
+          #   - !<transforms.ValueTransform>
+          #     value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q29_44"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ColumnTransform>
+              column: "Q29_44_TEXT"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
       ol.pcttime: # Percent of time main language is spoken in home - %
         type: "ol.pcttime"
         column: "Q30_1"
+        transforms:
+        - !<transforms.ParseDoubleTransform> {}
       ol.status:
-      # Who speaks the main language to [Field-kid1]? Please check all that apply. - Selected Choice 
+      # Who speaks the main language to [Field-kid1]? Please check all that apply. - Selected Choice
         type: "ol.status"
         transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_3"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Mom"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_6"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Dad"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_2"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Grandfather"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_7"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Grandmother"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_4"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Chilcare"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_9"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: "Siblings"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
-        - !<transforms.BooleanContainsTransform>
-          column: "Q31_8"
-          string: "1"
-          transformsIfTrue:
-          - !<transforms.ColumnTransform>
-            column: "Q31_8_TEXT"
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: null
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_3"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Mom"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_6"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Dad"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_2"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Grandfather"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_7"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Grandmother"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_4"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Chilcare"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_9"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: "Siblings"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
+          - !<transforms.BooleanContainsTransform>
+            column: "Q31_8"
+            string: "1"
+            transformsIfTrue:
+            - !<transforms.ColumnTransform>
+              column: "Q31_8_TEXT"
+            transformsIfFalse:
+            - !<transforms.ValueTransform>
+              value: null
     name: "communication_household"
 
-  communication_caregiver: 
+  communication_caregiver:
     fqn: "ol.communication"
     entitySetName: "CAFE_MAQ_Caregiver_Communication"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         column: "ResponseId"
-      ol.language: 
+      ol.language:
         type: "ol.language"
         column: "Q32"
     conditions:
@@ -897,152 +912,152 @@ entityDefinitions:
     name: "communication_caregiver"
 
 
-  # cafesurveyresponse: 
+  # cafesurveyresponse:
   #   fqn: "ol.surveyresponse"
   #   entitySetName: "CAFE_MAQ_SurveyResponse"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
   #       column: "ResponseID"
-  #     ol.method: 
+  #     ol.method:
   #       type: "ol.method"
-  #       column: 
-  #     ol.name: 
+  #       column:
+  #     ol.name:
   #       type: "ol.name"
-  #     ol.datetimestart: 
+  #     ol.datetimestart:
   #       type: "ol.datetimestart"
-  #     ol.datetimeend: 
+  #     ol.datetimeend:
   #       type: "ol.datetimeend"
-  #     # columns on Timing for Survey: "Q16_First Click", "Q16_Last Click", "Q16_Page Submit", "Q16_Click Count" here? 
+  #     # columns on Timing for Survey: "Q16_First Click", "Q16_Last Click", "Q16_Page Submit", "Q16_Click Count" here?
   #   name: "cafesurveyresponse"
 
 associationDefinitions:
 
-  has: 
+  has:
     fqn: "ol.has"
     entitySetName: "CAFE_MAQ_Has"
     src: "childsubject1"
     dst: "childsubjectdetails"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"]
+          columns: ["respondent_id", "ResponseId"]
           separator: "_"
     name: "has"
 
 #******************* HOUSEHOLD & RELATIONS ASSOCIATIONS ************************
-  partof_a: 
+  partof_a:
     fqn: "ol.partof"
     entitySetName: "CAFE_MAQ_PartOf"
     src: "respondent"
     dst: "household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["RecordedDate", "ResponseId"]
           separator: "_"
     name: "partof_a"
 
-  partof_b: 
+  partof_b:
     fqn: "ol.partof"
     entitySetName: "CAFE_MAQ_PartOf"
     src: "childsubject1"
     dst: "household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["RecordedDate", "ResponseId"]
           separator: "_"
     name: "partof_b"
 
-  partof_c: 
+  partof_c:
     fqn: "ol.partof"
     entitySetName: "CAFE_MAQ_PartOf"
     src: "childsubject2"
     dst: "household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["RecordedDate", "ResponseId"]
           separator: "_"
     name: "partof_c"
 
-  partof_d: 
+  partof_d:
     fqn: "ol.partof"
     entitySetName: "CAFE_MAQ_PartOf"
     src: "childsubject3"
     dst: "household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["RecordedDate", "ResponseId"]
           separator: "_"
     name: "partof_d"
 
-  partof_e: 
+  partof_e:
     fqn: "ol.partof"
     entitySetName: "CAFE_MAQ_PartOf"
     src: "childsubject4"
     dst: "household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["RecordedDate", "ResponseId"]
           separator: "_"
     name: "partof_e"
 
-  partof_f: 
+  partof_f:
     fqn: "ol.partof"
     entitySetName: "CAFE_MAQ_PartOf"
     src: "childsubject5"
     dst: "household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["RecordedDate", "ResponseId"]
           separator: "_"
     name: "partof_f"
 
-  partof_g: 
+  partof_g:
     fqn: "ol.partof"
     entitySetName: "CAFE_MAQ_PartOf"
     src: "childsubject6"
     dst: "household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["RecordedDate", "ResponseId"]
           separator: "_"
     name: "partof_g"
 
-  relatedto1: 
+  relatedto1:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "respondent"
     dst: "childsubject1"
     propertyDefinitions:
-      ol.id: 
+      ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"] #this depends on what you make child's PK. 
-      ol.role1: 
+          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
+      ol.role1:
         type: "ol.role"
         column: "Q15_x1_1_1"
       ol.role2:
@@ -1057,7 +1072,7 @@ associationDefinitions:
       ol.role5:
         type: "ol.role"
         column: "Q15_x1_1_5"
-    conditions: 
+    conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q15_x1_1_1"
@@ -1076,18 +1091,18 @@ associationDefinitions:
       reverse: true
     name: "relatedto1"
 
-  relatedto2: 
+  relatedto2:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "respondent"
     dst: "childsubject2"
     propertyDefinitions:
-      ol.id: 
+      ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"] #this depends on what you make child's PK. 
-      ol.role1: 
+          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
+      ol.role1:
         type: "ol.role"
         column: "Q15_x2_1_1"
       ol.role2:
@@ -1102,7 +1117,7 @@ associationDefinitions:
       ol.role5:
         type: "ol.role"
         column: "Q15_x2_1_5"
-    conditions: 
+    conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q15_x2_1_1"
@@ -1121,19 +1136,19 @@ associationDefinitions:
       reverse: true
     name: "relatedto2"
 
-  relatedto3: 
+  relatedto3:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "respondent"
     dst: "childsubject3"
     propertyDefinitions:
-      ol.id: 
+      ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"] #this depends on what you make child's PK. 
-      ol.role1: 
-        type: "ol.role"        
+          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
+      ol.role1:
+        type: "ol.role"
         column: "Q15_x3_1_1"
       ol.role2:
         type: "ol.role"
@@ -1147,7 +1162,7 @@ associationDefinitions:
       ol.role5:
         type: "ol.role"
         column: "Q15_x3_1_5"
-    conditions: 
+    conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q15_x3_1_1"
@@ -1166,23 +1181,23 @@ associationDefinitions:
       reverse: true
     name: "relatedto3"
 
-  relatedto4: 
+  relatedto4:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "respondent"
     dst: "childsubject4"
     propertyDefinitions:
-      ol.id: 
+      ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"] #this depends on what you make child's PK. 
-      ol.role1: 
-        type: "ol.role"        
+          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
+      ol.role1:
+        type: "ol.role"
         column: "Q15_x4_1_1"
       ol.role2:
         type: "ol.role"
-        column: "Q15_x4_1_2" 
+        column: "Q15_x4_1_2"
       ol.role3:
         type: "ol.role"
         column: "Q15_x4_1_3"
@@ -1192,7 +1207,7 @@ associationDefinitions:
       ol.role5:
         type: "ol.role"
         column: "Q15_x4_1_5"
-        # transforms: 
+        # transforms:
         # - !<transforms.BooleanContainsTransform>
         #   column: "Q15_x4_1_1"
         #   string: "1"
@@ -1238,7 +1253,7 @@ associationDefinitions:
         #   transformsIfFalse:
         #   - !<transforms.ValueTransform>
         #     value: null
-    conditions: 
+    conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q15_x4_1_1"
@@ -1257,23 +1272,23 @@ associationDefinitions:
       reverse: true
     name: "relatedto4"
 
-  relatedto5: 
+  relatedto5:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "respondent"
     dst: "childsubject5"
     propertyDefinitions:
-      ol.id: 
+      ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"] #this depends on what you make child's PK. 
-      ol.role1: 
-        type: "ol.role"        
+          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
+      ol.role1:
+        type: "ol.role"
         column: "Q15_x5_1_1"
       ol.role2:
         type: "ol.role"
-        column: "Q15_x5_1_2" 
+        column: "Q15_x5_1_2"
       ol.role3:
         type: "ol.role"
         column: "Q15_x5_1_3"
@@ -1283,7 +1298,7 @@ associationDefinitions:
       ol.role5:
         type: "ol.role"
         column: "Q15_x5_1_5"
-        # transforms: 
+        # transforms:
         # - !<transforms.BooleanContainsTransform>
         #   column: "Q15_x5_1_1"
         #   string: "1"
@@ -1329,7 +1344,7 @@ associationDefinitions:
         #   transformsIfFalse:
         #   - !<transforms.ValueTransform>
         #     value: null
-    conditions: 
+    conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q15_x5_1_1"
@@ -1348,23 +1363,23 @@ associationDefinitions:
       reverse: true
     name: "relatedto5"
 
-  relatedto6: 
+  relatedto6:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "respondent"
     dst: "childsubject6"
     propertyDefinitions:
-      ol.id: 
+      ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["clean_ID", "ResponseId"] #this depends on what you make child's PK. 
-      ol.role1: 
-        type: "ol.role"       
+          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
+      ol.role1:
+        type: "ol.role"
         column: "Q15_x6_1_1"
       ol.role2:
         type: "ol.role"
-        column: "Q15_x6_1_2" 
+        column: "Q15_x6_1_2"
       ol.role3:
         type: "ol.role"
         column: "Q15_x6_1_3"
@@ -1374,7 +1389,7 @@ associationDefinitions:
       ol.role5:
         type: "ol.role"
         column: "Q15_x6_1_5"
-        # transforms: 
+        # transforms:
         # - !<transforms.BooleanContainsTransform>
         #   column: "Q15_x6_1_1"
         #   string: "1"
@@ -1420,7 +1435,7 @@ associationDefinitions:
         #   transformsIfFalse:
         #   - !<transforms.ValueTransform>
         #     value: null
-    conditions: 
+    conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q15_x6_1_1"
@@ -1442,224 +1457,224 @@ associationDefinitions:
 
 # *********************** CHILDCARE ASSOCIATIONS ***************************
 
-  reported1: 
+  reported1:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "childcare_weekdays"
     propertyDefinitions:
-      general.id: 
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "RecordedDate"]
           separator: "_"
     name: "reported1"
 
-  reported2: 
+  reported2:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "childcare_weekends"
     propertyDefinitions:
-      general.id: 
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "RecordedDate"]
           separator: "_"
     name: "reported2"
 
-  involvedin1: 
+  involvedin1:
     fqn: "ol.involvedin"
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "childsubject1"
     dst: "childcare_weekdays"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "RecordedDate"]
           separator: "_"
-      ol.role: 
+      ol.role:
         type: "ol.role"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "child"
     name: "involvedin1"
 
-  involvedin2: 
+  involvedin2:
     fqn: "ol.involvedin"
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "childsubject1"
     dst: "childcare_weekends"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "RecordedDate"]
           separator: "_"
-      ol.role: 
+      ol.role:
         type: "ol.role"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "child"
     name: "involvedin2"
 
 
 # ************************** COMMUNICATION ASSOCIATIONS **********************
-  
-  reported3: 
+
+  reported3:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "communication_household"
     propertyDefinitions:
-      general.id: 
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "RecordedDate"]
           separator: "_"
     name: "reported3"
 
-  reported4: 
+  reported4:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "communication_caregiver"
     propertyDefinitions:
-      general.id: 
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "RecordedDate"]
           separator: "_"
     name: "reported4"
 
-  involvedin3: 
+  involvedin3:
     fqn: "ol.involvedin"
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "childsubject1"
     dst: "communication_household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "RecordedDate"]
           separator: "_"
-      ol.role: 
+      ol.role:
         type: "ol.role"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "child"
     name: "involvedin3"
 
-  involvedin4: 
+  involvedin4:
     fqn: "ol.involvedin"
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "childsubject1"
     dst: "communication_caregiver"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.ConcatTransform>
           columns: ["ResponseId", "RecordedDate"]
           separator: "_"
-      ol.role: 
+      ol.role:
         type: "ol.role"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "child"
     name: "involvedin4"
 
 
-  
+
 # ******* METADATA ASSOCIATIONS ***************
 
-  # recordedvia1: 
+  # recordedvia1:
   #   fqn: "ol.recordedvia"
   #   entitySetName: "CAFE_MAQ_RecordedVia"
   #   src: "cafesurvey"
   #   dst: "surveymetadata"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "recordedvia1"
 
-  # recordedvia2: 
+  # recordedvia2:
   #   fqn: "ol.recordedvia"
   #   entitySetName: "CAFE_MAQ_RecordedVia"
   #   src: "cafesurveyresponse"
   #   dst: "answermetadata"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "recordedvia2"
 
-  # screenedwith1: 
+  # screenedwith1:
   #   fqn: "ol.screenedwith"
   #   entitySetName: "CAFE_MAQ_ScreenedWith"
   #   src: "respondent"
   #   dst: "cafesurvey"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "screenedwith1"
 
-  # resultsin1: 
+  # resultsin1:
   #   fqn: "ol.resultsin"
   #   entitySetName: "CAFE_MAQ_ResultsIn"
   #   src: "cafesurvey"
   #   dst: "cafesurveyresponse"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "resultsin1"
 
-  # partof1: 
+  # partof1:
   #   fqn: "ol.partof"
   #   entitySetName: "CAFE_MAQ_PartOf"
   #   src: "respondent"
   #   dst: "cafesurveyresponse"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "partof1"
 
-  # partof2: 
+  # partof2:
   #   fqn: "ol.partof"
   #   entitySetName: "CAFE_MAQ_PartOf"
   #   src: "respondent_questions"
   #   dst: "cafesurvey"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
@@ -1667,55 +1682,55 @@ associationDefinitions:
 
   # refersto1:
   #   fqn: "ol.refersto"
-  #   entitySetName: "CAFE_MAQ_RefersTo" 
+  #   entitySetName: "CAFE_MAQ_RefersTo"
   #   src: "respondent_questions"
   #   dst: "respondent"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "refersto1"
 
-  # screenedwith2: 
+  # screenedwith2:
   #   fqn: "ol.screenedwith"
   #   entitySetName: "CAFE_MAQ_ScreenedWith"
   #   src: "childsubject1"
   #   dst: "cafesurvey"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "screenedwith2"
 
-  # partof3: 
+  # partof3:
   #   fqn: "ol.partof"
   #   entitySetName: "CAFE_MAQ_PartOf"
   #   src: "subject_questions"
   #   dst: "cafesurvey"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "partof3"
 
-  # reported1: 
+  # reported1:
   #   fqn: "ol.reported"
   #   entitySetName: "CAFE_MAQ_PartOf"
   #   src: "childsubject1"
   #   dst: "cafesurveyresponse"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
@@ -1723,275 +1738,269 @@ associationDefinitions:
 
   # refersto2:
   #   fqn: "ol.refersto"
-  #   entitySetName: "CAFE_MAQ_RefersTo" 
+  #   entitySetName: "CAFE_MAQ_RefersTo"
   #   src: "subject_questions"
   #   dst: "childsubject1"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "refersto2"
 
-  # screenedwith3: 
+  # screenedwith3:
   #   fqn: "ol.screenedwith"
   #   entitySetName: "CAFE_MAQ_ScreenedWith"
   #   src: "childsubject2"
   #   dst: "cafesurvey"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "screenedwith3"
-    
+
 
   # refersto3:
   #   fqn: "ol.refersto"
-  #   entitySetName: "CAFE_MAQ_RefersTo" 
+  #   entitySetName: "CAFE_MAQ_RefersTo"
   #   src: "subject_questions"
   #   dst: "childsubject2"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "refersto3"
 
-  # reported2: 
+  # reported2:
   #   fqn: "ol.reported"
   #   entitySetName: "CAFE_MAQ_PartOf"
   #   src: "childsubject2"
   #   dst: "cafesurveyresponse"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "reported2"
 
-  # screenedwith4: 
+  # screenedwith4:
   #   fqn: "ol.screenedwith"
   #   entitySetName: "CAFE_MAQ_ScreenedWith"
   #   src: "childsubject3"
   #   dst: "cafesurvey"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "screenedwith4"
-    
+
   # refersto4:
   #   fqn: "ol.refersto"
-  #   entitySetName: "CAFE_MAQ_RefersTo" 
+  #   entitySetName: "CAFE_MAQ_RefersTo"
   #   src: "subject_questions"
   #   dst: "childsubject3"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "refersto4"
 
-  # reported3: 
+  # reported3:
   #   fqn: "ol.reported"
   #   entitySetName: "CAFE_MAQ_PartOf"
   #   src: "childsubject3"
   #   dst: "cafesurveyresponse"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "reported3"
 
-  # screenedwith5: 
+  # screenedwith5:
   #   fqn: "ol.screenedwith"
   #   entitySetName: "CAFE_MAQ_ScreenedWith"
   #   src: "childsubject4"
   #   dst: "cafesurvey"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "screenedwith5"
-    
+
 
   # refersto5:
   #   fqn: "ol.refersto"
-  #   entitySetName: "CAFE_MAQ_RefersTo" 
+  #   entitySetName: "CAFE_MAQ_RefersTo"
   #   src: "subject_questions"
   #   dst: "childsubject4"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "refersto5"
 
-  # reported4: 
+  # reported4:
   #   fqn: "ol.reported"
   #   entitySetName: "CAFE_MAQ_PartOf"
   #   src: "childsubject4"
   #   dst: "cafesurveyresponse"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "reported4"
 
-  # screenedwith6: 
+  # screenedwith6:
   #   fqn: "ol.screenedwith"
   #   entitySetName: "CAFE_MAQ_ScreenedWith"
   #   src: "childsubject5"
   #   dst: "cafesurvey"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "screenedwith6"
-    
+
 
   # refersto6:
   #   fqn: "ol.refersto"
-  #   entitySetName: "CAFE_MAQ_RefersTo" 
+  #   entitySetName: "CAFE_MAQ_RefersTo"
   #   src: "subject_questions"
   #   dst: "childsubject5"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "refersto6"
 
-  # reported5: 
+  # reported5:
   #   fqn: "ol.reported"
   #   entitySetName: "CAFE_MAQ_PartOf"
   #   src: "childsubject5"
   #   dst: "cafesurveyresponse"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "reported5"
 
-  # screenedwith7: 
+  # screenedwith7:
   #   fqn: "ol.screenedwith"
   #   entitySetName: "CAFE_MAQ_ScreenedWith"
   #   src: "childsubject5"
   #   dst: "cafesurvey"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "screenedwith7"
-    
+
   # refersto7:
   #   fqn: "ol.refersto"
-  #   entitySetName: "CAFE_MAQ_RefersTo" 
+  #   entitySetName: "CAFE_MAQ_RefersTo"
   #   src: "subject_questions"
   #   dst: "childsubject5"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "refersto7"
 
-  # reported6: 
+  # reported6:
   #   fqn: "ol.reported"
   #   entitySetName: "CAFE_MAQ_PartOf"
   #   src: "childsubject5"
   #   dst: "cafesurveyresponse"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "reported6"
 
-  # screenedwith8: 
+  # screenedwith8:
   #   fqn: "ol.screenedwith"
   #   entitySetName: "CAFE_MAQ_ScreenedWith"
   #   src: "childcare_weekdays"
   #   dst: "cafesurvey"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "screenedwith8"
-    
+
   # refersto8:
   #   fqn: "ol.refersto"
-  #   entitySetName: "CAFE_MAQ_RefersTo" 
+  #   entitySetName: "CAFE_MAQ_RefersTo"
   #   src: "childcare_questions"
   #   dst: "childcare_weekdays"
-  #   propertyDefinitions: 
-  #     ol.id: 
+  #   propertyDefinitions:
+  #     ol.id:
   #       type: "ol.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "refersto8"
 
-  # recordedby1: 
+  # recordedby1:
   #   fqn: "ol.recordedby"
   #   entitySetName: "CAFE_MAQ_PartOf"
   #   src: "childcare_weekdays"
   #   dst: "cafesurveyresponse"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
-  #       transforms: 
+  #       transforms:
   #       - !<transforms.ConcatTransform>
   #         columns: ["RecordedDate", "ResponseId"]
   #         separator: "_"
   #   name: "recordedby1"
-
-
-
-
-
-  
