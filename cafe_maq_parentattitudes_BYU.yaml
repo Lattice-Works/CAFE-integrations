@@ -1,0 +1,770 @@
+# cafe MAQ BYU
+# csv filename: MAQs_BYU_V3_2018_20181004_Returning.csv
+# Parent Attitudes section of survey (PTS_MAQS V3.1_Data Dictionary_Questions)
+
+entityDefinitions:
+  respondent: 
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification: 
+        type: "nc.SubjectIdentification"
+        column: "respondent_id"
+        # column: "Q262" #Person ID
+      ol.idnumber: 
+        type: "ol.idnumber"
+        column: "ResponseId" #not sure if this or Person ID should be PK. 
+    name: "respondent"
+
+  subject: 
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions: 
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        column: "child_id"
+        # transforms: 
+        # - !<transforms.ConcatTransform>
+        #   columns: ["ResponseId", "Q262"]
+        #   separator: "_"
+    name: "subject"
+
+# ********** MEDIA USE ATTITUDES FOR CHILD **********
+
+  keepintouchvideochatattitude: 
+    fqn: "ol.mediauseattitude"
+    entitySetName: "CAFE_MAQ_MediaUseAttitudes"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "videochat_keepintouch"
+      ol.levelofagreement:
+        type: "ol.levelofagreement"
+        column: "Q53_1"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+      ol.subject: 
+        type: "ol.subject"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "parent use for child"
+      ol.reason:
+        type: "ol.reason"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "use video chat so child can keep in touch with distant relatives"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "video chat (e.g., FaceTime, Skype, WhatsApp video call)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q53_1"
+      reverse: true
+    name: "keepintouchvideochatattitude"
+
+  parenttravelingvideochatattitude: 
+    fqn: "ol.mediauseattitude"
+    entitySetName: "CAFE_MAQ_MediaUseAttitudes"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "videochat_parenttraveling"
+      ol.levelofagreement:
+        type: "ol.levelofagreement"
+        column: "Q53_2"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+      ol.subject: 
+        type: "ol.subject"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "parent use for child"
+      ol.reason:
+        type: "ol.reason"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "use video chat as a way for child to see parents when traveling"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "video chat (e.g., FaceTime, Skype, WhatsApp video call)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q53_2"
+      reverse: true
+    name: "parenttravelingvideochatattitude"
+
+  connectchildvideochatattitude: 
+    fqn: "ol.mediauseattitude"
+    entitySetName: "CAFE_MAQ_MediaUseAttitudes"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "videochat_connectchild"
+      ol.levelofagreement:
+        type: "ol.levelofagreement"
+        column: "Q53_3"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+      ol.subject: 
+        type: "ol.subject"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "parent use for child"
+      ol.reason:
+        type: "ol.reason"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "use video chat to connect with child throughout the day"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "video chat (e.g., FaceTime, Skype, WhatsApp video call)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q53_3"
+      reverse: true
+    name: "connectchildvideochatattitude"
+
+  workschedulevideochatattitude: 
+    fqn: "ol.mediauseattitude"
+    entitySetName: "CAFE_MAQ_MediaUseAttitudes"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "videochat_workschedule"
+      ol.levelofagreement:
+        type: "ol.levelofagreement"
+        column: "Q53_4"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+      ol.subject: 
+        type: "ol.subject"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "parent use for child"
+      ol.reason:
+        type: "ol.reason"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "use video chat to connect with child because of work schedule"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "video chat (e.g., FaceTime, Skype, WhatsApp video call)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q53_4"
+      reverse: true
+    name: "workschedulevideochatattitude"
+
+
+  educatechildmediause: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_MediaDeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mediause_educatechild"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often media is used for child"
+      ol.reason: 
+        type: "ol.reason"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "to educate child"
+      general.frequency: 
+        type: "general.frequency"
+        column: "Q280_1"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "2", "3", "4", "5", "6", "7"]
+          goal: ["Never", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "TV, DVR, DVDs, computer, mobile phone, smartphone, iPad or tabelt, mp3 player, education game, console video game, virtual assistant, etc."
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parent doing for child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "current/ever"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q280_1"
+      reverse: true
+    name: "educatechildmediause"
+
+  calmdownchildmediause: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_MediaDeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mediause_calmdownchild"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often media is used for child"
+      ol.reason: 
+        type: "ol.reason"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "to calm child down when they are upset"
+      general.frequency: 
+        type: "general.frequency"
+        column: "Q280_2"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "2", "3", "4", "5", "6", "7"]
+          goal: ["Never", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "TV, DVR, DVDs, computer, mobile phone, smartphone, iPad or tabelt, mp3 player, education game, console video game, virtual assistant, etc."
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parent doing for child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "current/ever"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q280_2"
+      reverse: true
+    name: "calmdownchildmediause"
+
+  keepchildbusymediause: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_MediaDeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mediause_keepchildbusy"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often media is used for child"
+      ol.reason: 
+        type: "ol.reason"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "to keep child busy to get things done"
+      general.frequency: 
+        type: "general.frequency"
+        column: "Q280_3"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "2", "3", "4", "5", "6", "7"]
+          goal: ["Never", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "TV, DVR, DVDs, computer, mobile phone, smartphone, iPad or tabelt, mp3 player, education game, console video game, virtual assistant, etc."
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parent doing for child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "current/ever"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q280_3"
+      reverse: true
+    name: "keepchildbusymediause"
+
+  communicatemediause: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_MediaDeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mediause_communicate"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often media is used for child"
+      ol.reason: 
+        type: "ol.reason"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "to communicate with family and friends"
+      general.frequency: 
+        type: "general.frequency"
+        column: "Q280_4"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "2", "3", "4", "5", "6", "7"]
+          goal: ["Never", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "TV, DVR, DVDs, computer, mobile phone, smartphone, iPad or tabelt, mp3 player, education game, console video game, virtual assistant, etc."
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parent doing for child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "current/ever"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q280_4"
+      reverse: true
+    name: "communicatemediause"
+
+  childenjoysmediause: 
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_MediaDeviceUse"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mediause_childenjoys"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often media is used for child"
+      ol.reason: 
+        type: "ol.reason"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "child enjoys using the device"
+      general.frequency: 
+        type: "general.frequency"
+        column: "Q280_5"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "2", "3", "4", "5", "6", "7"]
+          goal: ["Never", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
+      ol.name: 
+        type: "ol.name"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "TV, DVR, DVDs, computer, mobile phone, smartphone, iPad or tabelt, mp3 player, education game, console video game, virtual assistant, etc."
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parent doing for child"
+      ol.relevantperiod: 
+        type: "ol.relevantperiod"
+        transforms: 
+        - !<transforms.ValueTransform>
+          value: "current/ever"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q280_5"
+      reverse: true
+    name: "childenjoysmediause"
+
+
+# *************** PARENT CONCERNS OVER CHILDS MEDIA USE *********
+
+  
+  mediauseconcerns:
+    fqn: "ol.mediauseconcerns"
+    entitySetName: "CAFE_MAQ_MediaUseConcerns"
+    propertyDefinitions:
+      ol.id: 
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mediaconcerns"
+      ol.subject: 
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parent concern for child"
+      ol.description: 
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how much concern"
+      ol.inappropriatecontent: 
+        type: "ol.inappropriatecontent"
+        column: "Q56_1"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "3", "5"]
+          goal: ["Not at all", "Somewhat", "A Great Deal"]
+      ol.inattention: 
+        type: "ol.inattention"
+        column: "Q56_2"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "3", "5"]
+          goal: ["Not at all", "Somewhat", "A Great Deal"]
+      ol.addictionpotential: 
+        type: "ol.addictionpotential"
+        column: "Q56_3"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "3", "5"]
+          goal: ["Not at all", "Somewhat", "A Great Deal"]
+      ol.opportunitycost: 
+        type: "ol.opportunitycost"
+        column: "Q56_4"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "3", "5"]
+          goal: ["Not at all", "Somewhat", "A Great Deal"]
+      ol.exposuretoradiation: 
+        type: "ol.exposuretoradiation"
+        column: "Q56_5"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "3", "5"]
+          goal: ["Not at all", "Somewhat", "A Great Deal"]
+      ol.languagedevelopment: 
+        type: "ol.languagedevelopment"
+        column: "Q56_6"
+        transforms: 
+        - !<transforms.ReplaceTransform> 
+          target: ["1", "3", "5"]
+          goal: ["Not at all", "Somewhat", "A Great Deal"]
+    name: "mediauseconcerns"
+
+associationDefinitions:
+
+# ***************** PARENTS MEDIA USE ATTITUDES ABOUT CHILD***************
+
+  reported1: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "mediauseconcerns"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported1"
+
+  subjectof1: 
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "mediauseconcerns"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof1"
+
+  reported2: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "keepintouchvideochatattitude"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported2"
+
+  reported3: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "parenttravelingvideochatattitude"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported3"
+
+  reported4: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "connectchildvideochatattitude"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported4"
+
+  reported5: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "workschedulevideochatattitude"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported5"
+
+  subjectof2: 
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "keepintouchvideochatattitude"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof2"
+
+  subjectof3: 
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "parenttravelingvideochatattitude"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof3"
+
+  subjectof4: 
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "connectchildvideochatattitude"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof4"
+
+  subjectof5: 
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "workschedulevideochatattitude"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof5"
+
+
+# ******************** PARENTS USE OF MEDIA FOR CHILD ASSOCIATIONS ***************
+  
+  reported7: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "educatechildmediause"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported7"
+
+  reported8: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "calmdownchildmediause"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported8"
+
+  reported9: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "keepchildbusymediause"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported9"
+
+  reported10: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "communicatemediause"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported10"
+
+  reported11: 
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "childenjoysmediause"
+    propertyDefinitions: 
+      general.id:
+        type: "general.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported11"
+
+  involvedin1:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "educatechildmediause"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin1"
+
+  involvedin2:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "calmdownchildmediause"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin2"
+
+  involvedin3:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "keepchildbusymediause"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin3"
+
+  involvedin4:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "communicatemediause"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin4"
+
+  involvedin5:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "childenjoysmediause"
+    propertyDefinitions: 
+      ol.id: 
+        type: "ol.id"
+        transforms: 
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin5"
