@@ -336,14 +336,18 @@ entityDefinitions:
     fqn: "ol.location"
     entitySetName: "CAFE_MAQ_DeviceLocations"
     propertyDefinitions:
-      general.id:
+      general.id: 
         type: "general.id"
         transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "Q281"]
-          separator: "_"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
           - !<transforms.ValueTransform>
             value: "childsroom"
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["ResponseId", "Q281"]
+            separator: "_"
+          separator: "_"
     name: "childsroom"
 
 # ************** SUBJECT DEVICE LOCATION IN ROOM - NO ***********
