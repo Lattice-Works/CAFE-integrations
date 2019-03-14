@@ -1,0 +1,257 @@
+# GU
+#csv files: GU_MAQs_11March2019_ChoiceText.csv, GU_MAQs_11March2019_SecondFile_ChoiceText.csv
+
+
+entityDefinitions:
+  respondent:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        column: respondent_id
+      ol.idnumber:
+        type: "ol.idnumber"
+        column: "ResponseId" #not sure if this or Person ID should be PK.
+    name: "respondent"
+
+  childsubject:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        column: child_id
+    name: "childsubject"
+
+  household:
+    fqn: "demographics.household"
+    entitySetName: "CAFE_MAQ_Households"
+    propertyDefinitions:
+      household.id:
+        type: "household.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId"]
+          hashFunction: "sha256"
+    name: "household"
+
+  communication_household:
+    fqn: "ol.communication"
+    entitySetName: "CAFE_MAQ_Household_Communication"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId"]
+          hashFunction: "sha256"
+      ol.number:
+        type: "ol.number"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Yes", "No", "999"] # means yes, no
+          goal: ["2", "1", ""] #meaning 2 languages, or 1 language
+      ol.language:
+        type: "ol.language"
+        column: "Q29"
+      ol.language_text:
+        type: "ol.language"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q29_44_TEXT"
+          string: "999"
+          transformsIfTrue: 
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>
+          column: "Q29_44_TEXT"
+      ol.pcttime: # Percent of time main language is spoken in home - %
+        type: "ol.pcttime"
+        column: "Q30_1"
+      ol.status1:
+      # Who speaks the main language to [Field-kid1]? Please check all that apply. - Selected Choice
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q31_3"
+          string: "999"
+          transformsIfTrue: 
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>
+            column: "Q31_3"
+      ol.status2:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q31_6"
+          string: "999"
+          transformsIfTrue: 
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>    
+            column: "Q31_6"
+      ol.status3:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q31_2"
+          string: "999"
+          transformsIfTrue: 
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>
+            column: "Q31_2"
+      ol.status4:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q31_7"
+          string: "999"
+          transformsIfTrue: 
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>
+            column: "Q31_7"
+      ol.status5:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q31_4"
+          string: "999"
+          transformsIfTrue: 
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>    
+            column: "Q31_4"
+      ol.status6:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q31_9"
+          string: "999"
+          transformsIfTrue: 
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>    
+            column: "Q31_9"
+      ol.status6:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q31_8"
+          string: "999"
+          transformsIfTrue: 
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>    
+            column: "Q31_8"
+      ol.status7:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q31_8_TEXT"
+          string: "999"
+          transformsIfTrue: 
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>
+            column: "Q31_8_TEXT"
+    name: "communication_household"
+
+
+associationDefinitions:
+
+#******************* HOUSEHOLD & RELATIONS ASSOCIATIONS ************************
+  partof_a:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "respondent"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId", "RecordedDate"]
+          hashFunction: "sha256"
+    name: "partof_a"
+
+  partof_b:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "childsubject"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId", "RecordedDate"]
+          hashFunction: "sha256"
+    name: "partof_b"
+
+  relatedto:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "respondent"
+    dst: "childsubject"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "relatedto"
+
+
+# ************************** COMMUNICATION ASSOCIATIONS **********************
+
+  reported:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "communication_household"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId", "RecordedDate"]
+          hashFunction: "sha256"
+    name: "reported"
+
+  involvedin:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "childsubject"
+    dst: "communication_household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId", "RecordedDate"]
+          hashFunction: "sha256"
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+    name: "involvedin"
+
+
+
+
+  
