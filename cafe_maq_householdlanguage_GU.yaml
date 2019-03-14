@@ -61,7 +61,7 @@ entityDefinitions:
         - !<transforms.BooleanContainsTransform>
           column: "Q29_44_TEXT"
           string: "999"
-          transformsIfTrue: 
+          transformsIfTrue:
           - !<transforms.ValueTransform>
             value: null
           transformsIfFalse:
@@ -77,7 +77,7 @@ entityDefinitions:
         - !<transforms.BooleanContainsTransform>
           column: "Q31_3"
           string: "999"
-          transformsIfTrue: 
+          transformsIfTrue:
           - !<transforms.ValueTransform>
             value: null
           transformsIfFalse:
@@ -89,11 +89,11 @@ entityDefinitions:
         - !<transforms.BooleanContainsTransform>
           column: "Q31_6"
           string: "999"
-          transformsIfTrue: 
+          transformsIfTrue:
           - !<transforms.ValueTransform>
             value: null
           transformsIfFalse:
-          - !<transforms.ColumnTransform>    
+          - !<transforms.ColumnTransform>
             column: "Q31_6"
       ol.status3:
         type: "ol.status"
@@ -101,7 +101,7 @@ entityDefinitions:
         - !<transforms.BooleanContainsTransform>
           column: "Q31_2"
           string: "999"
-          transformsIfTrue: 
+          transformsIfTrue:
           - !<transforms.ValueTransform>
             value: null
           transformsIfFalse:
@@ -113,7 +113,7 @@ entityDefinitions:
         - !<transforms.BooleanContainsTransform>
           column: "Q31_7"
           string: "999"
-          transformsIfTrue: 
+          transformsIfTrue:
           - !<transforms.ValueTransform>
             value: null
           transformsIfFalse:
@@ -125,11 +125,11 @@ entityDefinitions:
         - !<transforms.BooleanContainsTransform>
           column: "Q31_4"
           string: "999"
-          transformsIfTrue: 
+          transformsIfTrue:
           - !<transforms.ValueTransform>
             value: null
           transformsIfFalse:
-          - !<transforms.ColumnTransform>    
+          - !<transforms.ColumnTransform>
             column: "Q31_4"
       ol.status6:
         type: "ol.status"
@@ -137,11 +137,11 @@ entityDefinitions:
         - !<transforms.BooleanContainsTransform>
           column: "Q31_9"
           string: "999"
-          transformsIfTrue: 
+          transformsIfTrue:
           - !<transforms.ValueTransform>
             value: null
           transformsIfFalse:
-          - !<transforms.ColumnTransform>    
+          - !<transforms.ColumnTransform>
             column: "Q31_9"
       ol.status6:
         type: "ol.status"
@@ -149,11 +149,11 @@ entityDefinitions:
         - !<transforms.BooleanContainsTransform>
           column: "Q31_8"
           string: "999"
-          transformsIfTrue: 
+          transformsIfTrue:
           - !<transforms.ValueTransform>
             value: null
           transformsIfFalse:
-          - !<transforms.ColumnTransform>    
+          - !<transforms.ColumnTransform>
             column: "Q31_8"
       ol.status7:
         type: "ol.status"
@@ -161,7 +161,7 @@ entityDefinitions:
         - !<transforms.BooleanContainsTransform>
           column: "Q31_8_TEXT"
           string: "999"
-          transformsIfTrue: 
+          transformsIfTrue:
           - !<transforms.ValueTransform>
             value: null
           transformsIfFalse:
@@ -254,4 +254,4 @@ associationDefinitions:
 
 
 
-  
+
