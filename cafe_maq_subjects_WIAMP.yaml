@@ -1072,23 +1072,6 @@ associationDefinitions:
       ol.role5:
         type: "ol.role"
         column: "Q15_x1_1_5"
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x1_1_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x1_1_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x1_1_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x1_1_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x1_1_5"
-      reverse: true
     name: "relatedto1"
 
   relatedto2:
@@ -1117,23 +1100,6 @@ associationDefinitions:
       ol.role5:
         type: "ol.role"
         column: "Q15_x2_1_5"
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x2_1_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x2_1_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x2_1_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x2_1_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x2_1_5"
-      reverse: true
     name: "relatedto2"
 
   relatedto3:
@@ -1162,23 +1128,6 @@ associationDefinitions:
       ol.role5:
         type: "ol.role"
         column: "Q15_x3_1_5"
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x3_1_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x3_1_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x3_1_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x3_1_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x3_1_5"
-      reverse: true
     name: "relatedto3"
 
   relatedto4:
@@ -1253,23 +1202,6 @@ associationDefinitions:
         #   transformsIfFalse:
         #   - !<transforms.ValueTransform>
         #     value: null
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x4_1_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x4_1_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x4_1_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x4_1_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x4_1_5"
-      reverse: true
     name: "relatedto4"
 
   relatedto5:
@@ -1344,23 +1276,6 @@ associationDefinitions:
         #   transformsIfFalse:
         #   - !<transforms.ValueTransform>
         #     value: null
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x5_1_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x5_1_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x5_1_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x5_1_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x5_1_5"
-      reverse: true
     name: "relatedto5"
 
   relatedto6:
@@ -1435,23 +1350,6 @@ associationDefinitions:
         #   transformsIfFalse:
         #   - !<transforms.ValueTransform>
         #     value: null
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x6_1_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x6_1_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x6_1_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x6_1_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x6_1_5"
-      reverse: true
     name: "relatedto6"
 
 
