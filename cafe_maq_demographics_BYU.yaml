@@ -105,6 +105,14 @@ entityDefinitions:
       nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "14#1_Q2_1_TEXT"
+      ol.birthmonth:
+        type: "ol.birthmonth"
+        column: "14#1_Q2_1"
+      ol.birthyear:
+        type: "ol.birthyear"
+        column: "14#3_Q2_1"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -121,29 +129,24 @@ entityDefinitions:
       reverse: true
     name: "childsubject"
 
-  subjectdetails:
-    fqn: "ol.persondetails"
-    entitySetName: "CAFE_MAQ_ChildrenDetails"
-    propertyDefinitions:
-      general.id:
-        type: "general.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-      ol.birthmonth:
-        type: "ol.birthmonth"
-        column: "14#1_Q2_1"
-      ol.birthyear:
-        type: "ol.birthyear"
-        column: "14#3_Q2_1"
-        transforms:
-        - !<transforms.ParseIntTransform> {}
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "childage"
-      reverse: true
-    name: "subjectdetails"
+  # subjectdetails:
+  #   fqn: "ol.persondetails"
+  #   entitySetName: "CAFE_MAQ_ChildrenDetails"
+  #   propertyDefinitions:
+  #     general.id:
+  #       type: "general.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #     person.ageatevent:
+  #       type: "person.ageatevent"
+  #       column: "childage"
+  #   conditions:
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "childage"
+  #     reverse: true
+  #   name: "subjectdetails"
 
   subjectdetailshealth:
     fqn: "ol.persondetailshealth"
