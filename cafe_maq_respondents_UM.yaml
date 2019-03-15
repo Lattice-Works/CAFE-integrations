@@ -33,13 +33,13 @@ entityDefinitions:
 
 associationDefinitions:
   has:
-    fqn: "ol.has"
+    fqn: "ol.reported"
     entitySetName: CAFE_MAQ_Reported
     src: "respondent"
     dst: "respondentdetails"
     propertyDefinitions:
-      ol.id:
-        type: "ol.id"
+      general.id:
+        type: "general.id"
         transforms:
         - !<transforms.HashTransform>
           columns: ["ResponseId", "RecordedDate"]
