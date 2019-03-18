@@ -1,0 +1,6848 @@
+# GU CAFE MAQ
+#csv files: GU_MAQs_11March2019_ChoiceText.csv, GU_MAQs_11March2019_SecondFile_ChoiceText.csv
+# Media Devices section of survey (PTS_MAQS V3.1_Data Dictionary_Questions for reference)
+
+
+
+entityDefinitions:
+  respondent:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        column: "respondent_id" #Person ID
+      ol.idnumber:
+        type: "ol.idnumber"
+        column: "ResponseId" #not sure if this or Person ID should be PK.
+    name: "respondent"
+
+  subject:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        column: "child_id"
+        # transforms:
+        # - !<transforms.ConcatTransform>
+        #   columns: ["ResponseId", "Q281"]
+        #   separator: "_"
+    name: "subject"
+
+  household:
+    fqn: "demographics.household"
+    entitySetName: "CAFE_MAQ_Households"
+    propertyDefinitions:
+      household.id:
+        type: "household.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId"]
+          hashFunction: "sha256"
+    name: "household"
+
+# *********************DEVICES IN HOUSEHOLD*********************
+  TV:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_Devices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "television"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_1"
+        # transforms:
+        # - !<transforms.ValueTransform>
+        #   value: "Televizor"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_1"
+      reverse: true
+    name: "TV"
+
+  DVR:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvr"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_2"
+        # transforms:
+        # - !<transforms.ValueTransform>
+        #   value: "DVR for recording live televised content"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_2"
+      reverse: true
+    name: "DVR"
+
+  DVD:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvr"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_3"
+        # transforms:
+        # - !<transforms.ValueTransform>
+        #   value: "DVD player"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_3"
+      reverse: true
+    name: "DVD"
+
+  personalcomputer:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "personal_computer"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_4"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_4"
+      reverse: true
+    name: "personalcomputer"
+
+  mobilephone:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mobile_phone"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_7"
+        # transforms:
+        # - !<transforms.ValueTransform>
+        #   value: "Regular mobile phone (just for talk and text)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_7"
+      reverse: true
+    name: "mobilephone"
+
+  smartphone:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "smartphone"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_8"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_8"
+      reverse: true
+    name: "smartphone"
+
+  ipadtablet:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "ipad_tablet"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_9"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_9"
+      reverse: true
+    name: "ipadtablet"
+
+  mp3player:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mp3_player"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_10"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33"
+      reverse: true
+    name: "mp3player"
+
+  educationalgame:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "educational_game"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_15"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_15"
+      reverse: true
+    name: "educationalgame"
+
+  consolegames:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "video_games"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_17"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_17"
+      reverse: true
+    name: "consolegames"
+
+
+  nodevice:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "unspecified"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "None"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_14"
+      pattern: "(?i)(\\bNone\\b)"
+      reverse: false
+    name: "nodevice"
+
+  otherdevice:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "other_device"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Other (NOT Including white noise makers)"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_13"
+      pattern: "(?i)(\\bOther\\b)"
+      reverse: false
+    name: "otherdevice"
+
+# ******** DEVICE LOCATIONS *********
+
+  childsroom:
+    fqn: "ol.location"
+    entitySetName: "CAFE_MAQ_DeviceLocations"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ValueTransform>
+            value: "childsroom"
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["ResponseId", "Q281"]
+            separator: "_"
+          separator: "_"
+    name: "childsroom"
+
+# ************** SUBJECT DEVICE LOCATION IN ROOM - NO ***********
+
+  childsroom_no_television:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "television_not_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_1_1"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_1_1"
+      pattern: "(?i)(\\bTelevision\\b)"
+      reverse: false
+    name: "childsroom_no_television"
+
+  childsroom_no_dvr:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvr_not_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_1_2"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_1_2"
+      pattern: "(?i)(\\bDVR\\b)"
+      reverse: false
+    name: "childsroom_no_dvr"
+
+  childsroom_no_dvd:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvd_not_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_1_3"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_1_3"
+      pattern: "(?i)(\\bDVD\\b)"
+      reverse: false
+    name: "childsroom_no_dvd"
+
+  childsroom_no_pc:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "pc_not_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_1_4"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_1_4"
+      pattern: "(?i)(\\bcomputer\\b)"
+      reverse: false
+    name: "childsroom_no_pc"
+
+  childsroom_no_mobilephone:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mobilephone_not_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_1_5"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_1_5"
+      pattern: "(?i)(\\bmobile phone\\b)"
+      reverse: false
+    name: "childsroom_no_mobilephone"
+
+  childsroom_no_smartphone:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "smartphone_not_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_1_6"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_1_6"
+      pattern: "(?i)(\\bsmartphone\\b)"
+      reverse: false
+    name: "childsroom_no_smartphone"
+
+  childsroom_no_ipad:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "ipad_not_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_1_7"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_1_7"
+      pattern: "(?i)(\\biPad\\b)"
+      reverse: false
+    name: "childsroom_no_ipad"
+
+  childsroom_no_mp3:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mp3_not_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_1_8"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_1_8"
+      pattern: "(?i)(\\bMP3\\b)"
+      reverse: false
+    name: "childsroom_no_mp3"
+
+  childsroom_no_educationalgame:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "educationalgame_not_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_1_9"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_1_9"
+      pattern: "(?i)(\\bEducational game\\b)"
+      reverse: false
+    name: "childsroom_no_educationalgame"
+
+  childsroom_no_consolegame:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "consolegame_not_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_1_10"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_1_10"
+      pattern: "(?i)(\\bConsole\\b)"
+      reverse: false
+    name: "childsroom_no_consolegame"
+
+  childsroom_no_virtualassistant:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "virtualassistant_not room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_1_11"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_1_11"
+      pattern: "(?i)(\\bVirtual Assistant\\b)"
+      reverse: false
+    name: "childsroom_no_virtualassistant"
+
+  childsroom_no_videostreaming:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "videostreaming_not_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_1_12"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_1_12"
+      pattern: "(?i)(\\bVideo streaming\\b)"
+      reverse: false
+    name: "childsroom_no_videostreaming"
+
+# ************** DEVICE LOCATION SOMETIMES IN SUBJECT'S ROOM***********
+  childsroom_sometimes_television:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "television_sometimes_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_2_1"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_2_1"
+      pattern: "(?i)(\\bTelevision\\b)"
+      reverse: false
+    name: "childsroom_sometimes_television"
+
+  childsroom_sometimes_dvr:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvr_sometimes_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_2_2"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_2_2"
+      pattern: "(?i)(\\bDVR\\b)"
+      reverse: false
+    name: "childsroom_sometimes_dvr"
+
+  childsroom_sometimes_dvd:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvd_sometimes_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_2_3"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_2_3"
+      pattern: "(?i)(\\bDVD\\b)"
+      reverse: false
+    name: "childsroom_sometimes_dvd"
+
+  childsroom_sometimes_pc:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "pc_sometimes_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_2_4"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_2_4"
+      pattern: "(?i)(\\bPersonal computer\\b)"
+      reverse: false
+    name: "childsroom_sometimes_pc"
+
+  childsroom_sometimes_mobilephone:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mobilephone_sometimes_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_2_5"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_2_5"
+      pattern: "(?i)(\\bmobile phone\\b)"
+      reverse: false
+    name: "childsroom_sometimes_mobilephone"
+
+  childsroom_sometimes_smartphone:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "smartphone_sometimes_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_2_6"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_2_6"
+      pattern: "(?i)(\\bSmartphone\\b)"
+      reverse: false
+    name: "childsroom_sometimes_smartphone"
+
+  childsroom_sometimes_ipad:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "ipad_sometimes_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_2_7"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_2_7"
+      pattern: "(?i)(\\biPad\\b)"
+      reverse: false
+    name: "childsroom_sometimes_ipad"
+
+  childsroom_sometimes_mp3:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mp3_sometimes_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_2_8"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_2_8"
+      pattern: "(?i)(\\bMP3\\b)"
+      reverse: false
+    name: "childsroom_sometimes_mp3"
+
+  childsroom_sometimes_educationalgame:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "educationalgame_sometimes_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_2_9"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_2_9"
+      pattern: "(?i)(\\bEducational game\\b)"
+      reverse: false
+    name: "childsroom_sometimes_educationalgame"
+
+  childsroom_sometimes_consolegame:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "consolegame_sometimes_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_2_10"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_2_10"
+      pattern: "(?i)(\\bConsole\\b)"
+      reverse: false
+    name: "childsroom_sometimes_consolegame"
+
+  childsroom_sometimes_virtualassistant:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "virtualassistant_sometimes_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_2_11"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_2_11"
+      pattern: "(?i)(\\bVirtual Assistant\\b)"
+      reverse: false
+    name: "childsroom_sometimes_virtualassistant"
+
+  childsroom_sometimes_videostreaming:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "videostreaming_sometimes_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_2_12"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_2_12"
+      pattern: "(?i)(\\bVideo streaming\\b)"
+      reverse: false
+    name: "childsroom_sometimes_videostreaming"
+
+# ************** DEVICE LOCATION YES IN SUBJECTS ROOM ***********
+# The Yes's are all coming from question Q36_10 !!!
+  childsroom_television:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "television_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_3_1"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_3_1"
+      pattern: "(?i)(\\bTelevision\\b)"
+      reverse: false
+    name: "childsroom_television"
+
+  childsroom_dvr:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvr_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_3_2"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_3_2"
+      pattern: "(?i)(\\bDVR\\b)"
+      reverse: false
+    name: "childsroom_dvr"
+
+  childsroom_dvd:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvd_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_3_3"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_3_3"
+      pattern: "(?i)(\\bDVD\\b)"
+      reverse: false
+    name: "childsroom_dvd"
+
+  childsroom_pc:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "pc_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_3_4"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_3_4"
+      pattern: "(?i)(\\bPersonal computer\\b)"
+      reverse: false
+    name: "childsroom_pc"
+
+  childsroom_mobilephone:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mobilephone_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_3_5"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_3_5"
+      pattern: "(?i)(\\bmobile phone\\b)"
+      reverse: false
+    name: "childsroom_mobilephone"
+
+  childsroom_smartphone:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "smartphone_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_3_6"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_3_6"
+      pattern: "(?i)(\\bsmartphone\\b)"
+      reverse: false
+    name: "childsroom_smartphone"
+
+  childsroom_ipad:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "ipad_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_3_7"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_3_7"
+      pattern: "(?i)(\\biPad\\b)"
+      reverse: false
+    name: "childsroom_ipad"
+
+  childsroom_mp3:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mp3_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_3_8"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_3_8"
+      pattern: "(?i)(\\bMP3\\b)"
+      reverse: false
+    name: "childsroom_mp3"
+
+  childsroom_educationalgame:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "educationalgame_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_3_9"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_3_9"
+      pattern: "(?i)(\\bEducational game\\b)"
+      reverse: false
+    name: "childsroom_educationalgame"
+
+  childsroom_consolegame:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "consolegame_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_3_10"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_3_10"
+      pattern: "(?i)(\\bConsole-based\\b)"
+      reverse: false
+    name: "childsroom_consolegame"
+
+  childsroom_virtualassistant:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "virtualassistant_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_3_11"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_3_11"
+      pattern: "(?i)(\\bVirtual Assistant\\b)"
+      reverse: false
+    name: "childsroom_virtualassistant"
+
+  childsroom_videostreaming:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "videostreaming_room"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in child's room"
+      ol.name:
+        type: "ol.name"
+        column: "Q36_3_12"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q36_3_12"
+      pattern: "(?i)(\\bVideo streaming\\b)"
+      reverse: false
+    name: "childsroom_videostreaming"
+
+
+# ****************** WHEN SUBJECTS STARTED USING TYPES OF MEDIA ************
+
+  televisionstartchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "television_start_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q37_1"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "2", "3", "4"]
+        #   goal: ["Does not use", "Started using in last 2 weeks", "Started using in the last 6 months", "Started using over 6 months ago"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Television"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_1"
+      reverse: true
+    name: "televisionstartchilduse"
+
+  dvrstartchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvr_start_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q37_2"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "2", "3", "4"]
+        #   goal: ["Does not use", "Started using in last 2 weeks", "Started using in the last 6 months", "Started using over 6 months ago"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "DVR for recording live televised content"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_2"
+      reverse: true
+    name: "dvrstartchilduse"
+
+  dvdstartchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvd_start_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q37_3"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "2", "3", "4"]
+        #   goal: ["Does not use", "Started using in last 2 weeks", "Started using in the last 6 months", "Started using over 6 months ago"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "DVD or VCR player"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_3"
+      reverse: true
+    name: "dvdstartchilduse"
+
+  personalcomputerstartchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "personalcomputer_start_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q37_4"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "2", "3", "4"]
+        #   goal: ["Does not use", "Started using in last 2 weeks", "Started using in the last 6 months", "Started using over 6 months ago"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Personal computer"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_4"
+      reverse: true
+    name: "personalcomputerstartchilduse"
+
+  mobilephonestartchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mobilephone_start_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q37_5"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "2", "3", "4"]
+        #   goal: ["Does not use", "Started using in last 2 weeks", "Started using in the last 6 months", "Started using over 6 months ago"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Regular mobile phone (just for talk and text)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_5"
+      reverse: true
+    name: "mobilephonestartchilduse"
+
+  smartphonestartchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "smartphone_start_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q37_6"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "2", "3", "4"]
+        #   goal: ["Does not use", "Started using in last 2 weeks", "Started using in the last 6 months", "Started using over 6 months ago"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Smartphone (can access internet, etc.)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_6"
+      reverse: true
+    name: "smartphonestartchilduse"
+
+  ipadtabletstartchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "ipad_tablet_start_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q37_7"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "2", "3", "4"]
+        #   goal: ["Does not use", "Started using in last 2 weeks", "Started using in the last 6 months", "Started using over 6 months ago"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "iPad or other tablet device or e-reader (e.g., Kindle, Nook, etc.)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_7"
+      reverse: true
+    name: "ipadtabletstartchilduse"
+
+  mp3startchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mp3_start_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q37_8"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "2", "3", "4"]
+        #   goal: ["Does not use", "Started using in last 2 weeks", "Started using in the last 6 months", "Started using over 6 months ago"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "MP3 player (iPod or similar)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_8"
+      reverse: true
+    name: "mp3startchilduse"
+
+  educationalgamestartchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "educationalgame_start_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q37_9"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "2", "3", "4"]
+        #   goal: ["Does not use", "Started using in last 2 weeks", "Started using in the last 6 months", "Started using over 6 months ago"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Educational game device (e.g., Leapster Explorer or a V-Smile"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_9"
+      reverse: true
+    name: "educationalgamestartchilduse"
+
+  consolegamestartchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "consolegame_start_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q37_10"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "2", "3", "4"]
+        #   goal: ["Does not use", "Started using in last 2 weeks", "Started using in the last 6 months", "Started using over 6 months ago"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Console-based gaming system (e.g., Xbox, Nintendo, or Playstation) or handheld gaming system (e.g., Nintendo 3DS)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_10"
+      reverse: true
+    name: "consolegamestartchilduse"
+
+  virtualassistantstartchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "virtualassistant_start_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q37_11"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "2", "3", "4"]
+        #   goal: ["Does not use", "Started using in last 2 weeks", "Started using in the last 6 months", "Started using over 6 months ago"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Virtual Assistant (e.g., Alexa/Echo device, Google Home, Apple Home Pod)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_11"
+      reverse: true
+    name: "virtualassistantstartchilduse"
+
+  videostreamingstartchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "videostreaming_start_childusel"
+      ol.status:
+        type: "ol.status"
+        column: "Q37_12"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "2", "3", "4"]
+        #   goal: ["Does not use", "Started using in last 2 weeks", "Started using in the last 6 months", "Started using over 6 months ago"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Video streaming services (e.g., Hulu, Netflix, etc.)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_12"
+      reverse: true
+    name: "videostreamingstartchilduse"
+
+
+# ************** SUBJECT DEVICE USE 1 HOUR BEFORE BEDTIME ***********
+
+  televisionhourbeforebed:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "television_hourbeforebed_childuse"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often used during the hour before bedtime"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40a2_1"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "3", "4", "5", "6", "8"]
+        #   goal: ["Never", "Less than once a week", "About once a week", "2-3 times per week", "4-6 times per week", "Every night"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Television"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_1"
+      reverse: true
+    name: "televisionhourbeforebed"
+
+  dvrhourbeforebed:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvr_hourbeforebed_childuse"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often used during the hour before bedtime"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40a2_2"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "3", "4", "5", "6", "8"]
+        #   goal: ["Never", "Less than once a week", "About once a week", "2-3 times per week", "4-6 times per week", "Every night"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "DVR for recording live televised content"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_2"
+      reverse: true
+    name: "dvrhourbeforebed"
+
+  dvdhourbeforebed:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvd_hourbeforebed_childuse"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often used during the hour before bedtime"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40a2_3"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "3", "4", "5", "6", "8"]
+        #   goal: ["Never", "Less than once a week", "About once a week", "2-3 times per week", "4-6 times per week", "Every night"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "DVD or VCR player"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_3"
+      reverse: true
+    name: "dvdhourbeforebed"
+
+  personalcomputerhourbeforebed:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "personalcomputer_hourbeforebed_childuse"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often used during the hour before bedtime"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40a2_4"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "3", "4", "5", "6", "8"]
+        #   goal: ["Never", "Less than once a week", "About once a week", "2-3 times per week", "4-6 times per week", "Every night"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Personal computer"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_4"
+      reverse: true
+    name: "personalcomputerhourbeforebed"
+
+  mobilephonehourbeforebed:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mobilephone_hourbeforebed_childuse"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often used during the hour before bedtime"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40a2_5"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "3", "4", "5", "6", "8"]
+        #   goal: ["Never", "Less than once a week", "About once a week", "2-3 times per week", "4-6 times per week", "Every night"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Regular mobile phone (just for talk and text)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_5"
+      reverse: true
+    name: "mobilephonehourbeforebed"
+
+  smartphonehourbeforebed:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "smartphone_hourbeforebed_childuse"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often used during the hour before bedtime"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40a2_6"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "3", "4", "5", "6", "8"]
+        #   goal: ["Never", "Less than once a week", "About once a week", "2-3 times per week", "4-6 times per week", "Every night"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Smartphone (can access internet, etc.)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_6"
+      reverse: true
+    name: "smartphonehourbeforebed"
+
+  ipadhourbeforebed:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "ipad_tablet_hourbeforebed_childuse"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often used during the hour before bedtime"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40a2_7"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "3", "4", "5", "6", "8"]
+        #   goal: ["Never", "Less than once a week", "About once a week", "2-3 times per week", "4-6 times per week", "Every night"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "iPad or other tablet device or e-reader (e.g., Kindle, Nook, etc.)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_7"
+      reverse: true
+    name: "ipadhourbeforebed"
+
+  mp3hourbeforebed:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mp3_hourbeforebed_childuse"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often used during the hour before bedtime"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40a2_8"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "3", "4", "5", "6", "8"]
+        #   goal: ["Never", "Less than once a week", "About once a week", "2-3 times per week", "4-6 times per week", "Every night"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "MP3 player (iPod or similar)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_8"
+      reverse: true
+    name: "mp3hourbeforebed"
+
+  educationalgamehourbeforebed:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "educationalgame_hourbeforebed_childuse"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often used during the hour before bedtime"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40a2_9"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "3", "4", "5", "6", "8"]
+        #   goal: ["Never", "Less than once a week", "About once a week", "2-3 times per week", "4-6 times per week", "Every night"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Educational game device (e.g., Leapster Explorer or a V-Smile)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_9"
+      reverse: true
+    name: "educationalgamehourbeforebed"
+
+  consolegamehourbeforebed:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "consolegame_hourbeforebed_childuse"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often used during the hour before bedtime"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40a2_10"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "3", "4", "5", "6", "8"]
+        #   goal: ["Never", "Less than once a week", "About once a week", "2-3 times per week", "4-6 times per week", "Every night"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Console-based gaming system (e.g., Xbox, Nintendo, or Playstation) or handheld gaming system (e.g., Nintendo 3DS)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_10"
+      reverse: true
+    name: "consolegamehourbeforebed"
+
+  virtualassistanthourbeforebed:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "virtualassistant_hourbeforebed_childuse"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often used during the hour before bedtime"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40a2_11"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "3", "4", "5", "6", "8"]
+        #   goal: ["Never", "Less than once a week", "About once a week", "2-3 times per week", "4-6 times per week", "Every night"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Virtual Assistant (e.g., Alexa/Echo device, Google Home, Apple Home Pod)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_11"
+      reverse: true
+    name: "virtualassistanthourbeforebed"
+
+  videostreaminghourbeforebed:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "videostreaming_hourbeforebed_childuse"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often used during the hour before bedtime"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40a2_12"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "3", "4", "5", "6", "8"]
+        #   goal: ["Never", "Less than once a week", "About once a week", "2-3 times per week", "4-6 times per week", "Every night"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Video streaming services (e.g., Hulu, Netflix, etc.)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_12"
+      reverse: true
+    name: "videostreaminghourbeforebed"
+
+# ********************* SUBJECT'S DEVICE USE WHILE FALLING ASLEEP****************
+
+  televisionfallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "television_fallingasleep_childuse"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40b2_1"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_1"
+          string: "Television"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Television"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_1"
+      pattern: "(?i)(\\bTelevision\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_1"
+      pattern: "(?i)(\\b999\\b)"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_1"
+      reverse: true
+    name: "televisionfallingasleep"
+
+  dvrfallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvr_fallingasleep_childuse"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40b2_2"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_2"
+          string: "DVR for recording live televised content"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "DVR for recording live televised content"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_2"
+      pattern: "(?i)(\\bDVR\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_2"
+      pattern: "(?i)(\\b999\\b)"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_2"
+      reverse: true
+    name: "dvrfallingasleep"
+
+  dvdfallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvd_fallingasleep_childuse"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40b2_3"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_3"
+          string: "DVD or VCR player"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "DVD or VCR player"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_3"
+      pattern: "(?i)(\\bDVD\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_3"
+      pattern: "(?i)(\\b999\\b)"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_3"
+      reverse: true
+    name: "dvdfallingasleep"
+
+  computerfallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "computer_fallingasleep_childuse"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40b2_4"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_4"
+          string: "Personal computer"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Personal computer"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_4"
+      pattern: "(?i)(\\bPersonal computer\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_4"
+      pattern: "(?i)(\\b999\\b)"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_4"
+      reverse: true
+    name: "computerfallingasleep"
+
+  mobilephonefallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mobilephone_fallingasleep_childuse"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40b2_5"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_5"
+          string: "Regular mobile phone (just for talk and text)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Regular mobile phone (just for talk and text)"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_5"
+      pattern: "(?i)(\\bmobile phone\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_5"
+      pattern: "(?i)(\\b999\\b)"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_5"
+      reverse: true
+    name: "mobilephonefallingasleep"
+
+  smartphonefallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "smartphone_fallingasleep_childuse"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40b2_6"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_6"
+          string: "Smartphone (can access internet, etc.)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Smartphone (can access internet, etc.)"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_6"
+      pattern: "(?i)(\\bSmartphone\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_6"
+      pattern: "(?i)(\\b999\\b)"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_6"
+      reverse: true
+    name: "smartphonefallingasleep"
+
+  ipadfallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "ipad_fallingasleep_childuse"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40b2_7"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_7"
+          string: "iPad or other tablet device or e-reader (e.g., Kindle, Nook, etc.)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "iPad or other tablet device or e-reader (e.g., Kindle, Nook, etc.)"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_7"
+      pattern: "(?i)(\\biPad\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_7"
+      pattern: "(?i)(\\b999\\b)"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_7"
+      reverse: true
+    name: "ipadfallingasleep"
+
+  mp3fallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mp3_fallingasleep_childuse"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40b2_8"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_8"
+          string: "MP3 player (iPod or similar)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "MP3 player (iPod or similar)"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_8"
+      pattern: "(?i)(\\bMP3\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_8"
+      pattern: "(?i)(\\b999\\b)"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_8"
+      reverse: true
+    name: "mp3fallingasleep"
+
+  educationalgamefallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "educationalgame_fallingasleep_childuse"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40b2_9"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_9"
+          string: "Educational game device (e.g., Leapster Explorer or a V-Smile)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Educational game device (e.g., Leapster Explorer or a V-Smile)"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_9"
+      pattern: "(?i)(\\bEducational game\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_9"
+      pattern: "(?i)(\\b999\\b)"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_9"
+      reverse: true
+    name: "educationalgamefallingasleep"
+
+  consolegamefallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "consolegame_fallingasleep_childuse"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40b2_10"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_10"
+          string: "Console-based gaming system (e.g., Xbox, Nintendo, or Playstation) or handheld gaming system (e.g., Nintendo 3DS)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Console-based gaming system (e.g., Xbox, Nintendo, or Playstation) or handheld gaming system (e.g., Nintendo 3DS)"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_10"
+      pattern: "(?i)(\\bConsole\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_10"
+      pattern: "(?i)(\\b999\\b)"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_10"
+      reverse: true
+    name: "consolegamefallingasleep"
+
+  virtualassistantfallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "virtualassistant_fallingasleep_childuse"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40b2_11"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_11"
+          string: "Virtual Assistant (e.g., Alexa/Echo device, Google Home, Apple Home Pod)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Virtual Assistant (e.g., Alexa/Echo device, Google Home, Apple Home Pod)"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_11"
+      pattern: "(?i)(\\bVirtual\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_11"
+      pattern: "(?i)(\\b999\\b)"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_11"
+      reverse: true
+    name: "virtualassistantfallingasleep"
+
+  videostreamingfallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "videostreaming_fallingasleep_childuse"
+      # general.frequency:
+      #   type: "general.frequency"
+      #   column: "Q40b2_12"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_12"
+          string: "Video streaming services (e.g., Hulu, Netflix, etc.)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Video streaming services (e.g., Hulu, Netflix, etc.)"
+    conditions:
+    # - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_12"
+      pattern: "(?i)(\\bVideo\\b)"
+      reverse: false
+    # - !<conditions.BooleanRegexCondition>
+    #   column: "Q40b2_12"
+    #   pattern: "(?i)(\\b999\\b)"
+    #   reverse: true
+    name: "videostreamingfallingasleep"
+
+  otherfallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "other_fallingasleep_childuse"
+      # general.frequency:
+      #   type: "general.frequency"
+      #   column: "Q40b2_13"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_13"
+          string: "Other (NOT Including white noise makers)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Other (NOT Including white noise makers)"
+    conditions:
+    # - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_13"
+      pattern: "(?i)(\\bOther\\b)"
+      reverse: false
+    # - !<conditions.BooleanRegexCondition>
+    #   column: "Q40b2_13"
+    #   pattern: "(?i)(\\b999\\b)"
+    #   reverse: true
+    name: "otherfallingasleep"
+
+  nonefallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "none_fallingasleep_childuse"
+      # general.frequency:
+      #   type: "general.frequency"
+      #   column: "Q40b2_14"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1", "7", "3", "4", "5", "6"]
+        #   goal: ["Never", "Less than once a week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday"]
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q40b_14"
+          string: "None. My child uses no media devices while falling asleep"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "yes"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "None. My child uses no media devices while falling asleep"
+    conditions:
+    # - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_14"
+      pattern: "(?i)(\\bNone\\b)"
+      reverse: false
+    # - !<conditions.BooleanRegexCondition>
+    #   column: "Q40b2_14"
+    #   pattern: "(?i)(\\b999\\b)"
+    #   reverse: true
+    name: "nonefallingasleep"
+
+
+associationDefinitions:
+# ********************* DEVICE OWNERSHIP ASSNS ****************
+  # ownedby1: #new association type
+  #   fqn: "ol.ownedby"
+  #   entitySetName: "CAFE_MAQ_OwnedBy"
+  #   src: "TV"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q33"
+  #     pattern: "(?i)(\\b1\\b)"
+  #     reverse: false
+  #   name: "ownedby1"
+
+  # ownedby2:
+  #   fqn: "ol.ownedby"
+  #   entitySetName: "CAFE_MAQ_OwnedBy"
+  #   src: "DVR"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q33"
+  #     pattern: "(?i)(\\b2\\b)"
+  #     reverse: false
+  #   name: "ownedby2"
+
+  # ownedby3:
+  #   fqn: "ol.ownedby"
+  #   entitySetName: "CAFE_MAQ_OwnedBy"
+  #   src: "DVD"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q33"
+  #     pattern: "(?i)(\\b3\\b)"
+  #     reverse: false
+  #   name: "ownedby3"
+
+  # ownedby4:
+  #   fqn: "ol.ownedby"
+  #   entitySetName: "CAFE_MAQ_OwnedBy"
+  #   src: "personalcomputer"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q33"
+  #     pattern: "(?i)(\\b4\\b)"
+  #     reverse: false
+  #   name: "ownedby4"
+
+  # ownedby5: #new association type
+  #   fqn: "ol.ownedby"
+  #   entitySetName: "CAFE_MAQ_OwnedBy"
+  #   src: "mobilephone"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q33"
+  #     pattern: "(?i)(\\b7\\b)"
+  #     reverse: false
+  #   name: "ownedby5"
+
+  # ownedby6: #new association type
+  #   fqn: "ol.ownedby"
+  #   entitySetName: "CAFE_MAQ_OwnedBy"
+  #   src: "smartphone"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q33"
+  #     pattern: "(?i)(\\b8\\b)"
+  #     reverse: false
+  #   name: "ownedby6"
+
+  # ownedby7: #new association type
+  #   fqn: "ol.ownedby"
+  #   entitySetName: "CAFE_MAQ_OwnedBy"
+  #   src: "ipadtablet"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q33"
+  #     pattern: "(?i)(\\b9\\b)"
+  #     reverse: false
+  #   name: "ownedby7"
+
+  # ownedby8:
+  #   fqn: "ol.ownedby"
+  #   entitySetName: "CAFE_MAQ_OwnedBy"
+  #   src: "mp3player"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q33"
+  #     pattern: "(?i)(\\b10\\b)"
+  #     reverse: false
+  #   name: "ownedby8"
+
+  # ownedby9:
+  #   fqn: "ol.ownedby"
+  #   entitySetName: "CAFE_MAQ_OwnedBy"
+  #   src: "educationalgame"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q33"
+  #     pattern: "(?i)(\\b15\\b)"
+  #     reverse: false
+  #   name: "ownedby9"
+
+  # ownedby10:
+  #   fqn: "ol.ownedby"
+  #   entitySetName: "CAFE_MAQ_OwnedBy"
+  #   src: "consolegames"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q33"
+  #     pattern: "(?i)(\\b17\\b)"
+  #     reverse: false
+  #   name: "ownedby10"
+
+  # ownedby11:
+  #   fqn: "ol.ownedby"
+  #   entitySetName: "CAFE_MAQ_OwnedBy"
+  #   src: "virtualassistant"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q33"
+  #     pattern: "(?i)(\\b19\\b)"
+  #     reverse: false
+  #   name: "ownedby11"
+
+  # ownedby12:
+  #   fqn: "ol.ownedby"
+  #   entitySetName: "CAFE_MAQ_OwnedBy"
+  #   src: "videostreaming"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q33"
+  #     pattern: "(?i)(\\b18\\b)"
+  #     reverse: false
+  #   name: "ownedby12"
+
+  # reported:
+  #   fqn: "ol.reported"
+  #   entitySetName: "CAFE_MAQ_Reported"
+  #   src: "nodevice"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     general.id:
+  #       type: "general.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q40b"
+  #     pattern: "(?i)(\\b14\\b)"
+  #     reverse: false
+  #   name: "reported"
+
+  # ownedby14:
+  #   fqn: "ol.ownedby"
+  #   entitySetName: "CAFE_MAQ_OwnedBy"
+  #   src: "otherdevice"
+  #   dst: "respondent"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   conditions:
+  #   - !<conditions.BooleanRegexCondition>
+  #     column: "Q40b"
+  #     pattern: "(?i)(\\b13\\b)"
+  #     reverse: false
+  #   name: "ownedby14"
+
+
+# ********************* DEVICE SUBJECT START USE ASSNS ****************
+
+  usedby1:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "TV"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        column: "Q37_1"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_1"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_1"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "usedby1"
+
+  usedby2:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "DVR"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        column: "Q37_2"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_2"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_2"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "usedby2"
+
+  usedby3:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "DVD"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        column: "Q37_3"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_3"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_3"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "usedby3"
+
+  usedby4:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "personalcomputer"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        column: "Q37_4"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_4"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_4"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "usedby4"
+
+  usedby5:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "mobilephone"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        column: "Q37_5"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_5"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_5"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "usedby5"
+
+  usedby6:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "smartphone"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        column: "Q37_6"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_6"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_6"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "usedby6"
+
+  usedby7:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "ipadtablet"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        column: "Q37_7"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_7"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_7"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "usedby7"
+
+  usedby8:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "mp3player"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        column: "Q37_8"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_8"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_8"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "usedby8"
+
+  usedby9:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "educationalgame"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        column: "Q37_9"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_9"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_9"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "usedby9"
+
+  usedby10:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "consolegames"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        column: "Q37_10"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_10"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_10"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "usedby10"
+
+  usedby11:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "virtualassistant"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        column: "Q37_11"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_11"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_11"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "usedby11"
+
+  usedby12:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "videostreaming"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        column: "Q37_12"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q37_12"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_12"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "usedby12"
+
+
+# # ******************** DEVICE SUBJECT USE HOUR BEFORE BED ASSNS **********
+
+  usedby13:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "TV"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hour before bedtime"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_1"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_1"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "usedby13"
+
+  usedby14:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "DVR"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hour before bedtime"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_2"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_2"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "usedby14"
+
+  usedby15:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "DVD"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hour before bedtime"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_3"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_3"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "usedby15"
+
+  usedby16:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "personalcomputer"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hour before bedtime"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_4"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_4"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "usedby16"
+
+  usedby17:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "mobilephone"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hour before bedtime"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_5"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_5"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "usedby17"
+
+  usedby18:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "smartphone"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hour before bedtime"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_6"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_6"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "usedby18"
+
+  usedby19:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "ipadtablet"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hour before bedtime"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_7"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_7"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "usedby19"
+
+  usedby20:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "mp3player"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hour before bedtime"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_8"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_8"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "usedby20"
+
+  usedby21:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "educationalgame"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hour before bedtime"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_9"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_9"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "usedby21"
+
+  usedby22:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "consolegames"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hour before bedtime"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_10"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_10"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "usedby22"
+
+  usedby23:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "virtualassistant"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hour before bedtime"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_11"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_11"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "usedby23"
+
+  usedby24:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "videostreaming"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hour before bedtime"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40a2_12"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_12"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "usedby24"
+
+# ************************* DEVICES SUBJECT USE WHILE FALLING ASLEEP
+
+
+  usedby25:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "TV"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "while falling asleep"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_1"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_1"
+      pattern: "(?i)(\\bTelevision\\b)"
+      reverse: false
+    name: "usedby25"
+
+  usedby26:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "DVR"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "while falling asleep"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_2"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_2"
+      pattern: "(?i)(\\bDVR\\b)"
+      reverse: false
+    name: "usedby26"
+
+  usedby27:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "DVD"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "while falling asleep"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_3"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_3"
+      pattern: "(?i)(\\bDVD\\b)"
+      reverse: false
+    name: "usedby27"
+
+  usedby28:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "personalcomputer"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "while falling asleep"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_4"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_4"
+      pattern: "(?i)(\\bPersonal computer\\b)"
+      reverse: false
+    name: "usedby28"
+
+  usedby29:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "mobilephone"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "while falling asleep"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_5"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_5"
+      pattern: "(?i)(\\bmobile phone\\b)"
+      reverse: false
+    name: "usedby29"
+
+  usedby30:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "smartphone"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "while falling asleep"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_6"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_6"
+      pattern: "(?i)(\\bSmartphone\\b)"
+      reverse: false
+    name: "usedby30"
+
+  usedby31:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "ipadtablet"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "while falling asleep"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_7"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_7"
+      pattern: "(?i)(\\bSmartphone\\b)"
+      reverse: false
+    name: "usedby31"
+
+  usedby32:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "mp3player"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "while falling asleep"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_8"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_8"
+      pattern: "(?i)(\\bMP3\\b)"
+      reverse: false
+    name: "usedby32"
+
+  usedby33:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "educationalgame"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "while falling asleep"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_9"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_9"
+      pattern: "(?i)(\\bEducational game\\b)"
+      reverse: false
+    name: "usedby33"
+
+  usedby34:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "consolegames"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "while falling asleep"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_10"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_10"
+      pattern: "(?i)(\\bConsole-based\\b)"
+      reverse: false
+    name: "usedby34"
+
+  usedby35:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "virtualassistant"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "while falling asleep"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_11"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_11"
+      pattern: "(?i)(\\bVirtual\\b)"
+      reverse: false
+    name: "usedby35"
+
+  usedby36:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "videostreaming"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "while falling asleep"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_12"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b_12"
+      pattern: "(?i)(\\bVideo\\b)"
+      reverse: false
+    name: "usedby36"
+
+  usedby37:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "otherdevice"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "while falling asleep"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_13"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b"
+      pattern: "(?i)(\\bOther\\b)"
+      reverse: false
+    name: "usedby37"
+
+
+
+# ****************** ASSOCIATIONS B/T CHILDS ROOM AND DEVICES ********************
+
+  locatedat1:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_sometimes_television"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located sometimes"
+    name: "locatedat1"
+
+  locatedat2:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_sometimes_dvr"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located sometimes"
+    name: "locatedat2"
+
+  locatedat3:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_sometimes_dvd"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located sometimes"
+    name: "locatedat3"
+
+  locatedat4:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_sometimes_pc"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located sometimes"
+    name: "locatedat4"
+
+  locatedat5:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_sometimes_mobilephone"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located sometimes"
+    name: "locatedat5"
+
+  locatedat6:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_sometimes_smartphone"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located sometimes"
+    name: "locatedat6"
+
+  locatedat7:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_sometimes_ipad"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located sometimes"
+    name: "locatedat7"
+
+  locatedat8:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_sometimes_mp3"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located sometimes"
+    name: "locatedat8"
+
+  locatedat9:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_sometimes_educationalgame"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located sometimes"
+    name: "locatedat9"
+
+  locatedat10:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_sometimes_consolegame"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located sometimes"
+    name: "locatedat10"
+
+  locatedat11:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_sometimes_virtualassistant"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located sometimes"
+    name: "locatedat11"
+
+  locatedat12:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_sometimes_videostreaming"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located sometimes"
+    name: "locatedat12"
+
+  locatedat13:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_television"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located"
+    name: "locatedat13"
+
+  locatedat14:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_dvr"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located"
+    name: "locatedat14"
+
+  locatedat15:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_dvd"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located"
+    name: "locatedat15"
+
+  locatedat16:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_pc"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located"
+    name: "locatedat16"
+
+  locatedat17:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_mobilephone"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located"
+    name: "locatedat17"
+
+  locatedat18:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_smartphone"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located"
+    name: "locatedat18"
+
+  locatedat19:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_ipad"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located"
+    name: "locatedat19"
+
+  locatedat20:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_mp3"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located"
+    name: "locatedat20"
+
+  locatedat21:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_educationalgame"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located"
+    name: "locatedat21"
+
+  locatedat22:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_consolegame"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located"
+    name: "locatedat22"
+
+  locatedat23:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_virtualassistant"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located"
+    name: "locatedat23"
+
+  locatedat24:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_videostreaming"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly located"
+    name: "locatedat24"
+
+  locatedat25:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_no_television"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly located"
+    name: "locatedat25"
+
+  locatedat26:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_no_dvr"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly located"
+    name: "locatedat26"
+
+  locatedat27:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_no_dvd"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly located"
+    name: "locatedat27"
+
+  locatedat28:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_no_pc"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly located"
+    name: "locatedat28"
+
+  locatedat29:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_no_mobilephone"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly located"
+    name: "locatedat29"
+
+  locatedat30:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_no_smartphone"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly located"
+    name: "locatedat30"
+
+  locatedat31:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_no_ipad"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly located"
+    name: "locatedat31"
+
+  locatedat32:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_no_mp3"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly located"
+    name: "locatedat32"
+
+  locatedat33:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_no_educationalgame"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly located"
+    name: "locatedat33"
+
+  locatedat34:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_no_consolegame"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly located"
+    name: "locatedat34"
+
+  locatedat35:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_no_virtualassistant"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly located"
+    name: "locatedat35"
+
+  locatedat36:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "childsroom_no_videostreaming"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly located"
+    name: "locatedat36"
+
+# ****************** ACTIVITIES, MEDIA EXPOSURE, DEVICE USE ASSOCIATIONS *******
+  partof1:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "respondent"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "partof1"
+
+  partof2:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "subject"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "partof2"
+
+
+# ******* DEVICE TO DEVICE USE RELATIONS: START USE *************
+
+  relatedto2:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "TV"
+    dst: "televisionstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's TV start use"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_1"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "relatedto2"
+
+  relatedto3:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "DVR"
+    dst: "dvrstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's DVR start use"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_2"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "relatedto3"
+
+  relatedto4:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "DVD"
+    dst: "dvdstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's DVD start use"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_3"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "relatedto4"
+
+  relatedto5:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "personalcomputer"
+    dst: "personalcomputerstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's PC start use"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_4"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "relatedto5"
+
+  relatedto6:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "mobilephone"
+    dst: "mobilephonestartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's mobile phone start use"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_5"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "relatedto6"
+
+  relatedto7:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "smartphone"
+    dst: "smartphonestartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's smartphone start use"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_6"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "relatedto7"
+
+  relatedto8:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "ipadtablet"
+    dst: "ipadtabletstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's ipad/tablet start use"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_7"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "relatedto8"
+
+  relatedto9:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "mp3player"
+    dst: "mp3startchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's mp3 start use"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_8"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "relatedto9"
+
+  relatedto10:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "educationalgame"
+    dst: "educationalgamestartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's edu game start use"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_9"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "relatedto10"
+
+  relatedto11:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "consolegames"
+    dst: "consolegamestartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's console game start use"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_10"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "relatedto11"
+
+  relatedto12:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "virtualassistant"
+    dst: "virtualassistantstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's virtual asst start use"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_11"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "relatedto12"
+
+  relatedto13:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "videostreaming"
+    dst: "videostreamingstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's video streaming start use"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q37_12"
+      pattern: "(?i)(\\bDoes not use\\b)"
+      reverse: true
+    name: "relatedto13"
+
+# ******* DEVICE TO DEVICE USE RELATIONS: HOUR BEFORE BED *************
+
+  relatedto14:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "TV"
+    dst: "televisionhourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's TV use before bed"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_1"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto14"
+
+  relatedto15:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "DVR"
+    dst: "dvrhourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's DVR use before bed"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_2"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto15"
+
+  relatedto16:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "DVD"
+    dst: "dvdhourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's DVD use before bed"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_3"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto16"
+
+  relatedto17:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "personalcomputer"
+    dst: "personalcomputerhourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's PC use before bed"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_4"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto17"
+
+  relatedto18:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "mobilephone"
+    dst: "mobilephonehourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's mobile phone use before bed"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_5"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto18"
+
+  relatedto19:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "smartphone"
+    dst: "smartphonehourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's smartphone use before bed"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_6"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto19"
+
+  relatedto20:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "ipadtablet"
+    dst: "ipadhourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's ipad use before bed"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_7"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto20"
+
+  relatedto21:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "mp3player"
+    dst: "mp3hourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's mp3 use before bed"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_8"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto21"
+
+  relatedto22:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "educationalgame"
+    dst: "educationalgamehourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's edu game use before bed"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_9"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto22"
+
+  relatedto23:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "consolegames"
+    dst: "consolegamehourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's console game use before bed"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_10"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto23"
+
+  relatedto24:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "virtualassistant"
+    dst: "virtualassistanthourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's virtual assistant use before bed"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_11"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto24"
+
+  relatedto25:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "videostreaming"
+    dst: "videostreaminghourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's video streaming use before bed"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40a2_12"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto25"
+
+# ******* DEVICE TO DEVICE USE RELATIONS: FALLING ASLEEP *************
+
+  relatedto26:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "TV"
+    dst: "televisionfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's TV use falling asleep"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_1"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto26"
+
+  relatedto27:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "DVR"
+    dst: "dvrfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's DVR use falling asleep"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_2"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto27"
+
+  relatedto28:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "DVD"
+    dst: "dvdfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's DVD use falling asleep"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_3"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto28"
+
+  relatedto29:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "personalcomputer"
+    dst: "computerfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's PC use falling asleep"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_4"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto29"
+
+  relatedto30:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "mobilephone"
+    dst: "mobilephonefallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's mobile phone use falling asleep"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_5"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto30"
+
+  relatedto31:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "smartphone"
+    dst: "smartphonefallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's smartphone use falling asleep"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_6"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto31"
+
+  relatedto32:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "ipadtablet"
+    dst: "ipadfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's iPad use falling asleep"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_7"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto32"
+
+  relatedto33:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "mp3player"
+    dst: "mp3fallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's mp3 use falling asleep"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_8"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto33"
+
+  relatedto34:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "educationalgame"
+    dst: "educationalgamefallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's edu game use falling asleep"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_9"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto34"
+
+  relatedto35:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "consolegames"
+    dst: "consolegamefallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's console game use falling asleep"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_10"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto35"
+
+  relatedto36:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "virtualassistant"
+    dst: "virtualassistantfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's virtual assistant use falling asleep"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b2_11"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "relatedto36"
+
+  relatedto37:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "videostreaming"
+    dst: "videostreamingfallingasleep
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's video streaming use falling asleep"
+    # conditions:
+    # - !<conditions.BooleanRegexCondition>
+    #   column: "Q40b2_12"
+    #   pattern: "(?i)(\\bNever\\b)"
+    #   reverse: true
+    name: "relatedto37"
+
+  relatedto38:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "otherdevice"
+    dst: "otherfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's other device use falling asleep"
+    # conditions:
+    # - !<conditions.BooleanRegexCondition>
+    #   column: "Q40b2_13"
+    #   pattern: "(?i)(\\bNever\\b)"
+    #   reverse: true
+    name: "relatedto38"
+# ********* ASSOCIATIONS BETWEEN DEVICE USE AND PEOPLE *******
+
+  involvedin4:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "televisionstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin4"
+
+  involvedin5:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "dvrstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin5"
+
+  involvedin6:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "dvdstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin6"
+
+  involvedin7:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "personalcomputerstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin7"
+
+  involvedin8:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "mobilephonestartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin8"
+
+  involvedin9:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "smartphonestartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin9"
+
+  involvedin10:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "ipadtabletstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin10"
+
+  involvedin11:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "mp3startchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin11"
+
+  involvedin12:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "educationalgamestartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin12"
+
+  involvedin13:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "consolegamestartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin13"
+
+  involvedin14:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "virtualassistantstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin14"
+
+  involvedin15:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "videostreamingstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin15"
+
+  involvedin16:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "televisionhourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin16"
+
+  involvedin17:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "dvrhourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin17"
+
+  involvedin18:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "dvdhourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin18"
+
+  involvedin19:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "personalcomputerhourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin19"
+
+  involvedin20:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "mobilephonehourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin20"
+
+  involvedin21:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "smartphonehourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin21"
+
+  involvedin22:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "ipadhourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin22"
+
+  involvedin23:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "mp3hourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin23"
+
+  involvedin24:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "educationalgamehourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin24"
+
+  involvedin25:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "consolegamehourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin25"
+
+  involvedin26:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "virtualassistanthourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin26"
+
+  involvedin27:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "videostreaminghourbeforebed"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin27"
+
+  involvedin28:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "televisionfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin28"
+
+  involvedin29:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "dvrfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin29"
+
+  involvedin30:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "dvdfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin30"
+
+  involvedin31:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "computerfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin31"
+
+  involvedin32:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "mobilephonefallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin32"
+
+  involvedin33:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "smartphonefallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin33"
+
+  involvedin34:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "ipadfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin34"
+
+  involvedin35:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "mp3fallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin35"
+
+  involvedin36:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "educationalgamefallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin36"
+
+  involvedin37:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "consolegamefallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin37"
+
+  involvedin38:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "virtualassistantfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin38"
+
+  involvedin39:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "videostreamingfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin39"
+
+  involvedin40:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "otherfallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin40"
+
+  involvedin41:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "transitdeviceuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin41"
+
+  involvedin42:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "household"
+    dst: "televisiononinhouse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin42 "
+
+
+# *********** ASSOCIATIONS FOR REGULARLY LOCATED DEVICES & PERSONS *************
+
+  usedby39:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_no_television"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly"
+    name: "usedby39"
+
+  usedby40:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_no_dvr"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly"
+    name: "usedby40"
+
+  usedby41:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_no_dvd"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly"
+    name: "usedby41"
+
+  usedby42:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_no_pc"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly"
+    name: "usedby42"
+
+  usedby43:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_no_mobilephone"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly"
+    name: "usedby43"
+
+  usedby44:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_no_smartphone"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly"
+    name: "usedby44"
+
+  usedby45:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_no_ipad"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly"
+    name: "usedby45"
+
+  usedby46:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_no_mp3"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly"
+    name: "usedby46"
+
+  usedby47:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_no_educationalgame"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly"
+    name: "usedby47"
+
+  usedby48:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_no_consolegame"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly"
+    name: "usedby48"
+
+  usedby49:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_no_virtualassistant"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly"
+    name: "usedby49"
+
+  usedby50:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_no_videostreaming"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "not regularly"
+    name: "usedby50"
+
+  usedby51:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_sometimes_television"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes regularly"
+    name: "usedby51"
+
+  usedby52:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_sometimes_dvr"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes regularly"
+    name: "usedby52"
+
+  usedby53:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_sometimes_dvd"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes regularly"
+    name: "usedby53"
+
+  usedby54:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_sometimes_pc"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes regularly"
+    name: "usedby54"
+
+  usedby55:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_sometimes_mobilephone"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes regularly"
+    name: "usedby55"
+
+  usedby56:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_sometimes_smartphone"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes regularly"
+    name: "usedby56"
+
+  usedby57:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_sometimes_ipad"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes regularly"
+    name: "usedby57"
+
+  usedby58:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_sometimes_mp3"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes regularly"
+    name: "usedby58"
+
+  usedby59:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_sometimes_educationalgame"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes regularly"
+    name: "usedby59"
+
+  usedby60:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_sometimes_consolegame"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes regularly"
+    name: "usedby60"
+
+  usedby61:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_sometimes_virtualassistant"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes regularly"
+    name: "usedby61"
+
+  usedby62:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_sometimes_videostreaming"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sometimes regularly"
+    name: "usedby62"
+
+  usedby63:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_television"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby63"
+
+  usedby64:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_dvr"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby64"
+
+  usedby65:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_dvd"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby65"
+
+  usedby66:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_pc"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby66"
+
+  usedby67:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_mobilephone"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby67"
+
+  usedby68:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_smartphone"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby68"
+
+  usedby69:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_ipad"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby69"
+
+  usedby70:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_mp3"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby70"
+
+  usedby71:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_educationalgame"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby71"
+
+  usedby72:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_consolegame"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby72"
+
+  usedby73:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_virtualassistant"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby73"
+
+  usedby74:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "childsroom_videostreaming"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby74"

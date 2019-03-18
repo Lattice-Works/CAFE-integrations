@@ -1,0 +1,493 @@
+# GU CAFE MAQ
+#csv files: GU_MAQs_11March2019_ChoiceText.csv, GU_MAQs_11March2019_SecondFile_ChoiceText.csv
+# Parent's Media Use section of survey (PTS_MAQS V3.1_Data Dictionary_Questions)
+
+entityDefinitions:
+  respondent:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        column: respondent_id
+      ol.idnumber:
+        type: "ol.idnumber"
+        column: "ResponseId" #not sure if this or Person ID should be PK.
+    name: "respondent"
+
+  household:
+    fqn: "demographics.household"
+    entitySetName: "CAFE_MAQ_Households"
+    propertyDefinitions:
+      household.id:
+        type: "household.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId"]
+          hashFunction: "sha256"
+    name: "household"
+
+# *********************DEVICES IN HOUSEHOLD*********************
+  TV:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_Devices"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "television"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_1"
+        # transforms:
+        # - !<transforms.ValueTransform>
+        #   value: "Televizor"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_1"
+      reverse: true
+    name: "TV"
+
+  DVR:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvr"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_2"
+        # transforms:
+        # - !<transforms.ValueTransform>
+        #   value: "DVR for recording live televised content"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_2"
+      reverse: true
+    name: "DVR"
+
+  DVD:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dvr"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_3"
+        # transforms:
+        # - !<transforms.ValueTransform>
+        #   value: "DVD player"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_3"
+      reverse: true
+    name: "DVD"
+
+  personalcomputer:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "personal_computer"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_4"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_4"
+      reverse: true
+    name: "personalcomputer"
+
+  mobilephone:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mobile_phone"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_7"
+        # transforms:
+        # - !<transforms.ValueTransform>
+        #   value: "Regular mobile phone (just for talk and text)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_7"
+      reverse: true
+    name: "mobilephone"
+
+  smartphone:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "smartphone"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_8"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_8"
+      reverse: true
+    name: "smartphone"
+
+  ipadtablet:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "ipad_tablet"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_9"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_9"
+      reverse: true
+    name: "ipadtablet"
+
+  mp3player:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mp3_player"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_10"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33"
+      reverse: true
+    name: "mp3player"
+
+  educationalgame:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "educational_game"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_15"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_15"
+      reverse: true
+    name: "educationalgame"
+
+  consolegames:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "video_games"
+      ol.name:
+        type: "ol.name"
+        column: "Q33_17"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q33_17"
+      reverse: true
+    name: "consolegames"
+
+associationDefinitions:
+  ownedby1:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_ownedby"
+    src: "TV"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["RecordedDate", "ResponseId"]
+    name: "ownedby1"
+
+  ownedby2:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_ownedby"
+    src: "DVR"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["RecordedDate", "ResponseId"]
+    name: "ownedby2"
+
+  ownedby3:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_ownedby"
+    src: "DVD"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["RecordedDate", "ResponseId"]
+    name: "ownedby3"
+
+  ownedby4:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_ownedby"
+    src: "personalcomputer"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["RecordedDate", "ResponseId"]
+    name: "ownedby4"
+
+  ownedby5:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_ownedby"
+    src: "mobilephone"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["RecordedDate", "ResponseId"]
+    name: "ownedby5"
+
+  ownedby6:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_ownedby"
+    src: "smartphone"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["RecordedDate", "ResponseId"]
+    name: "ownedby6"
+
+  ownedby8:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_ownedby"
+    src: "ipadtablet"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["RecordedDate", "ResponseId"]
+    name: "ownedby8"
+
+  ownedby9:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_ownedby"
+    src: "mp3player"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["RecordedDate", "ResponseId"]
+    name: "ownedby9"
+
+  ownedby10:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_ownedby"
+    src: "educationalgame"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["RecordedDate", "ResponseId"]
+    name: "ownedby10"
+
+  ownedby11:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_ownedby"
+    src: "consolegames"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["RecordedDate", "ResponseId"]
+    name: "ownedby11"
+
+
+  reported1:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "TV"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported1"
+
+  reported2:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "DVR"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported2"
+
+  reported3:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "DVD"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported3"
+
+  reported4:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "personalcomputer"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported4"
+
+  reported5:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "mobilephone"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported5"
+
+  reported6:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "smartphone"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported6"
+
+  reported7:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "ipadtablet"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported7"
+
+  reported8:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "mp3player"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported8"
+
+  reported9:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "educationalgame"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported9"
+
+  reported10:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "consolegames"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported10"
