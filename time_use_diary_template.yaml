@@ -745,7 +745,7 @@ entityDefinitions:
     propertyDefinitions:
       general.id:
         type: general.id
-        column: study_ID
+        column: study_id
   adult_use:
     entitySetName: CAFE_ES_adult_use
     fqn: ol.deviceuse
