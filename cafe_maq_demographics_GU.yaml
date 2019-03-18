@@ -10,7 +10,11 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: "respondent_id"
+        column: "ResponseId"
+        # column: "respodent_id"
+      # ol.idnumber:
+      #   type: "ol.idnumber"
+      #   column: "ResponseId" commented out for debugging
       nc.PersonRace1:
         type: "nc.PersonRace"
         column: "Q4_1"
@@ -136,7 +140,7 @@ entityDefinitions:
         type: "household.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["ResponseId", "respondent_id"]
+          columns: ["ResponseId", "Q281"]
           hashFunction: "sha256"
       demographics.hhtype:
         type: "demographics.hhtype"
@@ -901,7 +905,7 @@ associationDefinitions:
   has1:
     fqn: "ol.has"
     entitySetName: "CAFE_MAQ_Has"
-    src: "childsubject"
+    src: "childsubject1"
     dst: "subjectdetailshealth"
     propertyDefinitions:
       ol.id:
@@ -1014,7 +1018,7 @@ associationDefinitions:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "respondent"
-    dst: "childsubject"
+    dst: "childsubject1"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1027,7 +1031,7 @@ associationDefinitions:
   subjectof1:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
-    src: "childsubject"
+    src: "childsubject1"
     dst: "childcare_weekdays"
     propertyDefinitions:
       ol.id:
@@ -1041,7 +1045,7 @@ associationDefinitions:
   subjectof2:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
-    src: "childsubject"
+    src: "childsubject1"
     dst: "childcare_weekends"
     propertyDefinitions:
       ol.id:
@@ -1053,7 +1057,7 @@ associationDefinitions:
     name: "subjectof2"
 # *************household associations*******************
 
-partof_a:
+  partof_a:
     fqn: "ol.partof"
     entitySetName: "CAFE_MAQ_PartOf"
     src: "respondent"
@@ -1161,7 +1165,7 @@ partof_a:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["Q281", "ResponseId"] #this depends on what you make child's PK.
       ol.role:
         type: "ol.role"
         transforms:
@@ -1174,6 +1178,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x1_1_1"
+      ol.role2:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x1_1_2"
           string: "999"
@@ -1183,6 +1190,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x1_1_2"
+      ol.role3:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x1_1_3"
           string: "999"
@@ -1192,6 +1202,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x1_1_3"
+      ol.role4:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x1_1_4"
           string: "999"
@@ -1201,6 +1214,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x1_1_4"
+      ol.role5:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x1_1_5"
           string: "999"
@@ -1210,6 +1226,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x1_1_5"
+      ol.role6:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x1_1_TEXT"
           string: "999"
@@ -1251,7 +1270,7 @@ partof_a:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["Q281", "ResponseId"] #this depends on what you make child's PK.
       ol.role:
         type: "ol.role"
         transforms:
@@ -1264,6 +1283,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x2_1_1"
+      ol.role2:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x2_1_2"
           string: "999"
@@ -1273,6 +1295,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x2_1_2"
+      ol.role3:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x2_1_3"
           string: "999"
@@ -1282,6 +1307,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x2_1_3"
+      ol.role4:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x2_1_4"
           string: "999"
@@ -1291,6 +1319,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x2_1_4"
+      ol.role5:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x2_1_5"
           string: "999"
@@ -1300,6 +1331,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x2_1_5"
+      ol.role6:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x2_1_TEXT"
           string: "999"
@@ -1341,7 +1375,7 @@ partof_a:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["Q281", "ResponseId"] #this depends on what you make child's PK.
       ol.role:
         type: "ol.role"
         transforms:
@@ -1354,6 +1388,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x3_1_1"
+      ol.role2:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x3_1_2"
           string: "999"
@@ -1363,6 +1400,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x3_1_2"
+      ol.role3:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x3_1_3"
           string: "999"
@@ -1372,6 +1412,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x3_1_3"
+      ol.role4:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x3_1_4"
           string: "999"
@@ -1381,6 +1424,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x3_1_4"
+      ol.role5:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x3_1_5"
           string: "999"
@@ -1390,6 +1436,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x3_1_5"
+      ol.role6:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x3_1_TEXT"
           string: "999"
@@ -1431,7 +1480,7 @@ partof_a:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["Q281", "ResponseId"] #this depends on what you make child's PK.
       ol.role:
         type: "ol.role"
         transforms:
@@ -1444,6 +1493,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x4_1_1"
+      ol.role2:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x4_1_2"
           string: "999"
@@ -1453,6 +1505,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x4_1_2"
+      ol.role3:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x4_1_3"
           string: "999"
@@ -1462,6 +1517,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x4_1_3"
+      ol.role4:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x4_1_4"
           string: "999"
@@ -1471,6 +1529,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x4_1_4"
+      ol.role5:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x4_1_5"
           string: "999"
@@ -1480,6 +1541,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x4_1_5"
+      ol.role6:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x4_1_TEXT"
           string: "999"
@@ -1521,7 +1585,7 @@ partof_a:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["Q281", "ResponseId"] #this depends on what you make child's PK.
       ol.role:
         type: "ol.role"
         transforms:
@@ -1534,6 +1598,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x5_1_1"
+      ol.role2:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x5_1_2"
           string: "999"
@@ -1543,6 +1610,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x5_1_2"
+      ol.role3:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x5_1_3"
           string: "999"
@@ -1552,6 +1622,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x5_1_3"
+      ol.role4:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x5_1_4"
           string: "999"
@@ -1561,6 +1634,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x5_1_4"
+      ol.role5:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x5_1_5"
           string: "999"
@@ -1570,6 +1646,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x5_1_5"
+      ol.role6:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x5_1_TEXT"
           string: "999"
@@ -1611,7 +1690,7 @@ partof_a:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["Q281", "ResponseId"] #this depends on what you make child's PK.
       ol.role:
         type: "ol.role"
         transforms:
@@ -1624,6 +1703,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x6_1_1"
+      ol.role2:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x6_1_2"
           string: "999"
@@ -1633,6 +1715,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x6_1_2"
+      ol.role3:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x6_1_3"
           string: "999"
@@ -1642,6 +1727,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x6_1_3"
+      ol.role4:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x6_1_4"
           string: "999"
@@ -1651,6 +1739,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x6_1_4"
+      ol.role5:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x6_1_5"
           string: "999"
@@ -1660,6 +1751,9 @@ partof_a:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x6_1_5"
+      ol.role6:
+        type: "ol.role"
+        transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q15_x6_1_TEXT"
           string: "999"
