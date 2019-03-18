@@ -1,0 +1,187 @@
+# GU CAFE MAQ Survey
+#csv files: GU_MAQs_11March2019_ChoiceText.csv, GU_MAQs_11March2019_SecondFile_ChoiceText.csv
+# PSI Assessment Tool Questions
+
+entityDefinitions:
+  respondent:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        column: respondent_id
+      ol.idnumber:
+        type: "ol.idnumber"
+        column: "ResponseId" #not sure if this or Person ID should be PK.
+    name: "respondent"
+
+  parentingstressindex:
+    fqn: "ol.parentingstressindex"
+    entitySetName: "CAFE_MAQ_PSI_Assessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+      ol.overwhelmed:
+        type: "ol.overwhelmed"
+        column: "Q87_1"
+      ol.parentalresponsibilities:
+        type: "ol.parentalresponsibilities"
+        column: "Q87_2"
+      ol.feelingtrapped:
+        type: "ol.feelingtrapped"
+        column: "Q87_3"
+      ol.opportunitycost:
+        type: "ol.opportunitycost"
+        column: "Q87_4"
+      ol.restrictedactivities:
+        type: "ol.restrictedactivities"
+        column: "Q87_5"
+      ol.dissatisfiedwithpurchase:
+        type: "ol.dissatisfiedwithpurchase"
+        column: "Q87_6"
+      ol.dissatisfiedwithlife:
+        type: "ol.dissatisfiedwithlife"
+        column: "Q87_7"
+      ol.relationshipissues:
+        type: "ol.relationshipissues"
+        column: "Q87_8"
+      ol.loneliness:
+        type: "ol.loneliness"
+        column: "Q87_9"
+      ol.expectations:
+        type: "ol.expectations"
+        column: "Q87_10"
+      ol.socialdisinterest:
+        type: "ol.socialdisinterest"
+        column: "Q87_11"
+      ol.anhedonia:
+        type: "ol.anhedonia"
+        column: "Q87_12"
+      ol.dissatisfiedwithparenting:
+        type: "ol.dissatisfiedwithparenting"
+        column: "Q87_13"
+      ol.emotionallydistant:
+        type: "ol.emotionallydistant"
+        column: "Q87_14"
+      ol.facialexpression:
+        type: "ol.facialexpression"
+        column: "Q87_15"
+      ol.unappreciated:
+        type: "ol.unappreciated"
+        column: "Q87_16"
+      ol.laughter:
+        type: "ol.laughter"
+        column: "Q87_17"
+      ol.relativespeed:
+        type: "ol.relativespeed"
+        column: "Q87_18"
+      ol.relativefrequency:
+        type: "ol.relativefrequency"
+        column: "Q87_19"
+      ol.limitations:
+        type: "ol.limitations"
+        column: "Q87_20"
+      ol.behaviorchange:
+        type: "ol.behaviorchange"
+        column: "Q87_21"
+      ol.parentingquality:
+        type: "ol.parentingquality"
+        column: "Q88"
+      ol.strengthofemotion:
+        type: "ol.strengthofemotion"
+        column: "Q89_1"
+      ol.behavioralissue:
+        type: "ol.behavioralissue"
+        column: "Q89_2"
+      ol.affect:
+        type: "ol.affect"
+        column: "Q89_3"
+      bhr.disposition:
+        type: "bhr.disposition"
+        column: "Q89_4"
+      ol.mood:
+        type: "ol.mood"
+        column: "Q89_5"
+      ol.botheredbyperson:
+        type: "ol.botheredbyperson"
+        column: "Q89_7"
+      ol.reactionseverity:
+        type: "ol.reactionseverity"
+        column: "Q89_8"
+      ol.easilyupset:
+        type: "ol.easilyupset"
+        column: "Q89_9"
+      neurological.sleeppattern:
+        type: "neurological.sleeppattern"
+        column: "Q89_10"
+      ol.discipline:
+        type: "ol.discipline"
+        column: "Q90_1"
+      ol.number:
+        type: "ol.number"
+        column: "Q91_1"
+      ol.botheredbyactions:
+        type: "ol.botheredbyactions"
+        column: "Q92_1"
+      ol.moreproblematic:
+        type: "ol.moreproblematic"
+        column: "Q92_2"
+      ol.demanding:
+        type: "ol.demanding"
+        column: "Q92_3"
+    name: "parentingstressindex"
+
+  qualitycontrol:
+    fqn: "ol.qualitycontrol"
+    entitySetName: "CAFE_MAQ_QualityControl"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "quality_control"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "respondents told to select 'Not sure'"
+      ol.selection:
+        type: "ol.selection"
+        column: "Q89_6"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q46_7"
+      reverse: true
+    name: "qualitycontrol"
+associationDefinitions:
+  screenedwith:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingstressindex"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "screenedwith"
+
+  reported:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "qualitycontrol"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported"
