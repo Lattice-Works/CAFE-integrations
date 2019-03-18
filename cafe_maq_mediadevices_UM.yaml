@@ -3379,7 +3379,7 @@ associationDefinitions:
       reverse: true
     name: "usedby17"
 
-  usedby18: 
+  usedby18:
     fqn: "ol.usedby"
     entitySetName: "CAFE_MAQ_UsedBy"
     src: "mobilephone"
@@ -3814,7 +3814,7 @@ associationDefinitions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanRegexCondition>
       column: "Q40b2_8"
-      attern: "(?i)(\\bNever\\b)"
+      pattern: "(?i)(\\bNever\\b)"
       reverse: true
     - !<conditions.BooleanRegexCondition>
       column: "Q40b"

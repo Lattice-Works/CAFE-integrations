@@ -1,11 +1,11 @@
 # MAQs_BYU_V3_2018_20181004_Returning.csv
 
-entityDefinitions: 
+entityDefinitions:
 
-  respondent: 
+  respondent:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Respondents"
-    propertyDefinitions: 
+    propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
         column: "respondent_id"
@@ -16,19 +16,19 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "9999999"]
           goal: ["White", "Black", "American Indian or Alaska Native", "Asian or Pacific Islander", "Biracial", "Other", "Prefer not to answer"]
-      nc.PersonEthnicity: 
+      nc.PersonEthnicity:
         type: "nc.PersonEthnicity"
         column: "Q3"
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3"]
           goal: ["hispanic", "nonhispanic", ""]
-      nc.PersonBirthPlace: 
+      nc.PersonBirthPlace:
         type: "nc.PersonBirthPlace"
         column: "Q5"
     name: "respondent"
 
-  respondentdetails: 
+  respondentdetails:
     fqn: "ol.persondetails"
     entitySetName: "CAFE_MAQ_RespondentDetails"
     propertyDefinitions:
@@ -38,35 +38,35 @@ entityDefinitions:
         - !<transforms.HashTransform>
           columns: ["Q281"]
           hashFunction: "sha256"
-      ol.language: 
+      ol.language:
         type: "ol.language"
         column: "UserLanguage"
     name: "respondentdetails"
 
-  employment: 
+  employment:
     fqn: "ol.employment"
     entitySetName: "CAFE_MAQ_Employment"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
           columns: ["Q281"]
           hashFunction: "sha256"
-      ol.status: 
+      ol.status:
         type: "ol.status"
         column: "Q10"
-        transforms: 
+        transforms:
         - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4", "5"] 
+          target: ["1", "2", "3", "4", "5"]
           goal: ["No", "One part-time job", "One full-time job", "Multiple jobs", "Maternity/Parental leave"]
-    conditions: 
+    conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q10"
       reverse: true
     name: "employment"
 
-  education: 
+  education:
     fqn: "ol.education"
     entitySetName: "CAFE_MAQ_Education"
     propertyDefinitions:
@@ -76,53 +76,55 @@ entityDefinitions:
         - !<transforms.HashTransform>
           columns: ["Q281"]
           hashFunction: "sha256"
-      person.highesteducation: 
+      person.highesteducation:
         type: "person.highesteducation"
         column: "Q9"
-        transforms: 
+        transforms:
         - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4", "5", "6", "7", "8"] 
+          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
           goal: ["No formal school", "Elementary/primary school", "Middle school", "High school or equivalent (e.g., GED)", "Some college or vocational degree", "Bachelor's degree", "Master's degree", "Doctoral or Professional degree" ]
-    conditions: 
+    conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q9"
       reverse: true
     name: "education"
 
-  childsubject: 
+  childsubject:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Children"
-    propertyDefinitions: 
+    propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
         column: "child_id"
-        # transforms: 
+        # transforms:
         # - !<transforms.ConcatTransform>
         #   columns: ["clean_ID", "ResponseId"] #can be multiple children per appcode
-      nc.PersonSex: 
+      nc.PersonSex:
         type: "nc.PersonSex"
         column: "14#2_Q2_1"
-      nc.PersonGivenName: 
+      nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "14#1_Q2_1_TEXT"
-      ol.birthmonth: 
+      ol.birthmonth:
         type: "ol.birthmonth"
         column: "14#1_Q2_1"
-      ol.birthyear: 
+      ol.birthyear:
         type: "ol.birthyear"
         column: "14#3_Q2_1"
-    conditions: 
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    conditions:
     - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "14#2_Q2_1"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "14#1_Q2_1_TEXT"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "14#1_Q2_1"
       reverse: true
-    - !<conditions.BooleanIsNullCondition> 
+    - !<conditions.BooleanIsNullCondition>
       column: "14#3_Q2_1"
       reverse: true
     name: "childsubject"
@@ -130,54 +132,56 @@ entityDefinitions:
   # subjectdetails:
   #   fqn: "ol.persondetails"
   #   entitySetName: "CAFE_MAQ_ChildrenDetails"
-  #   propertyDefinitions: 
-  #     general.id: 
+  #   propertyDefinitions:
+  #     general.id:
   #       type: "general.id"
   #       transforms:
   #       - !<transforms.HashTransform>
   #         columns: ["Q281", "ResponseId"]
   #         hashFunction: "sha256"
-  #     person.ageatevent: 
+  #     person.ageatevent:
   #       type: "person.ageatevent"
   #       column: "childage"
-  #   conditions: 
+  #   conditions:
   #   - !<conditions.BooleanIsNullCondition>
   #     column: "childage"
   #     reverse: true
   #   name: "subjectdetails"
 
-  subjectdetailshealth: 
+  subjectdetailshealth:
     fqn: "ol.persondetailshealth"
     entitySetName: "CAFE_MAQ_ChildrenDetailsHealth"
     propertyDefinitions:
-      ol.id: 
+      ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
-      ol.birthweight: 
+      ol.birthweight:
         type: "ol.birthweight"
         column: "Q20"
-        transforms: 
+        transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6"]
           goal: ["Less than 2 pounds", "2 lbs - 3 lbs, 5 oz", "3 lbs, 6 oz - 4 lbs, 7 oz", "4 lbs, 8 oz - 5 lbs, 8 oz", "5 lbs, 9 oz - 6 lbs, 9 oz", "6 lbs, 10 oz or above"]
-      ol.prematurebirth: 
+      ol.prematurebirth:
         type: "ol.prematurebirth"
         column: "Q18"
-        transforms: 
+        transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2"]
           goal: ["Yes", "No"]
-      ol.gestationalage: 
+      ol.gestationalage:
         type: "ol.gestationalage"
-        column: "Q19" 
+        column: "Q19"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
         # transforms: #might be an int if not null
         # - !<transforms.ReplaceTransform>
         #   target: ["1", "2"]
         #   goal: ["Range: 21-37", "Don't know/can't remember"
-    conditions: 
+    conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q20"
@@ -190,79 +194,79 @@ entityDefinitions:
       reverse: true
     name: "subjectdetailshealth"
 
-  publicassistance: 
+  publicassistance:
     fqn: "ol.income"
     entitySetName: "CAFE_MAQ_Incomes"
     propertyDefinitions:
-      ol.id: 
+      ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
-      # ol.notes: 
+      # ol.notes:
       #   type: "ol.notes"
-      #   transforms: 
-      #   - !<transforms.ValueTransform> 
+      #   transforms:
+      #   - !<transforms.ValueTransform>
       #     value: "public assistance"
-      ol.type: 
+      ol.type:
         type: "ol.type"
         column: "Q12"
-        transforms: 
+        transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3"]
-          goal: ["public assistant", "", ""] 
-    conditions: 
+          goal: ["public assistant", "", ""]
+    conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q12"
-      reverse: true 
+      reverse: true
     name: "publicassistance"
 
   incomerange:
     fqn: "ol.income"
     entitySetName: "CAFE_MAQ_Incomes"
     propertyDefinitions:
-      ol.id: 
+      ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
           columns: ["Q281"]
           hashFunction: "sha256"
-      ol.type: 
+      ol.type:
         type: "ol.type"
         column: "Q11"
-        transforms: 
+        transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "9999999"]
-          goal: ["Less than $10,000", "$10,000 - $19,999", "$20,000 - $29,999", "$30,000 - $39,999", "$40,000 - $49,999", "$50,000 - $59,999", "$60,000 - $69,999", "$70,000 - $79,999", "$80,000 - $89,999", "$90,000 - $99,999", "$100,000 - $149,999", "More than $150,000", "Don't Know/Prefer not to answer"]
-    conditions: 
+          goal: ["Less than \\$10,000", "\\$10,000 - \\$19,999", "\\$20,000 - \\$29,999", "\\$30,000 - \\$39,999", "\\$40,000 - \\$49,999", "\\$50,000 - \\$59,999", "\\$60,000 - \\$69,999", "\\$70,000 - \\$79,999", "\\$80,000 - \\$89,999", "\\$90,000 - \\$99,999", "\\$100,000 - \\$149,999", "More than \\$150,000", "Don't Know/Prefer not to answer"]
+    conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q11"
       reverse: true
     name: "incomerange"
 
-  childcare_weekdays: 
+  childcare_weekdays:
     fqn: "ol.childcare"
     entitySetName: "CAFE_MAQ_ChildCare_Weekdays"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
           columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
-      ol.type: 
+      ol.type:
         type: "ol.type"
         column: "Q25"
-        transforms: 
+        transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5"]
-          goal: ["In-home care with nanny/relative (your home or nanny/relative's home)", "Family-based home childcare (outside of your home and with other children)", "Childcare center, nursery school, preschool or other group program", "Other", ""] 
-      ol.type2: 
+          goal: ["In-home care with nanny/relative (your home or nanny/relative's home)", "Family-based home childcare (outside of your home and with other children)", "Childcare center, nursery school, preschool or other group program", "Other", ""]
+      ol.type2:
         type: "ol.type"
         transforms:
         - !<transforms.BooleanContainsTransform>
-          column: "Q25_5"
+          column: "Q25"
           string: "5"
           transformsIfTrue:
           - !<transforms.ColumnTransform>
@@ -270,17 +274,18 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
-      ol.durationhours: 
+      ol.durationhours:
         type: "ol.durationhours"
         column: "Q24"
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5"]
-          goal: ["100% of the time", "75% of the time", "50% of the time", "25% of the time", "Does not reside with me"]
-      ol.ageatonset: 
+          goal: ["100", "75", "50", "25", "0"]
+        - !<transforms.ParseDoubleTransform> {}
+      ol.ageatonset:
         type: "ol.ageatonset"
         column: "Q26"
-      ol.relationship1: 
+      ol.relationship1:
         type: "ol.relationship"
         column: "Q21"
         transforms:
@@ -290,7 +295,7 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7", "8"]
           goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
-      ol.relationship2: 
+      ol.relationship2:
         type: "ol.relationship"
         column: "Q21"
         transforms:
@@ -301,7 +306,7 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7", "8"]
           goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
-      ol.relationship3: 
+      ol.relationship3:
         type: "ol.relationship"
         column: "Q21"
         transforms:
@@ -312,7 +317,7 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7", "8"]
           goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
-      ol.relationship4: 
+      ol.relationship4:
         type: "ol.relationship"
         column: "Q21"
         transforms:
@@ -323,7 +328,7 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7", "8"]
           goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
-      ol.relationship5: 
+      ol.relationship5:
         type: "ol.relationship"
         column: "Q21"
         transforms:
@@ -336,44 +341,44 @@ entityDefinitions:
           goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
     name: "childcare_weekdays"
 
-associationDefinitions: 
-  has1: 
+associationDefinitions:
+  has1:
     fqn: "ol.has"
     entitySetName: "CAFE_MAQ_Has"
     src: "childsubject"
     dst: "subjectdetailshealth"
-    propertyDefinitions: 
+    propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "has1"
 
-  reported1: 
+  reported1:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "publicassistance"
-    propertyDefinitions: 
-      general.id: 
+    propertyDefinitions:
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "reported1"
 
-  has2: 
+  has2:
     fqn: "ol.has"
     entitySetName: "CAFE_MAQ_Has"
     src: "respondent"
     dst: "respondentdetails"
-    propertyDefinitions: 
+    propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -384,10 +389,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "education"
-    propertyDefinitions: 
-      general.id: 
+    propertyDefinitions:
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -398,66 +403,66 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "employment"
-    propertyDefinitions: 
-      general.id: 
+    propertyDefinitions:
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "reported3"
 
-  reported4: 
+  reported4:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "incomerange"
-    propertyDefinitions: 
-      general.id: 
+    propertyDefinitions:
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "reported4"
 
-  reported5: 
+  reported5:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "childcare_weekdays"
-    propertyDefinitions: 
-      general.id: 
+    propertyDefinitions:
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "reported5"
 
-  relatedto: 
+  relatedto:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "respondent"
     dst: "childsubject"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "relatedto"
 
-  subjectof: 
+  subjectof:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
     src: "childsubject"
     dst: "childcare_weekdays"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"

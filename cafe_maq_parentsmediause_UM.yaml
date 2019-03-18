@@ -303,6 +303,11 @@ entityDefinitions:
       ol.number:
         type: "ol.number"
         column: "Q316_1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -341,6 +346,11 @@ entityDefinitions:
       ol.number:
         type: "ol.number"
         column: "Q316_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -379,6 +389,11 @@ entityDefinitions:
       ol.number:
         type: "ol.number"
         column: "Q316_3"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -417,6 +432,11 @@ entityDefinitions:
       ol.number:
         type: "ol.number"
         column: "Q316_4"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -455,6 +475,11 @@ entityDefinitions:
       ol.number:
         type: "ol.number"
         column: "Q316_5"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -493,6 +518,11 @@ entityDefinitions:
       ol.number:
         type: "ol.number"
         column: "Q316_6"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -531,6 +561,11 @@ entityDefinitions:
       ol.number:
         type: "ol.number"
         column: "Q316_7"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -569,6 +604,11 @@ entityDefinitions:
       ol.number:
         type: "ol.number"
         column: "Q316_8"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -607,6 +647,11 @@ entityDefinitions:
       ol.number:
         type: "ol.number"
         column: "Q316_9"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -645,6 +690,11 @@ entityDefinitions:
       ol.number:
         type: "ol.number"
         column: "Q316_10"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -683,6 +733,11 @@ entityDefinitions:
       ol.number:
         type: "ol.number"
         column: "Q316_11"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -721,6 +776,11 @@ entityDefinitions:
       ol.number:
         type: "ol.number"
         column: "Q316_12"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -1623,9 +1683,9 @@ entityDefinitions:
       ol.socialsupports:
         type: "ol.socialsupports"
         column: "Q58_2"
-      ol.concurrent:
-        type: "ol.concurrent"
-        column: "Q58_3"
+      # ol.concurrent:
+      #   type: "ol.concurrent"
+      #   column: "Q58_3"
       ol.overwhelmed:
         type: "ol.overwhelmed"
         column: "Q58_4"
@@ -2149,7 +2209,7 @@ associationDefinitions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
       column: "Q33"
-      pattern: "(?i)(\\iPad\\b)"
+      pattern: "(?i)(\\biPad\\b)"
       reverse: false
     - !<conditions.BooleanRegexCondition>
       column: "Q316_7"
@@ -2173,7 +2233,7 @@ associationDefinitions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
       column: "Q33"
-      pattern: "(?i)(\\MP3\\b)"
+      pattern: "(?i)(\\bMP3\\b)"
       reverse: false
     - !<conditions.BooleanRegexCondition>
       column: "Q316_8"
@@ -2197,7 +2257,7 @@ associationDefinitions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
       column: "Q33"
-      pattern: "(?i)(\\Educational\\b)"
+      pattern: "(?i)(\\bEducational\\b)"
       reverse: false
     - !<conditions.BooleanRegexCondition>
       column: "Q316_9"
@@ -2221,7 +2281,7 @@ associationDefinitions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
       column: "Q33"
-      pattern: "(?i)(\\Console\\b)"
+      pattern: "(?i)(\\bConsole\\b)"
       reverse: false
     - !<conditions.BooleanRegexCondition>
       column: "Q316_10"
@@ -2245,7 +2305,7 @@ associationDefinitions:
     # - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
       column: "Q33"
-      pattern: "(?i)(\\Virtual Assistant\\b)"
+      pattern: "(?i)(\\bVirtual Assistant\\b)"
       reverse: false
     # - !<conditions.BooleanRegexCondition>
     #   column: "Q316_11"
@@ -2269,7 +2329,7 @@ associationDefinitions:
     # - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
       column: "Q33"
-      pattern: "(?i)(\\Video streaming\\b)"
+      pattern: "(?i)(\\bVideo streaming\\b)"
       reverse: false
     # - !<conditions.BooleanRegexCondition>
     #   column: "Q316_12"
