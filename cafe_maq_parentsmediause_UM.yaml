@@ -348,8 +348,8 @@ entityDefinitions:
         column: "Q316_2"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["More than 1"]
-          goal: [2]
+          target: ['More than 1']
+          goal: ['2']
         - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
@@ -434,8 +434,8 @@ entityDefinitions:
         column: "Q316_4"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["More than 1"]
-          goal: [2]
+          target: ['More than 1']
+          goal: ['2']
         - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
@@ -520,8 +520,8 @@ entityDefinitions:
         column: "Q316_6"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["More than 1"]
-          goal: [2]
+          target: ['More than 1']
+          goal: ['2']
         - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
@@ -606,8 +606,8 @@ entityDefinitions:
         column: "Q316_8"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["More than 1"]
-          goal: [2]
+          target: ['More than 1']
+          goal: ['2']
         - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
@@ -692,8 +692,8 @@ entityDefinitions:
         column: "Q316_10"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["More than 1"]
-          goal: [2]
+          target: ['More than 1']
+          goal: ['2']
         - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
@@ -735,8 +735,8 @@ entityDefinitions:
         column: "Q316_11"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["More than 1"]
-          goal: [2]
+          target: ['More than 1']
+          goal: ['2']
         - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
@@ -778,8 +778,8 @@ entityDefinitions:
         column: "Q316_12"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["More than 1"]
-          goal: [2]
+          target: ['More than 1']
+          goal: ['2']
         - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"

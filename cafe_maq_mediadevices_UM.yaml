@@ -3379,7 +3379,7 @@ associationDefinitions:
       reverse: true
     name: "usedby17"
 
-  usedby18: 
+  usedby18:
     fqn: "ol.usedby"
     entitySetName: "CAFE_MAQ_UsedBy"
     src: "mobilephone"

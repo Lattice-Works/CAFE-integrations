@@ -3,26 +3,26 @@
 
 
 entityDefinitions:
-  respondent: 
+  respondent:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Respondents"
     propertyDefinitions:
-      nc.SubjectIdentification: 
+      nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
         column: "respondent_id" #Person ID
-      ol.idnumber: 
+      ol.idnumber:
         type: "ol.idnumber"
-        column: "ResponseId"  
+        column: "ResponseId"
     name: "respondent"
 
-  childsubject: 
+  childsubject:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Children"
-    propertyDefinitions: 
+    propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
         column: "child_id"
-        # transforms: 
+        # transforms:
         # - !<transforms.ConcatTransform>
         #   columns: ["ResponseId", "clean_ID"]
         #   separator: "_"
@@ -31,38 +31,38 @@ entityDefinitions:
   household:
     fqn: "demographics.household"
     entitySetName: "CAFE_MAQ_Households"
-    propertyDefinitions: 
-      household.id: 
+    propertyDefinitions:
+      household.id:
         type: "household.id"
-        transforms: 
-        - !<transforms.HashTransform> 
+        transforms:
+        - !<transforms.HashTransform>
           columns: ["ResponseId"]
           hashFunction: "sha256"
       # ol.numberofchildren:
       #   type: "ol.numberofchildren"
-      #   transforms: 
-      demographics.hhtype: 
+      #   transforms:
+      demographics.hhtype:
         # Does [Field-kid1] live in two households?
         type: "demographics.hhtype"
         column: "Q23"
-        transforms: 
+        transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2"] #in some surveys it is ["Yes", "No"]
           goal: ["split/two households", "single household"]
-      # ol.timeestimate: 
+      # ol.timeestimate:
       #   # How much time does your child spend in your household?
       #   type: "ol.timeestimate"
       #   column: "Q24" # column pretty empty
     name: "household"
 
-  communication_household: 
+  communication_household:
     fqn: "ol.communication"
     entitySetName: "CAFE_MAQ_Household_Communication"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms: 
-        - !<transforms.HashTransform> 
+        transforms:
+        - !<transforms.HashTransform>
           columns: ["ResponseId"]
           hashFunction: "sha256"
       ol.number:
@@ -79,14 +79,14 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"]
           goal: ["", "Arabic", "Cantonese", "English", "Dutch", "French", "Czech", "German", "Hebrew", "Italian", "Korean", "Mandarin", "Polish", "Portuguese", "Spanish", "Swedish"]
-      ol.language_text: 
+      ol.language_text:
         type: "ol.language"
         column: "Q29_44_TEXT"
-      ol.pcttime: 
+      ol.pcttime:
         type: "ol.pcttime"
         column: "Q30_1"
       ol.status1:
-      # Who speaks the main language to [Field-kid1]? Please check all that apply. - Selected Choice 
+      # Who speaks the main language to [Field-kid1]? Please check all that apply. - Selected Choice
         type: "ol.status"
         column: "Q31"
         transforms:
@@ -139,43 +139,43 @@ entityDefinitions:
 associationDefinitions:
 
 #******************* HOUSEHOLD & RELATIONS ASSOCIATIONS ************************
-  partof_a: 
+  partof_a:
     fqn: "ol.partof"
     entitySetName: "CAFE_MAQ_PartOf"
     src: "respondent"
     dst: "household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["ResponseId", "RecordedDate"]
           hashFunction: "sha256"
     name: "partof_a"
 
-  partof_b: 
+  partof_b:
     fqn: "ol.partof"
     entitySetName: "CAFE_MAQ_PartOf"
     src: "childsubject"
     dst: "household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["ResponseId", "RecordedDate"]
           hashFunction: "sha256"
     name: "partof_b"
 
-  relatedto: 
+  relatedto:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "respondent"
     dst: "childsubject"
     propertyDefinitions:
-      ol.id: 
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -183,41 +183,36 @@ associationDefinitions:
 
 
 # ************************** COMMUNICATION ASSOCIATIONS **********************
-  
-  reported: 
+
+  reported:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "communication_household"
     propertyDefinitions:
-      general.id: 
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["ResponseId", "RecordedDate"]
           hashFunction: "sha256"
     name: "reported"
 
-  involvedin: 
+  involvedin:
     fqn: "ol.involvedin"
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "childsubject"
     dst: "communication_household"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["ResponseId", "RecordedDate"]
           hashFunction: "sha256"
-      ol.role: 
+      ol.role:
         type: "ol.role"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "child"
     name: "involvedin"
-
-
-
-
-  
