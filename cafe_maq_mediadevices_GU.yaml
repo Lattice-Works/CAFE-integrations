@@ -2806,7 +2806,48 @@ entityDefinitions:
     #   reverse: true
     name: "nonefallingasleep"
 
+  virtualassistant:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "virtual_assistant"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Virtual Assistant"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\bVirtual assistant\\b)"
+      reverse: false
+    name: "virtualassistant"
 
+  videostreaming:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "video_streaming"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Video streaming services"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\bVideo streaming\\b)"
+      reverse: false
+    name: "videostreaming"
+    
 associationDefinitions:
 # ********************* DEVICE OWNERSHIP ASSNS ****************
   # ownedby1: #new association type
@@ -5607,7 +5648,7 @@ associationDefinitions:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "videostreaming"
-    dst: "videostreamingfallingasleep
+    dst: "videostreamingfallingasleep"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -6168,33 +6209,33 @@ associationDefinitions:
           hashFunction: "sha256"
     name: "involvedin40"
 
-  involvedin41:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "subject"
-    dst: "transitdeviceuse"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "involvedin41"
+  # involvedin41:
+  #   fqn: "ol.involvedin"
+  #   entitySetName: "CAFE_MAQ_InvolvedIn"
+  #   src: "subject"
+  #   dst: "transitdeviceuse"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   name: "involvedin41"
 
-  involvedin42:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "household"
-    dst: "televisiononinhouse"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "involvedin42 "
+  # involvedin42:
+  #   fqn: "ol.involvedin"
+  #   entitySetName: "CAFE_MAQ_InvolvedIn"
+  #   src: "household"
+  #   dst: "televisiononinhouse"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q281", "ResponseId"]
+  #         hashFunction: "sha256"
+  #   name: "involvedin42 "
 
 
 # *********** ASSOCIATIONS FOR REGULARLY LOCATED DEVICES & PERSONS *************

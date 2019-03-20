@@ -13,6 +13,8 @@ entityDefinitions:
       ol.completed:
         column: Finished
         type: ol.completed
+        transforms:
+        - !<transforms.ParseBoolTransform> {}
       ol.datetimeend:
         column: EndDate
         type: ol.datetimeend

@@ -113,7 +113,7 @@ entityDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["child_id"]
           hashFunction: "sha256"
       ol.language:
         type: "ol.language"
@@ -130,6 +130,7 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q2"
+        - !<transforms.ParseIntTransform> {}
     name: "respondentdetails"
 
   household:
@@ -140,7 +141,7 @@ entityDefinitions:
         type: "household.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["ResponseId", "Q281"]
+          columns: ["ResponseId", "child_id"]
           hashFunction: "sha256"
       demographics.hhtype:
         type: "demographics.hhtype"
@@ -167,7 +168,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["child_id"]
           hashFunction: "sha256"
       ol.status:
         type: "ol.status"
@@ -198,7 +199,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["child_id"]
           hashFunction: "sha256"
       person.highesteducation:
         type: "person.highesteducation"
@@ -472,7 +473,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
       ol.birthweight:
         type: "ol.birthweight"
@@ -531,7 +532,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
       ol.type:
         type: "ol.type"
@@ -559,7 +560,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["child_id"]
           hashFunction: "sha256"
       ol.type:
         type: "ol.type"
@@ -917,7 +918,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
     name: "has1"
 
@@ -931,7 +932,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
     name: "reported1"
 
@@ -945,7 +946,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
     name: "has2"
 
@@ -959,7 +960,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
     name: "reported2"
 
@@ -973,7 +974,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
     name: "reported3"
 
@@ -987,7 +988,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
     name: "reported4"
 
@@ -1001,7 +1002,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
     name: "reported5"
 
@@ -1015,7 +1016,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
     name: "reported6"
 
@@ -1029,7 +1030,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
     name: "relatedto1"
 
@@ -1043,7 +1044,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
     name: "subjectof1"
 
@@ -1057,7 +1058,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "ResponseId"]
           hashFunction: "sha256"
     name: "subjectof2"
 # *************household associations*******************
@@ -1170,7 +1171,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["Q281", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["child_id", "ResponseId"] #this depends on what you make child's PK.
       ol.role:
         type: "ol.role"
         transforms:
@@ -1277,7 +1278,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["Q281", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["child_id", "ResponseId"] #this depends on what you make child's PK.
       ol.role:
         type: "ol.role"
         transforms:
@@ -1384,7 +1385,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["Q281", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["child_id", "ResponseId"] #this depends on what you make child's PK.
       ol.role:
         type: "ol.role"
         transforms:
@@ -1491,7 +1492,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["Q281", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["child_id", "ResponseId"] #this depends on what you make child's PK.
       ol.role:
         type: "ol.role"
         transforms:
@@ -1598,7 +1599,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["Q281", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["child_id", "ResponseId"] #this depends on what you make child's PK.
       ol.role:
         type: "ol.role"
         transforms:
@@ -1705,7 +1706,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["Q281", "ResponseId"] #this depends on what you make child's PK.
+          columns: ["child_id", "ResponseId"] #this depends on what you make child's PK.
       ol.role:
         type: "ol.role"
         transforms:

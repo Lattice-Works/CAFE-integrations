@@ -231,8 +231,8 @@ entityDefinitions:
         column: "childinhome"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4"]
-          goal: ["100", "75", "50", "25"]
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["100", "75", "50", "25", "0"]
           valueElse: "null"
         - !<transforms.ParseDoubleTransform> {}
       ol.relationship:

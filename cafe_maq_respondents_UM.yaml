@@ -33,6 +33,8 @@ entityDefinitions:
 
 associationDefinitions:
   has:
+    fqn: "ol.has"
+    entitySetName: CAFE_MAQ_Has
     fqn: "ol.reported"
     entitySetName: CAFE_MAQ_Reported
     src: "respondent"
