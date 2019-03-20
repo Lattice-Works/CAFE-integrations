@@ -34,7 +34,7 @@ entityDefinitions:
 associationDefinitions:
   has:
     fqn: "ol.has"
-    entitySetName: CAFE_MAQ_Reported
+    entitySetName: CAFE_MAQ_Has
     src: "respondent"
     dst: "respondentdetails"
     propertyDefinitions:

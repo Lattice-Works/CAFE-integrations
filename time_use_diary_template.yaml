@@ -13,6 +13,8 @@ entityDefinitions:
       ol.completed:
         column: Finished
         type: ol.completed
+        transforms:
+        - !<transforms.ParseBoolTransform> {}
       ol.datetimeend:
         column: EndDate
         type: ol.datetimeend
@@ -745,7 +747,7 @@ entityDefinitions:
     propertyDefinitions:
       general.id:
         type: general.id
-        column: study_ID
+        column: study_id
   adult_use:
     entitySetName: CAFE_ES_adult_use
     fqn: ol.deviceuse
@@ -1329,5 +1331,5 @@ associationDefinitions:
             value: "_5"
 conditions:
 - !<conditions.BooleanRegexCondition>
-  column: study_ID
+  column: study_id
   pattern: CAFE_CONDITION_STUDY

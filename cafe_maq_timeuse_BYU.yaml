@@ -31,7 +31,7 @@ entityDefinitions:
 
   timespentweekdayTVorDVD: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -73,7 +73,7 @@ entityDefinitions:
 
   timespentweekdaycomputer: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -115,7 +115,7 @@ entityDefinitions:
 
   timespentweekdayebooks: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -157,7 +157,7 @@ entityDefinitions:
 
   timespentweekdaybooks: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -199,7 +199,7 @@ entityDefinitions:
 
   timespentweekdayconsolegames: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -241,7 +241,7 @@ entityDefinitions:
 
   timespentweekdaymobilesdevices: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -310,7 +310,7 @@ entityDefinitions:
 
   timespentweekdaysmartphone: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -352,7 +352,7 @@ entityDefinitions:
 
   timespentweekdayvirtualassistant: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -394,7 +394,7 @@ entityDefinitions:
 
   timespentweekendTVorDVD: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -436,7 +436,7 @@ entityDefinitions:
 
   timespentweekendcomputer: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -478,7 +478,7 @@ entityDefinitions:
 
   timespentweekendebooks: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -520,7 +520,7 @@ entityDefinitions:
 
   timespentweekendbooks: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -562,7 +562,7 @@ entityDefinitions:
 
   timespentweekendconsolegames: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -604,7 +604,7 @@ entityDefinitions:
 
   timespentweekendmobilesdevices: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -646,7 +646,7 @@ entityDefinitions:
 
   timespentweekendsmartphone: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"
@@ -688,7 +688,7 @@ entityDefinitions:
 
   timespentweekendvirtualassistant: 
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions: 
       ol.id: 
         type: "ol.id"

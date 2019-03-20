@@ -441,7 +441,7 @@ entityDefinitions:
 
   appsusedmostbychild:
     fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_DeviceUse"
+    entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
