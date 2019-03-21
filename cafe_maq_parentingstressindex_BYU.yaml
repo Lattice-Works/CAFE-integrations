@@ -1,5 +1,5 @@
-# GU CAFE MAQ Survey
-#csv files: GU_MAQs_11March2019_ChoiceText.csv, GU_MAQs_11March2019_SecondFile_ChoiceText.csv
+# cafe MAQ BYU
+# csv filename: MAQs_BYU_V3_2018_20181004_Returning.csv
 # PSI Assessment Tool Questions
 
 entityDefinitions:
@@ -27,97 +27,97 @@ entityDefinitions:
           hashFunction: "sha256"
       ol.overwhelmed:
         type: "ol.overwhelmed"
-        column: "Q87_1"
+        column: "Q87_4"
       ol.parentalresponsibilities:
         type: "ol.parentalresponsibilities"
-        column: "Q87_2"
+        column: "Q87_5"
       ol.feelingtrapped:
         type: "ol.feelingtrapped"
-        column: "Q87_3"
+        column: "Q87_6"
       ol.opportunitycost:
         type: "ol.opportunitycost"
-        column: "Q87_4"
+        column: "Q87_7"
       ol.restrictedactivities:
         type: "ol.restrictedactivities"
-        column: "Q87_5"
+        column: "Q87_8"
       ol.dissatisfiedwithpurchase:
         type: "ol.dissatisfiedwithpurchase"
-        column: "Q87_6"
+        column: "Q87_9"
       ol.dissatisfiedwithlife:
         type: "ol.dissatisfiedwithlife"
-        column: "Q87_7"
+        column: "Q87_10"
       ol.relationshipissues:
         type: "ol.relationshipissues"
-        column: "Q87_8"
+        column: "Q87_11"
       ol.loneliness:
         type: "ol.loneliness"
-        column: "Q87_9"
+        column: "Q87_12"
       ol.expectations:
         type: "ol.expectations"
-        column: "Q87_10"
+        column: "Q87_13"
       ol.socialdisinterest:
         type: "ol.socialdisinterest"
-        column: "Q87_11"
+        column: "Q87_14"
       ol.anhedonia:
         type: "ol.anhedonia"
-        column: "Q87_12"
+        column: "Q87_15"
       ol.dissatisfiedwithparenting:
         type: "ol.dissatisfiedwithparenting"
-        column: "Q87_13"
+        column: "Q87_16"
       ol.emotionallydistant:
         type: "ol.emotionallydistant"
-        column: "Q87_14"
+        column: "Q87_17"
       ol.facialexpression:
         type: "ol.facialexpression"
-        column: "Q87_15"
+        column: "Q87_18"
       ol.unappreciated:
         type: "ol.unappreciated"
-        column: "Q87_16"
+        column: "Q87_19"
       ol.laughter:
         type: "ol.laughter"
-        column: "Q87_17"
+        column: "Q87_20"
       ol.relativespeed:
         type: "ol.relativespeed"
-        column: "Q87_18"
+        column: "Q87_21"
       ol.relativefrequency:
         type: "ol.relativefrequency"
-        column: "Q87_19"
+        column: "Q87_22"
       ol.limitations:
         type: "ol.limitations"
-        column: "Q87_20"
+        column: "Q87_23"
       ol.behaviorchange:
         type: "ol.behaviorchange"
-        column: "Q87_21"
+        column: "Q87_24"
       ol.parentingquality:
         type: "ol.parentingquality"
         column: "Q88"
       ol.strengthofemotion:
         type: "ol.strengthofemotion"
-        column: "Q89_1"
+        column: "Q89_4"
       ol.behavioralissue:
         type: "ol.behavioralissue"
-        column: "Q89_2"
+        column: "Q89_5"
       ol.affect:
         type: "ol.affect"
-        column: "Q89_3"
+        column: "Q89_6"
       bhr.disposition:
         type: "bhr.disposition"
-        column: "Q89_4"
+        column: "Q89_7"
       ol.mood:
         type: "ol.mood"
-        column: "Q89_5"
+        column: "Q89_8"
       ol.botheredbyperson:
         type: "ol.botheredbyperson"
-        column: "Q89_7"
+        column: "Q89_9"
       ol.reactionseverity:
         type: "ol.reactionseverity"
-        column: "Q89_8"
+        column: "Q89_10"
       ol.easilyupset:
         type: "ol.easilyupset"
-        column: "Q89_9"
+        column: "Q89_11"
       neurological.sleeppattern:
         type: "neurological.sleeppattern"
-        column: "Q89_10"
+        column: "Q89_12"
       ol.discipline:
         type: "ol.discipline"
         column: "Q90_1"
@@ -126,13 +126,13 @@ entityDefinitions:
         column: "Q91_1"
       ol.botheredbyactions:
         type: "ol.botheredbyactions"
-        column: "Q92_1"
+        column: "Q92_4"
       ol.moreproblematic:
         type: "ol.moreproblematic"
-        column: "Q92_2"
+        column: "Q92_5"
       ol.demanding:
         type: "ol.demanding"
-        column: "Q92_3"
+        column: "Q92_6"
     name: "parentingstressindex"
 
   qualitycontrol:
@@ -148,13 +148,13 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "respondents told to select 'Not sure'"
+          value: "respondents told to select 'not sure'"
       ol.selection:
         type: "ol.selection"
-        column: "Q89_6"
+        column: "Q89_13"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q89_6"
+      column: "Q89_13"
       reverse: true
     name: "qualitycontrol"
 

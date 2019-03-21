@@ -1,5 +1,5 @@
-# GU CAFE MAQ Survey
-#csv files: GU_MAQs_11March2019_ChoiceText.csv, GU_MAQs_11March2019_SecondFile_ChoiceText.csv
+# WI-AMP CAFE MAQ Survey
+#csv files: # csv filename: CAFE+Questionnaire+v.2+-+Physio+Study+(WI-AMP-BTV)_February+6,+2019_09.01 - CHOICE TEXT.csv
 # PSI Assessment Tool Questions
 
 entityDefinitions:
@@ -90,7 +90,7 @@ entityDefinitions:
         column: "Q87_21"
       ol.parentingquality:
         type: "ol.parentingquality"
-        column: "Q88"
+        column: "Q88_1"
       ol.strengthofemotion:
         type: "ol.strengthofemotion"
         column: "Q89_1"
@@ -108,16 +108,16 @@ entityDefinitions:
         column: "Q89_5"
       ol.botheredbyperson:
         type: "ol.botheredbyperson"
-        column: "Q89_7"
+        column: "Q89_6"
       ol.reactionseverity:
         type: "ol.reactionseverity"
-        column: "Q89_8"
+        column: "Q89_7"
       ol.easilyupset:
         type: "ol.easilyupset"
-        column: "Q89_9"
+        column: "Q89_8"
       neurological.sleeppattern:
         type: "neurological.sleeppattern"
-        column: "Q89_10"
+        column: "Q89_9"
       ol.discipline:
         type: "ol.discipline"
         column: "Q90_1"
@@ -135,33 +135,10 @@ entityDefinitions:
         column: "Q92_3"
     name: "parentingstressindex"
 
-  qualitycontrol:
-    fqn: "ol.qualitycontrol"
-    entitySetName: "CAFE_MAQ_QualityControl"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "quality_control"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "respondents told to select 'Not sure'"
-      ol.selection:
-        type: "ol.selection"
-        column: "Q89_6"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q89_6"
-      reverse: true
-    name: "qualitycontrol"
-
 associationDefinitions:
   screenedwith:
     fqn: "ol.screenedwith"
-    entitySetName: "CAFE_MAQ_AssessedBy"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
     src: "respondent"
     dst: "parentingstressindex"
     propertyDefinitions:
@@ -169,20 +146,6 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["Q262", "ResponseId"]
           hashFunction: "sha256"
     name: "screenedwith"
-
-  reported:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "qualitycontrol"
-    propertyDefinitions:
-      general.id:
-        type: "general.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported"
