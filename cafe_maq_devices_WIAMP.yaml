@@ -252,7 +252,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ValueTransform>
-          value: "video_games"
+          value: "console_games"
       ol.name:
         type: "ol.name"
         column: "Q33_17"
@@ -1420,118 +1420,6 @@ entityDefinitions:
       reverse: true
     name: "nonestartchilduse"
 
-# ************** SUBJECT DEVICE USE AS FALLING ASLEEP ***********
-  televisionfallingasleepchilduse:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_Device_Use"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "television_fallingasleep_childuse"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "uses as falling asleep"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child 1"
-      ol.name:
-        type: "ol.name"
-        column: "Q40_1"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40_1"
-      reverse: true
-    name: "televisionfallingasleepchilduse"
-
-  dvrfallingasleepchilduse:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_Device_Use"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "dvr_fallingasleep_childuse"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "uses as falling asleep"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child 1"
-      ol.name:
-        type: "ol.name"
-        column: "Q40_2"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40_2"
-      reverse: true
-    name: "dvrfallingasleepchilduse"
-
-  dvdfallingasleepchilduse:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_Device_Use"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "dvd_fallingasleep_childuse"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "uses as falling asleep"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child 1"
-      ol.name:
-        type: "ol.name"
-        column: "Q40_3"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40_3"
-      reverse: true
-    name: "dvdfallingasleepchilduse"
-
-  computerfallingasleepchilduse:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_Device_Use"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "computer_fallingasleep_childuse"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "uses as falling asleep"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child 1"
-      ol.name:
-        type: "ol.name"
-        column: "Q40_4"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40_4"
-      reverse: true
-    name: "computerfallingasleepchilduse"
 
 # ************** SUBJECT DEVICE LOCATION AWAKE***********
   televisionlocationawake:
@@ -2218,7 +2106,6 @@ entityDefinitions:
       column: "Q36_2_15"
       reverse: true
     name: "edugamelocationasleep"
-
 
   consolegamelocationasleep:
     fqn: "ol.sleep"
@@ -3334,99 +3221,6 @@ associationDefinitions:
       reverse: true
     name: "usedby36"
 
-# ******************** DEVICE SUBJECT USE FALLING ASLEEP ASSNS **********
-
-  usedby37:
-    fqn: "ol.usedby"
-    entitySetName: "CAFE_MAQ_UsedBy"
-    src: "TV"
-    dst: "subject"
-    propertyDefinitions:
-      general.stringid:
-        type: "general.stringid"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "while falling asleep"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40_1"
-      reverse: true
-    name: "usedby37"
-
-  usedby38:
-    fqn: "ol.usedby"
-    entitySetName: "CAFE_MAQ_UsedBy"
-    src: "DVR"
-    dst: "subject"
-    propertyDefinitions:
-      general.stringid:
-        type: "general.stringid"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "while falling asleep"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40_2"
-      reverse: true
-    name: "usedby38"
-
-  usedby39:
-    fqn: "ol.usedby"
-    entitySetName: "CAFE_MAQ_UsedBy"
-    src: "DVD"
-    dst: "subject"
-    propertyDefinitions:
-      general.stringid:
-        type: "general.stringid"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "while falling asleep"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40_3"
-      reverse: true
-    name: "usedby39"
-
-  usedby40:
-    fqn: "ol.usedby"
-    entitySetName: "CAFE_MAQ_UsedBy"
-    src: "personalcomputer"
-    dst: "subject"
-    propertyDefinitions:
-      general.stringid:
-        type: "general.stringid"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "while falling asleep"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40_4"
-      reverse: true
-    name: "usedby40"
 
 # ****************** ASSOCIATIONS B/T DEVICES TO DEVICE USE ENTITIES ********************
 
@@ -4222,93 +4016,6 @@ associationDefinitions:
       reverse: true
     name: "relatedto36"
 
-  relatedto37:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "TV"
-    dst: "televisionfallingasleepchilduse"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40_1"
-      reverse: true
-    name: "relatedto37"
-
-  relatedto38:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "DVR"
-    dst: "dvrfallingasleepchilduse"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40_2"
-      reverse: true
-    name: "relatedto38"
-
-  relatedto39:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "DVD"
-    dst: "dvdfallingasleepchilduse"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40_3"
-      reverse: true
-    name: "relatedto39"
-
-  relatedto40:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "personalcomputer"
-    dst: "computerfallingasleepchilduse"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40_4"
-      reverse: true
-    name: "relatedto40"
 
 # ******** ASSOCIATIONS B/T DEVICES & DEVICE LOCATION ENTITIES *****
   concurrentto1:

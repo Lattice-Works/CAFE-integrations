@@ -2847,7 +2847,39 @@ entityDefinitions:
       pattern: "(?i)(\\bVideo streaming\\b)"
       reverse: false
     name: "videostreaming"
-    
+
+
+# ****** TELEVISION WHEN SOMEONE HOME IN HOUSEHOLD *********
+
+  televisiononinhouse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "television_in_home"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often a TV is on (even if not watching) in household"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q43"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "household"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "current"
+    name: "televisiononinhouse"
+
 associationDefinitions:
 # ********************* DEVICE OWNERSHIP ASSNS ****************
   # ownedby1: #new association type
@@ -6887,3 +6919,21 @@ associationDefinitions:
         - !<transforms.ValueTransform>
           value: "regularly"
     name: "usedby74"
+
+  usedby75:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "TV"
+    dst: "household"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q43"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "usedby75"
