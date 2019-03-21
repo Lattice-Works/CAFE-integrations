@@ -1,423 +1,452 @@
-# cafe MAQ WI-AMP V2
-# csv filename: CAFE+Questionnaire+v.2+-+Physio+Study+(WI-AMP-BTV)_February+6,+2019_09.01 - CHOICE TEXT
-
-
 entityDefinitions:
   respondent:
-    fqn: "general.person"
-    entitySetName: "CAFE_MAQ_Respondents"
+    entitySetName: CAFE_MAQ_Respondents
+    fqn: general.person
+    name: respondent
     propertyDefinitions:
       nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        column: "respondent_id" #Person ID
+        column: respondent_id
+        type: nc.SubjectIdentification
       ol.idnumber:
-        type: "ol.idnumber"
-        column: "ResponseId"
-    name: "respondent"
-
+        column: ResponseId
+        type: ol.idnumber
   subject:
-    fqn: "general.person"
-    entitySetName: "CAFE_MAQ_Children"
+    entitySetName: CAFE_MAQ_Children
+    fqn: general.person
+    name: subject
     propertyDefinitions:
       nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        column: "child_id"
-    name: "subject"
-
+        column: child_id
+        type: nc.SubjectIdentification
   timespentydayTVorDVD:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_Device_Use"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "timespent_yday_tvdvd"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Time spent watching TV or DVDs yesterday"
-      ol.duration:
-        type: "ol.duration"
-        column: "Q49_1"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Watch TV or DVDs"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child 1"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "yesterday"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q49_1"
+      column: Q49_1
       reverse: true
-    name: "timespentydayTVorDVD"
-
-  timespentydaycomputer:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_Device_Use"
+    entitySetName: CAFE_MAQ_Device_Use
+    fqn: ol.deviceuse
+    name: timespentydayTVorDVD
     propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "timespent_yday_computer"
       ol.description:
-        type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Time spent using the computer yesterday"
+          value: Time spent watching TV or DVDs yesterday
+        type: ol.description
       ol.duration:
-        type: "ol.duration"
-        column: "Q49_2"
+        column: Q49_1
+        type: ol.duration
+      ol.id:
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: Q49_1
+          - !<transforms.ValueTransform>
+            value: Time spent watching TV or DVDs yesterday
+        type: ol.id
       ol.name:
-        type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Use the computer"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child"
+          value: Watch TV or DVDs
+        type: ol.name
       ol.relevantperiod:
-        type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
-          value: "yesterday"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q49_2"
-      reverse: true
-    name: "timespentydaycomputer"
-
+          value: yesterday
+        type: ol.relevantperiod
+      ol.subject:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: child 1
+        type: ol.subject
   timespentydaybooks:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_Device_Use"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "timespent_yday_books"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Time spent reading books yesterday"
-      ol.duration:
-        type: "ol.duration"
-        column: "Q49_3"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Read books"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "yesterday"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q49_3"
+      column: Q49_3
       reverse: true
-    name: "timespentydayebooks"
-
+    entitySetName: CAFE_MAQ_Device_Use
+    fqn: ol.deviceuse
+    name: timespentydayebooks
+    propertyDefinitions:
+      ol.description:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Time spent reading books yesterday
+        type: ol.description
+      ol.duration:
+        column: Q49_3
+        type: ol.duration
+      ol.id:
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: Q49_3
+          - !<transforms.ValueTransform>
+            value: Time spent reading books yesterday
+        type: ol.id
+      ol.name:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Read books
+        type: ol.name
+      ol.relevantperiod:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: yesterday
+        type: ol.relevantperiod
+      ol.subject:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: child
+        type: ol.subject
+  timespentydaycomputer:
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q49_2
+      reverse: true
+    entitySetName: CAFE_MAQ_Device_Use
+    fqn: ol.deviceuse
+    name: timespentydaycomputer
+    propertyDefinitions:
+      ol.description:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Time spent using the computer yesterday
+        type: ol.description
+      ol.duration:
+        column: Q49_2
+        type: ol.duration
+      ol.id:
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: Q49_2
+          - !<transforms.ValueTransform>
+            value: Time spent using the computer yesterday
+        type: ol.id
+      ol.name:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Use the computer
+        type: ol.name
+      ol.relevantperiod:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: yesterday
+        type: ol.relevantperiod
+      ol.subject:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: child
+        type: ol.subject
   timespentydayconsolegames:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_Device_Use"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "timespent_yday_consolegame"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Time spent playing console video games yesterday"
-      ol.duration:
-        type: "ol.duration"
-        column: "Q49_4"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "play video games on a console game player"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "yesterday"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q49_4"
+      column: Q49_4
       reverse: true
-    name: "timespentydayconsolegames"
-
+    entitySetName: CAFE_MAQ_Device_Use
+    fqn: ol.deviceuse
+    name: timespentydayconsolegames
+    propertyDefinitions:
+      ol.description:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Time spent playing console video games yesterday
+        type: ol.description
+      ol.duration:
+        column: Q49_4
+        type: ol.duration
+      ol.id:
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: Q49_4
+          - !<transforms.ValueTransform>
+            value: Time spent playing console video games yesterday
+        type: ol.id
+      ol.name:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: play video games on a console game player
+        type: ol.name
+      ol.relevantperiod:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: yesterday
+        type: ol.relevantperiod
+      ol.subject:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: child
+        type: ol.subject
   timespentydaymobilesdevices:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_Device_Use"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "timespent_yday_mobiledevices"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Time spent using a kind of mobile device yesterday"
-      ol.duration:
-        type: "ol.duration"
-        column: "Q49_5"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Use an iPad, tablet, LeapPad, iTouch, or similar mobile device (not including a parent's smartphone)"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "yesterday"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q49_5"
+      column: Q49_5
       reverse: true
-    name: "timespentydaymobilesdevices"
-
-
+    entitySetName: CAFE_MAQ_Device_Use
+    fqn: ol.deviceuse
+    name: timespentydaymobilesdevices
+    propertyDefinitions:
+      ol.description:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Time spent using a kind of mobile device yesterday
+        type: ol.description
+      ol.duration:
+        column: Q49_5
+        type: ol.duration
+      ol.id:
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: Q49_5
+          - !<transforms.ValueTransform>
+            value: Time spent using a kind of mobile device yesterday
+        type: ol.id
+      ol.name:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Use an iPad, tablet, LeapPad, iTouch, or similar mobile device (not
+            including a parent's smartphone)
+        type: ol.name
+      ol.relevantperiod:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: yesterday
+        type: ol.relevantperiod
+      ol.subject:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: child
+        type: ol.subject
   timespentydaysmartphone:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_Device_Use"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "timespent_yday_smartphone"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Time spent using smartphone (not including talking on the phone) yesterday"
-      ol.duration:
-        type: "ol.duration"
-        column: "Q50_1"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Use a smart phone for things like texting, playing games, watching videos, or surfing the Internet (don’t count time spent talking on the phone)"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "yesterday"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q50_1"
+      column: Q50_1
       reverse: true
-    name: "timespentydaysmartphone"
-
+    entitySetName: CAFE_MAQ_Device_Use
+    fqn: ol.deviceuse
+    name: timespentydaysmartphone
+    propertyDefinitions:
+      ol.description:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Time spent using smartphone (not including talking on the phone)
+            yesterday
+        type: ol.description
+      ol.duration:
+        column: Q50_1
+        type: ol.duration
+      ol.id:
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: Q50_1
+          - !<transforms.ValueTransform>
+            value: Time spent using smartphone (not including talking on the phone)
+              yesterday
+        type: ol.id
+      ol.name:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Use a smart phone for things like texting, playing games, watching\
+            \ videos, or surfing the Internet (don\u2019t count time spent talking\
+            \ on the phone)"
+        type: ol.name
+      ol.relevantperiod:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: yesterday
+        type: ol.relevantperiod
+      ol.subject:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: child
+        type: ol.subject
 associationDefinitions:
   involvedin1:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "subject"
-    dst: "timespentydayTVorDVD"
+    dst: timespentydayTVorDVD
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin1
     propertyDefinitions:
       ol.id:
-        type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "involvedin1"
-
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
   involvedin2:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "subject"
-    dst: "timespentydaycomputer"
+    dst: timespentydaycomputer
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin2
     propertyDefinitions:
       ol.id:
-        type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "involvedin2"
-
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
   involvedin3:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "subject"
-    dst: "timespentydaybooks"
+    dst: timespentydaybooks
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin3
     propertyDefinitions:
       ol.id:
-        type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "involvedin3"
-
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
   involvedin4:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "subject"
-    dst: "timespentydayconsolegames"
+    dst: timespentydayconsolegames
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin4
     propertyDefinitions:
       ol.id:
-        type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "involvedin4"
-
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
   involvedin5:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "subject"
-    dst: "timespentydaymobilesdevices"
+    dst: timespentydaymobilesdevices
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin5
     propertyDefinitions:
       ol.id:
-        type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "involvedin5"
-
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
   involvedin6:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "subject"
-    dst: "timespentydaysmartphone"
+    dst: timespentydaysmartphone
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin6
     propertyDefinitions:
       ol.id:
-        type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "involvedin6"
-
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
   reported1:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "timespentydayTVorDVD"
+    dst: timespentydayTVorDVD
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported1
     propertyDefinitions:
       general.id:
-        type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported1"
-
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
   reported2:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "timespentydaycomputer"
+    dst: timespentydaycomputer
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported2
     propertyDefinitions:
       general.id:
-        type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported2"
-
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
   reported3:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "timespentydaybooks"
+    dst: timespentydaybooks
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported3
     propertyDefinitions:
       general.id:
-        type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported3"
-
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
   reported4:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "timespentydayconsolegames"
+    dst: timespentydayconsolegames
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported4
     propertyDefinitions:
       general.id:
-        type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported4"
-
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
   reported5:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "timespentydaymobilesdevices"
+    dst: timespentydaymobilesdevices
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported5
     propertyDefinitions:
       general.id:
-        type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported5"
-
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
   reported6:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "timespentydaysmartphone"
+    dst: timespentydaysmartphone
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported6
     propertyDefinitions:
       general.id:
-        type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported6"
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
