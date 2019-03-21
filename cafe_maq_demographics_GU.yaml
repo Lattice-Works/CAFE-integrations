@@ -911,7 +911,7 @@ associationDefinitions:
   has1:
     fqn: "ol.has"
     entitySetName: "CAFE_MAQ_Has"
-    src: "childsubject1"
+    src: "childsubject"
     dst: "subjectdetailshealth"
     propertyDefinitions:
       ol.id:
@@ -1024,7 +1024,7 @@ associationDefinitions:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "respondent"
-    dst: "childsubject1"
+    dst: "childsubject"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1037,7 +1037,7 @@ associationDefinitions:
   subjectof1:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
-    src: "childsubject1"
+    src: "childsubject"
     dst: "childcare_weekdays"
     propertyDefinitions:
       ol.id:
@@ -1051,7 +1051,7 @@ associationDefinitions:
   subjectof2:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
-    src: "childsubject1"
+    src: "childsubject"
     dst: "childcare_weekends"
     propertyDefinitions:
       ol.id:
@@ -1179,6 +1179,13 @@ associationDefinitions:
           transforms:
           - !<transforms.BooleanContainsTransform>
             column: "Q15_x1_1_1"
+            string: "999"
+            transformsIfTrue:
+            - !<transforms.ValueTransform>
+              value: null
+            transformsIfFalse:
+            - !<transforms.ColumnTransform>
+              column: "Q15_x1_1_2"
       ol.role2:
         type: "ol.role"
         transforms:
@@ -1239,13 +1246,6 @@ associationDefinitions:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x1_1_TEXT"
-            string: "999"
-            transformsIfTrue:
-            - !<transforms.ValueTransform>
-              value: null
-            transformsIfFalse:
-            - !<transforms.ColumnTransform>
-              column: "Q15_x1_1_TEXT"
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -1282,9 +1282,14 @@ associationDefinitions:
       ol.role:
         type: "ol.role"
         transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.BooleanContainsTransform>
+        - !<transforms.BooleanContainsTransform>
+          column: "Q15_x2_1_1"
+          string: "999"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>
             column: "Q15_x2_1_1"
       ol.role2:
         type: "ol.role"
@@ -1346,13 +1351,6 @@ associationDefinitions:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x2_1_TEXT"
-            string: "999"
-            transformsIfTrue:
-            - !<transforms.ValueTransform>
-              value: null
-            transformsIfFalse:
-            - !<transforms.ColumnTransform>
-              column: "Q15_x2_1_TEXT"
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -1389,9 +1387,14 @@ associationDefinitions:
       ol.role:
         type: "ol.role"
         transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.BooleanContainsTransform>
+        - !<transforms.BooleanContainsTransform>
+          column: "Q15_x3_1_1"
+          string: "999"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>
             column: "Q15_x3_1_1"
       ol.role2:
         type: "ol.role"
@@ -1453,13 +1456,6 @@ associationDefinitions:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x3_1_TEXT"
-            string: "999"
-            transformsIfTrue:
-            - !<transforms.ValueTransform>
-              value: null
-            transformsIfFalse:
-            - !<transforms.ColumnTransform>
-              column: "Q15_x3_1_TEXT"
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -1496,9 +1492,14 @@ associationDefinitions:
       ol.role:
         type: "ol.role"
         transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.BooleanContainsTransform>
+        - !<transforms.BooleanContainsTransform>
+          column: "Q15_x4_1_1"
+          string: "999"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>
             column: "Q15_x4_1_1"
       ol.role2:
         type: "ol.role"
@@ -1560,13 +1561,6 @@ associationDefinitions:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x4_1_TEXT"
-            string: "999"
-            transformsIfTrue:
-            - !<transforms.ValueTransform>
-              value: null
-            transformsIfFalse:
-            - !<transforms.ColumnTransform>
-              column: "Q15_x4_1_TEXT"
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -1603,9 +1597,14 @@ associationDefinitions:
       ol.role:
         type: "ol.role"
         transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.BooleanContainsTransform>
+        - !<transforms.BooleanContainsTransform>
+          column: "Q15_x5_1_1"
+          string: "999"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>
             column: "Q15_x5_1_1"
       ol.role2:
         type: "ol.role"
@@ -1667,13 +1666,6 @@ associationDefinitions:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x5_1_TEXT"
-            string: "999"
-            transformsIfTrue:
-            - !<transforms.ValueTransform>
-              value: null
-            transformsIfFalse:
-            - !<transforms.ColumnTransform>
-              column: "Q15_x5_1_TEXT"
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -1710,10 +1702,15 @@ associationDefinitions:
       ol.role:
         type: "ol.role"
         transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.BooleanContainsTransform>
-            column: "Q15_x6_1_1"
+        - !<transforms.BooleanContainsTransform>
+          column: "Q15_x5_1_1"
+          string: "999"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>
+            column: "Q15_x5_1_1"
       ol.role2:
         type: "ol.role"
         transforms:
@@ -1774,13 +1771,6 @@ associationDefinitions:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q15_x6_1_TEXT"
-            string: "999"
-            transformsIfTrue:
-            - !<transforms.ValueTransform>
-              value: null
-            transformsIfFalse:
-            - !<transforms.ColumnTransform>
-              column: "Q15_x6_1_TEXT"
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
