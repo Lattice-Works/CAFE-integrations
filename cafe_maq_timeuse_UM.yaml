@@ -1,531 +1,3 @@
-associationDefinitions:
-  involvedin1:
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: Q274_1
-      reverse: true
-    dst: timespentweekendTVorDVD
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin1
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin10:
-    dst: timespentweekdaycomputer
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin10
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin11:
-    dst: timespentweekdayebooks
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin11
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin12:
-    dst: timespentweekdaybooks
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin12
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin13:
-    dst: timespentweekdayconsolegames
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin13
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin14:
-    dst: timespentweekdaymobilesdevices
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin14
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin15:
-    dst: timespentweekdaysmartphone
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin15
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin16:
-    dst: timespentweekdayvirtualassistant
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin16
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin2:
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: Q274_2
-      reverse: true
-    dst: timespentweekendcomputer
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin2
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin3:
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: Q274_3
-      reverse: true
-    dst: timespentweekendebooks
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin3
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin4:
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: Q274_4
-      reverse: true
-    dst: timespentweekendbooks
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin4
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin5:
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: Q274_5
-      reverse: true
-    dst: timespentweekendconsolegames
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin5
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin6:
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: Q274_6
-      reverse: true
-    dst: timespentweekendmobilesdevices
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin6
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin7:
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: Q274_7
-      reverse: true
-    dst: timespentweekendsmartphone
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin7
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin8:
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: Q274_8
-      reverse: true
-    dst: timespentweekendvirtualassistant
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin8
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  involvedin9:
-    dst: timespentweekdayTVorDVD
-    entitySetName: CAFE_MAQ_InvolvedIn
-    fqn: ol.involvedin
-    name: involvedin9
-    propertyDefinitions:
-      ol.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: ol.id
-    src: subject
-  reported1:
-    dst: timespentweekendTVorDVD
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported1
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported10:
-    dst: timespentweekdaycomputer
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported10
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported11:
-    dst: timespentweekdayebooks
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported11
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported12:
-    dst: timespentweekdaybooks
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported12
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported13:
-    dst: timespentweekdayconsolegames
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported13
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported14:
-    dst: timespentweekdaymobilesdevices
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported14
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported15:
-    dst: timespentweekdaysmartphone
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported15
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported16:
-    dst: timespentweekdayvirtualassistant
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported16
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported17:
-    dst: qualitycontrol
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported17
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported2:
-    dst: timespentweekendcomputer
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported2
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported3:
-    dst: timespentweekendebooks
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported3
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported4:
-    dst: timespentweekendbooks
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported4
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported5:
-    dst: timespentweekendconsolegames
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported5
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported6:
-    dst: timespentweekendmobilesdevices
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported6
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported7:
-    dst: timespentweekendsmartphone
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported7
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported8:
-    dst: timespentweekendvirtualassistant
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported8
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
-  reported9:
-    dst: timespentweekdayTVorDVD
-    entitySetName: CAFE_MAQ_Reported
-    fqn: ol.reported
-    name: reported9
-    propertyDefinitions:
-      general.id:
-        transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
-        type: general.id
-    src: respondent
 entityDefinitions:
   qualitycontrol:
     conditions:
@@ -1242,3 +714,531 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: child
         type: ol.subject
+associationDefinitions:
+  involvedin1:
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q274_1
+      reverse: true
+    dst: timespentweekendTVorDVD
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin1
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin10:
+    dst: timespentweekdaycomputer
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin10
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin11:
+    dst: timespentweekdayebooks
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin11
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin12:
+    dst: timespentweekdaybooks
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin12
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin13:
+    dst: timespentweekdayconsolegames
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin13
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin14:
+    dst: timespentweekdaymobilesdevices
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin14
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin15:
+    dst: timespentweekdaysmartphone
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin15
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin16:
+    dst: timespentweekdayvirtualassistant
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin16
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin2:
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q274_2
+      reverse: true
+    dst: timespentweekendcomputer
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin2
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin3:
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q274_3
+      reverse: true
+    dst: timespentweekendebooks
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin3
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin4:
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q274_4
+      reverse: true
+    dst: timespentweekendbooks
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin4
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin5:
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q274_5
+      reverse: true
+    dst: timespentweekendconsolegames
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin5
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin6:
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q274_6
+      reverse: true
+    dst: timespentweekendmobilesdevices
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin6
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin7:
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q274_7
+      reverse: true
+    dst: timespentweekendsmartphone
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin7
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin8:
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q274_8
+      reverse: true
+    dst: timespentweekendvirtualassistant
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin8
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  involvedin9:
+    dst: timespentweekdayTVorDVD
+    entitySetName: CAFE_MAQ_InvolvedIn
+    fqn: ol.involvedin
+    name: involvedin9
+    propertyDefinitions:
+      ol.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: ol.id
+    src: subject
+  reported1:
+    dst: timespentweekendTVorDVD
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported1
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported10:
+    dst: timespentweekdaycomputer
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported10
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported11:
+    dst: timespentweekdayebooks
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported11
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported12:
+    dst: timespentweekdaybooks
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported12
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported13:
+    dst: timespentweekdayconsolegames
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported13
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported14:
+    dst: timespentweekdaymobilesdevices
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported14
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported15:
+    dst: timespentweekdaysmartphone
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported15
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported16:
+    dst: timespentweekdayvirtualassistant
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported16
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported17:
+    dst: qualitycontrol
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported17
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported2:
+    dst: timespentweekendcomputer
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported2
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported3:
+    dst: timespentweekendebooks
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported3
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported4:
+    dst: timespentweekendbooks
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported4
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported5:
+    dst: timespentweekendconsolegames
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported5
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported6:
+    dst: timespentweekendmobilesdevices
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported6
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported7:
+    dst: timespentweekendsmartphone
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported7
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported8:
+    dst: timespentweekendvirtualassistant
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported8
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
+  reported9:
+    dst: timespentweekdayTVorDVD
+    entitySetName: CAFE_MAQ_Reported
+    fqn: ol.reported
+    name: reported9
+    propertyDefinitions:
+      general.id:
+        transforms:
+        - !<transforms.HashTransform>
+          columns:
+          - Q281
+          - ResponseId
+          hashFunction: sha256
+        type: general.id
+    src: respondent
