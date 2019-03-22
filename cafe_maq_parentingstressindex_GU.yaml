@@ -21,10 +21,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-          hashFunction: "sha256"
+        column: "respondent_id"
       ol.overwhelmed:
         type: "ol.overwhelmed"
         column: "Q87_1"
@@ -141,9 +138,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "quality_control"
+        column: "Q89_6"
       ol.description:
         type: "ol.description"
         transforms:
@@ -183,6 +178,6 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["Q89_6", "ResponseId"]
           hashFunction: "sha256"
     name: "reported"

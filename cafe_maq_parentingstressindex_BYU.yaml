@@ -21,118 +21,259 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-          hashFunction: "sha256"
+        column: "respondent_id"
       ol.overwhelmed:
         type: "ol.overwhelmed"
         column: "Q87_4"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.parentalresponsibilities:
         type: "ol.parentalresponsibilities"
         column: "Q87_5"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.feelingtrapped:
         type: "ol.feelingtrapped"
         column: "Q87_6"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.opportunitycost:
         type: "ol.opportunitycost"
         column: "Q87_7"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.restrictedactivities:
         type: "ol.restrictedactivities"
         column: "Q87_8"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.dissatisfiedwithpurchase:
         type: "ol.dissatisfiedwithpurchase"
         column: "Q87_9"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.dissatisfiedwithlife:
         type: "ol.dissatisfiedwithlife"
         column: "Q87_10"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.relationshipissues:
         type: "ol.relationshipissues"
         column: "Q87_11"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.loneliness:
         type: "ol.loneliness"
         column: "Q87_12"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.expectations:
         type: "ol.expectations"
         column: "Q87_13"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.socialdisinterest:
         type: "ol.socialdisinterest"
         column: "Q87_14"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.anhedonia:
         type: "ol.anhedonia"
         column: "Q87_15"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.dissatisfiedwithparenting:
         type: "ol.dissatisfiedwithparenting"
         column: "Q87_16"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.emotionallydistant:
         type: "ol.emotionallydistant"
         column: "Q87_17"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.facialexpression:
         type: "ol.facialexpression"
         column: "Q87_18"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.unappreciated:
         type: "ol.unappreciated"
         column: "Q87_19"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.laughter:
         type: "ol.laughter"
         column: "Q87_20"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.relativespeed:
         type: "ol.relativespeed"
         column: "Q87_21"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.relativefrequency:
         type: "ol.relativefrequency"
         column: "Q87_22"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.limitations:
         type: "ol.limitations"
         column: "Q87_23"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.behaviorchange:
         type: "ol.behaviorchange"
         column: "Q87_24"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.parentingquality:
         type: "ol.parentingquality"
         column: "Q88"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["9", "10", "11", "12", "13"]
+          goal: ["A very good parent", "A better than average parent", "An average parent", "A person who has some trouble being a parent", "Not very good at being a parent"]
       ol.strengthofemotion:
         type: "ol.strengthofemotion"
         column: "Q89_4"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["5", "3", "6", "7", "8"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.behavioralissue:
         type: "ol.behavioralissue"
         column: "Q89_5"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["5", "3", "6", "7", "8"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.affect:
         type: "ol.affect"
         column: "Q89_6"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["5", "3", "6", "7", "8"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       bhr.disposition:
         type: "bhr.disposition"
         column: "Q89_7"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["5", "3", "6", "7", "8"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.mood:
         type: "ol.mood"
         column: "Q89_8"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["5", "3", "6", "7", "8"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.botheredbyperson:
         type: "ol.botheredbyperson"
         column: "Q89_9"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["5", "3", "6", "7", "8"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.reactionseverity:
         type: "ol.reactionseverity"
         column: "Q89_10"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["5", "3", "6", "7", "8"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.easilyupset:
         type: "ol.easilyupset"
         column: "Q89_11"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["5", "3", "6", "7", "8"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       neurological.sleeppattern:
         type: "neurological.sleeppattern"
         column: "Q89_12"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["5", "3", "6", "7", "8"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.discipline:
         type: "ol.discipline"
         column: "Q90_1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["4", "5", "6", "7", "8"]
+          goal: ["Much easier than I expected", "Somewhat easier than I expected", "About as hard as I expected", "Somewhat harder than I expected", "Much harder than I expected"]
       ol.number:
         type: "ol.number"
         column: "Q91_1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["9", "10", "11", "12", "13"]
+          goal: ["3 or fewer", "4-5", "6-7", "8-9", "10 or more"]
       ol.botheredbyactions:
         type: "ol.botheredbyactions"
         column: "Q92_4"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.moreproblematic:
         type: "ol.moreproblematic"
         column: "Q92_5"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.demanding:
         type: "ol.demanding"
         column: "Q92_6"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
     name: "parentingstressindex"
 
   qualitycontrol:
@@ -141,9 +282,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "quality_control"
+        column: "Q89_13"
       ol.description:
         type: "ol.description"
         transforms:
@@ -152,6 +291,10 @@ entityDefinitions:
       ol.selection:
         type: "ol.selection"
         column: "Q89_13"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["5", "3", "6", "7", "8"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q89_13"
@@ -183,6 +326,6 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["Q89_13", "ResponseId"]
           hashFunction: "sha256"
     name: "reported"
