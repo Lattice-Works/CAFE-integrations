@@ -21,10 +21,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-          hashFunction: "sha256"
+        column: "respondent_id"
       ol.overwhelmed:
         type: "ol.overwhelmed"
         column: "Q87_1"

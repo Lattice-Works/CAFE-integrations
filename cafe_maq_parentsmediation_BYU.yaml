@@ -1,6 +1,6 @@
-# cafe MAQ UMichigan
-# csv filename: DS_PTS_MAQS_V3.1_021519.csv
-# Parent's Mediation of Child's Use section of survey (PTS_MAQS V3.1_Data Dictionary_Questions)
+# cafe MAQ BYU
+# csv filename: MAQs_BYU_V3_2018_20181004_Returning.csv
+# Parent Mediation Scale Questions
 
 entityDefinitions:
   respondent:
@@ -32,7 +32,7 @@ entityDefinitions:
         type: "household.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["ResponseId"]
+          columns: ["ResponseId"] #could put households together based off 1st 2 parts of PersonId?
           hashFunction: "sha256"
     name: "household"
 
@@ -46,38 +46,60 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q68_1", "Q68_2", "Q68_3", "Q68_4", "Q68_5", "Q68_6"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "parental_restriction_child"
       ol.usesparentalcontrols:
         type: "ol.usesparentalcontrols"
         column: "Q68_1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6"]
+          goal: ["Never", "Rarely", "Occasionally", "Frequently", "Most of the time", "Not Applicable"]
       ol.usesparentalmediawebsite:
         type: "ol.usesparentalmediawebsite"
         column: "Q68_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6"]
+          goal: ["Never", "Rarely", "Occasionally", "Frequently", "Most of the time", "Not Applicable"]
       ol.restrictschildmedia:
         type: "ol.restrictschildmedia"
         column: "Q68_3"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6"]
+          goal: ["Never", "Rarely", "Occasionally", "Frequently", "Most of the time", "Not Applicable"]
       ol.usesratingsystem:
         type: "ol.usesratingsystem"
         column: "Q68_4"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6"]
+          goal: ["Never", "Rarely", "Occasionally", "Frequently", "Most of the time", "Not Applicable"]
       ol.parentalcoviewing:
         type: "ol.parentalcoviewing"
         column: "Q68_5"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6"]
+          goal: ["Never", "Rarely", "Occasionally", "Frequently", "Most of the time", "Not Applicable"]
       ol.restrictions:
         type: "ol.restrictions"
         transforms:
-        - !<transforms.BooleanContainsTransform>
+        - !<transforms.BooleanIsNullTransform>
           column: "Q68_6"
-          string: " "
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: null
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q68_6"
+          - !<transforms.ReplaceTransform>
+            target: ["1", "2", "3", "4", "5", "6"]
+            goal: ["Never", "Rarely", "Occasionally", "Frequently", "Most of the time", "Not Applicable"]
       ol.restrictedactivities:
         type: "ol.restrictedactivities"
         transforms:
@@ -129,19 +151,26 @@ entityDefinitions:
       ol.timelimits:
         type: "ol.timelimits"
         column: "Q69_1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["2", "3", "4", "6", "7" ]
+          goal: ["Never", "Sometimes", "Often", "Always", "Not applicable"]
       ol.contentrestrictions:
         type: "ol.contentrestrictions"
         column: "Q69_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["2", "3", "4", "6", "7" ]
+          goal: ["Never", "Sometimes", "Often", "Always", "Not applicable"]
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q69_1"
       reverse: true
-     - !<conditions.BooleanIsNullCondition>
+    - !<conditions.BooleanIsNullCondition>
       column: "Q69_2"
       reverse: true
     name: "parentlimitshousehold"
-
 
 # **************** EXPOSURE TO NON ENGLISH MEDIA *******************
 
@@ -167,9 +196,17 @@ entityDefinitions:
       ol.status:
         type: "ol.status"
         column: "Q72"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes", "No"]
       ol.duration:
         type: "ol.duration"
         column: "Q73"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4"]
+          goal: ["100% of them", "75% of them", "50% of them", "25% of them"]
       ol.units:
         type: "ol.units"
         transforms:
@@ -196,7 +233,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        column: "Q70_2"
+        column: "Q70_25"
       ol.description:
         type: "ol.description"
         transforms:
@@ -204,10 +241,14 @@ entityDefinitions:
           value: "respondents told to select 'Often'"
       ol.selection:
         type: "ol.selection"
-        column: "Q70_2"
+        column: "Q70_25"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q70_2"
+      column: "Q70_25"
       reverse: true
     name: "qualitycontrol1"
 
@@ -222,56 +263,116 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
-            columns: ["Q70_1", "Q70_3", "Q70_4", "Q70_5", "Q70_6", "Q70_7", "Q70_8", "Q70_9", "Q70_11", "Q70_12", "Q70_13", "Q70_14", "Q70_15"]
-            hashFunction: "sha256"
+          - !<transforms.ConcatTransform>
+            columns: ["Q70_1", "Q70_2", "Q70_3", "Q70_4", "Q70_5", "Q70_6", "Q70_7", "Q70_8", "Q70_9", "Q70_10", "Q70_11", "Q70_12", "Q70_13", "Q70_14", "Q70_15"]
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "mediause_inhome"
       ol.activityenjoyment:
         type: "ol.activityenjoyment"
         column: "Q70_1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       ol.comprehension:
         type: "ol.comprehension"
-        column: "Q70_3"
+        column: "Q70_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       ol.laughter:
         type: "ol.laughter"
-        column: "Q70_4"
+        column: "Q70_3"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       ol.setviewinghours:
         type: "ol.setviewinghours"
-        column: "Q70_5"
+        column: "Q70_4"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       ol.commoninterest:
         type: "ol.commoninterest"
-        column: "Q70_6"
+        column: "Q70_5"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       ol.badactions:
         type: "ol.badactions"
-        column: "Q70_7"
+        column: "Q70_6"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       ol.restrictions:
         type: "ol.restrictions"
-        column: "Q70_8"
+        column: "Q70_7"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       ol.inappropriatecontent:
         type: "ol.inappropriatecontent"
-        column: "Q70_9"
+        column: "Q70_8"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       ol.explainmeaning:
         type: "ol.explainmeaning"
-        column: "Q70_11" #explain what something really means
+        column: "Q70_9"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       ol.action:
         type: "ol.action"
-        column: "Q70_12" #watch together just for fun
+        column: "Q70_10"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       ol.explainmotives:
         type: "ol.explainmotives"
-        column: "Q70_13"
+        column: "Q70_11"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       ol.advancenotice:
         type: "ol.advancenotice"
-        column: "Q70_14"
+        column: "Q70_12"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       ol.favoriteprogram:
         type: "ol.favoriteprogram"
-        column: "Q70_15"
+        column: "Q70_13"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       ol.positiveeffects:
         type: "ol.positiveeffects"
-        column: "Q70_16"
+        column: "Q70_14"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
       sharing.programstoexclude:
         type: "sharing.programstoexclude"
-        column: "Q70_17"
+        column: "Q70_15"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
     name: mediauseinhome
 
   qualitycontrol2:
@@ -280,7 +381,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        column: "Q70_10"
+        column: "Q70_17"
       ol.description:
         type: "ol.description"
         transforms:
@@ -288,10 +389,14 @@ entityDefinitions:
           value: "respondents told to select 'Sometimes'"
       ol.selection:
         type: "ol.selection"
-        column: "Q70_10"
+        column: "Q70_17"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Not Applicable"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q70_10"
+      column: "Q70_17"
       reverse: true
     name: "qualitycontrol2"
 
@@ -349,7 +454,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q69_1", "Q69_2", "ResponseId"]
+          columns: ["Q69_1", "Q69_2", "Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "subjectof2"
 
@@ -377,7 +482,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q72", "Q73", "ResponseId"]
+          columns: ["Q72", "Q73", "Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "subjectof4"
 
@@ -391,7 +496,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q70_2", "ResponseId"]
+          columns: ["Q70_25", "ResponseId"]
           hashFunction: "sha256"
     name: "reported5"
 
@@ -405,7 +510,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q70_10", "ResponseId"]
+          columns: ["Q70_17", "ResponseId"]
           hashFunction: "sha256"
     name: "reported6"
 

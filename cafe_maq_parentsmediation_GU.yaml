@@ -1,6 +1,6 @@
-# cafe MAQ UMichigan
-# csv filename: DS_PTS_MAQS_V3.1_021519.csv
-# Parent's Mediation of Child's Use section of survey (PTS_MAQS V3.1_Data Dictionary_Questions)
+# GU CAFE MAQ Survey
+#csv files: GU_MAQs_11March2019_ChoiceText.csv, GU_MAQs_11March2019_SecondFile_ChoiceText.csv
+# Parent's Mediation
 
 entityDefinitions:
   respondent:
@@ -69,9 +69,8 @@ entityDefinitions:
       ol.restrictions:
         type: "ol.restrictions"
         transforms:
-        - !<transforms.BooleanContainsTransform>
+        - !<transforms.BooleanIsNullTransform>
           column: "Q68_6"
-          string: " "
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: null
@@ -81,9 +80,8 @@ entityDefinitions:
       ol.restrictedactivities:
         type: "ol.restrictedactivities"
         transforms:
-        - !<transforms.BooleanContainsTransform>
+        - !<transforms.BooleanIsNullTransform>
           column: "Q68_6_TEXT"
-          string: " "
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: null
