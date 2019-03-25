@@ -9,7 +9,10 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: child_id
+        transforms:
+        - !<transforms.HashTransform>
+          columns: child_id
+          hashFunction: "sha256"
       ol.idnumber:
         type: "ol.idnumber"
         column: "ResponseId" #not sure if this or Person ID should be PK.
@@ -21,7 +24,10 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: child_id
+        transforms:
+        - !<transforms.HashTransform>
+          columns: child_id
+          hashFunction: "sha256"
     name: "subject"
 
   household:
@@ -294,7 +300,6 @@ entityDefinitions:
       column: "Q70_10"
       reverse: true
     name: "qualitycontrol2"
-
 
 associationDefinitions:
   reported1:

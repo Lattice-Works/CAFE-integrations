@@ -1,6 +1,7 @@
-# GU CAFE MAQ Survey
-#csv files: GU_MAQs_11March2019_ChoiceText.csv, GU_MAQs_11March2019_SecondFile_ChoiceText.csv
-# Parent's Mediation
+# Wisconsin-Madison
+# csv filename: CAFE+Questionnaire+v.2+-+Physio+Study+(WI-AMP-BTV)_February+6,+2019_09.01 - CHOICE TEXT.csv
+
+
 
 entityDefinitions:
   respondent:
@@ -12,7 +13,6 @@ entityDefinitions:
         transforms:
         - !<transforms.HashTransform>
           columns: child_id
-          hashFunction: "sha256"
       ol.idnumber:
         type: "ol.idnumber"
         column: "ResponseId" #not sure if this or Person ID should be PK.
@@ -27,7 +27,6 @@ entityDefinitions:
         transforms:
         - !<transforms.HashTransform>
           columns: child_id
-          hashFunction: "sha256"
     name: "subject"
 
   household:
@@ -41,6 +40,67 @@ entityDefinitions:
           columns: ["ResponseId"]
           hashFunction: "sha256"
     name: "household"
+# *************** LIMITS ON TIME ON MEDIA **********
+  timelimitschild:
+    fqn: "ol.parentmediationscale"
+    entitySetName: "CAFE_MAQ_ParentMediationScale"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q67_1", "Q67_2", "Q67_3", "Q67_4", "Q67_5", "Q67_6"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "timelimits_child"
+      ol.timelimitsmedia1:
+        type: "ol.timelimitsmedia"
+        column: "Q67_1"
+      ol.timelimitsmedia2:
+        type: "ol.timelimitsmedia"
+        column: "Q67_2"
+      ol.timelimitsmedia3:
+        type: "ol.timelimitsmedia"
+        column: "Q67_3"
+      ol.timelimitsmedia4:
+        type: "ol.timelimitsmedia"
+        column: "Q67_4"
+      ol.timelimitsmedia5:
+        type: "ol.timelimitsmedia"
+        column: "Q67_5"
+      ol.timelimitsmedia6:
+        type: "ol.timelimitsmedia"
+        column: "Q67_6"
+      ol.timelimitsmedia7:
+        type: "ol.verificationsource"
+        column: "Q67_7_TEXT"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q67_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q67_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q67_3"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q67_4"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q67_5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q67_6"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q67_7_TEXT"
+      reverse: true
+    name: "timelimitschild"
+
 
 # *************** RESTRICTING MEDIA FOR CHILD **********
   parentrestrictionchild:
@@ -57,11 +117,6 @@ entityDefinitions:
             hashFunction: "sha256"
           - !<transforms.ValueTransform>
             value: "parental_restriction_child"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-            value: "child"
       ol.usesparentalcontrols:
         type: "ol.usesparentalcontrols"
         column: "Q68_1"
@@ -135,11 +190,6 @@ entityDefinitions:
             separator: "_"
           - !<transforms.ValueTransform>
             value: "parental_limits_household"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "household"
       ol.timelimits:
         type: "ol.timelimits"
         column: "Q69_1"
@@ -156,8 +206,91 @@ entityDefinitions:
       reverse: true
     name: "parentlimitshousehold"
 
+# ******************** MEDIA USE IN HOME *******************
 
-# **************** EXPOSURE TO NON ENGLISH MEDIA *******************
+  mediauseinhome:
+    fqn: "ol.parentmediationscale"
+    entitySetName: "CAFE_MAQ_ParentMediationScale"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q70_1", "Q70_2", "Q70_3", "Q70_4", "Q70_5", "Q70_6", "Q70_7", "Q70_8", "Q70_9", "Q70_10", "Q70_11", "Q70_12", "Q70_13", "Q70_14", "Q70_15"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mediause_inhome"
+      ol.activityenjoyment:
+        type: "ol.activityenjoyment"
+        column: "Q70_1"
+      ol.comprehension:
+        type: "ol.comprehension"
+        column: "Q70_2"
+      ol.laughter:
+        type: "ol.laughter"
+        column: "Q70_3"
+      ol.setviewinghours:
+        type: "ol.setviewinghours"
+        column: "Q70_4"
+      ol.commoninterest:
+        type: "ol.commoninterest"
+        column: "Q70_5"
+      ol.badactions:
+        type: "ol.badactions"
+        column: "Q70_6"
+      ol.restrictions:
+        type: "ol.restrictions"
+        column: "Q70_7"
+      ol.inappropriatecontent:
+        type: "ol.inappropriatecontent"
+        column: "Q70_8"
+      ol.explainmeaning:
+        type: "ol.explainmeaning"
+        column: "Q70_9" #explain what something really means
+      ol.action:
+        type: "ol.action"
+        column: "Q70_10" #watch together just for fun
+      ol.explainmotives:
+        type: "ol.explainmotives"
+        column: "Q70_11"
+      ol.advancenotice:
+        type: "ol.advancenotice"
+        column: "Q70_12"
+      ol.favoriteprogram:
+        type: "ol.favoriteprogram"
+        column: "Q70_13"
+      ol.positiveeffects:
+        type: "ol.positiveeffects"
+        column: "Q70_14"
+      sharing.programstoexclude:
+        type: "sharing.programstoexclude"
+        column: "Q70_15"
+    name: mediauseinhome
+
+  qualitycontrol:
+    fqn: "ol.qualitycontrol"
+    entitySetName: "CAFE_MAQ_QualityControl"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "Q70_16"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "respondents told to select 'Sometimes'"
+      ol.selection:
+        type: "ol.selection"
+        column: "Q70_16"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q70_16"
+      reverse: true
+    name: "qualitycontrol2"
+
+  # **************** EXPOSURE TO NON ENGLISH MEDIA *******************
 
   nonenglishmediaexposure:
     fqn: "ol.mediaexposure"
@@ -173,11 +306,6 @@ entityDefinitions:
             separator: "_"
           - !<transforms.ValueTransform>
             value: "nonenglish_mediaexposure"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child"
       ol.type:
         type: "ol.type"
         transforms:
@@ -209,115 +337,7 @@ entityDefinitions:
       reverse: true
     name: "nonenglishmediaexposure"
 
-  qualitycontrol1:
-    fqn: "ol.qualitycontrol"
-    entitySetName: "CAFE_MAQ_QualityControl"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        column: "Q70_2"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "respondents told to select 'Often'"
-      ol.selection:
-        type: "ol.selection"
-        column: "Q70_2"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q70_2"
-      reverse: true
-    name: "qualitycontrol1"
 
-# ******************** MEDIA USE IN HOME *******************
-
-  mediauseinhome:
-    fqn: "ol.parentmediationscale"
-    entitySetName: "CAFE_MAQ_ParentMediationScale"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.HashTransform>
-            columns: ["Q70_1", "Q70_3", "Q70_4", "Q70_5", "Q70_6", "Q70_7", "Q70_8", "Q70_9", "Q70_11", "Q70_12", "Q70_13", "Q70_14", "Q70_15"]
-            hashFunction: "sha256"
-          - !<transforms.ValueTransform>
-            value: "mediause_inhome"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "household"
-      ol.activityenjoyment:
-        type: "ol.activityenjoyment"
-        column: "Q70_1"
-      ol.comprehension:
-        type: "ol.comprehension"
-        column: "Q70_3"
-      ol.laughter:
-        type: "ol.laughter"
-        column: "Q70_4"
-      ol.setviewinghours:
-        type: "ol.setviewinghours"
-        column: "Q70_5"
-      ol.commoninterest:
-        type: "ol.commoninterest"
-        column: "Q70_6"
-      ol.badactions:
-        type: "ol.badactions"
-        column: "Q70_7"
-      ol.restrictions:
-        type: "ol.restrictions"
-        column: "Q70_8"
-      ol.inappropriatecontent:
-        type: "ol.inappropriatecontent"
-        column: "Q70_9"
-      ol.explainmeaning:
-        type: "ol.explainmeaning"
-        column: "Q70_11" #explain what something really means
-      ol.action:
-        type: "ol.action"
-        column: "Q70_12" #watch together just for fun
-      ol.explainmotives:
-        type: "ol.explainmotives"
-        column: "Q70_13"
-      ol.advancenotice:
-        type: "ol.advancenotice"
-        column: "Q70_14"
-      ol.favoriteprogram:
-        type: "ol.favoriteprogram"
-        column: "Q70_15"
-      ol.positiveeffects:
-        type: "ol.positiveeffects"
-        column: "Q70_16"
-      sharing.programstoexclude:
-        type: "sharing.programstoexclude"
-        column: "Q70_17"
-    name: mediauseinhome
-
-  qualitycontrol2:
-    fqn: "ol.qualitycontrol"
-    entitySetName: "CAFE_MAQ_QualityControl"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        column: "Q70_10"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "respondents told to select 'Sometimes'"
-      ol.selection:
-        type: "ol.selection"
-        column: "Q70_10"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q70_10"
-      reverse: true
-    name: "qualitycontrol2"
 
   adviceonlimits:
     fqn: "ol.parentmediationscale"
@@ -329,7 +349,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.HashTransform>
-            columns: ["Q71_1", "Q71_3", "Q71_19", "Q71_29", "Q71_30", "Q71_4", "Q74_5", "Q71_12", "Q71_6", "Q71_7", "Q71_8", "Q71_9", "Q71_10", "Q71_11"]
+            columns: ["Q71_1", "Q71_2", "Q71_3", "Q71_4", "Q74_5", "Q71_12", "Q71_6", "Q71_7", "Q71_8", "Q71_9", "Q71_10", "Q71_11"]
             hashFunction: "sha256"
           - !<transforms.ValueTransform>
             value: "setlimits_advicesource"
@@ -338,41 +358,35 @@ entityDefinitions:
         column: "Q71_1"
       ol.verificationsource2:
         type: "ol.verificationsource"
-        column: "Q71_3"
+        column: "Q71_2"
       ol.verificationsource3:
         type: "ol.verificationsource"
-        column: "Q71_19"
+        column: "Q71_3"
       ol.verificationsource4:
         type: "ol.verificationsource"
-        column: "Q71_29"
+        column: "Q71_4"
       ol.verificationsource5:
         type: "ol.verificationsource"
-        column: "Q71_30"
+        column: "Q71_5"
       ol.verificationsource6:
         type: "ol.verificationsource"
-        column: "Q71_4"
+        column: "Q71_12"
       ol.verificationsource7:
         type: "ol.verificationsource"
-        column: "Q71_5"
+        column: "Q71_6"
       ol.verificationsource8:
         type: "ol.verificationsource"
-        column: "Q71_12"
+        column: "Q71_7"
       ol.verificationsource9:
         type: "ol.verificationsource"
-        column: "Q71_6"
+        column: "Q71_8"
       ol.verificationsource10:
         type: "ol.verificationsource"
-        column: "Q71_7"
+        column: "Q71_9"
       ol.verificationsource11:
         type: "ol.verificationsource"
-        column: "Q71_8"
-      ol.verificationsource12:
-        type: "ol.verificationsource"
-        column: "Q71_9"
-      ol.verificationsource13:
-        type: "ol.verificationsource"
         column: "Q71_10"
-      ol.verificationsource14:
+      ol.verificationsource12:
         type: "ol.verificationsource"
         column: "Q71_11"
       ol.verificationsource15:
@@ -384,16 +398,10 @@ entityDefinitions:
       column: "Q71_1"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
+      column: "Q71_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
       column: "Q71_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q71_19"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q71_29"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q71_30"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
       column: "Q71_4"
@@ -460,6 +468,34 @@ associationDefinitions:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
+    dst: "timelimitschild"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported2"
+
+  subjectof2:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "timelimitschild"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof2"
+
+  reported3:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
     dst: "parentlimitshousehold"
     propertyDefinitions:
       general.id:
@@ -468,9 +504,9 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["Q69_1", "Q69_2", "ResponseId"]
           hashFunction: "sha256"
-    name: "reported2"
+    name: "reported3"
 
-  subjectof2:
+  subjectof3:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
     src: "household"
@@ -482,7 +518,7 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["Q69_1", "Q69_2", "ResponseId"]
           hashFunction: "sha256"
-    name: "subjectof2"
+    name: "subjectof3"
 
   reported4:
     fqn: "ol.reported"
@@ -569,3 +605,17 @@ associationDefinitions:
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "subjectof5"
+
+  reported8:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "adviceonlimits"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported8"

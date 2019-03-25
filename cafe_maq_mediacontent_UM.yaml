@@ -10,7 +10,10 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: child_id
+        transforms:
+        - !<transforms.HashTransform>
+          columns: child_id
+          hashFunction: "sha256"
     name: "subject"
 
   tvservicesnetworkbroadcast:
