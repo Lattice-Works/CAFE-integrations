@@ -9,7 +9,10 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: respondent_id
+        transforms:
+        - !<transforms.HashTransform>
+          columns: respondent_id
+          hashFunction: "sha256"
       ol.idnumber:
         type: "ol.idnumber"
         column: "ResponseId" #not sure if this or Person ID should be PK.
@@ -21,7 +24,10 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        column: "respondent_id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: "respondent_id"
+          hashFunction: "sha256"
       ol.overwhelmed:
         type: "ol.overwhelmed"
         column: "Q87_4"

@@ -10,7 +10,10 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: child_id
+        transforms:
+        - !<transforms.HashTransform>
+          columns: child_id
+          hashFunction: "sha256"
     name: "subject"
 
   tvservicesnetworkbroadcast:
@@ -20,8 +23,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "networkuse_tvservices"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q45_1"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "networkuse_tvservices"
       ol.description:
         type: "ol.description"
         transforms:
@@ -58,8 +66,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "cableuse_tvservices"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q45_2"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "cableuse_tvservices"
       ol.description:
         type: "ol.description"
         transforms:
@@ -96,8 +109,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "streaminguse_tvservices"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q45_3"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "streaminguse_tvservices"
       ol.description:
         type: "ol.description"
         transforms:
@@ -134,8 +152,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "youtubeuse_tvservices"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q45_4"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "youtubeuse_tvservices"
       ol.description:
         type: "ol.description"
         transforms:
@@ -172,8 +195,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "otheruse_tvservices"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q45_5"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "otheruse_tvservices"
       ol.description:
         type: "ol.description"
         column: "Q45_5_TEXT"
