@@ -40,67 +40,6 @@ entityDefinitions:
           columns: ["ResponseId"]
           hashFunction: "sha256"
     name: "household"
-# *************** LIMITS ON TIME ON MEDIA **********
-  timelimitschild:
-    fqn: "ol.parentmediationscale"
-    entitySetName: "CAFE_MAQ_ParentMediationScale"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.HashTransform>
-            columns: ["Q67_1", "Q67_2", "Q67_3", "Q67_4", "Q67_5", "Q67_6"]
-            hashFunction: "sha256"
-          - !<transforms.ValueTransform>
-            value: "timelimits_child"
-      ol.timelimitsmedia1:
-        type: "ol.timelimitsmedia"
-        column: "Q67_1"
-      ol.timelimitsmedia2:
-        type: "ol.timelimitsmedia"
-        column: "Q67_2"
-      ol.timelimitsmedia3:
-        type: "ol.timelimitsmedia"
-        column: "Q67_3"
-      ol.timelimitsmedia4:
-        type: "ol.timelimitsmedia"
-        column: "Q67_4"
-      ol.timelimitsmedia5:
-        type: "ol.timelimitsmedia"
-        column: "Q67_5"
-      ol.timelimitsmedia6:
-        type: "ol.timelimitsmedia"
-        column: "Q67_6"
-      ol.timelimitsmedia7:
-        type: "ol.verificationsource"
-        column: "Q67_7_TEXT"
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_5"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_6"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_7_TEXT"
-      reverse: true
-    name: "timelimitschild"
-
 
 # *************** RESTRICTING MEDIA FOR CHILD **********
   parentrestrictionchild:
@@ -463,34 +402,6 @@ associationDefinitions:
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "subjectof1"
-
-  reported2:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "timelimitschild"
-    propertyDefinitions:
-      general.id:
-        type: "general.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported2"
-
-  subjectof2:
-    fqn: "ol.subjectof"
-    entitySetName: "CAFE_MAQ_SubjectOf"
-    src: "subject"
-    dst: "timelimitschild"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof2"
 
   reported3:
     fqn: "ol.reported"
