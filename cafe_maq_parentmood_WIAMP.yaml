@@ -1,0 +1,735 @@
+# WI-AMP CAFE MAQ Survey
+#csv files: # csv filename: CAFE+Questionnaire+v.2+-+Physio+Study+(WI-AMP-BTV)_February+6,+2019_09.01 - CHOICE TEXT.csv
+# Mood Introspection Scale Questions
+
+entityDefinitions:
+  respondent:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: respondent_id
+          hashFunction: "sha256"
+      ol.idnumber:
+        type: "ol.idnumber"
+        column: "ResponseId" #not sure if this or Person ID should be PK.
+    name: "respondent"
+
+  parentingmoodlively:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_1"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "lively"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Lively"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_1"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_1"
+      reverse: true
+    name: "parentingmoodlively"
+
+  parentingmoodhappy:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_2"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "Happy"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Happy"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_2"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_2"
+      reverse: true
+    name: "parentingmoodhappy"
+
+  parentingmoodsad:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_3"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "sad"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Sad"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_3"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_3"
+      reverse: true
+    name: "parentingmoodsad"
+
+  parentingmoodtired:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_4"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "tired"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Tired"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_4"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_4"
+      reverse: true
+    name: "parentingmoodtired"
+
+  parentingmoodcaring:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_5"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "caring"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Caring"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_5"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_5"
+      reverse: true
+    name: "parentingmoodcaring"
+
+  parentingmoodcontent:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_6"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "content"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Content"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_6"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_6"
+      reverse: true
+    name: "parentingmoodcontent"
+
+  parentingmoodgloomy:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_7"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "gloomy"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Gloomy"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_7"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_7"
+      reverse: true
+    name: "parentingmoodgloomy"
+
+  parentingmoodjittery:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_8"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "jittery"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Jittery"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_8"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_8"
+      reverse: true
+    name: "parentingmoodjittery"
+
+  parentingmooddrowsy:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_9"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "drowsy"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Drowsy"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_9"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_9"
+      reverse: true
+    name: "parentingmooddrowsy"
+
+  parentingmoodgrouchy:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_10"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "grouchy"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Grouchy"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_10"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_10"
+      reverse: true
+    name: "parentingmoodgrouchy"
+
+  parentingmoodpeppy:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_11"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "peppy"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Peppy"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_11"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_11"
+      reverse: true
+    name: "parentingmoodpeppy"
+
+  parentingmoodnervous:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_12"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "nervous"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Nervous"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_12"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_12"
+      reverse: true
+    name: "parentingmoodnervous"
+
+  parentingmoodcalm:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_13"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "calm"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Calm"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_13"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_13"
+      reverse: true
+    name: "parentingmoodcalm"
+
+  parentingmoodloving:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_14"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "loving"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Loving"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_14"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_14"
+      reverse: true
+    name: "parentingmoodloving"
+
+  parentingmoodfedup:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_15"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "fedup"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Fed up"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_15"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_15"
+      reverse: true
+    name: "parentingmoodfedup"
+
+  parentingmoodactive:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q98_16"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "active"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Active"
+      ol.response:
+        type: "ol.response"
+        column: "Q98_16"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q98_16"
+      reverse: true
+    name: "parentingmoodactive"
+
+  parentingmoodoverall:
+    fqn: "ol.parentmood"
+    entitySetName: "CAFE_MAQ_ParentingMoodAssessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: "Q99"
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "overall"
+      ol.mood:
+        type: "ol.mood"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Overall"
+      ol.response:
+        type: "ol.response"
+        column: "Q99"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q99"
+      reverse: true
+    name: "parentingmoodoverall"
+
+
+associationDefinitions:
+  screenedwith1:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodlively"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_1"]
+          hashFunction: "sha256"
+    name: "screenedwith1"
+
+  screenedwith2:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodhappy"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_2"]
+          hashFunction: "sha256"
+    name: "screenedwith2"
+
+  screenedwith3:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodsad"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_3"]
+          hashFunction: "sha256"
+    name: "screenedwith3"
+
+  screenedwith4:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodtired"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_4"]
+          hashFunction: "sha256"
+    name: "screenedwith4"
+
+  screenedwith5:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodcaring"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_5"]
+          hashFunction: "sha256"
+    name: "screenedwith5"
+
+  screenedwith6:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodcontent"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_6"]
+          hashFunction: "sha256"
+    name: "screenedwith6"
+
+  screenedwith7:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodgloomy"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_7"]
+          hashFunction: "sha256"
+    name: "screenedwith7"
+
+  screenedwith8:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodjittery"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_8"]
+          hashFunction: "sha256"
+    name: "screenedwith8"
+
+  screenedwith9:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmooddrowsy"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_9"]
+          hashFunction: "sha256"
+    name: "screenedwith9"
+
+  screenedwith10:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodgrouchy"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_10"]
+          hashFunction: "sha256"
+    name: "screenedwith10"
+
+  screenedwith11:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodpeppy"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_11"]
+          hashFunction: "sha256"
+    name: "screenedwith11"
+
+  screenedwith12:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodnervous"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_12"]
+          hashFunction: "sha256"
+    name: "screenedwith12"
+
+  screenedwith13:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodcalm"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_13"]
+          hashFunction: "sha256"
+    name: "screenedwith13"
+
+  screenedwith14:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodloving"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_14"]
+          hashFunction: "sha256"
+    name: "screenedwith14"
+
+  screenedwith15:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodfedup"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_15"]
+          hashFunction: "sha256"
+    name: "screenedwith15"
+
+  screenedwith16:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodactive"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q98_16"]
+          hashFunction: "sha256"
+    name: "screenedwith16"
+
+  screenedwith17:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_AssessedBy"
+    src: "respondent"
+    dst: "parentingmoodoverall"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId", "Q99"]
+          hashFunction: "sha256"
+    name: "screenedwith17"
