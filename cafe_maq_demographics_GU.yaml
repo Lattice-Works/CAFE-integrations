@@ -82,8 +82,8 @@ entityDefinitions:
           - !<transforms.ValueTransform>
             value: null
           transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q4_8_TEXT"
+          - !<transforms.ValueTransform>
+            value: "other"
       nc.PersonEthnicity:
         type: "nc.PersonEthnicity"
         column: "Q3"

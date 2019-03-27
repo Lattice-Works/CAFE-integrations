@@ -15,7 +15,8 @@ entityDefinitions:
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "9999999"]
-          goal: ["White", "Black", "American Indian or Alaska Native", "Asian or Pacific Islander", "Biracial", "Other", "Prefer not to answer"]
+          goal: ["white", "black", "amindian", "asian", "other", "other", "
+          "]
       nc.PersonEthnicity:
         type: "nc.PersonEthnicity"
         column: "parenteth"
