@@ -1,7 +1,6 @@
 # for demographics: DS_PTS_RedcapDemog_021519.csv
 
 entityDefinitions:
-
   respondent:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Respondents"
@@ -29,20 +28,24 @@ entityDefinitions:
         column: "parentbirthplace"
     name: "respondent"
 
-  respondentdetails:
-    fqn: "ol.persondetails"
-    entitySetName: "CAFE_MAQ_RespondentDetails"
-    propertyDefinitions:
-      general.id:
-        type: "general.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["appcode"]
-          hashFunction: "sha256"
-      ol.language:
-        type: "ol.language"
-        column: "UserLanguage"
-    name: "respondentdetails"
+  # respondentdetails:
+  #   fqn: "ol.persondetails"
+  #   entitySetName: "CAFE_MAQ_RespondentDetails"
+  #   propertyDefinitions:
+  #     general.id:
+  #       type: "general.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["appcode", "UserLanguage"]
+  #         hashFunction: "sha256"
+  #     ol.language:
+  #       type: "ol.language"
+  #       column: "UserLanguage" #have to get this from non-demographics csv (see above)
+  #       transforms:
+  #       - !<transforms.ReplaceTransform>
+  #         target: ["EN"]
+  #         goal: ["English"]
+  #   name: "respondentdetails"
 
   employment:
     fqn: "ol.employment"
@@ -52,11 +55,15 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode"]
+          columns: ["appcode", "parentemployed"]
           hashFunction: "sha256"
       ol.status:
         type: "ol.status"
         column: "parentemployed"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4"]
+          goal: ["No", "One part-time job", "One full-time job", "Multiple jobs"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "parentemployed"
@@ -71,11 +78,15 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode"]
+          columns: ["appcode", "parentedu"]
           hashFunction: "sha256"
       person.highesteducation:
         type: "person.highesteducation"
         column: "parentedu"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6", "7"]
+          goal: ["Did not graduate from high school", "Graduated from high school", "GED", "Some college courses", "2 year college degree", "4 year college degree", "More than 4 year college degree"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "parentedu"
@@ -92,6 +103,10 @@ entityDefinitions:
       nc.PersonSex:
         type: "nc.PersonSex"
         column: "childsex"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Male", "Female"]
     name: "childsubject"
 
   subjectdetails:
@@ -100,7 +115,10 @@ entityDefinitions:
     propertyDefinitions:
       general.id:
         type: "general.id"
-        column: child_id
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "childage"]
+          hashFunction: "sha256"
       person.ageatevent:
         type: "person.ageatevent"
         column: "childage"
@@ -120,7 +138,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode", "demographics_timestamp"]
+          columns: ["child_id", "childbirthwt", "bornpremature", "wkspremature"]
           hashFunction: "sha256"
       ol.birthweight:
         type: "ol.birthweight"
@@ -151,7 +169,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode", "demographics_timestamp"]
+          columns: ["appcode", ""publicassistance"]
           hashFunction: "sha256"
       # ol.notes:
       #   type: "ol.notes"
@@ -164,7 +182,7 @@ entityDefinitions:
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3"]
-          goal: ["public assistant", "", ""]
+          goal: ["public assistance - current", "", "public assistance - past"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "publicassistance"
@@ -179,7 +197,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode"]
+          columns: ["appcode", "householdincome"]
           hashFunction: "sha256"
       ol.type:
         type: "ol.type"
@@ -215,7 +233,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode", "demographics_timestamp"]
+          columns: ["appcode", "school", "childcare", "childinhome", "school_other"]
           hashFunction: "sha256"
       ol.type:
         type: "ol.type"
@@ -256,7 +274,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode", "demographics_timestamp"]
+          columns: ["child_id", "childage"]
           hashFunction: "sha256"
     name: "has1"
 
@@ -270,7 +288,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode", "demographics_timestamp"]
+          columns: ["child_id", "childbirthwt", "bornpremature", "wkspremature"]
           hashFunction: "sha256"
     name: "has2"
 
@@ -284,23 +302,9 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode", "demographics_timestamp"]
+          columns: ["respondent_id", "publicassistance"]
           hashFunction: "sha256"
     name: "reported1"
-
-  has:
-    fqn: "ol.has"
-    entitySetName: "CAFE_MAQ_Has"
-    src: "respondent"
-    dst: "respondentdetails"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["appcode", "demographics_timestamp"]
-          hashFunction: "sha256"
-    name: "has"
 
   reported2:
     fqn: "ol.reported"
@@ -312,7 +316,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode", "demographics_timestamp"]
+          columns: ["respondent_id", "parentedu"]
           hashFunction: "sha256"
     name: "reported2"
 
@@ -326,7 +330,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode", "demographics_timestamp"]
+          columns: ["respondent_id", "parentemployed"]
           hashFunction: "sha256"
     name: "reported3"
 
@@ -340,7 +344,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode", "demographics_timestamp"]
+          columns: ["respondent_id", "householdincome"]
           hashFunction: "sha256"
     name: "reported4"
 
@@ -354,7 +358,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode", "demographics_timestamp"]
+          columns: ["respondent_id", "childcare", "school", "childinhome", "school_other"]
           hashFunction: "sha256"
     name: "reported5"
 
@@ -368,7 +372,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode", "demographics_timestamp"]
+          columns: ["respondent_id", "child_id"]
           hashFunction: "sha256"
     name: "relatedto"
 
@@ -382,6 +386,6 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode", "demographics_timestamp"]
+          columns: ["child_id", "childcare", "school", "childinhome", "school_other"]
           hashFunction: "sha256"
     name: "subjectof"

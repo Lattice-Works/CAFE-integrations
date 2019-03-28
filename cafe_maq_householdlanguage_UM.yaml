@@ -24,6 +24,25 @@ entityDefinitions:
         column: child_id
     name: "childsubject"
 
+  respondentdetails:
+    fqn: "ol.persondetails"
+    entitySetName: "CAFE_MAQ_RespondentDetails"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "UserLanguage"]
+          hashFunction: "sha256"
+      ol.language:
+        type: "ol.language"
+        column: "UserLanguage" #have to get this from non-demographics csv (see above)
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["EN"]
+          goal: ["English"]
+    name: "respondentdetails"
+
   household:
     fqn: "demographics.household"
     entitySetName: "CAFE_MAQ_Households"
@@ -126,6 +145,19 @@ entityDefinitions:
 
 
 associationDefinitions:
+  has:
+    fqn: "ol.has"
+    entitySetName: "CAFE_MAQ_Has"
+    src: "respondent"
+    dst: "respondentdetails"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "UserLanguage"]
+          hashFunction: "sha256"
+    name: "has"
 
 #******************* HOUSEHOLD & RELATIONS ASSOCIATIONS ************************
   partof_a:
