@@ -1,6 +1,6 @@
-# cafe MAQ BYU
-# csv filename:MAQs_BYU_V3_2018_20181004_Returning
-# Media Content section of survey? (PTS_MAQS V3.1_Data Dictionary_Questions)
+# WI-AMP CAFE MAQ Survey
+#csv files: # csv filename: CAFE+Questionnaire+v.2+-+Physio+Study+(WI-AMP-BTV)_February+6,+2019_09.01 - CHOICE TEXT.csv
+# Media Content section of survey (PTS_MAQS V3.1_Data Dictionary_Questions)
 
 
 entityDefinitions:
@@ -12,12 +12,8 @@ entityDefinitions:
         type: "nc.SubjectIdentification"
         transforms:
         - !<transforms.HashTransform>
-          columns: "child_id"
+          columns: child_id
           hashFunction: "sha256"
-        # transforms:
-        # - !<transforms.ConcatTransform>
-        #   columns: ["ResponseId", "Q262"]
-        #   separator: "_"
     name: "subject"
 
   tvservicesnetworkbroadcast:
@@ -42,10 +38,6 @@ entityDefinitions:
       general.frequency:
         type: "general.frequency"
         column: "Q45_1"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
-          goal: ["Not applicable", "Never", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
       ol.name:
         type: "ol.name"
         transforms:
@@ -89,10 +81,6 @@ entityDefinitions:
       general.frequency:
         type: "general.frequency"
         column: "Q45_2"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
-          goal: ["Not applicable", "Never", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
       ol.name:
         type: "ol.name"
         transforms:
@@ -136,10 +124,6 @@ entityDefinitions:
       general.frequency:
         type: "general.frequency"
         column: "Q45_3"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
-          goal: ["Not applicable", "Never", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
       ol.name:
         type: "ol.name"
         transforms:
@@ -171,7 +155,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.HashTransform>
-            columns: ["Q45_6"]
+            columns: ["Q45_4"]
             hashFunction: "sha256"
           - !<transforms.ValueTransform>
             value: "youtubeuse_tvservices"
@@ -182,11 +166,7 @@ entityDefinitions:
           value: "YouTube"
       general.frequency:
         type: "general.frequency"
-        column: "Q45_6"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
-          goal: ["Not applicable", "Never", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
+        column: "Q45_4"
       ol.name:
         type: "ol.name"
         transforms:
@@ -204,7 +184,7 @@ entityDefinitions:
           value: "2 weeks"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q45_6"
+      column: "Q45_4"
       reverse: true
     name: "tvservicesyoutube"
 
@@ -218,20 +198,16 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.HashTransform>
-            columns: ["Q45_7"]
+            columns: ["Q45_5"]
             hashFunction: "sha256"
           - !<transforms.ValueTransform>
             value: "otheruse_tvservices"
       ol.description:
         type: "ol.description"
-        column: "Q45_7_TEXT"
+        column: "Q45_5_TEXT"
       general.frequency:
         type: "general.frequency"
-        column: "Q45_7"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
-          goal: ["Not applicable", "Never", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
+        column: "Q45_5"
       ol.name:
         type: "ol.name"
         transforms:
@@ -250,12 +226,13 @@ entityDefinitions:
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
-      column: "Q45_7"
+      column: "Q45_5"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q45_7_TEXT"
+      column: "Q45_5_TEXT"
       reverse: true
     name: "tvservicesother"
+
 
 
 associationDefinitions:
@@ -327,7 +304,7 @@ associationDefinitions:
           hashFunction: "sha256"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q45_6"
+      column: "Q45_4"
       reverse: true
     name: "involvedin4"
 
@@ -345,6 +322,6 @@ associationDefinitions:
           hashFunction: "sha256"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q45_7_TEXT"
+      column: "Q45_5_TEXT"
       reverse: true
     name: "involvedin5"

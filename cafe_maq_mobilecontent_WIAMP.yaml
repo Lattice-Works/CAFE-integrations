@@ -1,5 +1,5 @@
-# cafe MAQ Umichigan survey
-# csv filename: DS_PTS_MAQS_V3.1_021519.csv
+# WI-AMP CAFE MAQ Survey
+#csv files: # csv filename: CAFE+Questionnaire+v.2+-+Physio+Study+(WI-AMP-BTV)_February+6,+2019_09.01 - CHOICE TEXT.csv
 # Mobile Content section of survey (PTS_MAQS V3.1_Data Dictionary_Questions)
 
 
@@ -406,56 +406,9 @@ entityDefinitions:
       reverse: true
     name: "mobileactivitieslookingphotos"
 
-# ****************** CHILD'S APP USE **********************
-  calmdownchildwatchtvordvd:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_MediaDeviceUse"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.HashTransform>
-            columns: ["Q48a_1"]
-            hashFunction: "sha256"
-          - !<transforms.ValueTransform>
-            value: "watchtvordvd_calmdownchild"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "likelihood of letting child watch TV or DVD"
-      ol.reason:
-        type: "ol.reason"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "to calm child down when upset"
-      ol.likelihood:
-        type: "ol.likelihood"
-        column: "Q48a_1"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "TV show or DVD"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "current/ever"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48a_1"
-      reverse: true
-    name: "calmdownchildwatchtvordvd"
+# ****************** APPs DOWNLOADED/ USE **********************
 
-  calmdownchildmobiledevice:
+  appsdownloaded:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_MobileDeviceUse"
     propertyDefinitions:
@@ -465,108 +418,39 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.HashTransform>
-            columns: ["Q48a_2"]
+            columns: ["Q47"]
             hashFunction: "sha256"
           - !<transforms.ValueTransform>
-            value: "mobiledevice_calmdownchild"
+            value: "appsdownloaded"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "likelihood of giving child mobile device"
-      ol.reason:
-        type: "ol.reason"
+          value: "how many apps downloaded on cell phone, iPod, or iPad"
+      ol.number:
+        type: "ol.number"
+        column: "Q47"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["None", "Fewer than 5", "5-10", "20-Oct", "20-30", "More than 30"]
+          goal: ["0", "2.5", "7.5", "15", "25", "30"]
+      ol.servicetype:
+        type: "ol.servicetype"
         transforms:
         - !<transforms.ValueTransform>
-          value: "to calm child down when upset"
-      ol.likelihood:
-        type: "ol.likelihood"
-        column: "Q48a_2"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "mobile device like smartphone or tablet"
+          value: "'apps'"
       ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "current/ever"
+          value: "adult use"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q48a_2"
+      column: "Q47"
       reverse: true
-    name: "calmdownchildmobiledevice"
+    name: "appsdownloaded"
 
-  appsusedmostbychild:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_Device_Use"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.HashTransform>
-            columns: ["Q48b_1_1", "Q48b_2_1", "Q48b_3_1", "Q48b_4_1", "Q48b_5_1"]
-            hashFunction: "sha256"
-        - !<transforms.ValueTransform>
-          value: "apps_used_most_by_child"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "5 apps child uses the most"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "current/ever"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child"
-      ol.name1:
-        type: "ol.name"
-        column: "Q48b_1_1"
-      ol.name2:
-        type: "ol.name"
-        column: "Q48b_2_1"
-      ol.name3:
-        type: "ol.name"
-        column: "Q48b_3_1"
-      ol.name4:
-        type: "ol.name"
-        column: "Q48b_4_1"
-      ol.name5:
-        type: "ol.name"
-        column: "Q48b_5_1"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48b_1_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48b_2_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48b_3_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48b_4_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48b_5_1"
-      reverse: true
-    name: "appsusedmostbychild"
-
-  timespenthoursmobile:
+  childrensappsdownloaded:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_MobileDeviceUse"
     propertyDefinitions:
@@ -576,91 +460,36 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.HashTransform>
-            columns: ["Q48c_1_3"]
+            columns: ["Q48"]
             hashFunction: "sha256"
           - !<transforms.ValueTransform>
-            value: "timespent_yday_mobile_hrs"
+            value: "appsdownloaded_children"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Time spent using smartphone or tablet yesterday"
-      ol.duration:
-        type: "ol.duration"
-        column: "Q48c_1_3"
-      ol.units:
-        type: "ol.units"
+          value: "how many apps adult downloaded for children"
+      ol.number:
+        type: "ol.number"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["None", "Fewer than 5", "5-10", "20-Oct", "20-30", "More than 30"]
+          goal: ["0", "2.5", "7.5", "15", "25", "30"]
+      ol.servicetype:
+        type: "ol.servicetype"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Hours"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "smartphone or tablet"
+          value: "apps for children"
       ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "yesterday"
+          value: "adult for child"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q48c_1_3"
+      column: "Q48"
       reverse: true
-    name: "timespenthoursmobile"
-
-  timespentminsmobile:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_MobileDeviceUse"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.HashTransform>
-            columns: ["Q48c_2_3"]
-            hashFunction: "sha256"
-          - !<transforms.ValueTransform>
-            value: "timespent_yday_mobile_mins"
-      ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Time spent using smartphone or tablet yesterday"
-      ol.duration:
-        type: "ol.duration"
-        column: "Q48c_2_3"
-      ol.units:
-        type: "ol.units"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Hours"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "smartphone or tablet"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "yesterday"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48c_2_3"
-      reverse: true
-    name: "timespentminsmobile"
+    name: "childrensappsdownloaded"
 
 
 associationDefinitions:
@@ -808,92 +637,6 @@ associationDefinitions:
       reverse: true
     name: "involvedin8"
 
-  involvedin9:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "subject"
-    dst: "calmdownchildwatchtvordvd"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48a_1"
-      reverse: true
-    name: "involvedin9"
-
-  involvedin10:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "subject"
-    dst: "calmdownchildmobiledevice"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48a_2"
-      reverse: true
-    name: "involvedin10"
-
-  involvedin11:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "subject"
-    dst: "appsusedmostbychild"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "involvedin11"
-
-  involvedin12:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "subject"
-    dst: "timespenthoursmobile"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48c_2_3"
-      reverse: true
-    name: "involvedin12"
-
-  involvedin13:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "subject"
-    dst: "timespentminsmobile"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48c_2_3"
-      reverse: true
-    name: "involvedin13"
-
   reported1:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
@@ -1006,11 +749,11 @@ associationDefinitions:
           hashFunction: "sha256"
     name: "reported8"
 
-  reported9:
+ reported9:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
-    dst: "calmdownchildwatchtvordvd"
+    dst: "appsdownloaded"
     propertyDefinitions:
       general.id:
         type: "general.id"
@@ -1024,7 +767,7 @@ associationDefinitions:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
-    dst: "calmdownchildmobiledevice"
+    dst: "qualitycontrol"
     propertyDefinitions:
       general.id:
         type: "general.id"
@@ -1038,7 +781,7 @@ associationDefinitions:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
-    dst: "appsusedmostbychild"
+    dst: "childrensappsdownloaded"
     propertyDefinitions:
       general.id:
         type: "general.id"
@@ -1047,45 +790,3 @@ associationDefinitions:
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "reported11"
-
-  reported12:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "timespenthoursmobile"
-    propertyDefinitions:
-      general.id:
-        type: "general.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported12"
-
-  reported13:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "timespentminsmobile"
-    propertyDefinitions:
-      general.id:
-        type: "general.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported13"
-
-  reported14:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "qualitycontrol"
-    propertyDefinitions:
-      general.id:
-        type: "general.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported14"

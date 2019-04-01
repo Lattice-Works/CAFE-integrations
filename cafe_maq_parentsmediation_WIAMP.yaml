@@ -12,7 +12,7 @@ entityDefinitions:
         type: "nc.SubjectIdentification"
         transforms:
         - !<transforms.HashTransform>
-          columns: child_id
+          columns: ["respondent_id"]
       ol.idnumber:
         type: "ol.idnumber"
         column: "ResponseId" #not sure if this or Person ID should be PK.
@@ -26,7 +26,8 @@ entityDefinitions:
         type: "nc.SubjectIdentification"
         transforms:
         - !<transforms.HashTransform>
-          columns: child_id
+          columns: ["child_id"]
+          hashFunction: "sha256"
     name: "subject"
 
   household:
@@ -37,7 +38,7 @@ entityDefinitions:
         type: "household.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["ResponseId"]
+          columns: ["ResponseId", "child_id", "Q23"]
           hashFunction: "sha256"
     name: "household"
 
@@ -140,7 +141,7 @@ entityDefinitions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q69_1"
       reverse: true
-     - !<conditions.BooleanIsNullCondition>
+    - !<conditions.BooleanIsNullCondition>
       column: "Q69_2"
       reverse: true
     name: "parentlimitshousehold"
@@ -214,7 +215,14 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        column: "Q70_16"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q70_16"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "attentioncheck_sometimes"
       ol.description:
         type: "ol.description"
         transforms:
@@ -227,7 +235,7 @@ entityDefinitions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q70_16"
       reverse: true
-    name: "qualitycontrol2"
+    name: "qualitycontrol"
 
   # **************** EXPOSURE TO NON ENGLISH MEDIA *******************
 
@@ -249,7 +257,7 @@ entityDefinitions:
         type: "ol.type"
         transforms:
         - !<transforms.ValueTransform>
-          value: "videos, TV shows, movies, music, and books"
+          value: "videos, TV shows, movies, music, and books not in English"
       ol.status:
         type: "ol.status"
         column: "Q72"
@@ -275,7 +283,6 @@ entityDefinitions:
       column: "Q72"
       reverse: true
     name: "nonenglishmediaexposure"
-
 
 
   adviceonlimits:
@@ -385,7 +392,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q68_1", "Q68_2", "Q68_3", "Q68_4", "Q68_5", "Q68_6"]
           hashFunction: "sha256"
     name: "reported1"
 
@@ -399,7 +406,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["child_id", "Q68_1", "Q68_2", "Q68_3", "Q68_4", "Q68_5", "Q68_6"]
           hashFunction: "sha256"
     name: "subjectof1"
 
@@ -413,7 +420,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q69_1", "Q69_2", "ResponseId"]
+          columns: ["respondent_id", "Q69_1", "Q69_2"]
           hashFunction: "sha256"
     name: "reported3"
 
@@ -427,7 +434,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q69_1", "Q69_2", "ResponseId"]
+          columns: ["ResponseId", "Q69_1", "Q69_2"]
           hashFunction: "sha256"
     name: "subjectof3"
 
@@ -441,7 +448,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q72", "Q73", "ResponseId"]
+          columns: ["respondent_id", "Q72", "Q73"]
           hashFunction: "sha256"
     name: "reported4"
 
@@ -455,7 +462,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q72", "Q73", "ResponseId"]
+          columns: ["child_id", "Q72", "Q73"]
           hashFunction: "sha256"
     name: "subjectof4"
 
@@ -463,30 +470,19 @@ associationDefinitions:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
-    dst: "qualitycontrol1"
+    dst: "qualitycontrol"
     propertyDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q70_2", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q70_16", "ResponseId"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "sometimes"
     name: "reported5"
-
-  reported6:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "qualitycontrol2"
-    propertyDefinitions:
-      general.id:
-        type: "general.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q70_10", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported6"
-
 
   reported7:
     fqn: "ol.reported"
@@ -498,7 +494,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q70_1", "Q70_2", "Q70_3", "Q70_4", "Q70_5", "Q70_6", "Q70_7", "Q70_8", "Q70_9", "Q70_11", "Q70_12", "Q70_13", "Q70_14", "Q70_15"]
           hashFunction: "sha256"
     name: "reported7"
 
@@ -513,7 +509,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["ResponseId", "Q70_1", "Q70_3", "Q70_4", "Q70_5", "Q70_6", "Q70_7", "Q70_8", "Q70_9", "Q70_11", "Q70_12", "Q70_13", "Q70_14", "Q70_15"]
           hashFunction: "sha256"
     name: "subjectof5"
 
@@ -527,6 +523,6 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id","Q71_1", "Q71_2", "Q71_3", "Q71_4", "Q74_5", "Q71_12", "Q71_6", "Q71_7", "Q71_8", "Q71_9", "Q71_10", "Q71_11"]
           hashFunction: "sha256"
     name: "reported8"

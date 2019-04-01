@@ -589,7 +589,96 @@ entityDefinitions:
       reverse: true
     name: "nodevicefallingasleepchilduse"
 
-# *************** BACKGROUND MEDIA USE DURING PLAY *****
+# ***************** WIFI/INTERNET ********
+  internetmediaexposure:
+    fqn: "ol.mediaexposure"
+    entitySetName: "CAFE_MAQ_MediaExposure"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q41"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "internet_access"
+      ol.type:
+        type: "ol.type"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "wireless internet (Wi-Fi) in home"
+      ol.status:
+        type: "ol.status"
+        column: "Q41"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q41"
+      reverse: true
+    name: "internetmediaexposure"
+
+# ****************** MEDIA WHEN IN TRANSIT ********************
+  transitactivity:
+    fqn: "ol.primaryactivity"
+    entitySetName: "CAFE_MAQ_Activities"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q42"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "media_in_transit"
+      ol.activity:
+        type: "ol.activity"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: " put shows or movies on when in transit (i.e., car or public transit)"
+      ol.participant:
+        type: "ol.participant"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q42"
+      reverse: true
+    name: "transitactivity"
+
+  transitdeviceuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q42"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mediause_in_transit"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mobile apps, shows, or movies in transit"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q42"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+    name: "transitdeviceuse"
+
+# *************** BACKGROUND MEDIA USE & ACCESS *******
   televisiononinhouse:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_Device_Use"
@@ -1183,3 +1272,133 @@ associationDefinitions:
       pattern: "(?i)(\\bNever\\b)"
       reverse: true
     name: "usedby14"
+# ****************** ACTIVITIES, MEDIA EXPOSURE, DEVICE USE ASSOCIATIONS *******
+  partof1:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "respondent"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "partof1"
+
+  partof2:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "subject"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "partof2"
+
+  engagedin1:
+    fqn: "ol.engagedin"
+    entitySetName: "CAFE_MAQ_EngagedIn"
+    src: "respondent"
+    dst: "transitactivity"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q42"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q42"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "engagedin1"
+
+  engagedin2:
+    fqn: "ol.engagedin"
+    entitySetName: "CAFE_MAQ_EngagedIn"
+    src: "subject"
+    dst: "transitactivity"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q42"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "Q42"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    name: "engagedin2"
+
+  concurrentto1:
+    fqn: "ol.concurrentto"
+    entitySetName: "CAFE_MAQ_ConcurrentTo"
+    src: "transitactivity"
+    dst: "transitdeviceuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "concurrentto1"
+
+  concurrentto2:
+    fqn: "ol.concurrentto"
+    entitySetName: "CAFE_MAQ_ConcurrentTo"
+    src: "internetmediaexposure"
+    dst: "personalcomputerstartchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "concurrentto2"
+
+  involvedin1:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "personalcomputer"
+    dst: "internetmediaexposure"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin1"
+
+  involvedin2:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "smartphone"
+    dst: "internetmediaexposure"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin2"

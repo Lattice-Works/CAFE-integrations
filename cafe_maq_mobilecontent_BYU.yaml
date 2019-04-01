@@ -1,68 +1,82 @@
 # cafe MAQ BYU
-# csv filename: MAQs_BYU_V3_2018_20181004_Returning.csv 
+# csv filename: MAQs_BYU_V3_2018_20181004_Returning.csv
 # Mobile Content section of survey (PTS_MAQS V3.1_Data Dictionary_Questions for reference)
 
 
 entityDefinitions:
-  respondent: 
+  respondent:
     fqn: "general.person"
     entitySetName: "CAFE_MAQ_Respondents"
     propertyDefinitions:
-      nc.SubjectIdentification: 
-        type: "nc.SubjectIdentification"
-        column: "respondent_id" #Person ID
-      ol.idnumber: 
-        type: "ol.idnumber"
-        column: "ResponseId" #not sure if this or Person ID should be PK. 
-    name: "respondent"
-
-  subject: 
-    fqn: "general.person"
-    entitySetName: "CAFE_MAQ_Children"
-    propertyDefinitions: 
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: "clean_id"
-        # transforms: 
+        transforms:
+        - !<transforms.HashTransform>
+          columns: "respondent_id" #Person ID
+          hashFunction: "sha256"
+      ol.idnumber:
+        type: "ol.idnumber"
+        transforms:
+        - !<transforms.HashTransform>
+          column: "ResponseId"
+          hashFunction: "sha256"
+    name: "respondent"
+
+  subject:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: "child_id"
+          hashFunction: "sha256"
+        # transforms:
         # - !<transforms.ConcatTransform>
         #   columns: ["ResponseId", "Q281"]
         #   separator: "_"
     name: "subject"
 
-  mobileactivitieswatchtv: 
+  mobileactivitieswatchtv:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_MobileDeviceUse"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "watchtv_mobileactivities"
-      ol.description: 
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q46_1"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "watchtv_mobileactivities"
+      ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
           value: "Watch TV shows"
-      general.frequency: 
+      general.frequency:
         type: "general.frequency"
         column: "Q46_1"
-        transforms: 
-        - !<transforms.ReplaceTransform> 
+        transforms:
+        - !<transforms.ReplaceTransform>
           target: ["2", "3", "4", "5", "6", "7", "8"]
           goal: ["Never on a mobile device", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
-      ol.name: 
+      ol.name:
         type: "ol.name"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "a cell phone, iPod Touch, iPad, or similar mobile device"
-      ol.subject: 
+      ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
           value: "child"
-      ol.relevantperiod: 
+      ol.relevantperiod:
         type: "ol.relevantperiod"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
     conditions:
@@ -71,40 +85,45 @@ entityDefinitions:
       reverse: true
     name: "mobileactivitieswatchtv"
 
-  mobileactivitieswatchmovies: 
+  mobileactivitieswatchmovies:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_MobileDeviceUse"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "watchmovies_mobileactivities"
-      ol.description: 
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q46_2"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "watchmovies_mobileactivities"
+      ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
           value: "Watch movies"
-      general.frequency: 
+      general.frequency:
         type: "general.frequency"
         column: "Q46_2"
-        transforms: 
-        - !<transforms.ReplaceTransform> 
+        transforms:
+        - !<transforms.ReplaceTransform>
           target: ["2", "3", "4", "5", "6", "7", "8"]
           goal: ["Never on a mobile device", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
-      ol.name: 
+      ol.name:
         type: "ol.name"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "a cell phone, iPod Touch, iPad, or similar mobile device"
-      ol.subject: 
+      ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
           value: "child"
-      ol.relevantperiod: 
+      ol.relevantperiod:
         type: "ol.relevantperiod"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
     conditions:
@@ -113,40 +132,45 @@ entityDefinitions:
       reverse: true
     name: "mobileactivitieswatchmovies"
 
-  mobileactivitiesplaygames: 
+  mobileactivitiesplaygames:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_MobileDeviceUse"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "playgames_mobileactivities"
-      ol.description: 
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q46_3"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "playgames_mobileactivities"
+      ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
           value: "Play games"
-      general.frequency: 
+      general.frequency:
         type: "general.frequency"
         column: "Q46_3"
-        transforms: 
-        - !<transforms.ReplaceTransform> 
+        transforms:
+        - !<transforms.ReplaceTransform>
           target: ["2", "3", "4", "5", "6", "7", "8"]
           goal: ["Never on a mobile device", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
-      ol.name: 
+      ol.name:
         type: "ol.name"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "a cell phone, iPod Touch, iPad, or similar mobile device"
-      ol.subject: 
+      ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
           value: "child"
-      ol.relevantperiod: 
+      ol.relevantperiod:
         type: "ol.relevantperiod"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
     conditions:
@@ -155,40 +179,45 @@ entityDefinitions:
       reverse: true
     name: "mobileactivitiesplaygames"
 
-  mobileactivitiesapps: 
+  mobileactivitiesapps:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_MobileDeviceUse"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "apps_mobileactivities"
-      ol.description: 
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q46_4"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "apps_mobileactivities"
+      ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
           value: "Use apps that are not games (e.g., FaceTime)"
-      general.frequency: 
+      general.frequency:
         type: "general.frequency"
         column: "Q46_4"
-        transforms: 
-        - !<transforms.ReplaceTransform> 
+        transforms:
+        - !<transforms.ReplaceTransform>
           target: ["2", "3", "4", "5", "6", "7", "8"]
           goal: ["Never on a mobile device", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
-      ol.name: 
+      ol.name:
         type: "ol.name"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "a cell phone, iPod Touch, iPad, or similar mobile device"
-      ol.subject: 
+      ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
           value: "child"
-      ol.relevantperiod: 
+      ol.relevantperiod:
         type: "ol.relevantperiod"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
     conditions:
@@ -197,40 +226,45 @@ entityDefinitions:
       reverse: true
     name: "mobileactivitiesapps"
 
-  mobileactivitiesebooks: 
+  mobileactivitiesebooks:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_MobileDeviceUse"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "ebooks_mobileactivities"
-      ol.description: 
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q46_5"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "ebooks_mobileactivities"
+      ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
           value: "Read electronic books"
-      general.frequency: 
+      general.frequency:
         type: "general.frequency"
         column: "Q46_5"
-        transforms: 
-        - !<transforms.ReplaceTransform> 
+        transforms:
+        - !<transforms.ReplaceTransform>
           target: ["2", "3", "4", "5", "6", "7", "8"]
           goal: ["Never on a mobile device", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
-      ol.name: 
+      ol.name:
         type: "ol.name"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "a cell phone, iPod Touch, iPad, or similar mobile device"
-      ol.subject: 
+      ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
           value: "child"
-      ol.relevantperiod: 
+      ol.relevantperiod:
         type: "ol.relevantperiod"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
     conditions:
@@ -239,40 +273,45 @@ entityDefinitions:
       reverse: true
     name: "mobileactivitiesebooks"
 
-  mobileactivitiesaudio: 
+  mobileactivitiesaudio:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_MobileDeviceUse"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "audio_mobileactivities"
-      ol.description: 
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q46_6"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "audio_mobileactivities"
+      ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
           value: "Listen to music or audiobooks"
-      general.frequency: 
+      general.frequency:
         type: "general.frequency"
         column: "Q46_6"
-        transforms: 
-        - !<transforms.ReplaceTransform> 
+        transforms:
+        - !<transforms.ReplaceTransform>
           target: ["2", "3", "4", "5", "6", "7", "8"]
           goal: ["Never on a mobile device", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
-      ol.name: 
+      ol.name:
         type: "ol.name"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "a cell phone, iPod Touch, iPad, or similar mobile device"
-      ol.subject: 
+      ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
           value: "child"
-      ol.relevantperiod: 
+      ol.relevantperiod:
         type: "ol.relevantperiod"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
     conditions:
@@ -281,21 +320,19 @@ entityDefinitions:
       reverse: true
     name: "mobileactivitiesaudio"
 
-  qualitycontrol: 
+  qualitycontrol:
     fqn: "ol.qualitycontrol"
     entitySetName: "CAFE_MAQ_QualityControl"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "quality_control"
-      ol.description: 
+        column: "Q46_7"
+      ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
           value: "respondents told to select 'Never on a mobile device'"
-      ol.selection: 
+      ol.selection:
         type: "ol.selection"
         column: "Q46_7"
     conditions:
@@ -304,40 +341,45 @@ entityDefinitions:
       reverse: true
     name: "qualitycontrol"
 
-  mobileactivitiestakingphotos: 
+  mobileactivitiestakingphotos:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_MobileDeviceUse"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "takingphotos_mobileactivities"
-      ol.description: 
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q46_8"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "takingphotos_mobileactivities"
+      ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
           value: "Taking photos"
-      general.frequency: 
+      general.frequency:
         type: "general.frequency"
         column: "Q46_8"
-        transforms: 
-        - !<transforms.ReplaceTransform> 
+        transforms:
+        - !<transforms.ReplaceTransform>
           target: ["2", "3", "4", "5", "6", "7", "8"]
           goal: ["Never on a mobile device", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
-      ol.name: 
+      ol.name:
         type: "ol.name"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "a cell phone, iPod Touch, iPad, or similar mobile device"
-      ol.subject: 
+      ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
           value: "child"
-      ol.relevantperiod: 
+      ol.relevantperiod:
         type: "ol.relevantperiod"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
     conditions:
@@ -346,40 +388,45 @@ entityDefinitions:
       reverse: true
     name: "mobileactivitiestakingphotos"
 
-  mobileactivitieslookingphotos: 
+  mobileactivitieslookingphotos:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_MobileDeviceUse"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "lookingphotos_mobileactivities"
-      ol.description: 
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q46_9"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "lookingphotos_mobileactivities"
+      ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
           value: "Looking at photos or home videos"
-      general.frequency: 
+      general.frequency:
         type: "general.frequency"
         column: "Q46_9"
-        transforms: 
-        - !<transforms.ReplaceTransform> 
+        transforms:
+        - !<transforms.ReplaceTransform>
           target: ["2", "3", "4", "5", "6", "7", "8"]
           goal: ["Never on a mobile device", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
-      ol.name: 
+      ol.name:
         type: "ol.name"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "a cell phone, iPod Touch, iPad, or similar mobile device"
-      ol.subject: 
+      ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
           value: "child"
-      ol.relevantperiod: 
+      ol.relevantperiod:
         type: "ol.relevantperiod"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
     conditions:
@@ -388,40 +435,45 @@ entityDefinitions:
       reverse: true
     name: "mobileactivitieslookingphotos"
 # ****************** ADULTS APP USE **********************
-  
+
   mobiledownloadedapps:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_MobileDeviceUse"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mobileapps_downloaded"
-      ol.description: 
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q47"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mobileapps_downloaded"
+      ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
           value: "how many 'apps' downloaded on cell phone, iPod, or iPad"
-      ol.relevantperiod: 
+      ol.relevantperiod:
         type: "ol.relevantperiod"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "current/ever"
-      ol.subject: 
+      ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
           value: "adult"
-      ol.servicetype: 
+      ol.servicetype:
         type: "ol.servicetype"
         transforms:
         - !<transforms.ValueTransform>
           value: "apps"
-      ol.number: 
+      ol.number:
         type: "ol.number"
         column: "Q47"
-    conditions: 
+    conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q47"
       reverse: true
@@ -430,36 +482,41 @@ entityDefinitions:
   mobiledownloadedappschildren:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_MobileDeviceUse"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mobileappschildren_downloaded"
-      ol.description: 
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q48"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mobileappschildren_downloaded"
+      ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
           value: "how many 'apps' downloaded for children"
-      ol.relevantperiod: 
+      ol.relevantperiod:
         type: "ol.relevantperiod"
-        transforms: 
+        transforms:
         - !<transforms.ValueTransform>
           value: "current/ever"
-      ol.subject: 
+      ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
           value: "children"
-      ol.servicetype: 
+      ol.servicetype:
         type: "ol.servicetype"
         transforms:
         - !<transforms.ValueTransform>
           value: "apps for children"
-      ol.number: 
+      ol.number:
         type: "ol.number"
         column: "Q48"
-    conditions: 
+    conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q48"
       reverse: true
@@ -470,16 +527,16 @@ entityDefinitions:
 
 # ****************** CHILD'S APP USE **********************
 
-associationDefinitions: 
-  involvedin1: 
+associationDefinitions:
+  involvedin1:
     fqn: "ol.involvedin"
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "subject"
     dst: "mobileactivitieswatchtv"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -494,10 +551,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "subject"
     dst: "mobileactivitieswatchmovies"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -512,10 +569,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "subject"
     dst: "mobileactivitiesplaygames"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -530,10 +587,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "subject"
     dst: "mobileactivitiesapps"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -548,10 +605,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "subject"
     dst: "mobileactivitiesebooks"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -566,10 +623,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "subject"
     dst: "mobileactivitiesaudio"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -584,10 +641,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "subject"
     dst: "mobileactivitiestakingphotos"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -602,10 +659,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "subject"
     dst: "mobileactivitieslookingphotos"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -620,10 +677,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "subject"
     dst: "mobiledownloadedappschildren"
-    propertyDefinitions: 
-      ol.id: 
+    propertyDefinitions:
+      ol.id:
         type: "ol.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -633,15 +690,15 @@ associationDefinitions:
     #   reverse: true
     name: "involvedin9"
 
-  reported1: 
+  reported1:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "mobileactivitieswatchtv"
-    propertyDefinitions: 
-      general.id: 
+    propertyDefinitions:
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -652,10 +709,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "mobileactivitieswatchmovies"
-    propertyDefinitions: 
-      general.id: 
+    propertyDefinitions:
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -666,10 +723,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "mobileactivitiesplaygames"
-    propertyDefinitions: 
-      general.id: 
+    propertyDefinitions:
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -680,10 +737,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "mobileactivitiesapps"
-    propertyDefinitions: 
-      general.id: 
+    propertyDefinitions:
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -694,10 +751,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "mobileactivitiesebooks"
-    propertyDefinitions: 
-      general.id: 
+    propertyDefinitions:
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -708,10 +765,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "mobileactivitiesaudio"
-    propertyDefinitions: 
-      general.id: 
+    propertyDefinitions:
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -722,10 +779,10 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "mobileactivitiestakingphotos"
-    propertyDefinitions: 
-      general.id: 
+    propertyDefinitions:
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
@@ -736,58 +793,53 @@ associationDefinitions:
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "mobileactivitieslookingphotos"
-    propertyDefinitions: 
-      general.id: 
+    propertyDefinitions:
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "reported8"
 
-  reported9: 
+  reported9:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "qualitycontrol"
     propertyDefinitions:
-      general.id: 
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "reported9"
 
-  reported10: 
+  reported10:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "mobiledownloadedapps"
     propertyDefinitions:
-      general.id: 
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "reported10"
 
-  reported11: 
+  reported11:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
     dst: "mobiledownloadedappschildren"
     propertyDefinitions:
-      general.id: 
+      general.id:
         type: "general.id"
-        transforms: 
+        transforms:
         - !<transforms.HashTransform>
           columns: ["Q281", "ResponseId"]
           hashFunction: "sha256"
     name: "reported11"
-
-  
-
-
-

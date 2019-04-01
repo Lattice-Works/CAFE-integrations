@@ -11,10 +11,16 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: "respondent_id" #Person ID
+        transforms:
+        - !<transforms.HashTransform>
+          columns: "respondent_id" #Person ID
+          hashFunction: "sha256"
       ol.idnumber:
         type: "ol.idnumber"
-        column: "ResponseId" #not sure if this or Person ID should be PK.
+        transforms:
+        - !<transforms.HashTransform>
+          column: "ResponseId"
+          hashFunction: "sha256"
     name: "respondent"
 
   subject:
@@ -23,7 +29,10 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: "child_id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: "child_id"
+          hashFunction: "sha256"
         # transforms:
         # - !<transforms.ConcatTransform>
         #   columns: ["ResponseId", "Q281"]
@@ -50,8 +59,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "television"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q33_1"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "television"
       ol.name:
         type: "ol.name"
         column: "Q33_1"
@@ -71,8 +85,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvr"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q33_2"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvr"
       ol.name:
         type: "ol.name"
         column: "Q33_2"
@@ -92,8 +111,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvr"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q33_3"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvr"
       ol.name:
         type: "ol.name"
         column: "Q33_3"
@@ -113,8 +137,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "personal_computer"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q33_4"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "personal_computer"
       ol.name:
         type: "ol.name"
         column: "Q33_4"
@@ -131,8 +160,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mobile_phone"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q33_7"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mobile_phone"
       ol.name:
         type: "ol.name"
         column: "Q33_7"
@@ -152,8 +186,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "smartphone"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q33_8"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "smartphone"
       ol.name:
         type: "ol.name"
         column: "Q33_8"
@@ -170,8 +209,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "ipad_tablet"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q33_9"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "ipad_tablet"
       ol.name:
         type: "ol.name"
         column: "Q33_9"
@@ -188,8 +232,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mp3_player"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q33_10"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mp3_player"
       ol.name:
         type: "ol.name"
         column: "Q33_10"
@@ -206,8 +255,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "educational_game"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q33_15"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "educational_game"
       ol.name:
         type: "ol.name"
         column: "Q33_15"
@@ -224,8 +278,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "video_games"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q33_17"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "video_games"
       ol.name:
         type: "ol.name"
         column: "Q33_17"
@@ -243,8 +302,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "unspecified"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b_14"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "unspecified"
       ol.name:
         type: "ol.name"
         transforms:
@@ -264,8 +328,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "other_device"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b_13"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "other_device"
       ol.name:
         type: "ol.name"
         transforms:
@@ -277,6 +346,32 @@ entityDefinitions:
       pattern: "(?i)(\\bOther\\b)"
       reverse: false
     name: "otherdevice"
+
+  videochat:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q51"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "videochat"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "video chat (e.g., FaceTime, Skype, WhatsApp video call"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q51"
+      pattern: "(?i)(\\bYes\\b)"
+      reverse: false
+    name: "videochat"
 
 # ******** DEVICE LOCATIONS *********
 
@@ -307,8 +402,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "television_not_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_1_1"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "television_not_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -331,8 +431,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvr_not_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_1_2"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvr_not_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -355,8 +460,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvd_not_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_1_3"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvd_not_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -379,8 +489,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "pc_not_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_1_4"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "pc_not_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -403,8 +518,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mobilephone_not_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_1_5"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mobilephone_not_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -427,8 +547,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "smartphone_not_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_1_6"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "smartphone_not_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -451,8 +576,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "ipad_not_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_1_7"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "ipad_not_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -475,8 +605,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mp3_not_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_1_8"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mp3_not_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -499,8 +634,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "educationalgame_not_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_1_9"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "educationalgame_not_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -523,8 +663,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "consolegame_not_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_1_10"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "consolegame_not_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -547,8 +692,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "virtualassistant_not room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_1_11"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "virtualassistant_not room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -571,8 +721,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "videostreaming_not_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_1_12"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "videostreaming_not_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -596,8 +751,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "television_sometimes_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_2_1"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "television_sometimes_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -620,8 +780,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvr_sometimes_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_2_2"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvr_sometimes_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -644,8 +809,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvd_sometimes_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_2_3"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvd_sometimes_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -668,8 +838,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "pc_sometimes_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_2_4"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "pc_sometimes_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -692,8 +867,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mobilephone_sometimes_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_2_5"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mobilephone_sometimes_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -716,8 +896,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "smartphone_sometimes_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_2_6"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "smartphone_sometimes_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -740,8 +925,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "ipad_sometimes_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_2_7"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "ipad_sometimes_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -764,8 +954,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mp3_sometimes_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_2_8"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mp3_sometimes_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -788,8 +983,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "educationalgame_sometimes_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_2_9"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "educationalgame_sometimes_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -812,8 +1012,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "consolegame_sometimes_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_2_10"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "consolegame_sometimes_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -836,8 +1041,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "virtualassistant_sometimes_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_2_11"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "virtualassistant_sometimes_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -860,8 +1070,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "videostreaming_sometimes_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_2_12"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "videostreaming_sometimes_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -886,8 +1101,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "television_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_3_1"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "television_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -910,8 +1130,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvr_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_3_2"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvr_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -934,8 +1159,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvd_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_3_3"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvd_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -958,8 +1188,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "pc_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_3_4"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "pc_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -982,8 +1217,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mobilephone_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_3_5"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mobilephone_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1006,8 +1246,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "smartphone_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_3_6"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "smartphone_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1030,8 +1275,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "ipad_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_3_7"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "ipad_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1054,8 +1304,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mp3_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_3_8"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mp3_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1078,8 +1333,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "educationalgame_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_3_9"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "educationalgame_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1102,8 +1362,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "consolegame_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_3_10"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "consolegame_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1126,8 +1391,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "virtualassistant_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_3_11"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "virtualassistant_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1150,8 +1420,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "videostreaming_room"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q36_3_12"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "videostreaming_room"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1177,8 +1452,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "television_start_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q37_1"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "television_start_childuse"
       ol.status:
         type: "ol.status"
         column: "Q37_1"
@@ -1209,8 +1489,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvr_start_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q37_2"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvr_start_childuse"
       ol.status:
         type: "ol.status"
         column: "Q37_2"
@@ -1241,8 +1526,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvd_start_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q37_3"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvd_start_childuse"
       ol.status:
         type: "ol.status"
         column: "Q37_3"
@@ -1273,8 +1563,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "personalcomputer_start_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q37_4"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "personalcomputer_start_childuse"
       ol.status:
         type: "ol.status"
         column: "Q37_4"
@@ -1305,8 +1600,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mobilephone_start_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q37_5"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mobilephone_start_childuse"
       ol.status:
         type: "ol.status"
         column: "Q37_5"
@@ -1337,8 +1637,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "smartphone_start_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q37_6"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "smartphone_start_childuse"
       ol.status:
         type: "ol.status"
         column: "Q37_6"
@@ -1369,8 +1674,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "ipad_tablet_start_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q37_7"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "ipad_tablet_start_childuse"
       ol.status:
         type: "ol.status"
         column: "Q37_7"
@@ -1401,8 +1711,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mp3_start_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q37_8"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mp3_start_childuse"
       ol.status:
         type: "ol.status"
         column: "Q37_8"
@@ -1433,8 +1748,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "educationalgame_start_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q37_9"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "educationalgame_start_childuse"
       ol.status:
         type: "ol.status"
         column: "Q37_9"
@@ -1465,8 +1785,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "consolegame_start_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q37_10"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "consolegame_start_childuse"
       ol.status:
         type: "ol.status"
         column: "Q37_10"
@@ -1497,8 +1822,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "virtualassistant_start_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q37_11"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "virtualassistant_start_childuse"
       ol.status:
         type: "ol.status"
         column: "Q37_11"
@@ -1529,8 +1859,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "videostreaming_start_childusel"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q37_12"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "videostreaming_start_childusel"
       ol.status:
         type: "ol.status"
         column: "Q37_12"
@@ -1554,6 +1889,134 @@ entityDefinitions:
       reverse: true
     name: "videostreamingstartchilduse"
 
+  videochatchilduse1:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q52_1"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "videochat_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q51"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "current/ever"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q52_1"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Video chat (e.g., FaceTime, Skype, WhatsApp video call)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q51"
+      reverse: true
+    name: "videochatchilduse1"
+
+  videochatchilduse2:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q52_2"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "videochat_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q51"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "current/ever"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q52_2"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Video chat (e.g., FaceTime, Skype, WhatsApp video call)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q51"
+      reverse: true
+    name: "videochatchilduse2"
+
+  videochatrelatives1:
+    fqn: "ol.relative"
+    entitySetName: "CAFE_MAQ_Relatives"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q52_1_TEXT"]
+            hashFunction: "sha256"
+        - !<transforms.ValueTransform>
+          value: "videochat_relative1"
+      ol.name:
+        type: "ol.name"
+        column: "Q52_1_TEXT"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q52_1_TEXT"
+      reverse: true
+    name: "videochatrelatives1"
+
+  videochatrelatives2:
+    fqn: "ol.relative"
+    entitySetName: "CAFE_MAQ_Relatives"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q52_2_TEXT"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "videochat_relative2"
+      ol.name:
+        type: "ol.name"
+        column: "Q52_2_TEXT"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q52_2_TEXT"
+      reverse: true
+    name: "videochatrelatives2"
+
 
 # ************** SUBJECT DEVICE USE 1 HOUR BEFORE BEDTIME ***********
 
@@ -1564,8 +2027,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "television_hourbeforebed_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40a2_1"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "television_hourbeforebed_childuse"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1601,8 +2069,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvr_hourbeforebed_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40a2_2"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvr_hourbeforebed_childuse"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1638,8 +2111,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvd_hourbeforebed_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40a2_3"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvd_hourbeforebed_childuse"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1675,8 +2153,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "personalcomputer_hourbeforebed_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40a2_4"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "personalcomputer_hourbeforebed_childuse"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1712,8 +2195,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mobilephone_hourbeforebed_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40a2_5"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mobilephone_hourbeforebed_childuse"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1749,8 +2237,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "smartphone_hourbeforebed_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40a2_6"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "smartphone_hourbeforebed_childuse"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1786,8 +2279,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "ipad_tablet_hourbeforebed_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40a2_7"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "ipad_tablet_hourbeforebed_childuse"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1823,8 +2321,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mp3_hourbeforebed_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40a2_8"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mp3_hourbeforebed_childuse"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1860,8 +2363,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "educationalgame_hourbeforebed_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40a2_9"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "educationalgame_hourbeforebed_childuse"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1897,8 +2405,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "consolegame_hourbeforebed_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40a2_10"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "consolegame_hourbeforebed_childuse"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1934,8 +2447,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "virtualassistant_hourbeforebed_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40a2_11"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "virtualassistant_hourbeforebed_childuse"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1971,8 +2489,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "videostreaming_hourbeforebed_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40a2_12"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "videostreaming_hourbeforebed_childuse"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2010,8 +2533,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "television_fallingasleep_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b2_1"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "television_fallingasleep_childuse"
       general.frequency:
         type: "general.frequency"
         column: "Q40b2_1"
@@ -2068,8 +2596,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvr_fallingasleep_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b2_2"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvr_fallingasleep_childuse"
       general.frequency:
         type: "general.frequency"
         column: "Q40b2_2"
@@ -2126,8 +2659,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvd_fallingasleep_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b2_3"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "dvd_fallingasleep_childuse"
       general.frequency:
         type: "general.frequency"
         column: "Q40b2_3"
@@ -2184,8 +2722,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "computer_fallingasleep_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b2_4"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "computer_fallingasleep_childuse"
       general.frequency:
         type: "general.frequency"
         column: "Q40b2_4"
@@ -2242,8 +2785,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mobilephone_fallingasleep_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b2_5"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mobilephone_fallingasleep_childuse"
       general.frequency:
         type: "general.frequency"
         column: "Q40b2_5"
@@ -2300,8 +2848,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "smartphone_fallingasleep_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b2_6"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "smartphone_fallingasleep_childuse"
       general.frequency:
         type: "general.frequency"
         column: "Q40b2_6"
@@ -2358,8 +2911,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "ipad_fallingasleep_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b2_7"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "ipad_fallingasleep_childuse"
       general.frequency:
         type: "general.frequency"
         column: "Q40b2_7"
@@ -2416,8 +2974,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mp3_fallingasleep_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b2_8"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "mp3_fallingasleep_childuse"
       general.frequency:
         type: "general.frequency"
         column: "Q40b2_8"
@@ -2474,8 +3037,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "educationalgame_fallingasleep_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b2_9"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "educationalgame_fallingasleep_childuse"
       general.frequency:
         type: "general.frequency"
         column: "Q40b2_9"
@@ -2532,8 +3100,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "consolegame_fallingasleep_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b2_10"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "consolegame_fallingasleep_childuse"
       general.frequency:
         type: "general.frequency"
         column: "Q40b2_10"
@@ -2590,8 +3163,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "virtualassistant_fallingasleep_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b2_11"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "virtualassistant_fallingasleep_childuse"
       general.frequency:
         type: "general.frequency"
         column: "Q40b2_11"
@@ -2648,11 +3226,16 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "videostreaming_fallingasleep_childuse"
-      # general.frequency:
-      #   type: "general.frequency"
-      #   column: "Q40b2_12"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b2_12"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "videostreaming_fallingasleep_childuse"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40b2_12"
         # transforms:
         # - !<transforms.ReplaceTransform>
         #   target: ["1", "7", "3", "4", "5", "6"]
@@ -2703,11 +3286,16 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "other_fallingasleep_childuse"
-      # general.frequency:
-      #   type: "general.frequency"
-      #   column: "Q40b2_13"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b2_13"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "other_fallingasleep_childuse"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q40b2_13"
         # transforms:
         # - !<transforms.ReplaceTransform>
         #   target: ["1", "7", "3", "4", "5", "6"]
@@ -2758,8 +3346,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "none_fallingasleep_childuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b_14"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "none_fallingasleep_childuse"
       # general.frequency:
       #   type: "general.frequency"
       #   column: "Q40b2_14"
@@ -2813,8 +3406,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "virtual_assistant"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b_11"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "virtual_assistant"
       ol.name:
         type: "ol.name"
         transforms:
@@ -2822,7 +3420,7 @@ entityDefinitions:
           value: "Virtual Assistant"
     conditions:
     - !<conditions.BooleanRegexCondition>
-      column: "Q33"
+      column: "Q40b_11"
       pattern: "(?i)(\\bVirtual assistant\\b)"
       reverse: false
     name: "virtualassistant"
@@ -2834,8 +3432,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "video_streaming"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q40b_12"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "video_streaming"
       ol.name:
         type: "ol.name"
         transforms:
@@ -2843,7 +3446,7 @@ entityDefinitions:
           value: "Video streaming services"
     conditions:
     - !<conditions.BooleanRegexCondition>
-      column: "Q33"
+      column: "Q40b_12"
       pattern: "(?i)(\\bVideo streaming\\b)"
       reverse: false
     name: "videostreaming"
@@ -2858,8 +3461,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "television_in_home"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.HashTransform>
+            columns: ["Q43"]
+            hashFunction: "sha256"
+          - !<transforms.ValueTransform>
+            value: "television_in_home"
       ol.description:
         type: "ol.description"
         transforms:
@@ -6241,33 +6849,19 @@ associationDefinitions:
           hashFunction: "sha256"
     name: "involvedin40"
 
-  # involvedin41:
-  #   fqn: "ol.involvedin"
-  #   entitySetName: "CAFE_MAQ_InvolvedIn"
-  #   src: "subject"
-  #   dst: "transitdeviceuse"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   name: "involvedin41"
-
-  # involvedin42:
-  #   fqn: "ol.involvedin"
-  #   entitySetName: "CAFE_MAQ_InvolvedIn"
-  #   src: "household"
-  #   dst: "televisiononinhouse"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   name: "involvedin42 "
+  involvedin41:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "household"
+    dst: "televisiononinhouse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin41"
 
 
 # *********** ASSOCIATIONS FOR REGULARLY LOCATED DEVICES & PERSONS *************
@@ -6937,3 +7531,135 @@ associationDefinitions:
       pattern: "(?i)(\\bNever\\b)"
       reverse: true
     name: "usedby75"
+
+  subjectof1:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "videochatchilduse1"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof1"
+
+  subjectof2:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "videochatchilduse2"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof2"
+
+  involvedin42:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "videochatrelatives1"
+    dst: "videochatchilduse1"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin41"
+
+  involvedin42:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "videochatrelatives2"
+    dst: "videochatchilduse2"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin42"
+
+  relatedto39:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "subject"
+    dst: "videochatrelatives1"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        column: "Q52_1_TEXT"
+    name: "relatedto39"
+
+  relatedto40:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "subject"
+    dst: "videochatrelatives2"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        column: "Q52_2_TEXT"
+    name: "relatedto40"
+
+  relatedto41:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "videochat"
+    dst: "videochatchilduse1"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+    name: "relatedto41"
+
+  relatedto42:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "videochat"
+    dst: "videochatchilduse2"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+    name: "relatedto42"
+
+  usedby76:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "videochat"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby76"

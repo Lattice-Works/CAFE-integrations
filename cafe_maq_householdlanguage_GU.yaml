@@ -32,7 +32,7 @@ entityDefinitions:
         type: "household.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["ResponseId"]
+          columns: ["ResponseId", "child_id", "Q23"]
           hashFunction: "sha256"
     name: "household"
 

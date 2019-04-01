@@ -1,0 +1,432 @@
+# cafe MAQ BYU
+# csv filename: MAQs_BYU_V3_2018_20181004_Returning.csv
+# Video Chat section of survey (PTS_MAQS V3.1_Data Dictionary_Questions)
+
+entityDefinitions:
+  respondent:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: respondent_id
+          hashFunction: "sha256"
+      ol.idnumber:
+        type: "ol.idnumber"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: "ResponseId"
+          hashFunction: "sha256"
+    name: "respondent"
+
+  subject:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: child_id
+          hashFunction: "sha256"
+    name: "subject"
+
+# ********** VIDEO CHAT ATTITUDES FOR CHILD **********
+  keepintouchvideochatattitude:
+    fqn: "ol.mediauseattitude"
+    entitySetName: "CAFE_MAQ_MediaUseAttitudes"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q53_1"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videochat_keepintouch"
+      ol.levelofagreement:
+        type: "ol.levelofagreement"
+        column: "Q53_1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parent use for child"
+      ol.reason:
+        type: "ol.reason"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "use video chat so child can keep in touch with distant relatives"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "video chat (e.g., FaceTime, Skype, WhatsApp video call)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q53_1"
+      reverse: true
+    name: "keepintouchvideochatattitude"
+
+  parenttravelingvideochatattitude:
+    fqn: "ol.mediauseattitude"
+    entitySetName: "CAFE_MAQ_MediaUseAttitudes"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q53_2"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videochat_parenttraveling"
+      ol.levelofagreement:
+        type: "ol.levelofagreement"
+        column: "Q53_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parent use for child"
+      ol.reason:
+        type: "ol.reason"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "use video chat as a way for child to see parents when traveling"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "video chat (e.g., FaceTime, Skype, WhatsApp video call)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q53_2"
+      reverse: true
+    name: "parenttravelingvideochatattitude"
+
+  connectchildvideochatattitude:
+    fqn: "ol.mediauseattitude"
+    entitySetName: "CAFE_MAQ_MediaUseAttitudes"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q53_3"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videochat_connectchild"
+      ol.levelofagreement:
+        type: "ol.levelofagreement"
+        column: "Q53_3"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parent use for child"
+      ol.reason:
+        type: "ol.reason"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "use video chat to connect with child throughout the day"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "video chat (e.g., FaceTime, Skype, WhatsApp video call)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q53_3"
+      reverse: true
+    name: "connectchildvideochatattitude"
+
+  workschedulevideochatattitude:
+    fqn: "ol.mediauseattitude"
+    entitySetName: "CAFE_MAQ_MediaUseAttitudes"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q53_4"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videochat_workschedule"
+      ol.levelofagreement:
+        type: "ol.levelofagreement"
+        column: "Q53_4"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "parent use for child"
+      ol.reason:
+        type: "ol.reason"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "use video chat to connect with child because of work schedule"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "video chat (e.g., FaceTime, Skype, WhatsApp video call)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q53_4"
+      reverse: true
+    name: "workschedulevideochatattitude"
+
+# ********* YESTERDAY TIME SPENT ********************
+  videochattimehoursweek:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q301_1"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videochat_hoursweek_adultuse"
+      ol.duration:
+        type: "ol.duration"
+        column: "Q301_1"
+      ol.units:
+        type: "ol.units"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Hours"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent using video chat during the week"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "during the week"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q301_1"
+      reverse: true
+    name: "videochattimehoursweek"
+
+  videochattimeminsweek:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q301_2"]
+            separator: "_"
+            - !<transforms.ValueTransform>
+              value: "videochat_minsweek_adultuse"
+      ol.duration:
+        type: "ol.duration"
+        column: "Q301_2"
+      ol.units:
+        type: "ol.units"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Minutes"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Time spent using video chat during the week"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "during the week"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q301_2"
+      reverse: true
+    name: "videochattimeminsweek"
+
+
+associationDefinitions:
+    reported2:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "keepintouchvideochatattitude"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported2"
+
+  reported3:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "parenttravelingvideochatattitude"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported3"
+
+  reported4:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "connectchildvideochatattitude"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported4"
+
+  reported5:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "workschedulevideochatattitude"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported5"
+
+  subjectof2:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "keepintouchvideochatattitude"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof2"
+
+  subjectof3:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "parenttravelingvideochatattitude"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof3"
+
+  subjectof4:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "connectchildvideochatattitude"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof4"
+
+  subjectof5:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "workschedulevideochatattitude"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "subjectof5"
+
+  involvedin1:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "videochattimehoursweek"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin1"
+
+  involvedin2:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "videochattimeminsweek"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin2"
