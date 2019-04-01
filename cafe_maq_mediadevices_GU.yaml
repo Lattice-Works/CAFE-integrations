@@ -13,7 +13,7 @@ entityDefinitions:
         type: "nc.SubjectIdentification"
         transforms:
         - !<transforms.HashTransform>
-          columns: "respondent_id" #Person ID
+          columns: ["respondent_id"] #Person ID
           hashFunction: "sha256"
       ol.idnumber:
         type: "ol.idnumber"
@@ -29,15 +29,8 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: "child_id"
-          hashFunction: "sha256"
-        # transforms:
-        # - !<transforms.ConcatTransform>
-        #   columns: ["ResponseId", "Q281"]
-        #   separator: "_"
-    name: "subject"
+        column: child_id
+  name: "subject"
 
   household:
     fqn: "demographics.household"

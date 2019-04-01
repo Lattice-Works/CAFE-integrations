@@ -13,7 +13,7 @@ entityDefinitions:
         type: "nc.SubjectIdentification"
         transforms:
         - !<transforms.HashTransform>
-          columns: "respondent_id" #Person ID
+          columns: ["respondent_id"] #Person ID
           hashFunction: "sha256"
       ol.idnumber:
         type: "ol.idnumber"
@@ -29,14 +29,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: "child_id"
-          hashFunction: "sha256"
-        # transforms:
-        # - !<transforms.ConcatTransform>
-        #   columns: ["ResponseId", "respondent_id"]
-        #   separator: "_"
+        column: child_id
     name: "subject"
 
 # ******************* DEVICES OWNED BY HOUSEHOLD *******************************
@@ -3397,6 +3390,7 @@ entityDefinitions:
       general.frequency:
         type: "general.frequency"
         column: "Q52_2"
+        transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7"]
           goal: ["Less than once a month", "About once a month", "2-3 times per month", "Once a week", "2-3 times per week", "4-5 times per week", "6 or more times per week"]
