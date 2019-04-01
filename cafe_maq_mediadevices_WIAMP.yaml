@@ -1582,6 +1582,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
+        transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.HashTransform>
@@ -1771,6 +1772,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
+        transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.HashTransform>

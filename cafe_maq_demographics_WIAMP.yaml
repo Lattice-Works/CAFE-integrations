@@ -136,10 +136,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id", "Q2_1_3"]
-          hashFunction: "sha256"
+        column: child_id
       nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "Q2_1_1_TEXT"
@@ -756,6 +753,7 @@ entityDefinitions:
       ol.type:
         type: "ol.type"
         column: "Q12"
+    conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q12"
       reverse: true
@@ -972,7 +970,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q2_6_3" "ResponseId", "child_id", "Q23"]
+          columns: ["Q2_6_3", "ResponseId", "child_id", "Q23"]
           hashFunction: "sha256"
     name: "partof_g"
 
