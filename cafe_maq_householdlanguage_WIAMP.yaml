@@ -27,6 +27,18 @@ entityDefinitions:
           columns: ["child_id"]
     name: "childsubject"
 
+  household:
+    fqn: "demographics.household"
+    entitySetName: "CAFE_MAQ_Households"
+    propertyDefinitions:
+      household.id:
+        type: "household.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId", "child_id", "Q23"]
+          hashFunction: "sha256"
+    name: "household"
+
   communication_household:
     fqn: "ol.communication"
     entitySetName: "CAFE_MAQ_Household_Communication"
@@ -285,18 +297,6 @@ entityDefinitions:
       reverse: true
     name: "communication_caregiver"
 
-  household:
-    fqn: "demographics.household"
-    entitySetName: "CAFE_MAQ_Households"
-    propertyDefinitions:
-      household.id:
-        type: "household.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["ResponseId", "child_id", "Q23"]
-          hashFunction: "sha256"
-    name: "household"
-
 associationDefinitions:
 # ************************** COMMUNICATION ASSOCIATIONS **********************
   partof_a:
@@ -372,7 +372,7 @@ associationDefinitions:
   involvedin3:
     fqn: "ol.involvedin"
     entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "childsubject1"
+    src: "childsubject"
     dst: "communication_household"
     propertyDefinitions:
       ol.id:
@@ -391,7 +391,7 @@ associationDefinitions:
   involvedin4:
     fqn: "ol.involvedin"
     entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "childsubject1"
+    src: "childsubject"
     dst: "communication_caregiver"
     propertyDefinitions:
       ol.id:

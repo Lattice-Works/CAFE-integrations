@@ -53,14 +53,6 @@ entityDefinitions:
         - !<transforms.HashTransform>
           columns: ["ResponseId"]
           hashFunction: "sha256"
-      # demographics.hhtype:
-      #   # Does [Field-kid1] live in two households?
-      #   type: "demographics.hhtype"
-      #   column: "Q23"
-      #   transforms:
-      #   - !<transforms.ReplaceTransform>
-      #     target: ["1", "2"] #in some surveys it is ["Yes", "No"]
-      #     goal: ["split/two households", "single household"]
       ol.timeestimate:
         # How much time does your child spend in your household?
         type: "ol.timeestimate"
