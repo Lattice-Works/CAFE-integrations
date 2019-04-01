@@ -7,7 +7,13 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: "respondent_id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id"]
+          hashFunction: "sha256"
+      ol.idnumber:
+        type: "ol.idnumber"
+        column: "ResponseId"
       nc.PersonRace:
         type: "nc.PersonRace"
         column: "parentrace"
@@ -28,24 +34,20 @@ entityDefinitions:
         column: "parentbirthplace"
     name: "respondent"
 
-  # respondentdetails:
-  #   fqn: "ol.persondetails"
-  #   entitySetName: "CAFE_MAQ_RespondentDetails"
-  #   propertyDefinitions:
-  #     general.id:
-  #       type: "general.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["appcode", "UserLanguage"]
-  #         hashFunction: "sha256"
-  #     ol.language:
-  #       type: "ol.language"
-  #       column: "UserLanguage" #have to get this from non-demographics csv (see above)
-  #       transforms:
-  #       - !<transforms.ReplaceTransform>
-  #         target: ["EN"]
-  #         goal: ["English"]
-  #   name: "respondentdetails"
+  respondentdetails:
+    fqn: "ol.persondetails"
+    entitySetName: "CAFE_MAQ_RespondentDetails"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "UserLanguage"]
+          hashFunction: "sha256"
+      ol.language:
+        type: "ol.language"
+        column: "UserLanguage"
+    name: "respondentdetails"
 
   employment:
     fqn: "ol.employment"
@@ -53,10 +55,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["appcode", "parentemployed"]
-          hashFunction: "sha256"
+        column: "parentemployed"
       ol.status:
         type: "ol.status"
         column: "parentemployed"
@@ -76,10 +75,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["appcode", "parentedu"]
-          hashFunction: "sha256"
+        column: "parentedu"
       person.highesteducation:
         type: "person.highesteducation"
         column: "parentedu"
@@ -99,7 +95,10 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: child_id
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id"]
+          hashFunction: "sha256"
       nc.PersonSex:
         type: "nc.PersonSex"
         column: "childsex"
@@ -167,15 +166,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["appcode", ""publicassistance"]
-          hashFunction: "sha256"
-      # ol.notes:
-      #   type: "ol.notes"
-      #   transforms:
-      #   - !<transforms.ValueTransform>
-      #     value: "public assistance"
+        column: "publicassistance"
       ol.type:
         type: "ol.type"
         column: "publicassistance"
@@ -195,10 +186,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["appcode", "householdincome"]
-          hashFunction: "sha256"
+        column: "householdincome"
       ol.type:
         type: "ol.type"
         column: "householdincome"
@@ -233,7 +221,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["appcode", "school", "childcare", "childinhome", "school_other"]
+          columns: ["child_id", "school", "childcare", "childinhome"]
           hashFunction: "sha256"
       ol.type:
         type: "ol.type"
@@ -264,6 +252,22 @@ entityDefinitions:
     name: "childcare_weekdays"
 
 associationDefinitions:
+  has:
+    fqn: "ol.has"
+    entitySetName: CAFE_MAQ_Has
+    fqn: "ol.reported"
+    entitySetName: CAFE_MAQ_Reported
+    src: "respondent"
+    dst: "respondentdetails"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "UserLanguage"]
+          hashFunction: "sha256"
+    name: "has"
+
   has1:
     fqn: "ol.has"
     entitySetName: "CAFE_MAQ_Has"

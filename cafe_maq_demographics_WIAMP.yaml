@@ -1,0 +1,1205 @@
+# Wisconsin-Madison
+# csv filename: CAFE+Questionnaire+v.2+-+Physio+Study+(WI-AMP-BTV)_February+6,+2019_09.01 - CHOICE TEXT.csv
+
+
+entityDefinitions:
+  respondent:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id"]
+          hashFunction: "sha256"
+      ol.idnumber:
+        type: "ol.idnumber"
+        column: "ResponseId" #not sure if this or Person ID should be PK.
+      nc.PersonGivenName:
+        type: "nc.PersonGivenName"
+        column: "RecipientFirstName"
+      nc.PersonSurName:
+        type: "nc.PersonSurName"
+        column: "RecipientLastName"
+      nc.PersonRace1:
+        type: "nc.PersonRace"
+        column: "Q4_1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["American Indian/Alaska Native", ""]
+          goal: ["amindian", ""]
+          partial: true
+      nc.PersonRace2:
+        type: "nc.PersonRace"
+        column: "Q4_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Asian", ""]
+          goal: ["asian", ""]
+          partial: true
+      nc.PersonRace3:
+        type: "nc.PersonRace"
+        column: "Q4_3"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Black or African American", ""]
+          goal: ["black", ""]
+          partial: true
+      nc.PersonRace4:
+        type: "nc.PersonRace"
+        column: "Q4_4"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["White", ""]
+          goal: ["white", ""]
+          partial: true
+      nc.PersonRace5:
+        type: "nc.PersonRace"
+        column: "Q4_8"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Other (Please Specify)", ""]
+          goal: ["other", ""]
+          partial: true
+      # nc.PersonRace6:
+      #   type: "nc.PersonRace"
+      #   column: "Q4_6"
+      #   transforms:
+      #   - !<transforms.ReplaceTransform>
+      #     target: ["1"]
+      #     goal: ["Don't Know"]
+      #     partial: true
+      # nc.PersonRace7:
+      #   type: "nc.PersonRace"
+      #   column: "Q4_7"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1"]
+        #   goal: ["Prefer not to answer"]
+        #   partial: true
+      nc.PersonRace8:
+        type: "nc.PersonRace"
+        transforms:
+        - !<transforms.BooleanIsNullTransform>
+          column: "Q4_8_TEXT"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: "other"
+      nc.PersonEthnicity:
+        type: "nc.PersonEthnicity"
+        column: "Q3"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Not Hispanic or Latino", "Hispanic or Latino"]
+          goal: ["nonhispanic", "hispanic"]
+      nc.PersonBirthPlace:
+        type: "nc.PersonBirthPlace"
+        column: "Q5"
+    name: "respondent"
+
+  respondentdetails:
+    fqn: "ol.persondetails"
+    entitySetName: "CAFE_MAQ_RespondentDetails"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "UserLanguage", "Q2", "Q7", "Q5", "Q13"]
+          hashFunction: "sha256"
+      ol.language:
+        type: "ol.language"
+        column: "UserLanguage"
+      person.ageatevent:
+        type: "person.ageatevent"
+        column: "Q2"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+      person.maritalstatus:
+        type: "person.maritalstatus"
+        column: "Q7"
+      ol.nationality:
+        type: "ol.nationality"
+        column: "Q5" #Where were you born
+      ol.numberofchildren:
+        type: "ol.numberofchildren"
+        column: "Q13"
+    name: "respondentdetails"
+
+  childsubject1:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q2_1_3"]
+          hashFunction: "sha256"
+      nc.PersonGivenName:
+        type: "nc.PersonGivenName"
+        column: "Q2_1_1_TEXT"
+      ol.birthmonth:
+        type: "ol.birthmonth"
+        column: "Q2_1_1"
+      nc.PersonSex:
+        type: "nc.PersonSex"
+        column: "Q2_1_2"
+      ol.birthyear:
+        type: "ol.birthyear"
+        column: "Q2_1_3"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_1_1_TEXT"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_1_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_1_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_1_3"
+      reverse: true
+    name: "childsubject1"
+
+  childsubjectdetails:
+    fqn: "ol.persondetailshealth"
+    entitySetName: "CAFE_MAQ_ChildrenDetailsHealth"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q20", "Q18", "Q19"]
+          hashFunction: "sha256"
+      ol.prematurebirth:
+        type: "ol.prematurebirth"
+        column: "Q18"
+      ol.gestationalage:
+        type: "ol.gestationalage"
+        column: "Q19"
+        transforms:
+        - !<transforms.ParseDoubleTransform> {}
+      ol.birthweight:
+        type: "ol.birthweight"
+        column: "Q20"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q20"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q18"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q19"
+      reverse: true
+    name: "childsubjectdetails"
+
+
+  household:
+    fqn: "demographics.household"
+    entitySetName: "CAFE_MAQ_Households"
+    propertyDefinitions:
+      household.id:
+        type: "household.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId", "child_id", "Q23"]
+          hashFunction: "sha256"
+      demographics.hhtype:
+        type: "demographics.hhtype"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q23"
+          string: "999"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>
+            column: "Q23"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q23"
+      reverse: true
+    name: "household"
+
+  childcare_weekdays:
+    fqn: "ol.childcare"
+    entitySetName: "CAFE_MAQ_ChildCare_Weekdays"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q25"]
+          hashFunction: "sha256"
+      ol.persontoassist:
+        type: "ol.persontoassist"
+        column: "Q8"
+      ol.type:
+      # What type of childcare does [Field-kid1] attend for the most hours each week? - Selected Choice
+        type: "ol.type"
+        column: "Q25"
+      ol.type2:
+      # What type of childcare does [Field-kid1] attend for the most hours each week? - Other - Text
+        type: "ol.type"
+        column: "Q25_5_TEXT"
+      ol.ageatonset:
+      # How old was [Field-kid1] when he/she started childcare?
+        type: "ol.ageatonset"
+        column: "Q26"
+      ol.relationship1:
+      # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Child's mother
+        type: "ol.relationship"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q21_1"
+          string: "1"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Child's mother"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.relationship2:
+      # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Child's father
+        type: "ol.relationship"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q21_2"
+          string: "1"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Child's father"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.relationship3:
+      # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Other family member
+        type: "ol.relationship"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q21_3"
+          string: "1"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Other family member"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.relationship4:
+      # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Babysitter
+        type: "ol.relationship"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q21_4"
+          string: "1"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Babysitter"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.relationship5:
+      # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Childcare/Preschool
+        type: "ol.relationship"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q21_5"
+          string: "1"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Childcare/Preschool"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.relationship6:
+      # Who takes care of [Field-kid1] during the day, most of the time on typical weekdays? Please check all that apply. - Selected Choice - Other + Other - Text
+        type: "ol.relationship"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q21_7"
+          string: "1"
+          transformsIfTrue:
+          - !<transforms.ColumnTransform>
+            column: "Q21_7_TEXT"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q8"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q25"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q25_5_TEXT"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q26"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q27"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q21_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q21_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q21_3"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q21_4"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q21_5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q21_7"
+      reverse: true
+    name: "childcare_weekdays"
+
+  childcare_weekends:
+    fqn: "ol.childcare"
+    entitySetName: "CAFE_MAQ_ChildCare_Weekends"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
+          hashFunction: "sha256"
+      ol.relationship1:
+      # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Child's mother
+        type: "ol.relationship"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q22_1"
+          string: "1"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Child's Mother"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.relationship2:
+      # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Child's father
+        type: "ol.relationship"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q22_2"
+          string: "1"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Child's Father"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.relationship3:
+      # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Other family member
+        type: "ol.relationship"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q22_3"
+          string: "1"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Other Family Member"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.relationship4:
+      # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Babysitter
+        type: "ol.relationship"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q22_4"
+          string: "1"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Babysitter"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.relationship5:
+      # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Childcare/Preschool
+        type: "ol.relationship"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q22_5"
+          string: "1"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Childcare/Preschool"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      ol.relationship6:
+      # Who takes care of [Field-kid1] during the day, most of the time on typical weekend days? Please check all that apply. - Selected Choice - Other + Text
+        type: "ol.relationship"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q22_7"
+          string: "1"
+          transformsIfTrue:
+          - !<transforms.ColumnTransform>
+            column: "Q22_7_TEXT"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q22_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q22_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q22_3"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q22_4"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q22_5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q22_7"
+      reverse: true
+    name: "childcare_weekends"
+
+  childsubject2:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "child_id", "Q2_2_3"]
+          separator: "_"
+      nc.PersonGivenName:
+        type: "nc.PersonGivenName"
+        column: "Q2_2_1_TEXT"
+      ol.birthmonth:
+        type: "ol.birthmonth"
+        column: "Q2_2_1"
+      nc.PersonSex:
+        type: "nc.PersonSex"
+        column: "Q2_2_2"
+      ol.birthyear:
+        type: "ol.birthyear"
+        column: "Q2_2_3"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_2_1_TEXT"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_2_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_2_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_2_3"
+      reverse: true
+    name: "childsubject2"
+
+  childsubject3:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "child_id", "Q2_3_3"]
+          separator: "_"
+      nc.PersonGivenName:
+        type: "nc.PersonGivenName"
+        column: "Q2_3_1_TEXT"
+      ol.birthmonth:
+        type: "ol.birthmonth"
+        column: "Q2_3_1"
+      nc.PersonSex:
+        type: "nc.PersonSex"
+        column: "Q2_3_2"
+      ol.birthyear:
+        type: "ol.birthyear"
+        column: "Q2_3_3"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_3_1_TEXT"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_3_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_3_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_3_3"
+      reverse: true
+    name: "childsubject3"
+
+  childsubject4:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "child_id", "Q2_4_3"]
+          separator: "_"
+      nc.PersonGivenName:
+        type: "nc.PersonGivenName"
+        column: "Q2_4_1_TEXT"
+      ol.birthmonth:
+        type: "ol.birthmonth"
+        column: "Q2_4_1"
+      nc.PersonSex:
+        type: "nc.PersonSex"
+        column: "Q2_4_2"
+      ol.birthyear:
+        type: "ol.birthyear"
+        column: "Q2_4_3"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_4_1_TEXT"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_4_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_4_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_4_3"
+      reverse: true
+    name: "childsubject4"
+
+  childsubject5:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "child_id", "Q2_5_3"]
+          separator: "_"
+      nc.PersonGivenName:
+        type: "nc.PersonGivenName"
+        column: "Q2_5_1_TEXT"
+      ol.birthmonth:
+        type: "ol.birthmonth"
+        column: "Q2_5_1"
+      nc.PersonSex:
+        type: "nc.PersonSex"
+        column: "Q2_5_2"
+      ol.birthyear:
+        type: "ol.birthyear"
+        column: "Q2_5_3"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_5_1_TEXT"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_5_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_5_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_5_3"
+      reverse: true
+    name: "childsubject5"
+
+  childsubject6:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "child_id", "Q2_6_3"]
+          separator: "_"
+      nc.PersonGivenName:
+        type: "nc.PersonGivenName"
+        column: "Q2_6_1_TEXT"
+      ol.birthmonth:
+        type: "ol.birthmonth"
+        column: "Q2_6_1"
+      nc.PersonSex:
+        type: "nc.PersonSex"
+        column: "Q2_6_2"
+      ol.birthyear:
+        type: "ol.birthyear"
+        column: "Q2_6_3"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_6_1_TEXT"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_6_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_6_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2_6_3"
+      reverse: true
+    name: "childsubject6"
+
+  immigrationstatus:
+    fqn: "ol.immigrationstatus"
+    entitySetName: "CAFE_MAQ_ImmigrationStatus"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q5", "Q6"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        column: "Q6"
+      ol.description:
+        type: "ol.description"
+        column: "Q5"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q6"
+      reverse: true
+    name: "immigrationstatus"
+
+  employment:
+    fqn: "ol.employment"
+    entitySetName: "CAFE_MAQ_Employment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "Q10"
+      ol.status:
+        type: "ol.status"
+        column: "Q10"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q10"
+      reverse: true
+    name: "employment"
+
+  incomerange:
+    fqn: "ol.income"
+    entitySetName: "CAFE_MAQ_Incomes"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "Q11"
+      ol.type:
+        type: "ol.type"
+        column: "Q11"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q11"
+      reverse: true
+    name: "incomerange"
+
+  publicassistance:
+    fqn: "ol.income"
+    entitySetName: "CAFE_MAQ_Incomes"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "Q12"
+      ol.notes:
+        type: "ol.notes"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "public assistance"
+      ol.type:
+        type: "ol.type"
+        column: "Q12"
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q12"
+      reverse: true
+    name: "publicassistance"
+
+  education:
+    fqn: "ol.education"
+    entitySetName: "CAFE_MAQ_Education"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "Q9"
+      person.highesteducation:
+        type: "person.highesteducation"
+        column: "Q9"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q9"
+      reverse: true
+    name: "education"
+
+associationDefinitions:
+  has1:
+    fqn: "ol.has"
+    entitySetName: CAFE_MAQ_Has
+    src: "respondent"
+    dst: "respondentdetails"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "UserLanguage", "Q2", "Q7", "Q5", "Q13"]
+          hashFunction: "sha256"
+    name: "has1"
+
+  reported1:
+    fqn: "ol.reported"
+    entitySetName: CAFE_MAQ_Reported
+    src: "respondent"
+    dst: "employment"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q10"]
+          hashFunction: "sha256"
+    name: "reported1"
+
+  reported2:
+    fqn: "ol.reported"
+    entitySetName: CAFE_MAQ_Reported
+    src: "respondent"
+    dst: "education"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q9"]
+          hashFunction: "sha256"
+    name: "reported2"
+
+  reported3:
+    fqn: "ol.reported"
+    entitySetName: CAFE_MAQ_Reported
+    src: "respondent"
+    dst: "incomerange"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q11"]
+          hashFunction: "sha256"
+    name: "reported3"
+
+  reported4:
+    fqn: "ol.reported"
+    entitySetName: CAFE_MAQ_Reported
+    src: "respondent"
+    dst: "publicassistance"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q12"]
+          hashFunction: "sha256"
+    name: "reported4"
+
+  reported5:
+    fqn: "ol.reported"
+    entitySetName: CAFE_MAQ_Reported
+    src: "respondent"
+    dst: "immigrationstatus"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q5", "Q6"]
+          hashFunction: "sha256"
+    name: "reported5"
+
+
+  has2:
+    fqn: "ol.has"
+    entitySetName: "CAFE_MAQ_Has"
+    src: "childsubject1"
+    dst: "childsubjectdetails"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q2_1_3", "child_id", "Q20", "Q18", "Q19"]
+          hashFunction: "sha256"
+    name: "has2"
+
+#******************* HOUSEHOLD & RELATIONS ASSOCIATIONS ************************
+  partof_a:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "respondent"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId", "child_id", "Q23"]
+          hashFunction: "sha256"
+    name: "partof_a"
+
+  partof_b:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "childsubject1"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q2_1_3", "ResponseId", "child_id", "Q23"]
+          hashFunction: "sha256"
+    name: "partof_b"
+
+  partof_c:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "childsubject2"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q2_2_3", "ResponseId", "child_id", "Q23"]
+          hashFunction: "sha256"
+    name: "partof_c"
+
+  partof_d:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "childsubject3"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q2_3_3", "ResponseId", "child_id", "Q23"]
+          hashFunction: "sha256"
+    name: "partof_d"
+
+  partof_e:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "childsubject4"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q2_4_3", "ResponseId", "child_id", "Q23"]
+          hashFunction: "sha256"
+    name: "partof_e"
+
+  partof_f:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "childsubject5"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q2_5_3", "ResponseId", "child_id", "Q23"]
+          hashFunction: "sha256"
+    name: "partof_f"
+
+  partof_g:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "childsubject6"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q2_6_3" "ResponseId", "child_id", "Q23"]
+          hashFunction: "sha256"
+    name: "partof_g"
+
+  relatedto1:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "respondent"
+    dst: "childsubject1"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId", "child_id", "Q2_1_3"]
+          hashFunction: "sha256"
+      ol.role1:
+        type: "ol.role"
+        column: "Q15_x1_1_1"
+      ol.role2:
+        type: "ol.role"
+        column: "Q15_x1_1_2"
+      ol.role3:
+        type: "ol.role"
+        column: "Q15_x1_1_3"
+      ol.role4:
+        type: "ol.role"
+        column: "Q15_x1_1_4"
+      ol.role5:
+        type: "ol.role"
+        column: "Q15_x1_1_5"
+    name: "relatedto1"
+
+  relatedto2:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "respondent"
+    dst: "childsubject2"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId", "child_id", "Q2_2_3"]
+      ol.role1:
+        type: "ol.role"
+        column: "Q15_x2_1_1"
+      ol.role2:
+        type: "ol.role"
+        column: "Q15_x2_1_2"
+      ol.role3:
+        type: "ol.role"
+        column: "Q15_x2_1_3"
+      ol.role4:
+        type: "ol.role"
+        column: "Q15_x2_1_4"
+      ol.role5:
+        type: "ol.role"
+        column: "Q15_x2_1_5"
+    name: "relatedto2"
+
+  relatedto3:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "respondent"
+    dst: "childsubject3"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId", "child_id", "Q2_3_3"] #this depends on what you make child's PK.
+      ol.role1:
+        type: "ol.role"
+        column: "Q15_x3_1_1"
+      ol.role2:
+        type: "ol.role"
+        column: "Q15_x3_1_2"
+      ol.role3:
+        type: "ol.role"
+        column: "Q15_x3_1_3"
+      ol.role4:
+        type: "ol.role"
+        column: "Q15_x3_1_4"
+      ol.role5:
+        type: "ol.role"
+        column: "Q15_x3_1_5"
+    name: "relatedto3"
+
+  relatedto4:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "respondent"
+    dst: "childsubject4"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId", "child_id", "Q2_4_3"] #this depends on what you make child's PK.
+      ol.role1:
+        type: "ol.role"
+        column: "Q15_x4_1_1"
+      ol.role2:
+        type: "ol.role"
+        column: "Q15_x4_1_2"
+      ol.role3:
+        type: "ol.role"
+        column: "Q15_x4_1_3"
+      ol.role4:
+        type: "ol.role"
+        column: "Q15_x4_1_4"
+      ol.role5:
+        type: "ol.role"
+        column: "Q15_x4_1_5"
+    name: "relatedto4"
+
+  relatedto5:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "respondent"
+    dst: "childsubject5"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId", "child_id", "Q2_5_3"] #this depends on what you make child's PK.
+      ol.role1:
+        type: "ol.role"
+        column: "Q15_x5_1_1"
+      ol.role2:
+        type: "ol.role"
+        column: "Q15_x5_1_2"
+      ol.role3:
+        type: "ol.role"
+        column: "Q15_x5_1_3"
+      ol.role4:
+        type: "ol.role"
+        column: "Q15_x5_1_4"
+      ol.role5:
+        type: "ol.role"
+        column: "Q15_x5_1_5"
+    name: "relatedto5"
+
+  relatedto6:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "respondent"
+    dst: "childsubject6"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId", "child_id", "Q2_6_3"] #this depends on what you make child's PK.
+      ol.role1:
+        type: "ol.role"
+        column: "Q15_x6_1_1"
+      ol.role2:
+        type: "ol.role"
+        column: "Q15_x6_1_2"
+      ol.role3:
+        type: "ol.role"
+        column: "Q15_x6_1_3"
+      ol.role4:
+        type: "ol.role"
+        column: "Q15_x6_1_4"
+      ol.role5:
+        type: "ol.role"
+        column: "Q15_x6_1_5"
+    name: "relatedto6"
+
+
+# *********************** CHILDCARE ASSOCIATIONS ***************************
+
+  reported6:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "childcare_weekdays"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "child_id", "Q25"]
+          separator: "_"
+    name: "reported6"
+
+  reported7:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "childcare_weekends"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "child_id", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
+          separator: "_"
+    name: "reported7"
+
+  subjectof1:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "childsubject1"
+    dst: "childcare_weekdays"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "child_id", "Q25"]
+          separator: "_"
+    name: "subjectof1"
+
+  subjectof2:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "childsubject1"
+    dst: "childcare_weekends"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "child_id", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
+          separator: "_"
+    name: "subjectof2"

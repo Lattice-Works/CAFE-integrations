@@ -63,7 +63,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["ResponseId"]
+          columns: ["Q28", "Q29", "Q30_1", "Q31"]
           hashFunction: "sha256"
       ol.number:
         type: "ol.number"
