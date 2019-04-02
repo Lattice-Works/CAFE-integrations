@@ -157,9 +157,6 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q23"
-      # ol.timeestimate:
-      #   type: "ol.timeestimate"
-      #   column: "Q24"
     name: "household"
 
   employment:
