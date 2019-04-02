@@ -104,7 +104,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: "child_id"
+        column: child_id
       nc.PersonSex:
         type: "nc.PersonSex"
         column: "14#2_Q2_1"

@@ -59,7 +59,7 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: child 1
         type: ol.subject
-  timespentydaybooks:
+  timespentydayebooks:
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: Q49_3
@@ -301,7 +301,7 @@ associationDefinitions:
         type: ol.id
     src: subject
   involvedin3:
-    dst: timespentydaybooks
+    dst: timespentydayebooks
     entitySetName: CAFE_MAQ_InvolvedIn
     fqn: ol.involvedin
     name: involvedin3
@@ -391,7 +391,7 @@ associationDefinitions:
         type: general.id
     src: respondent
   reported3:
-    dst: timespentydaybooks
+    dst: timespentydayebooks
     entitySetName: CAFE_MAQ_Reported
     fqn: ol.reported
     name: reported3
