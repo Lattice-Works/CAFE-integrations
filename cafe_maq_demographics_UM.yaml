@@ -20,8 +20,7 @@ entityDefinitions:
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "9999999"]
-          goal: ["white", "black", "amindian", "asian", "other", "other", "
-          "]
+          goal: ["white", "black", "amindian", "asian", "other", "other", ""]
       nc.PersonEthnicity:
         type: "nc.PersonEthnicity"
         column: "parenteth"
@@ -47,6 +46,10 @@ entityDefinitions:
       ol.language:
         type: "ol.language"
         column: "UserLanguage"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "UserLanguage"
+      reverse: true
     name: "respondentdetails"
 
   employment:
@@ -75,14 +78,22 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        column: "parentedu"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["parentedu"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "UMedu"
       person.highesteducation:
         type: "person.highesteducation"
         column: "parentedu"
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7"]
-          goal: ["Did not graduate from high school", "Graduated from high school", "GED", "Some college courses", "2 year college degree", "4 year college degree", "More than 4 year college degree"]
+          # goal: ["Did not graduate from high school", "Graduated from high school",  "GED", "Some college courses", "2 year college degree", "4 year college degree", "More than 4 year college degree"]
+          goal: ["Middle School", "High School or Equivalent (e.g., GED)", "High School or Equivalent (e.g., GED)", "Some College or Vocational Degree", "Some College or Vocational Degree", "Bachelor's degree", "Master's degree"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "parentedu"
@@ -95,10 +106,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id"]
-          hashFunction: "sha256"
+        column: "child_id"
       nc.PersonSex:
         type: "nc.PersonSex"
         column: "childsex"
@@ -158,6 +166,10 @@ entityDefinitions:
         column: "wkspremature"
         transforms:
         - !<transforms.ParseDoubleTransform> {}
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "bornpremature"
+      reverse: true
     name: "subjectdetailshealth"
 
   publicassistance:
@@ -249,6 +261,14 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6"]
           goal: ["Child's mother", "Child's father", "Other family member", "Babysitter", "Childcare/preschool", "Other"]
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "school"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "childinhome"
+      reverse: true
     name: "childcare_weekdays"
 
 associationDefinitions:

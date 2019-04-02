@@ -128,6 +128,23 @@ entityDefinitions:
       ol.numberofchildren:
         type: "ol.numberofchildren"
         column: "Q13"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "UserLanguage"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q7"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q13"
+      reverse: true
     name: "respondentdetails"
 
   childsubject1:
@@ -136,10 +153,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id", "Q2_1_3"]
-          hashFunction: "sha256"
+        column: "child_id"
       nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "Q2_1_1_TEXT"
@@ -154,20 +168,6 @@ entityDefinitions:
         column: "Q2_1_3"
         transforms:
         - !<transforms.ParseIntTransform> {}
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_1_1_TEXT"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_1_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_1_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_1_3"
-      reverse: true
     name: "childsubject1"
 
   childsubjectdetails:
@@ -756,6 +756,7 @@ entityDefinitions:
       ol.type:
         type: "ol.type"
         column: "Q12"
+    conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q12"
       reverse: true
@@ -767,10 +768,110 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        column: "Q9"
-      person.highesteducation:
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q9"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "WIAMPedu"
+      person.highesteducation1:
         type: "person.highesteducation"
-        column: "Q9"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "No formal school"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "No formal school"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation2:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "Elementary/primary school"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Elementary/primary school"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation3:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "Middle school"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Middle school"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation4:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "High School or Equivalent (e.g., GED)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "High School or Equivalent (e.g., GED)"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation5:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "Some College or Vocational Degree (e.g., AA)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Some College or Vocational Degree"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation6:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "Bachelor's Degree (e.g., BA/BS)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Bachelor's Degree"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation7:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "Master's Degree (e.g., MA, MFA)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Master's Degree"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation8:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "Doctoral or Professional Degree (e.g., MD, JD, EdD, DDS, PhD, VMD)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Doctoral or Professional Degree"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q9"
@@ -972,7 +1073,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q2_6_3" "ResponseId", "child_id", "Q23"]
+          columns: ["Q2_6_3", "ResponseId", "child_id", "Q23"]
           hashFunction: "sha256"
     name: "partof_g"
 
@@ -1159,7 +1260,7 @@ associationDefinitions:
         transforms:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "child_id", "Q25"]
-          separator: "_"
+          hashFunction: "sha256"
     name: "reported6"
 
   reported7:
@@ -1173,7 +1274,7 @@ associationDefinitions:
         transforms:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "child_id", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
-          separator: "_"
+          hashFunction: "sha256"
     name: "reported7"
 
   subjectof1:
@@ -1187,7 +1288,7 @@ associationDefinitions:
         transforms:
         - !<transforms.HashTransform>
           columns: ["child_id", "child_id", "Q25"]
-          separator: "_"
+          hashFunction: "sha256"
     name: "subjectof1"
 
   subjectof2:
@@ -1201,5 +1302,5 @@ associationDefinitions:
         transforms:
         - !<transforms.HashTransform>
           columns: ["child_id", "child_id", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
-          separator: "_"
+          hashFunction: "sha256"
     name: "subjectof2"
