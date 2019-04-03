@@ -56,8 +56,8 @@ entityDefinitions:
           - !<transforms.ValueTransform>
             value: null
           transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q4_8"
+          - !<transforms.ValueTransform>
+            value: "other"
       # nc.PersonRace6:
       #   type: "nc.PersonRace"
       #   column: "Q4_6"
@@ -193,22 +193,110 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        column:  "Q9"
-      person.highesteducation:
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q9"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "GUedu"
+      person.highesteducation1:
         type: "person.highesteducation"
         transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q9"
-          string: "999"
+          string: "No formal school"
           transformsIfTrue:
           - !<transforms.ValueTransform>
-            value: null
+            value: "No formal school"
           transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q9"
-        # - !<transforms.ReplaceTransform>
-        #   target: ["1", "2", "3", "4", "5", "6", "7", "8"]
-        #   goal: ["No formal school", "Elementary/primary school", "Middle school", "High school or equivalent (e.g., GED)", "Some college or vocational degree", "Bachelor's degree", "Master's degree", "Doctoral or Professional degree" ]
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation2:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "Elementary/primary school"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Elementary/primary school"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation3:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "Middle school"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Middle school"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation4:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "High School or Equivalent (e.g., GED)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "High School or Equivalent (e.g., GED)"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation5:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "Some College or Vocational Degree (e.g., AA)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Some College or Vocational Degree"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation6:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "Bachelor's Degree (e.g., BA/BS)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Bachelor's Degree"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation7:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "Master's Degree (e.g., MA, MFA)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Master's Degree"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
+      person.highesteducation8:
+        type: "person.highesteducation"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q9"
+          string: "Doctoral or Professional Degree (e.g., MD, JD, EdD, DDS, PhD, VMD)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Doctoral or Professional Degree"
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: null
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q9"
@@ -225,6 +313,10 @@ entityDefinitions:
       nc.PersonSex:
         type: "nc.PersonSex"
         column: "Q2_1_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["M", "F"]
+          goal: ["Male", "Female"]
       nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "Q2_1_1_TEXT"
@@ -239,20 +331,6 @@ entityDefinitions:
           target: ["1997 or earlier"]
           goal: ['1997']
         - !<transforms.ParseIntTransform> {}
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_1_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_1_1_TEXT"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_1_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_1_3"
-      reverse: true
     name: "childsubject"
 
   childsubject2:
@@ -274,6 +352,10 @@ entityDefinitions:
       nc.PersonSex:
         type: "nc.PersonSex"
         column: "Q2_2_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["M", "F"]
+          goal: ["Male", "Female"]
       ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_2_3"
@@ -314,6 +396,10 @@ entityDefinitions:
       nc.PersonSex:
         type: "nc.PersonSex"
         column: "Q2_3_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["M", "F"]
+          goal: ["Male", "Female"]
       ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_3_3"
@@ -354,6 +440,10 @@ entityDefinitions:
       nc.PersonSex:
         type: "nc.PersonSex"
         column: "Q2_4_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["M", "F"]
+          goal: ["Male", "Female"]
       ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_4_3"
@@ -394,6 +484,10 @@ entityDefinitions:
       nc.PersonSex:
         type: "nc.PersonSex"
         column: "Q2_5_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["M", "F"]
+          goal: ["Male", "Female"]
       ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_5_3"
@@ -434,6 +528,10 @@ entityDefinitions:
       nc.PersonSex:
         type: "nc.PersonSex"
         column: "Q2_6_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["M", "F"]
+          goal: ["Male", "Female"]
       ol.birthyear:
         type: "ol.birthyear"
         column: "Q2_6_3"
@@ -548,16 +646,7 @@ entityDefinitions:
         column: "Q11"
       ol.type:
         type: "ol.type"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q11"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q11"
+        column: "Q11"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q11"
@@ -598,13 +687,6 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q25_5_TEXT"
-      # ol.durationhours:
-      #   type: "ol.durationhours"
-        # column: "Q24" #empty column
-        # transforms:
-        # - !<transforms.ReplaceTransform>
-        #   target: ["1", "2", "3", "4", "5"]
-        #   goal: ["100% of the time", "75% of the time", "50% of the time", "25% of the time", "Does not reside with me"]
       ol.ageatonset:
         type: "ol.ageatonset"
         transforms:

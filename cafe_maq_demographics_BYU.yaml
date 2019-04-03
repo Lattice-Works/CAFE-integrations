@@ -64,7 +64,7 @@ entityDefinitions:
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5"]
-          goal: ["No", "One part-time job", "One full-time job", "Multiple jobs", "Maternity/Parental leave"]
+          goal: ["No", "One part-time job", "One full-time job", "Multiple jobs", "Maternity / parental leave"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q10"
@@ -77,14 +77,21 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        column: "Q9"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q9"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "BYUedu"
       person.highesteducation:
         type: "person.highesteducation"
         column: "Q9"
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7", "8"]
-          goal: ["No formal school", "Elementary/primary school", "Middle school", "High school or equivalent (e.g., GED)", "Some college or vocational degree", "Bachelor's degree", "Master's degree", "Doctoral or Professional degree" ]
+          goal: ["No formal school", "Elementary/primary school", "High School or Equivalent (e.g., GED)", "Some College or Vocational Degree", "Bachelor's degree", "Doctoral or Professional degree", "Middle school", "Master's degree"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q9"
@@ -101,31 +108,25 @@ entityDefinitions:
       nc.PersonSex:
         type: "nc.PersonSex"
         column: "14#2_Q2_1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Male", "Female"]
       nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "14#1_Q2_1_TEXT"
       ol.birthmonth:
         type: "ol.birthmonth"
         column: "14#1_Q2_1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+          goal: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
       ol.birthyear:
         type: "ol.birthyear"
         column: "14#3_Q2_1"
         transforms:
         - !<transforms.ParseIntTransform> {}
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "14#2_Q2_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "14#1_Q2_1_TEXT"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "14#1_Q2_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "14#3_Q2_1"
-      reverse: true
     name: "childsubject"
 
   subjectdetailshealth:
@@ -157,10 +158,6 @@ entityDefinitions:
         column: "Q19"
         transforms:
         - !<transforms.ParseIntTransform> {}
-        # transforms: #might be an int if not null
-        # - !<transforms.ReplaceTransform>
-        #   target: ["1", "2"]
-        #   goal: ["Range: 21-37", "Don't know/can't remember"
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -207,7 +204,20 @@ entityDefinitions:
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "9999999"]
-          goal: ["Less than \\$10,000", "\\$10,000 - \\$19,999", "\\$20,000 - \\$29,999", "\\$30,000 - \\$39,999", "\\$40,000 - \\$49,999", "\\$50,000 - \\$59,999", "\\$60,000 - \\$69,999", "\\$70,000 - \\$79,999", "\\$80,000 - \\$89,999", "\\$90,000 - \\$99,999", "\\$100,000 - \\$149,999", "More than \\$150,000", "Don't Know/Prefer not to answer"]
+          goal:
+          - "Less than \\$10,000"
+          - "\\$10,000 - \\$19,999"
+          - "\\$20,000 - \\$29,999"
+          - "\\$30,000 - \\$39,999"
+          - "\\$40,000 - \\$49,999"
+          - "\\$50,000 - \\$59,999"
+          - "\\$60,000 - \\$69,999"
+          - "\\$70,000 - \\$79,999"
+          - "\\$80,000 - \\$89,999"
+          - "\\$90,000 - \\$99,999"
+          - "\\$100,000 - \\$149,999"
+          - "More than \\$150,000"
+          - "Don't Know/Prefer not to answer"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q11"
@@ -262,7 +272,7 @@ entityDefinitions:
           separator: ","
           index: 0
         - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
+          target: ["1", "2", "3", "4", "5", "6", "7", "11"]
           goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
       ol.relationship2:
         type: "ol.relationship"
@@ -273,7 +283,7 @@ entityDefinitions:
           index: 1
           ifMoreThan: 2
         - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
+          target: ["1", "2", "3", "4", "5", "6", "7", "11"]
           goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
       ol.relationship3:
         type: "ol.relationship"
@@ -284,7 +294,7 @@ entityDefinitions:
           index: 2
           ifMoreThan: 3
         - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
+          target: ["1", "2", "3", "4", "5", "6", "7", "11"]
           goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
       ol.relationship4:
         type: "ol.relationship"
@@ -295,7 +305,7 @@ entityDefinitions:
           index: 3
           ifMoreThan: 4
         - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
+          target: ["1", "2", "3", "4", "5", "6", "7", "11"]
           goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
       ol.relationship5:
         type: "ol.relationship"
@@ -306,9 +316,93 @@ entityDefinitions:
           index: 4
           ifMoreThan: 5
         - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6", "7", "11"]
+          goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
+      ol.relationship6:
+        type: "ol.relationship"
+        column: "Q21_7_TEXT"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q25"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q21"
+      reverse: true
+    name: "childcare_weekdays"
+
+  childcare_weekends:
+    fqn: "ol.childcare"
+    entitySetName: "CAFE_MAQ_ChildCare_Weekends"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "respondent_id", "Q22"]
+          hashFunction: "sha256"
+      ol.relationship1:
+        type: "ol.relationship"
+        column: "Q22"
+        transforms:
+        - !<transforms.SplitTransform>
+          separator: ","
+          index: 0
+        - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7", "8"]
           goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
-    name: "childcare_weekdays"
+      ol.relationship2:
+        type: "ol.relationship"
+        column: "Q22"
+        transforms:
+        - !<transforms.SplitTransform>
+          separator: ","
+          index: 1
+          ifMoreThan: 2
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
+          goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
+      ol.relationship3:
+        type: "ol.relationship"
+        column: "Q22"
+        transforms:
+        - !<transforms.SplitTransform>
+          separator: ","
+          index: 2
+          ifMoreThan: 3
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
+          goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
+      ol.relationship4:
+        type: "ol.relationship"
+        column: "Q22"
+        transforms:
+        - !<transforms.SplitTransform>
+          separator: ","
+          index: 3
+          ifMoreThan: 4
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
+          goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
+      ol.relationship5:
+        type: "ol.relationship"
+        column: "Q22"
+        transforms:
+        - !<transforms.SplitTransform>
+          separator: ","
+          index: 4
+          ifMoreThan: 5
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6", "7", "8"]
+          goal: ["Child's mother or mother figure", "Child's father or father figure", "Other family member", "Babysitter", "Childcare/preschool", "Two parents equally", "Other", "Hard to say/I don't know"]
+      ol.relationship6:
+        type: "ol.relationship"
+        column: "Q22_7_TEXT"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q22"
+      reverse: true
+    name: "childcare_weekends"
 
 associationDefinitions:
   has1:
@@ -409,6 +503,20 @@ associationDefinitions:
           hashFunction: "sha256"
     name: "reported5"
 
+  reported6:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "childcare_weekends"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "child_id", "Q22"]
+          hashFunction: "sha256"
+    name: "reported6"
+
   relatedto:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
@@ -432,7 +540,21 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
+        - !<transforms.ConcatTransform>
           columns: ["child_id", "Q25"]
-          hashFunction: "sha256"
+          separator: "_"
     name: "subjectof"
+
+  subjectof2:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "childsubject"
+    dst: "childcare_weekends"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q22"]
+          hashFunction: "sha256"
+    name: "subjectof2"
