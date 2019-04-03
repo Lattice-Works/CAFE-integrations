@@ -221,10 +221,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id", "Q2_1_3"] #can be multiple children per appcode
-          hashFunction: "sha256"
+        column: child_id
       nc.PersonSex:
         type: "nc.PersonSex"
         column: "Q2_1_2"
