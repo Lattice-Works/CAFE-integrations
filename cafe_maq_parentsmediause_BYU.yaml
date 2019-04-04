@@ -1537,7 +1537,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Use a smartphone for things like texting, playing games, watching videos, checking email, or surfing the Internet (don’t count time spent talking on the phone)"
+          value: "how often respondent uses a smartphone for things like texting, playing games, watching videos, checking email, or surfing the Internet (don’t count time spent talking on the phone)"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -2078,7 +2078,7 @@ entityDefinitions:
             columns: ["Q58_1", "Q58_2", "Q58_3", "Q58_4", "Q58_5", "Q58_7", "Q58_8"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "mediaattitude_work"
+            value: "mediaattitudes"
       ol.workrequirement:
         type: "ol.workrequirement"
         column: "Q58_1"
@@ -2128,6 +2128,29 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5"]
           goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_3"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_4"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_7"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_8"
+      reverse: true
     name: "mediauseattitudes"
 
 associationDefinitions:
