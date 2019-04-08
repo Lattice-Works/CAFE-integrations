@@ -23,8 +23,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "television"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "television"
       ol.name:
         type: "ol.name"
         transforms:
@@ -37,6 +42,7 @@ entityDefinitions:
       reverse: false
     name: "TV"
 
+
   DVR:
     entitySetName: "CAFE_MAQ_Devices"
     fqn: "o.device"
@@ -44,8 +50,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvr"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "dvr"
       ol.name:
         type: "ol.name"
         transforms:
@@ -65,8 +76,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvd_player"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "dvd_player"
       ol.name:
         type: "ol.name"
         transforms:
@@ -86,8 +102,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "personal_computer"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "personal_computer"
       ol.name:
         type: "ol.name"
         transforms:
@@ -107,8 +128,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mobile_phone"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mobile_phone"
       ol.name:
         type: "ol.name"
         transforms:
@@ -128,8 +154,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "smartphone"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "smartphone"
       ol.name:
         type: "ol.name"
         transforms:
@@ -149,8 +180,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "ipad_tablet"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "ipad_tablet"
       ol.name:
         type: "ol.name"
         transforms:
@@ -170,8 +206,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mp3_player"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mp3_player"
       ol.name:
         type: "ol.name"
         transforms:
@@ -191,8 +232,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "educational_game"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "educational_game"
       ol.name:
         type: "ol.name"
         transforms:
@@ -212,13 +258,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "video_games"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "video_games"
       ol.name:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Console-based gaming system (e.g., Xbox, Nintendo Wii, or Playstation) or handheld gaming system (e.g., Nintendo 3DS)"
+          value: "Video game console (e.g., Xbox, Nintendo Wii, or Playstation)"
     conditions:
     - !<conditions.BooleanRegexCondition>
       column: "Q33"
@@ -233,13 +284,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "virtual_assistant"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "virtual_assistant"
       ol.name:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Virtual Assistant (e.g., Alexa/Echo device, Google Home, Apple Home Pod)"
+          value: "Virtual Assistant"
     conditions:
     - !<conditions.BooleanRegexCondition>
       column: "Q33"
@@ -254,41 +310,24 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "virtual_assistant"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "video_streaming"
       ol.name:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Video streaming services (e.g., Hulu, Netflix, etc.)"
+          value: "Video streaming services"
     conditions:
     - !<conditions.BooleanRegexCondition>
       column: "Q33"
       pattern: "(?i)(\\b18\\b)"
       reverse: false
     name: "videostreaming"
-
-  # nodevice:
-  #   entitySetName: "CAFE_MAQ_Devices"
-  #   fqn: "o.device"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.ValueTransform>
-  #         value: "unspecified"
-  #     ol.name:
-  #       type: "ol.name"
-  #       transforms:
-  #       - !<transforms.ValueTransform>
-  #         value: "None"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q33"
-  #     pattern: "(?i)(\\bNone\\b)"
-  #     reverse: false
-  #   name: "nodevice"
-
 # *********************PARENTS DEVICE USE IN LAST 2 WEEKS *********************
 
   televisionadultuse:
@@ -298,8 +337,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "television_adultuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_1"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "television_adultuse"
       ol.number:
         type: "ol.number"
         column: "Q316_1"
@@ -340,8 +384,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvr_adultuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_2"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "dvr_adultuse"
       ol.number:
         type: "ol.number"
         column: "Q316_2"
@@ -382,8 +431,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "dvd_adultuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_3"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "dvd_adultuse"
       ol.number:
         type: "ol.number"
         column: "Q316_3"
@@ -424,8 +478,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "personalcomputer_adultuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_4"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "personalcomputer_adultuse"
       ol.number:
         type: "ol.number"
         column: "Q316_4"
@@ -466,8 +525,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mobilephone_adultuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_5"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mobilephone_adultuse"
       ol.number:
         type: "ol.number"
         column: "Q316_5"
@@ -508,8 +572,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "smartphone_adultuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_6"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "smartphone_adultuse"
       ol.number:
         type: "ol.number"
         column: "Q316_6"
@@ -550,8 +619,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "ipad_adultuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_7"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "ipad_adultuse"
       ol.number:
         type: "ol.number"
         column: "Q316_7"
@@ -592,8 +666,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mp3_adultuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_8"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mp3_adultuse"
       ol.number:
         type: "ol.number"
         column: "Q316_8"
@@ -634,8 +713,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "educationalgame_adultuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_9"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "educationalgame_adultuse"
       ol.number:
         type: "ol.number"
         column: "Q316_9"
@@ -676,8 +760,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "consolegame_adultuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_10"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "consolegame_adultuse"
       ol.number:
         type: "ol.number"
         column: "Q316_10"
@@ -718,8 +807,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "virtualassistant_adultuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_11"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "virtualassistant_adultuse"
       ol.number:
         type: "ol.number"
         column: "Q316_11"
@@ -760,8 +854,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "videostreaming_adultuse"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_12"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videostreaming_adultuse"
       ol.number:
         type: "ol.number"
         column: "Q316_12"
@@ -803,8 +902,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q59_1"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "screentime_weekdays_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "screentime_weekdays_adultuse"
+          value: "TV or DVDs"
       ol.duration:
         type: "ol.duration"
         column: "Q59_1"
@@ -816,7 +925,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Watch TV or DVDs"
+          value: "how often respondent watches TV or DVDs"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -840,8 +949,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q59_2"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "computertime_weekdays_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "computertime_weekdays_adultuse"
+          value: "Personal computer"
       ol.duration:
         type: "ol.duration"
         column: "Q59_2"
@@ -853,7 +972,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Use the computer"
+          value: "how often respondent uses the computer"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -877,8 +996,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q59_3"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "ebooktime_weekdays_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "ebooktime_weekdays_adultuse"
+          value: "Electronic books"
       ol.duration:
         type: "ol.duration"
         column: "Q59_3"
@@ -890,7 +1019,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Read electronic books"
+          value: "how often respondent reads electronic books"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -914,8 +1043,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q59_6"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "booktime_weekdays_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "booktime_weekdays_adultuse"
+          value: "Traditional books"
       ol.duration:
         type: "ol.duration"
         column: "Q59_6"
@@ -927,7 +1066,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Read traditional books"
+          value: "how often respondent reads traditional books"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -951,8 +1090,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q59_4"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videogametime_weekdays_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "videogametime_weekdays_adultuse"
+          value: "Console game player"
       ol.duration:
         type: "ol.duration"
         column: "Q59_4"
@@ -964,7 +1113,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Play video games on a console game player"
+          value: "how often respondent plays video games on a console game player"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -988,8 +1137,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q59_5"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "ipadtime_weekdays_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "ipadtime_weekdays_adultuse"
+          value: "iPad, iTouch, or similar device"
       ol.duration:
         type: "ol.duration"
         column: "Q59_5"
@@ -1001,7 +1160,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Use an iPad, iTouch, or similar device (not including smartphone)"
+          value: "how often respondent uses an iPad, iTouch, or similar device (not including smartphone)"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -1025,8 +1184,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q59_9"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "smartphonetime_weekdays_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "smartphonetime_weekdays_adultuse"
+          value: "Smartphone"
       ol.duration:
         type: "ol.duration"
         column: "Q59_9"
@@ -1038,7 +1207,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Use a smartphone for things like texting, playing games, watching videos, checking email, or surfing the Internet (don’t count time spent talking on the phone)"
+          value: "how often respondent uses a smartphone for things like texting, playing games, watching videos, checking email, or surfing the Internet (don’t count time spent talking on the phone)"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -1063,8 +1232,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q275_1"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "screentime_weekend_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "screentime_weekend_adultuse"
+          value: "TV or DVDs"
       ol.duration:
         type: "ol.duration"
         column: "Q275_1"
@@ -1076,7 +1255,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Watch TV or DVDs"
+          value: "how often respondent watches TV or DVDs"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -1100,8 +1279,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q275_2"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "computertime_weekend_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "computertime_weekend_adultuse"
+          value: "Personal computer"
       ol.duration:
         type: "ol.duration"
         column: "Q275_2"
@@ -1113,7 +1302,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Use the computer"
+          value: "how often respondent uses the computer"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -1137,8 +1326,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q275_3"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "ebooktime_weekend_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "ebooktime_weekend_adultuse"
+          value: "Electronic books"
       ol.duration:
         type: "ol.duration"
         column: "Q275_3"
@@ -1150,7 +1349,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Read electronic books"
+          value: "how often respondent reads electronic books"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -1174,8 +1373,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q275_6"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "booktime_weekend_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "booktime_weekend_adultuse"
+          value: "Traditional books"
       ol.duration:
         type: "ol.duration"
         column: "Q275_6"
@@ -1187,7 +1396,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Read traditional books"
+          value: "how often respondent reads traditional books"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -1211,8 +1420,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q275_4"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videogametime_weekend_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "videogametime_weekend_adultuse"
+          value: "Console game player"
       ol.duration:
         type: "ol.duration"
         column: "Q275_4"
@@ -1248,8 +1467,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q275_5"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "ipadtime_weekend_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "ipadtime_weekend_adultuse"
+          value: "iPad, iTouch, or similar device"
       ol.duration:
         type: "ol.duration"
         column: "Q275_5"
@@ -1261,7 +1490,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Use an iPad, iTouch, or similar device (not including smartphone)"
+          value: "how often respondent uses an iPad, iTouch, or similar device (not including smartphone)"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -1285,8 +1514,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q275_9"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "smartphonetime_weekend_adultuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "smartphonetime_weekend_adultuse"
+          value: "Smartphone"
       ol.duration:
         type: "ol.duration"
         column: "Q275_9"
@@ -1298,7 +1537,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Use a smartphone for things like texting, playing games, watching videos, checking email, or surfing the Internet (don’t count time spent talking on the phone)"
+          value: "how often respondent uses a smartphone for things like texting, playing games, watching videos, checking email, or surfing the Internet (don’t count time spent talking on the phone)"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -1325,16 +1564,26 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q61"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "checksmartphone_timesaday"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "checksmartphone_timesaday"
+          value: "Smartphone"
       general.frequency:
         type: "general.frequency"
         column: "Q61"
-      ol.units:
-        type: "ol.units"
+      ol.description:
+        type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Smartphone checks per day"
+          value: "times respondent checks Smartphone per day"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -1360,8 +1609,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "media_duringmeals"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_1"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "media_duringmeals"
       ol.activity:
         type: "ol.activity"
         transforms:
@@ -1390,8 +1644,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_1"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mediause_duringmeals"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "mediause_duringmeals"
+          value: "Phone or other device"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1422,8 +1686,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "media_readyforschool"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_2"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "media_readyforschool"
       ol.activity:
         type: "ol.activity"
         transforms:
@@ -1452,8 +1721,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_2"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mediause_readyforschool"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "mediause_readyforschool"
+          value: "Phone or other device"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1484,8 +1763,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "media_playtime"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_3"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "media_playtime"
       ol.activity:
         type: "ol.activity"
         transforms:
@@ -1514,8 +1798,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_3"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mediause_playtime"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "mediause_playtime"
+          value: "Phone or other device"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1546,8 +1840,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "media_bedtime"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_4"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "media_bedtime"
       ol.activity:
         type: "ol.activity"
         transforms:
@@ -1576,8 +1875,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_4"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mediause_bedtime"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "mediause_bedtime"
+          value: "Phone or other device"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1608,8 +1917,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "media_driving"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_5"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "media_driving"
       ol.activity:
         type: "ol.activity"
         transforms:
@@ -1638,8 +1952,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_5"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mediause_driving"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "mediause_driving"
+          value: "Phone or other device"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1670,8 +1994,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "media_playground"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_6"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "media_playground"
       ol.activity:
         type: "ol.activity"
         transforms:
@@ -1700,8 +2029,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_6"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mediause_playground"
+      ol.name:
+        type: "ol.name"
+        transforms:
         - !<transforms.ValueTransform>
-          value: "mediause_playground"
+          value: "Phone or other device"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1733,8 +2072,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "mediaattitude_work"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q58_1", "Q58_2", "Q58_3", "Q58_4", "Q58_5", "Q58_7", "Q58_8"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mediaattitudes"
       ol.workrequirement:
         type: "ol.workrequirement"
         column: "Q58_1"
@@ -1749,13 +2093,13 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5"]
           goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
-      # ol.concurrent: # commenting out right now b/c this is an int
-      #   type: "ol.concurrent" # commenting out right now b/c this is an int
-      #   column: "Q58_3"
-      #   transforms:
-      #   - !<transforms.ReplaceTransform>
-      #     target: ["1", "2", "3", "4", "5"]
-      #     goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+      ol.multitaskingtendency:
+        type: "ol.multitaskingtendency"
+        column: "Q58_3"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
       ol.overwhelmed:
         type: "ol.overwhelmed"
         column: "Q58_4"
@@ -1784,6 +2128,29 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5"]
           goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_3"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_4"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_7"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q58_8"
+      reverse: true
     name: "mediauseattitudes"
 
 associationDefinitions:
@@ -1797,12 +2164,7 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["RecordedDate", "ResponseId"]
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["Q33", "respondent_id"]
           hashFunction: "sha256"
       ol.relevantperiod:
         type: "ol.relevantperiod"
@@ -1826,12 +2188,7 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["RecordedDate", "ResponseId"]
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["Q33", "respondent_id"]
           hashFunction: "sha256"
       ol.relevantperiod:
         type: "ol.relevantperiod"
@@ -1855,12 +2212,7 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["RecordedDate", "ResponseId"]
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["Q33", "respondent_id"]
           hashFunction: "sha256"
       ol.relevantperiod:
         type: "ol.relevantperiod"
@@ -1884,12 +2236,7 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["RecordedDate", "ResponseId"]
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["Q33", "respondent_id"]
           hashFunction: "sha256"
       ol.relevantperiod:
         type: "ol.relevantperiod"
@@ -1913,12 +2260,7 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["RecordedDate", "ResponseId"]
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["Q33", "respondent_id"]
           hashFunction: "sha256"
       ol.relevantperiod:
         type: "ol.relevantperiod"
@@ -1942,12 +2284,7 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["RecordedDate", "ResponseId"]
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["Q33", "respondent_id"]
           hashFunction: "sha256"
       ol.relevantperiod:
         type: "ol.relevantperiod"
@@ -1971,12 +2308,7 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["RecordedDate", "ResponseId"]
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["Q33", "respondent_id"]
           hashFunction: "sha256"
       ol.relevantperiod:
         type: "ol.relevantperiod"
@@ -2000,12 +2332,7 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["RecordedDate", "ResponseId"]
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["Q33", "respondent_id"]
           hashFunction: "sha256"
       ol.relevantperiod:
         type: "ol.relevantperiod"
@@ -2029,12 +2356,7 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["RecordedDate", "ResponseId"]
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["Q33", "respondent_id"]
           hashFunction: "sha256"
       ol.relevantperiod:
         type: "ol.relevantperiod"
@@ -2058,12 +2380,7 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["RecordedDate", "ResponseId"]
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["Q33", "respondent_id"]
           hashFunction: "sha256"
       ol.relevantperiod:
         type: "ol.relevantperiod"
@@ -2087,12 +2404,7 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["RecordedDate", "ResponseId"]
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["Q33", "respondent_id"]
           hashFunction: "sha256"
       ol.relevantperiod:
         type: "ol.relevantperiod"
@@ -2116,12 +2428,7 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["RecordedDate", "ResponseId"]
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281"]
+          columns: ["Q33", "respondent_id"]
           hashFunction: "sha256"
       ol.relevantperiod:
         type: "ol.relevantperiod"
@@ -2144,9 +2451,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_1"]
+          separator: "_"
     conditions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
@@ -2168,9 +2475,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_2"]
+          separator: "_"
     conditions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
@@ -2192,9 +2499,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_3"]
+          separator: "_"
     conditions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
@@ -2216,9 +2523,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_4"]
+          separator: "_"
     conditions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
@@ -2240,9 +2547,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_5"]
+          separator: "_"
     conditions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
@@ -2264,9 +2571,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_6"]
+          separator: "_"
     conditions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
@@ -2288,9 +2595,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_7"]
+          separator: "_"
     conditions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
@@ -2312,9 +2619,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_8"]
+          separator: "_"
     conditions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
@@ -2336,9 +2643,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_9"]
+          separator: "_"
     conditions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
@@ -2360,9 +2667,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_10"]
+          separator: "_"
     conditions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
@@ -2384,9 +2691,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_11"]
+          separator: "_"
     conditions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
@@ -2408,9 +2715,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_12"]
+          separator: "_"
     conditions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanRegexCondition>
@@ -2433,7 +2740,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q59_1"]
           hashFunction: "sha256"
     name: "involvedin1"
 
@@ -2447,7 +2754,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q59_2"]
           hashFunction: "sha256"
     name: "involvedin2"
 
@@ -2461,7 +2768,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q59_3"]
           hashFunction: "sha256"
     name: "involvedin3"
 
@@ -2475,7 +2782,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q59_6"]
           hashFunction: "sha256"
     name: "involvedin4"
 
@@ -2489,7 +2796,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q59_4"]
           hashFunction: "sha256"
     name: "involvedin5"
 
@@ -2503,7 +2810,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q59_5"]
           hashFunction: "sha256"
     name: "involvedin6"
 
@@ -2517,7 +2824,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q59_9"]
           hashFunction: "sha256"
     name: "involvedin7"
 
@@ -2531,7 +2838,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q275_1"]
           hashFunction: "sha256"
     name: "involvedin8"
 
@@ -2545,7 +2852,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q275_2"]
           hashFunction: "sha256"
     name: "involvedin9"
 
@@ -2559,7 +2866,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q275_3"]
           hashFunction: "sha256"
     name: "involvedin10"
 
@@ -2573,7 +2880,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q275_6"]
           hashFunction: "sha256"
     name: "involvedin11"
 
@@ -2587,7 +2894,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q275_4"]
           hashFunction: "sha256"
     name: "involvedin12"
 
@@ -2601,7 +2908,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q275_5"]
           hashFunction: "sha256"
     name: "involvedin13"
 
@@ -2615,7 +2922,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q275_9"]
           hashFunction: "sha256"
     name: "involvedin14"
 
@@ -2629,9 +2936,13 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_1"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "duringmeals"
     name: "concurrentto1"
 
   concurrentto2:
@@ -2643,9 +2954,13 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_2"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "readyforschool"
     name: "concurrentto2"
 
   concurrentto3:
@@ -2657,9 +2972,13 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_3"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "playtime"
     name: "concurrentto3"
 
   concurrentto4:
@@ -2671,9 +2990,13 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_4"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "bedtime"
     name: "concurrentto4"
 
   concurrentto5:
@@ -2685,9 +3008,13 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_5"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "driving"
     name: "concurrentto5"
 
   concurrentto6:
@@ -2699,9 +3026,13 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q62_6"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "playground"
     name: "concurrentto6"
 
   engagedin1:
@@ -2714,7 +3045,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q62_1"]
           hashFunction: "sha256"
     name: "engagedin1"
 
@@ -2728,7 +3059,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q62_2"]
           hashFunction: "sha256"
     name: "engagedin2"
 
@@ -2742,7 +3073,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q62_3"]
           hashFunction: "sha256"
     name: "engagedin3"
 
@@ -2756,7 +3087,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q62_4"]
           hashFunction: "sha256"
     name: "engagedin4"
 
@@ -2770,7 +3101,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q62_5"]
           hashFunction: "sha256"
     name: "engagedin5"
 
@@ -2784,7 +3115,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q62_6"]
           hashFunction: "sha256"
     name: "engagedin6"
 
@@ -2798,7 +3129,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q58_1", "Q58_2", "Q58_3", "Q58_4", "Q58_5", "Q58_7", "Q58_8"]
           hashFunction: "sha256"
     name: "reported1"
 
@@ -2812,6 +3143,6 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
+          columns: ["respondent_id", "Q61"]
           hashFunction: "sha256"
     name: "reported2"

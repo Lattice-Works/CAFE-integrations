@@ -3461,271 +3461,144 @@ entityDefinitions:
 
 associationDefinitions:
 # ********************* DEVICE OWNERSHIP ASSNS ****************
-  # ownedby1: #new association type
-  #   fqn: "ol.ownedby"
-  #   entitySetName: "CAFE_MAQ_OwnedBy"
-  #   src: "TV"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.ConcatTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         separator: "_"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q33"
-  #     pattern: "(?i)(\\b1\\b)"
-  #     reverse: false
-  #   name: "ownedby1"
+  ownedby1:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_OwnedBy"
+    src: "TV"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q33_1", "ResponseId"]
+          hashFunction: "sha256"
+    name: "ownedby1"
 
-  # ownedby2:
-  #   fqn: "ol.ownedby"
-  #   entitySetName: "CAFE_MAQ_OwnedBy"
-  #   src: "DVR"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q33"
-  #     pattern: "(?i)(\\b2\\b)"
-  #     reverse: false
-  #   name: "ownedby2"
+  ownedby2:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_OwnedBy"
+    src: "DVR"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q33_2", "ResponseId"]
+          hashFunction: "sha256"
+    name: "ownedby2"
 
-  # ownedby3:
-  #   fqn: "ol.ownedby"
-  #   entitySetName: "CAFE_MAQ_OwnedBy"
-  #   src: "DVD"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q33"
-  #     pattern: "(?i)(\\b3\\b)"
-  #     reverse: false
-  #   name: "ownedby3"
+  ownedby3:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_OwnedBy"
+    src: "DVD"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q33_3", "ResponseId"]
+          hashFunction: "sha256"
+    name: "ownedby3"
 
-  # ownedby4:
-  #   fqn: "ol.ownedby"
-  #   entitySetName: "CAFE_MAQ_OwnedBy"
-  #   src: "personalcomputer"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q33"
-  #     pattern: "(?i)(\\b4\\b)"
-  #     reverse: false
-  #   name: "ownedby4"
+  ownedby4:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_OwnedBy"
+    src: "personalcomputer"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q33_4", "ResponseId"]
+          hashFunction: "sha256"
+    name: "ownedby4"
 
-  # ownedby5: #new association type
-  #   fqn: "ol.ownedby"
-  #   entitySetName: "CAFE_MAQ_OwnedBy"
-  #   src: "mobilephone"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q33"
-  #     pattern: "(?i)(\\b7\\b)"
-  #     reverse: false
-  #   name: "ownedby5"
+  ownedby5:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_OwnedBy"
+    src: "mobilephone"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q33_7", "ResponseId"]
+          hashFunction: "sha256"
+    name: "ownedby5"
 
-  # ownedby6: #new association type
-  #   fqn: "ol.ownedby"
-  #   entitySetName: "CAFE_MAQ_OwnedBy"
-  #   src: "smartphone"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q33"
-  #     pattern: "(?i)(\\b8\\b)"
-  #     reverse: false
-  #   name: "ownedby6"
+  ownedby6:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_OwnedBy"
+    src: "smartphone"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q33_8", "ResponseId"]
+          hashFunction: "sha256"
+    name: "ownedby6"
 
-  # ownedby7: #new association type
-  #   fqn: "ol.ownedby"
-  #   entitySetName: "CAFE_MAQ_OwnedBy"
-  #   src: "ipadtablet"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q33"
-  #     pattern: "(?i)(\\b9\\b)"
-  #     reverse: false
-  #   name: "ownedby7"
+  ownedby8:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_OwnedBy"
+    src: "ipadtablet"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q33_9", "ResponseId"]
+          hashFunction: "sha256"
+    name: "ownedby8"
 
-  # ownedby8:
-  #   fqn: "ol.ownedby"
-  #   entitySetName: "CAFE_MAQ_OwnedBy"
-  #   src: "mp3player"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q33"
-  #     pattern: "(?i)(\\b10\\b)"
-  #     reverse: false
-  #   name: "ownedby8"
+  ownedby9:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_OwnedBy"
+    src: "mp3player"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q33_10", "ResponseId"]
+          hashFunction: "sha256"
+    name: "ownedby9"
 
-  # ownedby9:
-  #   fqn: "ol.ownedby"
-  #   entitySetName: "CAFE_MAQ_OwnedBy"
-  #   src: "educationalgame"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q33"
-  #     pattern: "(?i)(\\b15\\b)"
-  #     reverse: false
-  #   name: "ownedby9"
+  ownedby10:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_OwnedBy"
+    src: "educationalgame"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q33_15", "ResponseId"]
+    name: "ownedby10"
 
-  # ownedby10:
-  #   fqn: "ol.ownedby"
-  #   entitySetName: "CAFE_MAQ_OwnedBy"
-  #   src: "consolegames"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q33"
-  #     pattern: "(?i)(\\b17\\b)"
-  #     reverse: false
-  #   name: "ownedby10"
-
-  # ownedby11:
-  #   fqn: "ol.ownedby"
-  #   entitySetName: "CAFE_MAQ_OwnedBy"
-  #   src: "virtualassistant"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q33"
-  #     pattern: "(?i)(\\b19\\b)"
-  #     reverse: false
-  #   name: "ownedby11"
-
-  # ownedby12:
-  #   fqn: "ol.ownedby"
-  #   entitySetName: "CAFE_MAQ_OwnedBy"
-  #   src: "videostreaming"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q33"
-  #     pattern: "(?i)(\\b18\\b)"
-  #     reverse: false
-  #   name: "ownedby12"
-
-  # reported:
-  #   fqn: "ol.reported"
-  #   entitySetName: "CAFE_MAQ_Reported"
-  #   src: "nodevice"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     general.id:
-  #       type: "general.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q40b"
-  #     pattern: "(?i)(\\b14\\b)"
-  #     reverse: false
-  #   name: "reported"
-
-  # ownedby14:
-  #   fqn: "ol.ownedby"
-  #   entitySetName: "CAFE_MAQ_OwnedBy"
-  #   src: "otherdevice"
-  #   dst: "respondent"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["Q281", "ResponseId"]
-  #         hashFunction: "sha256"
-  #   conditions:
-  #   - !<conditions.BooleanRegexCondition>
-  #     column: "Q40b"
-  #     pattern: "(?i)(\\b13\\b)"
-  #     reverse: false
-  #   name: "ownedby14"
+  ownedby11:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_OwnedBy"
+    src: "consolegames"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q33_17", "ResponseId"]
+          hashFunction: "sha256"
+    name: "ownedby11"
 
 
 # ********************* DEVICE SUBJECT START USE ASSNS ****************
