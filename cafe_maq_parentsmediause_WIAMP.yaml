@@ -208,7 +208,7 @@ entityDefinitions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q60_1"
       reverse: true
-    name: "smartphonetimeweekdays"
+    name: "smartphonetimeyesterday"
 
 # ************USING DEVICES WHEN WITH CHILDREN ********************
   duringmealsactivity:
