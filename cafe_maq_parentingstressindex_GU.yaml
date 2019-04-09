@@ -46,9 +46,9 @@ entityDefinitions:
       ol.dissatisfiedwithpurchase:
         type: "ol.dissatisfiedwithpurchase"
         column: "Q87_6"
-      # ol.dissatisfiedwithlife:
-      #   type: "ol.dissatisfiedwithlife"
-      #   column: "Q87_7"
+      ol.dissatisfiedwithlife:
+        type: "ol.dissatisfiedwithlife"
+        column: "Q87_7"
       ol.relationshipissues:
         type: "ol.relationshipissues"
         column: "Q87_8"

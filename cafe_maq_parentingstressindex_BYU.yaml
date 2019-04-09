@@ -70,13 +70,13 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["8", "9", "10", "11", "12"]
           goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
-      # ol.dissatisfiedwithlife:
-      #   type: "ol.dissatisfiedwithlife"
-      #   column: "Q87_10"
-      #   transforms:
-      #   - !<transforms.ReplaceTransform>
-      #     target: ["8", "9", "10", "11", "12"]
-      #     goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.dissatisfiedwithlife:
+        type: "ol.dissatisfiedwithlife"
+        column: "Q87_10"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["8", "9", "10", "11", "12"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.relationshipissues:
         type: "ol.relationshipissues"
         column: "Q87_11"
