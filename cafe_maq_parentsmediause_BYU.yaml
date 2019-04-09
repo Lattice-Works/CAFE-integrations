@@ -1443,7 +1443,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Play video games on a console game player"
+          value: "how often respondent plays video games on a console game player"
       ol.subject:
         type: "ol.subject"
         transforms:
