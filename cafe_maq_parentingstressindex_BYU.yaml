@@ -11,7 +11,7 @@ entityDefinitions:
         type: "nc.SubjectIdentification"
         transforms:
         - !<transforms.HashTransform>
-          columns: respondent_id
+          columns: [respondent_id]
           hashFunction: "sha256"
       ol.idnumber:
         type: "ol.idnumber"
@@ -26,7 +26,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: "respondent_id"
+          columns: ["respondent_id"]
           hashFunction: "sha256"
       ol.overwhelmed:
         type: "ol.overwhelmed"
@@ -70,13 +70,13 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["8", "9", "10", "11", "12"]
           goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
-      ol.dissatisfiedwithlife:
-        type: "ol.dissatisfiedwithlife"
-        column: "Q87_10"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["8", "9", "10", "11", "12"]
-          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      # ol.dissatisfiedwithlife:
+      #   type: "ol.dissatisfiedwithlife"
+      #   column: "Q87_10"
+      #   transforms:
+      #   - !<transforms.ReplaceTransform>
+      #     target: ["8", "9", "10", "11", "12"]
+      #     goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
       ol.relationshipissues:
         type: "ol.relationshipissues"
         column: "Q87_11"
@@ -259,6 +259,7 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["9", "10", "11", "12", "13"]
           goal: ["3 or fewer", "4-5", "6-7", "8-9", "10 or more"]
+        - !<transforms.ParseIntTransform> {}
       ol.botheredbyactions:
         type: "ol.botheredbyactions"
         column: "Q92_4"
