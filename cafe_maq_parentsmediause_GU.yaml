@@ -15,18 +15,6 @@ entityDefinitions:
           hashFunction: "sha256"
     name: "respondent"
 
-  # household:
-  #   fqn: "demographics.household"
-  #   entitySetName: "CAFE_MAQ_Households"
-  #   propertyDefinitions:
-  #     household.id:
-  #       type: "household.id"
-  #       transforms:
-  #       - !<transforms.HashTransform>
-  #         columns: ["ResponseId"]
-  #         hashFunction: "sha256"
-  #   name: "household"
-
 # *********************DEVICES IN HOUSEHOLD*********************
   TV:
     fqn: "o.device"
