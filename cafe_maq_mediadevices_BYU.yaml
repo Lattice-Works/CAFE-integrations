@@ -19,7 +19,7 @@ entityDefinitions:
         type: "ol.idnumber"
         transforms:
         - !<transforms.HashTransform>
-          column: "ResponseId"
+          columns: ["ResponseId"]
           hashFunction: "sha256"
     name: "respondent"
 
