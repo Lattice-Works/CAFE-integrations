@@ -54,8 +54,8 @@ entityDefinitions:
             separator: "_"
           - !<transforms.ValueTransform>
             value: "parental_restriction_child"
-      ol.usesparentalcontrols:
-        type: "ol.usesparentalcontrols"
+      ol.parentalcontrols:
+        type: "ol.parentalcontrols"
         column: "Q68_1"
         transforms:
         - !<transforms.ReplaceTransform>
@@ -68,8 +68,8 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6"]
           goal: ["Never", "Rarely", "Occasionally", "Frequently", "Most of the time", "Not Applicable"]
-      ol.restrictschildmedia:
-        type: "ol.restrictschildmedia"
+      ol.restrictschildmediause:
+        type: "ol.restrictschildmediause"
         column: "Q68_3"
         transforms:
         - !<transforms.ReplaceTransform>

@@ -59,14 +59,14 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
             value: "child"
-      ol.usesparentalcontrols:
-        type: "ol.usesparentalcontrols"
+      ol.parentalcontrols:
+        type: "ol.parentalcontrols"
         column: "Q68_1"
       ol.usesparentalmediawebsite:
         type: "ol.usesparentalmediawebsite"
         column: "Q68_2"
-      ol.restrictschildmedia:
-        type: "ol.restrictschildmedia"
+      ol.restrictschildmediause:
+        type: "ol.restrictschildmediause"
         column: "Q68_3"
       ol.usesratingsystem:
         type: "ol.usesratingsystem"
