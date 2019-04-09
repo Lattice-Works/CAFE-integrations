@@ -128,6 +128,9 @@ entityDefinitions:
         type: "ol.number"
         column: "Q91_1"
         transforms:
+        - !<transforms.ReplaceTransform>
+          target: [“3 or fewer”, “5-Apr", “7-Jun”, “8-9", “10 or more”]
+          goal: ["3", "4", "6", "8", "10"]
         - !<transforms.ParseIntTransform> {}
       ol.botheredbyactions:
         type: "ol.botheredbyactions"
@@ -138,6 +141,116 @@ entityDefinitions:
       ol.demanding:
         type: "ol.demanding"
         column: "Q92_3"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_3"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_4"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_6"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_7"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_8"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_9"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_10"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_11"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_12"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_13"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_14"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_15"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_16"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_17"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_18"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_19"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_20"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_21"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q88"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_3"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_4"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_7"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_8"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_9"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_10"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q90_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q91_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q92_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q92_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q92_3"
+      reverse: true
     name: "parentingstressindex"
 
   qualitycontrol:
@@ -164,7 +277,7 @@ entityDefinitions:
 associationDefinitions:
   screenedwith:
     fqn: "ol.screenedwith"
-    entitySetName: "CAFE_MAQ_AssessedBy"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
     src: "respondent"
     dst: "parentingstressindex"
     propertyDefinitions:

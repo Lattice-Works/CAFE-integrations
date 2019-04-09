@@ -180,7 +180,7 @@ entityDefinitions:
         column: "Q88"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["9", "10", "11", "12", "13"]
+          target: ["5", "4", "3", "2", "1"]
           goal: ["A very good parent", "A better than average parent", "An average parent", "A person who has some trouble being a parent", "Not very good at being a parent"]
       ol.strengthofemotion:
         type: "ol.strengthofemotion"
@@ -258,7 +258,8 @@ entityDefinitions:
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["9", "10", "11", "12", "13"]
-          goal: ["3 or fewer", "4-5", "6-7", "8-9", "10 or more"]
+          # goal: ["3 or fewer", "4-5", "6-7", "8-9", "10 or more"]
+          goal: ["3", "4", "6", "8", "10"]
         - !<transforms.ParseIntTransform> {}
       ol.botheredbyactions:
         type: "ol.botheredbyactions"
@@ -281,6 +282,116 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5"]
           goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_4"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_6"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_7"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_8"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_9"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_10"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_11"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_12"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_13"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_14"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_15"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_16"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_17"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_18"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_19"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_20"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_21"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_22"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_23"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q87_24"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q88"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_3"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_4"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_7"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_8"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_9"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q89_10"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q90_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q91_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q92_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q92_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q92_3"
+      reverse: true
     name: "parentingstressindex"
 
   qualitycontrol:
@@ -311,7 +422,7 @@ entityDefinitions:
 associationDefinitions:
   screenedwith:
     fqn: "ol.screenedwith"
-    entitySetName: "CAFE_MAQ_AssessedBy"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
     src: "respondent"
     dst: "parentingstressindex"
     propertyDefinitions:
