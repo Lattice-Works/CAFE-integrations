@@ -15,8 +15,13 @@ entityDefinitions:
         type: ol.description
       ol.id:
         transforms:
-        - !<transforms.ValueTransform>
-          value: quality_control
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q49_7"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "attentioncheck_sometimes"
         type: ol.id
       ol.selection:
         column: Q49_7
