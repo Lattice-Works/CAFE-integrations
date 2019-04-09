@@ -64,6 +64,7 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2"] # means yes, no
           goal: ["2", "1"] #meaning 2 languages, or 1 language
+        - !<transforms.ParseIntTransform> {}
       ol.language:
         type: "ol.language"
         column: "Q29"

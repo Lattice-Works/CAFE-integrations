@@ -48,10 +48,12 @@ entityDefinitions:
           hashFunction: "sha256"
       ol.number:
         type: "ol.number"
+        column: "Q28"
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["Yes", "No", "999"] # means yes, no
           goal: ["2", "1", ""] #meaning 2 languages, or 1 language
+        - !<transforms.ParseIntTransform> {}
       ol.language:
         type: "ol.language"
         column: "Q29"
@@ -66,7 +68,7 @@ entityDefinitions:
             value: null
           transformsIfFalse:
           - !<transforms.ColumnTransform>
-          column: "Q29_44_TEXT"
+            column: "Q29_44_TEXT"
       ol.pcttime: # Percent of time main language is spoken in home - %
         type: "ol.pcttime"
         column: "Q30_1"
