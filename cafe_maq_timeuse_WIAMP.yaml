@@ -7,6 +7,9 @@ entityDefinitions:
       nc.SubjectIdentification:
         column: respondent_id
         type: nc.SubjectIdentification
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ['respondent_id']
       ol.idnumber:
         column: ResponseId
         type: ol.idnumber
