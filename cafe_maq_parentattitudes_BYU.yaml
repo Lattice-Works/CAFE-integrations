@@ -27,10 +27,11 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: child_id
-          hashFunction: "sha256"
+        column: child_id
+        # transforms:
+        # - !<transforms.HashTransform>
+        #   columns: child_id
+        #   hashFunction: "sha256"
     name: "subject"
 
 # ********** MEDIA USE ATTITUDES FOR CHILD **********

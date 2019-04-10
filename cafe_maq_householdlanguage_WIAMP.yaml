@@ -22,9 +22,10 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id"]
+        column: child_id
+        # transforms:
+        # - !<transforms.HashTransform>
+        #   columns: ["child_id"]
     name: "childsubject"
 
   household:
