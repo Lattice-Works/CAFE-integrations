@@ -91,7 +91,7 @@ entityDefinitions:
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7", "8"]
-          goal: ["No formal school", "Elementary/primary school", "High School or Equivalent (e.g., GED)", "Some College or Vocational Degree", "Bachelor's degree", "Doctoral or Professional degree", "Middle school", "Master's degree"]
+          goal: ["No formal school", "Elementary/primary school", "High school or equivalent (e.g., GED)", "Some College or Vocational degree", "Bachelor's degree", "Doctoral or Professional degree", "Middle school", "Master's degree"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q9"
