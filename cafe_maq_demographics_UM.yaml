@@ -52,6 +52,23 @@ entityDefinitions:
       reverse: true
     name: "respondentdetails"
 
+  surveymetadata:
+    fqn: "ol.surveymetadata"
+    entitySetName: "CAFE_MAQ_SurveyMetadata"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        - !<transforms.HashTransform>
+          columns: ["respondent_id"]
+          hashFunction: "sha256"
+      ol.recordedate:
+        type: "ol.recordeddate"
+        column: "RecordedDate"
+        transforms:
+        - !<transforms.DateTimeTransform>
+          pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+    name: "surveymetadata"
+
   employment:
     fqn: "ol.employment"
     entitySetName: "CAFE_MAQ_Employment"
