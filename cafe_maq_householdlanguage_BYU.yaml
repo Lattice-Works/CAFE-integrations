@@ -9,7 +9,10 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        column: "respondent_id" #Person ID
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id"]
+          hashFunction: "sha256"
       ol.idnumber:
         type: "ol.idnumber"
         column: "ResponseId"
