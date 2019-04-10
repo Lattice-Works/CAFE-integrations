@@ -33,9 +33,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_1"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "watchtv_mobileactivities"
       ol.name:
@@ -76,9 +76,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_2"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "watchmovies_mobileactivities"
       ol.name:
@@ -119,9 +119,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_3"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "playgames_mobileactivities"
       ol.name:
@@ -162,9 +162,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_4"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "apps_mobileactivities"
       ol.name:
@@ -205,9 +205,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_5"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "ebooks_mobileactivities"
       ol.name:
@@ -248,9 +248,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_6"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "audio_mobileactivities"
       ol.name:
@@ -322,9 +322,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q47"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "appsdownloaded"
       ol.name:
@@ -342,7 +342,7 @@ entityDefinitions:
         column: "Q47"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["None", "Fewer than 5", "5-10", "20-Oct", "20-30", "More than 30"]
+          target: ["None", "Fewer than 5", "10-May", "20-Oct", "20-30", "More than 30"]
           goal: ["0", "2.5", "7.5", "15", "25", "30"]
         - !<transforms.ParseIntTransform> {}
       ol.servicetype:
@@ -370,9 +370,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q48"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "appsdownloaded_children"
       ol.name:
@@ -398,8 +398,8 @@ entityDefinitions:
         column: "Q48"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["None", "Fewer than 5", "5-10", "20-Oct", "20-30", "More than 30", "Only a few", "Less than half", "About half of them", "Most of them"]
-          goal: ["0", "", "", "", "", "", "5", "25", "50", "75"]
+          target: ["None", "Fewer than 5", "5-10", "20-Oct", "20-30", "More than 30", "Only a few", "Less than half", "About half of them", "Most of them", "All of them"]
+          goal: ["0", "", "", "", "", "", "5", "25", "50", "75", "100"]
         - !<transforms.ParseIntTransform> {}
       ol.servicetype:
         type: "ol.servicetype"
