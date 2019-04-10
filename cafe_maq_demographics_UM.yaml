@@ -93,7 +93,7 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7"]
           # goal: ["Did not graduate from high school", "Graduated from high school",  "GED", "Some college courses", "2 year college degree", "4 year college degree", "More than 4 year college degree"]
-          goal: ["Middle School", "High School or Equivalent (e.g., GED)", "High School or Equivalent (e.g., GED)", "Some College or Vocational Degree", "Some College or Vocational Degree", "Bachelor's degree", "Master's degree"]
+          goal: ["Middle school", "High school or equivalent (e.g., GED)", "High school or equivalent (e.g., GED)", "Some College or Vocational degree", "Some College or Vocational degree", "Bachelor's degree", "Master's degree"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "parentedu"
