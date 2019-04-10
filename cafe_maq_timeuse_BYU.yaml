@@ -52,7 +52,6 @@ entityDefinitions:
     name: respondent
     propertyDefinitions:
       nc.SubjectIdentification:
-        column: respondent_id
         type: nc.SubjectIdentification
         transforms:
         - !<transforms.HashTransform>
