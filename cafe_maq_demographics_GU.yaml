@@ -22,70 +22,50 @@ entityDefinitions:
         column: "Q4_1"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["American Indian/Alaska Native", "999"]
+          target: ["American Indian/Alaska Native", ""]
           goal: ["amindian", ""]
       nc.PersonRace2:
         type: "nc.PersonRace"
         column: "Q4_2"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["Asian or Pacific Islander", "999"]
+          target: ["Asian or Pacific Islander", ""]
           goal: ["asian", ""]
       nc.PersonRace3:
         type: "nc.PersonRace"
         column: "Q4_3"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["Black or African American", "999"]
+          target: ["Black or African American", ""]
           goal: ["black", ""]
       nc.PersonRace4:
         type: "nc.PersonRace"
         column: "Q4_4"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["White", "999"]
+          target: ["White", ""]
           goal: ["white", ""]
-          partial: true
       nc.PersonRace5:
         type: "nc.PersonRace"
         transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q4_8"
-          string: "999"
+          string: "Other (Please Specify)"
           transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
           - !<transforms.ValueTransform>
             value: "other"
       # nc.PersonRace6:
       #   type: "nc.PersonRace"
-      #   column: "Q4_6"
-      #   # transforms:
-      #   # - !<transforms.ReplaceTransform>
-      #   #   target: ["1"]
-      #   #   goal: ["Don't Know"]
-      #   #   partial: true
-      # nc.PersonRace7:
-      #   type: "nc.PersonRace"
-      #   column: "Q4_7"
-        # transforms:
-        # - !<transforms.ReplaceTransform>
-        #   target: ["1"]
-        #   goal: ["Prefer not to answer"]
-        #   partial: true
-      nc.PersonRace8:
-        type: "nc.PersonRace"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q4_8_TEXT"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: "other"
+      #   transforms:
+      #   - !<transforms.BooleanIsNullTransform>
+      #     column: "Q4_8_TEXT"
+      #     transformsIfTrue:
+      #     - !<transforms.ValueTransform>
+      #       value: null
+      #     transformsIfFalse:
+      #     - !<transforms.ColumnTransform>
+      #       column: "Q4_8_TEXT"
+      #       # value: "other"
       nc.PersonEthnicity:
         type: "nc.PersonEthnicity"
         column: "Q3"
@@ -95,16 +75,7 @@ entityDefinitions:
           goal: ["nonhispanic", "hispanic", "", ""]
       nc.PersonBirthPlace:
         type: "nc.PersonBirthPlace"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q5"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q5"
+        column: "Q5"
     name: "respondent"
 
   respondentdetails:
@@ -115,25 +86,52 @@ entityDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["respondent_id","UserLanguage", "Q2"]
+          columns: ["respondent_id","UserLanguage", "Q2", "Q5", "Q7"]
           hashFunction: "sha256"
       ol.language:
         type: "ol.language"
         column: "UserLanguage"
+      ol.nationality:
+        type: "ol.nationality"
+        column: "Q5"
+      person.maritalstatus:
+        type: "person.maritalstatus"
+        column: "Q7"
+      ol.numberofchildren:
+        type: "ol.numberofchildren"
+        column: "Q13"
       person.ageatevent:
         type: "person.ageatevent"
+        column: "Q2"
         transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q2"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q2"
         - !<transforms.ParseIntTransform> {}
     name: "respondentdetails"
+
+  immigrationstatus:
+    fqn: "ol.immigrationstatus"
+    entitySetName: "CAFE_MAQ_ImmigrationStatus"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q5", "Q6"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        column: "Q6"
+      ol.description:
+        type: "ol.description"
+        column: "Q5"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q6"
+      reverse: true
+    name: "immigrationstatus"
 
   surveymetadata:
     fqn: "ol.surveymetadata"
@@ -141,15 +139,22 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
+        transforms:
         - !<transforms.HashTransform>
-          columns: ["respondent_id"]
+          columns: ["respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
           hashFunction: "sha256"
+      ol.language:
+        type: "ol.language"
+        column: "UserLanguage"
+      ol.duration:
+        type: "ol.duration"
+        column: "Duration (in seconds)"
       ol.recordedate:
         type: "ol.recordeddate"
         column: "RecordedDate"
         transforms:
-        - !<transforms.DateTimeTransform>
-          pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+        - !<transforms.DateTimeAsDateTransform>
+          pattern: ['yyyy-MM-dd HH:mm:ss', 'MM/dd/YY HH:mm']
     name: "surveymetadata"
 
   household:
@@ -164,16 +169,11 @@ entityDefinitions:
           hashFunction: "sha256"
       demographics.hhtype:
         type: "demographics.hhtype"
+        column: "Q23"
         transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q23"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q23"
+        - !<transforms.ReplaceTransform>
+          target: ["Yes", "No"]
+          goal: ["split/two households", "single household"]
     name: "household"
 
   employment:
@@ -185,19 +185,7 @@ entityDefinitions:
         column: "Q10"
       ol.status:
         type: "ol.status"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q10"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q10"
-        # - !<transforms.ReplaceTransform>
-        #   target: ["1", "2", "3", "4", "5"]
-        #   goal: ["No", "One part-time job", "One full-time job", "Multiple jobs", "Maternity/Parental leave"]
+        column: "Q10"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q10"
@@ -631,23 +619,14 @@ entityDefinitions:
 
   publicassistance:
     fqn: "ol.income"
-    entitySetName: "CAFE_MAQ_Incomes"
+    entitySetName: "CAFE_MAQ_PublicAssistance"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
         column: "Q12"
       ol.type:
         type: "ol.type"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q12"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q12"
+        column: "Q12"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q12"
@@ -1784,3 +1763,17 @@ associationDefinitions:
           - !<transforms.ColumnTransform>
             column: "Q15_x6_1_TEXT"
     name: "relatedto6"
+
+  participatedin:
+    fqn: "general.participatedin"
+    entitySetName: "CAFE_MAQ_ParticipatedIn"
+    src: "respondent"
+    dst: "surveymetadata"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
+          separator: "_"
+    name: "participatedin"

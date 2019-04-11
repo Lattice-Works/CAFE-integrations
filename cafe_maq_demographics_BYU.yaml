@@ -57,15 +57,22 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
+        transforms:
         - !<transforms.HashTransform>
-          columns: ["respondent_id"]
+          columns: ["respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
           hashFunction: "sha256"
+      ol.language:
+        type: "ol.language"
+        column: "UserLanguage"
+      ol.duration:
+        type: "ol.duration"
+        column: "Duration (in seconds)"
       ol.recordedate:
         type: "ol.recordeddate"
         column: "RecordedDate"
         transforms:
-        - !<transforms.DateTimeTransform>
-          pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+        - !<transforms.DateTimeAsDateTransform>
+          pattern: ['yyyy-MM-dd HH:mm:ss', 'MM/dd/YY HH:mm']
     name: "surveymetadata"
 
   employment:
@@ -575,3 +582,17 @@ associationDefinitions:
           columns: ["child_id", "Q22"]
           hashFunction: "sha256"
     name: "subjectof2"
+
+  participatedin:
+    fqn: "general.participatedin"
+    entitySetName: "CAFE_MAQ_ParticipatedIn"
+    src: "respondent"
+    dst: "surveymetadata"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
+          separator: "_"
+    name: "participatedin"

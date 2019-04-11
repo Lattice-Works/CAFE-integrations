@@ -15,7 +15,7 @@ entityDefinitions:
           hashFunction: "sha256"
       ol.idnumber:
         type: "ol.idnumber"
-        column: "ResponseId" #not sure if this or Person ID should be PK.
+        column: "ResponseId"
       nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "RecipientFirstName"
@@ -153,9 +153,16 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
+        transforms:
         - !<transforms.HashTransform>
-          columns: ["respondent_id"]
+          columns: ["respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
           hashFunction: "sha256"
+      ol.language:
+        type: "ol.language"
+        column: "UserLanguage"
+      ol.duration:
+        type: "ol.duration"
+        column: "Duration (in seconds)"
       ol.recordedate:
         type: "ol.recordeddate"
         column: "RecordedDate"
@@ -234,16 +241,11 @@ entityDefinitions:
           hashFunction: "sha256"
       demographics.hhtype:
         type: "demographics.hhtype"
+        column: "Q23"
         transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q23"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q23"
+        - !<transforms.ReplaceTransform>
+          target: ["Yes", "No"]
+          goal: ["split/two households", "single household"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q23"
@@ -760,7 +762,7 @@ entityDefinitions:
 
   publicassistance:
     fqn: "ol.income"
-    entitySetName: "CAFE_MAQ_Incomes"
+    entitySetName: "CAFE_MAQ_PublicAssistance"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1321,3 +1323,17 @@ associationDefinitions:
           columns: ["child_id", "child_id", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
           hashFunction: "sha256"
     name: "subjectof2"
+
+  participatedin:
+    fqn: "general.participatedin"
+    entitySetName: "CAFE_MAQ_ParticipatedIn"
+    src: "respondent"
+    dst: "surveymetadata"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
+          separator: "_"
+    name: "participatedin"
