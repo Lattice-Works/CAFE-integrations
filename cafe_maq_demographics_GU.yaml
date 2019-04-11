@@ -22,50 +22,70 @@ entityDefinitions:
         column: "Q4_1"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["American Indian/Alaska Native", ""]
+          target: ["American Indian/Alaska Native", "999"]
           goal: ["amindian", ""]
       nc.PersonRace2:
         type: "nc.PersonRace"
         column: "Q4_2"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["Asian or Pacific Islander", ""]
+          target: ["Asian or Pacific Islander", "999"]
           goal: ["asian", ""]
       nc.PersonRace3:
         type: "nc.PersonRace"
         column: "Q4_3"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["Black or African American", ""]
+          target: ["Black or African American", "999"]
           goal: ["black", ""]
       nc.PersonRace4:
         type: "nc.PersonRace"
         column: "Q4_4"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["White", ""]
+          target: ["White", "999"]
           goal: ["white", ""]
+          partial: true
       nc.PersonRace5:
         type: "nc.PersonRace"
         transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q4_8"
-          string: "Other (Please Specify)"
+          string: "999"
           transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
           - !<transforms.ValueTransform>
             value: "other"
       # nc.PersonRace6:
       #   type: "nc.PersonRace"
-      #   transforms:
-      #   - !<transforms.BooleanIsNullTransform>
-      #     column: "Q4_8_TEXT"
-      #     transformsIfTrue:
-      #     - !<transforms.ValueTransform>
-      #       value: null
-      #     transformsIfFalse:
-      #     - !<transforms.ColumnTransform>
-      #       column: "Q4_8_TEXT"
-      #       # value: "other"
+      #   column: "Q4_6"
+      #   # transforms:
+      #   # - !<transforms.ReplaceTransform>
+      #   #   target: ["1"]
+      #   #   goal: ["Don't Know"]
+      #   #   partial: true
+      # nc.PersonRace7:
+      #   type: "nc.PersonRace"
+      #   column: "Q4_7"
+        # transforms:
+        # - !<transforms.ReplaceTransform>
+        #   target: ["1"]
+        #   goal: ["Prefer not to answer"]
+        #   partial: true
+      nc.PersonRace8:
+        type: "nc.PersonRace"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q4_8_TEXT"
+          string: "999"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ValueTransform>
+            value: "other"
       nc.PersonEthnicity:
         type: "nc.PersonEthnicity"
         column: "Q3"
@@ -75,7 +95,16 @@ entityDefinitions:
           goal: ["nonhispanic", "hispanic", "", ""]
       nc.PersonBirthPlace:
         type: "nc.PersonBirthPlace"
-        column: "Q5"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q5"
+          string: "999"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: null
+          transformsIfFalse:
+          - !<transforms.ColumnTransform>
+            column: "Q5"
     name: "respondent"
 
   respondentdetails:
