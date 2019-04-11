@@ -243,7 +243,7 @@ entityDefinitions:
           string: "High School or Equivalent (e.g., GED)"
           transformsIfTrue:
           - !<transforms.ValueTransform>
-            value: "High School or Equivalent (e.g., GED)"
+            value: "High school or equivalent (e.g., GED)"
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
@@ -255,7 +255,7 @@ entityDefinitions:
           string: "Some College or Vocational Degree (e.g., AA)"
           transformsIfTrue:
           - !<transforms.ValueTransform>
-            value: "Some College or Vocational Degree"
+            value: "Some College or Vocational degree"
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
@@ -267,7 +267,7 @@ entityDefinitions:
           string: "Bachelor's Degree (e.g., BA/BS)"
           transformsIfTrue:
           - !<transforms.ValueTransform>
-            value: "Bachelor's Degree"
+            value: "Bachelor's degree"
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
@@ -279,7 +279,7 @@ entityDefinitions:
           string: "Master's Degree (e.g., MA, MFA)"
           transformsIfTrue:
           - !<transforms.ValueTransform>
-            value: "Master's Degree"
+            value: "Master's degree"
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
@@ -291,7 +291,7 @@ entityDefinitions:
           string: "Doctoral or Professional Degree (e.g., MD, JD, EdD, DDS, PhD, VMD)"
           transformsIfTrue:
           - !<transforms.ValueTransform>
-            value: "Doctoral or Professional Degree"
+            value: "Doctoral or Professional degree"
           transformsIfFalse:
           - !<transforms.ValueTransform>
             value: null
