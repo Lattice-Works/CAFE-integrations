@@ -58,6 +58,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
+        transforms:
         - !<transforms.HashTransform>
           columns: ["respondent_id"]
           hashFunction: "sha256"
@@ -71,8 +72,8 @@ entityDefinitions:
         type: "ol.recordeddate"
         column: "RecordedDate"
         transforms:
-        - !<transforms.DateTimeAsDateTransform>
-          pattern: ['yyyy-MM-dd HH:mm:ss', 'MM/dd/YY HH:mm']
+        - !<transforms.DateTimeTransform>
+          pattern: ['MM/dd/yyyy HH:mm', 'MM/d/yyyy HH:mm', 'M/d/yyyy HH:mm', 'M/dd/yy HH:mm', 'M/d/yyyy H:mm', 'M/dd/yyyy H:mm', 'MM/dd/yyyy H:mm']
     name: "surveymetadata"
 
   employment:
