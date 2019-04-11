@@ -118,6 +118,9 @@ entityDefinitions:
         type: "person.ageatevent"
         column: "Q2"
         transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Under 18"]
+          goal: ["17"]
         - !<transforms.ParseIntTransform> {}
       person.maritalstatus:
         type: "person.maritalstatus"
@@ -168,7 +171,7 @@ entityDefinitions:
         column: "RecordedDate"
         transforms:
         - !<transforms.DateTimeTransform>
-          pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+          pattern: ['MM/dd/yy HH:mm', 'MM/d/yy HH:mm', 'M/d/yy HH:mm', 'M/dd/yy HH:mm', 'M/d/yy H:mm', 'M/dd/yy H:mm', 'MM/dd/yy H:mm']
     name: "surveymetadata"
 
   childsubject1:
@@ -525,6 +528,9 @@ entityDefinitions:
         type: "ol.birthyear"
         column: "Q2_2_3"
         transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1997 or earlier"]
+          goal: ["1997"]
         - !<transforms.ParseIntTransform> {}
     conditions:
     - !<conditions.ConditionalOr> {}
@@ -565,6 +571,9 @@ entityDefinitions:
         type: "ol.birthyear"
         column: "Q2_3_3"
         transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1997 or earlier"]
+          goal: ["1997"]
         - !<transforms.ParseIntTransform> {}
     conditions:
     - !<conditions.ConditionalOr> {}
