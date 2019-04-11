@@ -51,41 +51,22 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanContainsTransform>
           column: "Q4_8"
-          string: "999"
+          string: "Other (Please Specify)"
           transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
           - !<transforms.ValueTransform>
             value: "other"
       # nc.PersonRace6:
       #   type: "nc.PersonRace"
-      #   column: "Q4_6"
-      #   # transforms:
-      #   # - !<transforms.ReplaceTransform>
-      #   #   target: ["1"]
-      #   #   goal: ["Don't Know"]
-      #   #   partial: true
-      # nc.PersonRace7:
-      #   type: "nc.PersonRace"
-      #   column: "Q4_7"
-        # transforms:
-        # - !<transforms.ReplaceTransform>
-        #   target: ["1"]
-        #   goal: ["Prefer not to answer"]
-        #   partial: true
-      nc.PersonRace8:
-        type: "nc.PersonRace"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q4_8_TEXT"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: "other"
+      #   transforms:
+      #   - !<transforms.BooleanIsNullTransform>
+      #     column: "Q4_8_TEXT"
+      #     transformsIfTrue:
+      #     - !<transforms.ValueTransform>
+      #       value: null
+      #     transformsIfFalse:
+      #     - !<transforms.ColumnTransform>
+      #       column: "Q4_8_TEXT"
+      #       # value: "other"
       nc.PersonEthnicity:
         type: "nc.PersonEthnicity"
         column: "Q3"
