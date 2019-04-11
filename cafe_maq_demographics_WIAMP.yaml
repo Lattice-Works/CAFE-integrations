@@ -743,7 +743,7 @@ entityDefinitions:
 
   publicassistance:
     fqn: "ol.income"
-    entitySetName: "CAFE_MAQ_Incomes"
+    entitySetName: "CAFE_MAQ_PublicAssistance"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
