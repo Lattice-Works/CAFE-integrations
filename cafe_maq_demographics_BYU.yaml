@@ -71,8 +71,8 @@ entityDefinitions:
         type: "ol.recordeddate"
         column: "RecordedDate"
         transforms:
-        - !<transforms.DateTimeAsDateTransform>
-          pattern: ['yyyy-MM-dd HH:mm:ss', 'MM/dd/YY HH:mm']
+        - !<transforms.DateTimeTransform>
+          pattern: ['MM/dd/yy HH:mm', 'MM/d/yy HH:mm', 'M/d/yy HH:mm', 'M/dd/yy HH:mm', 'M/d/yy H:mm', 'M/dd/yy H:mm', 'MM/dd/yy H:mm']
     name: "surveymetadata"
 
   employment:
