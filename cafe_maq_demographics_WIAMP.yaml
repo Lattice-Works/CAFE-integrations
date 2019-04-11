@@ -56,12 +56,13 @@ entityDefinitions:
           partial: true
       nc.PersonRace5:
         type: "nc.PersonRace"
-        column: "Q4_8"
         transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["Other (Please Specify)", ""]
-          goal: ["other", ""]
-          partial: true
+        - !<transforms.BooleanContainsTransform>
+          column: "Q4_8"
+          string: "Other (Please Specify)"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "other"
       # nc.PersonRace6:
       #   type: "nc.PersonRace"
       #   column: "Q4_6"
@@ -78,17 +79,17 @@ entityDefinitions:
         #   target: ["1"]
         #   goal: ["Prefer not to answer"]
         #   partial: true
-      nc.PersonRace8:
-        type: "nc.PersonRace"
-        transforms:
-        - !<transforms.BooleanIsNullTransform>
-          column: "Q4_8_TEXT"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ValueTransform>
-            value: "other"
+      # nc.PersonRace8:
+      #   type: "nc.PersonRace"
+      #   transforms:
+      #   - !<transforms.BooleanIsNullTransform>
+      #     column: "Q4_8_TEXT"
+      #     transformsIfTrue:
+      #     - !<transforms.ValueTransform>
+      #       value: null
+      #     transformsIfFalse:
+      #     - !<transforms.ValueTransform>
+      #       value: "other"
       nc.PersonEthnicity:
         type: "nc.PersonEthnicity"
         column: "Q3"
@@ -118,6 +119,9 @@ entityDefinitions:
         type: "person.ageatevent"
         column: "Q2"
         transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Under 18"]
+          goal: ["17"]
         - !<transforms.ParseIntTransform> {}
       person.maritalstatus:
         type: "person.maritalstatus"
@@ -147,22 +151,22 @@ entityDefinitions:
       reverse: true
     name: "respondentdetails"
 
-  surveymetadata:
-    fqn: "ol.surveymetadata"
-    entitySetName: "CAFE_MAQ_SurveyMetadata"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        - !<transforms.HashTransform>
-          columns: ["respondent_id"]
-          hashFunction: "sha256"
-      ol.recordedate:
-        type: "ol.recordeddate"
-        column: "RecordedDate"
-        transforms:
-        - !<transforms.DateTimeTransform>
-          pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
-    name: "surveymetadata"
+  # surveymetadata:
+  #   fqn: "ol.surveymetadata"
+  #   entitySetName: "CAFE_MAQ_SurveyMetadata"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       - !<transforms.HashTransform>
+  #         columns: ["respondent_id"]
+  #         hashFunction: "sha256"
+  #     ol.recordedate:
+  #       type: "ol.recordeddate"
+  #       column: "RecordedDate"
+  #       transforms:
+  #       - !<transforms.DateTimeTransform>
+  #         pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+  #   name: "surveymetadata"
 
   childsubject1:
     fqn: "general.person"
@@ -523,6 +527,9 @@ entityDefinitions:
         type: "ol.birthyear"
         column: "Q2_2_3"
         transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1997 or earlier"]
+          goal: ["1997"]
         - !<transforms.ParseIntTransform> {}
     conditions:
     - !<conditions.ConditionalOr> {}
@@ -563,6 +570,9 @@ entityDefinitions:
         type: "ol.birthyear"
         column: "Q2_3_3"
         transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1997 or earlier"]
+          goal: ["1997"]
         - !<transforms.ParseIntTransform> {}
     conditions:
     - !<conditions.ConditionalOr> {}

@@ -116,22 +116,23 @@ entityDefinitions:
         - !<transforms.ParseIntTransform> {}
     name: "respondentdetails"
 
-  surveymetadata:
-    fqn: "ol.surveymetadata"
-    entitySetName: "CAFE_MAQ_SurveyMetadata"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        - !<transforms.HashTransform>
-          columns: ["respondent_id"]
-          hashFunction: "sha256"
-      ol.recordedate:
-        type: "ol.recordeddate"
-        column: "RecordedDate"
-        transforms:
-        - !<transforms.DateTimeTransform>
-          pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
-    name: "surveymetadata"
+  # surveymetadata:
+  #   fqn: "ol.surveymetadata"
+  #   entitySetName: "CAFE_MAQ_SurveyMetadata"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["respondent_id"]
+  #         hashFunction: "sha256"
+  #     ol.recordedate:
+  #       type: "ol.recordeddate"
+  #       column: "RecordedDate"
+  #       transforms:
+  #       - !<transforms.DateTimeTransform>
+  #         pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
+  #   name: "surveymetadata"
 
   household:
     fqn: "demographics.household"
