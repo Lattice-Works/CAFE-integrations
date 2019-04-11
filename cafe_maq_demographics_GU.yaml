@@ -182,8 +182,8 @@ entityDefinitions:
         type: "ol.recordeddate"
         column: "RecordedDate"
         transforms:
-        - !<transforms.DateTimeAsDateTransform>
-          pattern: ['yyyy-MM-dd HH:mm:ss', 'MM/dd/YY HH:mm']
+        - !<transforms.DateTimeTransform>
+          pattern: ['MM/dd/yy hh:mm', 'MM/d/yy hh:mm', 'M/d/yy hh:mm', 'M/dd/yy hh:mm', 'M/dd/yy h:mm', 'MM/dd/yy h:mm', 'MM/dd/yy HH:mm', 'MM/d/yy HH:mm', 'M/d/yy HH:mm', 'M/dd/yy HH:mm', 'M/dd/yy H:mm', 'MM/dd/yy H:mm']
     name: "surveymetadata"
 
   household:
@@ -1113,6 +1113,21 @@ associationDefinitions:
           columns: ["respondent_id", "child_id", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_8", "Q22_5", "Q22_7", "Q22_9"]
           hashFunction: "sha256"
     name: "reported6"
+
+  reported7:
+    fqn: "ol.reported"
+    entitySetName: CAFE_MAQ_Reported
+    src: "respondent"
+    dst: "immigrationstatus"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q5", "Q6"]
+          hashFunction: "sha256"
+    name: "reported7"
+
 
   relatedto1:
     fqn: "ol.relatedto"
