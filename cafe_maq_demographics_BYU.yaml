@@ -51,6 +51,30 @@ entityDefinitions:
         column: "Q2"
     name: "respondentdetails"
 
+  surveymetadata:
+    fqn: "ol.surveymetadata"
+    entitySetName: "CAFE_MAQ_SurveyMetadata"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
+          hashFunction: "sha256"
+      ol.language:
+        type: "ol.language"
+        column: "UserLanguage"
+      ol.duration:
+        type: "ol.duration"
+        column: "Duration (in seconds)"
+      ol.recordedate:
+        type: "ol.recordeddate"
+        column: "RecordedDate"
+        transforms:
+        - !<transforms.DateTimeTransform>
+          pattern: ['MM/dd/yy HH:mm', 'MM/d/yy HH:mm', 'M/d/yy HH:mm', 'M/dd/yy HH:mm', 'M/d/yy H:mm', 'M/dd/yy H:mm', 'MM/dd/yy H:mm']
+    name: "surveymetadata"
+
   employment:
     fqn: "ol.employment"
     entitySetName: "CAFE_MAQ_Employment"
@@ -91,7 +115,7 @@ entityDefinitions:
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7", "8"]
-          goal: ["No formal school", "Elementary/primary school", "High School or Equivalent (e.g., GED)", "Some College or Vocational Degree", "Bachelor's degree", "Doctoral or Professional degree", "Middle school", "Master's degree"]
+          goal: ["No formal school", "Elementary/primary school", "High school or equivalent (e.g., GED)", "Some College or Vocational degree", "Bachelor's degree", "Doctoral or Professional degree", "Middle school", "Master's degree"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q9"
@@ -558,3 +582,17 @@ associationDefinitions:
           columns: ["child_id", "Q22"]
           hashFunction: "sha256"
     name: "subjectof2"
+
+  participatedin:
+    fqn: "general.participatedin"
+    entitySetName: "CAFE_MAQ_ParticipatedIn"
+    src: "respondent"
+    dst: "surveymetadata"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
+          separator: "_"
+    name: "participatedin"
