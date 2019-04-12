@@ -12,13 +12,7 @@ entityDefinitions:
         type: "nc.SubjectIdentification"
         transforms:
         - !<transforms.HashTransform>
-          columns: "respondent_id" #Person ID
-          hashFunction: "sha256"
-      ol.idnumber:
-        type: "ol.idnumber"
-        transforms:
-        - !<transforms.HashTransform>
-          column: "ResponseId"
+          columns: ["respondent_id"]
           hashFunction: "sha256"
     name: "respondent"
 
@@ -28,10 +22,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: "child_id"
-          hashFunction: "sha256"
+        column: "child_id"
     name: "subject"
 
   mobileactivitieswatchtv:
@@ -43,16 +34,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_1"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "watchtv_mobileactivities"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Watch TV shows"
+          value: "frequency of mobile device use to watch TV shows"
       general.frequency:
         type: "general.frequency"
         column: "Q46_1"
@@ -60,7 +51,7 @@ entityDefinitions:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "a cell phone, iPod Touch, iPad, or similar mobile device"
+          value: "mobile device"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -86,16 +77,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_2"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "watchmovies_mobileactivities"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Watch movies"
+          value: "frequency of mobile device use to watch movies"
       general.frequency:
         type: "general.frequency"
         column: "Q46_2"
@@ -103,7 +94,7 @@ entityDefinitions:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "a cell phone, iPod Touch, iPad, or similar mobile device"
+          value: "mobile device"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -129,16 +120,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_3"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "playgames_mobileactivities"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Play games"
+          value: "frequency of mobile device use to play games"
       general.frequency:
         type: "general.frequency"
         column: "Q46_3"
@@ -146,7 +137,7 @@ entityDefinitions:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "a cell phone, iPod Touch, iPad, or similar mobile device"
+          value: "mobile device"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -172,16 +163,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_4"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "apps_mobileactivities"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Use apps that are not games (e.g., FaceTime)"
+          value: "frequency of mobile device use for apps that are not games (e.g., FaceTime)"
       general.frequency:
         type: "general.frequency"
         column: "Q46_4"
@@ -189,7 +180,7 @@ entityDefinitions:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "a cell phone, iPod Touch, iPad, or similar mobile device"
+          value: "mobile device"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -215,16 +206,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_5"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "ebooks_mobileactivities"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Read electronic books"
+          value: "frequency of mobile device use to read electronic books"
       general.frequency:
         type: "general.frequency"
         column: "Q46_5"
@@ -232,7 +223,7 @@ entityDefinitions:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "a cell phone, iPod Touch, iPad, or similar mobile device"
+          value: "mobile device"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -258,16 +249,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_6"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "audio_mobileactivities"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Listen to music or audiobooks"
+          value: "frequency of mobile device use to listen to music or audiobooks"
       general.frequency:
         type: "general.frequency"
         column: "Q46_6"
@@ -275,7 +266,7 @@ entityDefinitions:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "a cell phone, iPod Touch, iPad, or similar mobile device"
+          value: "mobile device"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -301,9 +292,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_7"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "quality_control"
       ol.description:
@@ -329,16 +320,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
-            columns: ["Q46_7"]
-            hashFunction: "sha256"
+          - !<transforms.ConcatTransform>
+            columns: ["Q46_8"]
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "takingphotos_mobileactivities"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Taking photos"
+          value: "frequency of mobile device use to take photos"
       general.frequency:
         type: "general.frequency"
         column: "Q46_8"
@@ -346,7 +337,7 @@ entityDefinitions:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "a cell phone, iPod Touch, iPad, or similar mobile device"
+          value: "mobile device"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -372,16 +363,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_9"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "lookingphotos_mobileactivities"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Looking at photos or home videos"
+          value: "frequency of mobile device use to look at photos or home videos"
       general.frequency:
         type: "general.frequency"
         column: "Q46_9"
@@ -389,7 +380,7 @@ entityDefinitions:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "a cell phone, iPod Touch, iPad, or similar mobile device"
+          value: "mobile device"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -416,9 +407,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q48a_1"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "watchtvordvd_calmdownchild"
       ol.description:
@@ -438,7 +429,7 @@ entityDefinitions:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "TV show or DVD"
+          value: "TV or DVD"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -464,9 +455,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q48a_2"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "mobiledevice_calmdownchild"
       ol.description:
@@ -486,7 +477,7 @@ entityDefinitions:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "mobile device like smartphone or tablet"
+          value: "mobile device"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -510,13 +501,9 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.HashTransform>
-            columns: ["Q48b_1_1", "Q48b_2_1", "Q48b_3_1", "Q48b_4_1", "Q48b_5_1"]
-            hashFunction: "sha256"
-        - !<transforms.ValueTransform>
-          value: "apps_used_most_by_child"
+        - !<transforms.ConcatTransform>
+          columns: ["Q48b_1_1", "Q48b_2_1", "Q48b_3_1", "Q48b_4_1", "Q48b_5_1"]
+          separator: "_"
       ol.description:
         type: "ol.description"
         transforms:
@@ -548,7 +535,7 @@ entityDefinitions:
         type: "ol.name"
         column: "Q48b_5_1"
     conditions:
-    - !<conditions.ConditionalAnd> {}
+    - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q48b_1_1"
       reverse: true
@@ -575,16 +562,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q48c_1_3"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "timespent_yday_mobile_hrs"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Time spent using smartphone or tablet yesterday"
+          value: "Time spent using smartphone or tablet yesterday (hours)"
       ol.duration:
         type: "ol.duration"
         column: "Q48c_1_3"
@@ -597,7 +584,7 @@ entityDefinitions:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "smartphone or tablet"
+          value: "mobile device"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -623,16 +610,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q48c_2_3"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "timespent_yday_mobile_mins"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Time spent using smartphone or tablet yesterday"
+          value: "Time spent using smartphone or tablet yesterday (mins)"
       ol.duration:
         type: "ol.duration"
         column: "Q48c_2_3"
@@ -640,12 +627,12 @@ entityDefinitions:
         type: "ol.units"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Hours"
+          value: "Minutes"
       ol.name:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "smartphone or tablet"
+          value: "mobile device"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -673,13 +660,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q46_1"
-      reverse: true
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q46_1"]
+          separator: "_"
     name: "involvedin1"
 
   involvedin2:
@@ -691,13 +674,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q46_2"
-      reverse: true
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q46_2"]
+          separator: "_"
     name: "involvedin2"
 
   involvedin3:
@@ -709,13 +688,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q46_3"
-      reverse: true
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q46_3"]
+          separator: "_"
     name: "involvedin3"
 
   involvedin4:
@@ -727,13 +702,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q46_4"
-      reverse: true
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q46_4"]
+          separator: "_"
     name: "involvedin4"
 
   involvedin5:
@@ -745,13 +716,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q46_5"
-      reverse: true
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q46_5"]
+          separator: "_"
     name: "involvedin5"
 
   involvedin6:
@@ -763,13 +730,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q46_6"
-      reverse: true
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q46_6"]
+          separator: "_"
     name: "involvedin6"
 
   involvedin7:
@@ -781,13 +744,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q46_8"
-      reverse: true
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q46_8"]
+          separator: "_"
     name: "involvedin7"
 
   involvedin8:
@@ -799,13 +758,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q46_9"
-      reverse: true
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q46_9"]
+          separator: "_"
     name: "involvedin8"
 
   involvedin9:
@@ -817,13 +772,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48a_1"
-      reverse: true
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q48a_1"]
+          separator: "_"
     name: "involvedin9"
 
   involvedin10:
@@ -835,13 +786,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48a_2"
-      reverse: true
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q48a_2"]
+          separator: "_"
     name: "involvedin10"
 
   involvedin11:
@@ -853,9 +800,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q48b_1_1", "Q48b_2_1", "Q48b_3_1", "Q48b_4_1", "Q48b_5_1"]
+          separator: "_"
     name: "involvedin11"
 
   involvedin12:
@@ -867,13 +814,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48c_2_3"
-      reverse: true
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q48c_1_3"]
+          separator: "_"
     name: "involvedin12"
 
   involvedin13:
@@ -885,13 +828,9 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q48c_2_3"
-      reverse: true
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q48c_2_3"]
+          separator: "_"
     name: "involvedin13"
 
   reported1:
@@ -903,9 +842,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q46_1"]
+          separator: "_"
     name: "reported1"
 
   reported2:
@@ -917,9 +856,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q46_2"]
+          separator: "_"
     name: "reported2"
 
   reported3:
@@ -931,9 +870,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q46_3"]
+          separator: "_"
     name: "reported3"
 
   reported4:
@@ -945,9 +884,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q46_4"]
+          separator: "_"
     name: "reported4"
 
   reported5:
@@ -959,9 +898,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q46_5"]
+          separator: "_"
     name: "reported5"
 
   reported6:
@@ -973,9 +912,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q46_6"]
+          separator: "_"
     name: "reported6"
 
   reported7:
@@ -987,9 +926,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q46_8"]
+          separator: "_"
     name: "reported7"
 
   reported8:
@@ -1001,9 +940,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q46_9"]
+          separator: "_"
     name: "reported8"
 
   reported9:
@@ -1015,9 +954,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q48a_1"]
+          separator: "_"
     name: "reported9"
 
   reported10:
@@ -1029,9 +968,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q48a_2"]
+          separator: "_"
     name: "reported10"
 
   reported11:
@@ -1043,9 +982,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q48b_1_1", "Q48b_2_1", "Q48b_3_1", "Q48b_4_1", "Q48b_5_1"]
+          separator: "_"
     name: "reported11"
 
   reported12:
@@ -1057,9 +996,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q48c_1_3"]
+          separator: "_"
     name: "reported12"
 
   reported13:
@@ -1071,9 +1010,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q48c_2_3"]
+          separator: "_"
     name: "reported13"
 
   reported14:
@@ -1085,7 +1024,7 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q46_7"]
+          separator: "_"
     name: "reported14"
