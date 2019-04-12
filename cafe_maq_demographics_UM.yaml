@@ -52,6 +52,30 @@ entityDefinitions:
       reverse: true
     name: "respondentdetails"
 
+  surveymetadata:
+    fqn: "ol.surveymetadata"
+    entitySetName: "CAFE_MAQ_SurveyMetadata"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id"]
+          hashFunction: "sha256"
+      ol.language:
+        type: "ol.language"
+        column: "UserLanguage"
+      ol.duration:
+        type: "ol.duration"
+        column: "Duration (in seconds)"
+      ol.recordedate:
+        type: "ol.recordeddate"
+        column: "RecordedDate"
+        transforms:
+        - !<transforms.DateTimeTransform>
+          pattern: ['MM/dd/yyyy HH:mm', 'MM/d/yyyy HH:mm', 'M/d/yyyy HH:mm', 'M/dd/yy HH:mm', 'M/d/yyyy H:mm', 'M/dd/yyyy H:mm', 'MM/dd/yyyy H:mm']
+    name: "surveymetadata"
+
   employment:
     fqn: "ol.employment"
     entitySetName: "CAFE_MAQ_Employment"
@@ -413,3 +437,17 @@ associationDefinitions:
           columns: ["child_id", "childcare", "school", "childinhome", "school_other"]
           hashFunction: "sha256"
     name: "subjectof"
+
+  participatedin:
+    fqn: "general.participatedin"
+    entitySetName: "CAFE_MAQ_ParticipatedIn"
+    src: "respondent"
+    dst: "surveymetadata"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["ResponseId", "respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
+          separator: "_"
+    name: "participatedin"
