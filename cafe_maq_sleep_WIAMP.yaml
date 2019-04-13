@@ -23,92 +23,92 @@ entityDefinitions:
         column: child_id
     name: "subject"
 
-  # sleeparrangement:
-  #   fqn: "ol.sleep"
-  #   entitySetName: "CAFE_MAQ_SleepArrangements"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.ConcatTransform>
-  #         columns: ["Q74_1", "Q74_2", "Q74_3", "Q74_4"]
-  #         separator: "_"
-  #     ol.subject:
-  #       type: "ol.subject"
-  #       transforms:
-  #       - !<transforms.ValueTransform>
-  #         value: "child"
-  #     ol.arrangement1:
-  #       type: "ol.arrangement"
-  #       column: "Q74_1"
-  #     ol.arrangement2:
-  #       type: "ol.arrangement"
-  #       column: "Q74_2"
-  #     ol.arrangement3:
-  #       type: "ol.arrangement"
-  #       column: "Q74_3"
-  #     ol.arrangement4:
-  #       type: "ol.arrangement"
-  #       column: "Q74_4"
-  #     ol.arrangement5:
-  #       type: "ol.arrangement"
-  #       column: "Q74_4_TEXT"
-  #   conditions:
-  #   - !<conditions.ConditionalOr> {}
-  #   - !<conditions.BooleanIsNullCondition>
-  #     column: "Q74_1"
-  #     reverse: true
-  #   - !<conditions.BooleanIsNullCondition>
-  #     column: "Q74_2"
-  #     reverse: true
-  #   - !<conditions.BooleanIsNullCondition>
-  #     column: "Q74_3"
-  #     reverse: true
-  #   - !<conditions.BooleanIsNullCondition>
-  #     column: "Q74_4"
-  #     reverse: true
-  #   name: "sleeparrangement"
+  sleeparrangement:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_SleepArrangements"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q74_1", "Q74_2", "Q74_3", "Q74_4", "Q74_4_TEXT"]
+          separator: "_"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.arrangement1:
+        type: "ol.arrangement"
+        column: "Q74_1"
+      ol.arrangement2:
+        type: "ol.arrangement"
+        column: "Q74_2"
+      ol.arrangement3:
+        type: "ol.arrangement"
+        column: "Q74_3"
+      ol.arrangement4:
+        type: "ol.arrangement"
+        column: "Q74_4"
+      ol.arrangement5:
+        type: "ol.arrangement"
+        column: "Q74_4_TEXT"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q74_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q74_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q74_3"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q74_4"
+      reverse: true
+    name: "sleeparrangement"
 
-  # sleepposition:
-  #   fqn: "ol.sleep"
-  #   entitySetName: "CAFE_MAQ_SleepPositions"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.ConcatTransform>
-  #         columns: ["Q75_1", "Q75_2", "Q75_3", "Q75_4"]
-  #         separator: "_"
-  #     ol.position1:
-  #       type: "ol.position"
-  #       column: "Q75_1"
-  #     ol.position2:
-  #       type: "ol.position"
-  #       column: "Q75_2"
-  #     ol.position:
-  #       type: "ol.position"
-  #       column: "Q75_3"
-  #     ol.position:
-  #       type: "ol.position"
-  #       column: "Q75_4"
-  #     ol.position:
-  #       type: "ol.position"
-  #       column: "Q75_4_TEXT"
-  #   conditions:
-  #   - !<conditions.ConditionalOr> {}
-  #   - !<conditions.BooleanIsNullCondition>
-  #     column: "Q74_1"
-  #     reverse: true
-  #   - !<conditions.BooleanIsNullCondition>
-  #     column: "Q74_2"
-  #     reverse: true
-  #   - !<conditions.BooleanIsNullCondition>
-  #     column: "Q74_3"
-  #     reverse: true
-  #   - !<conditions.BooleanIsNullCondition>
-  #     column: "Q74_4"
-  #     reverse: true
-  #   name: "sleepposition"
+  sleepposition:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_SleepPositions"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q75_1", "Q75_2", "Q75_3", "Q75_4", "Q75_4_TEXT"]
+          separator: "_"
+      ol.position1:
+        type: "ol.position"
+        column: "Q75_1"
+      ol.position2:
+        type: "ol.position"
+        column: "Q75_2"
+      ol.position3:
+        type: "ol.position"
+        column: "Q75_3"
+      ol.position4:
+        type: "ol.position"
+        column: "Q75_4"
+      ol.position5:
+        type: "ol.position"
+        column: "Q75_4_TEXT"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q75_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q75_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q75_3"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q75_4"
+      reverse: true
+    name: "sleepposition"
 
   sleeptime:
     fqn: "ol.sleep"
@@ -124,15 +124,32 @@ entityDefinitions:
         type: "ol.datetimestart"
         transforms:
         - !<transforms.ConcatCombineTransform>
+          separator: " "
           transforms:
-          - !<transforms.ConcatTransform>
-            columns: ["Q76#1_1", "Q76#2_1"]
-            separator: ":"
+          - !<transforms.SplitTransform>
+            column: "RecordedDate"
+            separator: " "
+            index: 0
+          - !<transforms.BooleanContainsTransform>
+            column: "Q76#2_1"
+            string: "0"
+            transformsIfTrue:
+            - !<transforms.ConcatCombineTransform>
+              separator: ":"
+              transforms:
+              - !<transforms.ColumnTransform>
+                column: "Q76#1_1"
+              - !<transforms.ValueTransform>
+                value: "00"
+            transformsIfFalse:
+            - !<transforms.ConcatTransform>
+              columns: ["Q76#1_1", "Q76#2_1"]
+              separator: ":"
           - !<transforms.ColumnTransform>
             column: "Q76#3_1"
-            transforms:
-            - !<transforms.DateTimeTransform>
-              pattern: ["HH:mm-a", "H:mm-a", "HH:m-a", "H:m-a"]
+        - !<transforms.DateAsDateTimeTransform>
+          pattern: ["MM/d/yy hh:mm a", "MM/d/yy h:mm a", "MM/d/yy hh:m a", "MM/d/yy h:m a", "MM/d/yy h:mm a", "M/d/yy hh:mm a", "M/d/yy h:mm a", "M/d/yy hh:m a", "M/d/yy h:m a", "MM/dd/yy hh:mm a", "MM/dd/yy h:mm a", "MM/dd/yy hh:m a", "MM/dd/yy h:m a", "M/dd/yy h a" ]
+          timezone: "America/Menominee"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -161,58 +178,330 @@ entityDefinitions:
       reverse: true
     name: "sleeptime"
 
-  # awaketime:
-  #   fqn: "ol.sleep"
-  #   entitySetName: "CAFE_MAQ_AwakeTimes"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.ConcatTransform>
-  #         columns: ["Q77#1_1", "Q77#2_1", "Q77#3_1"]
-  #         separator: "_"
-  #     ol.
-  #   conditions:
-  #   - !<conditions.ConditionalOr> {}
-  #   - !<conditions.BooleanIsNullCondition>
-  #     column: "Q77#1_1"
-  #     reverse: true
-  #   - !<conditions.BooleanIsNullCondition>
-  #     column: "Q77#2_1"
-  #     reverse: true
-  #   - !<conditions.BooleanIsNullCondition>
-  #     column: "Q77#3_1"
-  #     reverse: true
-  #   name: "awaketime"
+  awaketime:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_AwakeTimes"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q77#1_1", "Q77#2_1", "Q77#3_1"]
+          separator: "_"
+      ol.datetimestart:
+        type: "ol.datetimestart"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          separator: " "
+          transforms:
+          - !<transforms.SplitTransform>
+            column: "RecordedDate"
+            separator: " "
+            index: 0
+          - !<transforms.BooleanContainsTransform>
+            column: "Q77#2_1"
+            string: "0"
+            transformsIfTrue:
+            - !<transforms.ConcatCombineTransform>
+              separator: ":"
+              transforms:
+              - !<transforms.ColumnTransform>
+                column: "Q77#1_1"
+              - !<transforms.ValueTransform>
+                value: "00"
+            transformsIfFalse:
+            - !<transforms.ConcatTransform>
+              columns: ["Q77#1_1", "Q77#2_1"]
+              separator: ":"
+          - !<transforms.ColumnTransform>
+            column: "Q77#3_1"
+        - !<transforms.DateAsDateTimeTransform>
+          pattern: ["MM/d/yy hh:mm a", "MM/d/yy h:mm a", "MM/d/yy hh:m a", "MM/d/yy h:m a", "MM/d/yy h:mm a", "M/d/yy hh:mm a", "M/d/yy h:mm a", "M/d/yy hh:m a", "M/d/yy h:m a", "MM/dd/yy hh:mm a", "MM/dd/yy h:mm a", "MM/dd/yy hh:m a", "MM/dd/yy h:m a", "M/dd/yy h a" ]
+          timezone: "America/Menominee"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "today"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "when child woke up in the morning"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q77#1_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q77#2_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q77#3_1"
+      reverse: true
+    name: "awaketime"
+
+  sleepatnight:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_InterruptedSleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "Q78"
+      ol.interruptioncount:
+        type: "ol.interruptioncount"
+        column: "Q78"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many times woke up last night"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "last night"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q78"
+      reverse: true
+    name: "sleepatnight"
+
+  napduringday:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_NapDuringDay"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q79", "Q81", "Q80#1_1", "Q80#2_1"]
+          separator: "_"
+      ol.status:
+        type: "ol.status"
+        column: "Q79"
+      ol.eventcount:
+        type: "ol.eventcount"
+        column: "Q81"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how long and how many naps during the day"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "yesterday, during the day"
+      ol.durationhours:
+        type: "ol.durationhours"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          separator: ""
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: "Q80#1_1"
+          - !<transforms.ValueTransform>
+            value: "."
+          - !<transforms.ReplaceTransform>
+            column: "Q80#2_1"
+            target: ["0", "10", "15", "20", "30", "40", "45"]
+            goal: ["0", "17", "25", "33", "5", "66", "75"]
+        - !<transforms.ParseDoubleTransform> {}
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q79"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q81"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q80#1_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q80#2_1"
+      reverse: true
+    name: "napduringday"
+
+  fallasleep:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_FallAsleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q84_1", "Q84_2","Q84_3", "Q84_4", "Q84_5","Q84_6","Q84_6_TEXT", "Q82", "Q83"]
+          separator: "_"
+      ol.method1:
+        type: "ol.method"
+        column: "Q84_1"
+      ol.method2:
+        type: "ol.method"
+        column: "Q84_2"
+      ol.method3:
+        type: "ol.method"
+        column: "Q84_3"
+      ol.method4:
+        type: "ol.method"
+        column: "Q84_4"
+      ol.method5:
+        type: "ol.method"
+        column: "Q84_5"
+      ol.method6:
+        type: "ol.method"
+        column: "Q84_6"
+      ol.method7:
+        type: "ol.method"
+        column: "Q84_6_TEXT"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "putting child to sleep method and length of time"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "yesterday, during the day"
+      ol.durationhours:
+        type: "ol.durationhours"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          separator: ""
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: "Q82"
+          - !<transforms.ValueTransform>
+            value: "."
+          - !<transforms.ReplaceTransform>
+            column: "Q83"
+            target: ["0", "1", "5", "10", "15", "20", "25", "30", "35", "40", "45"]
+            goal: ["0", "02", "08", "17", "25", "33", "42", "5", "58", "66", "75"]
+        - !<transforms.ParseDoubleTransform> {}
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q82"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q83"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q84_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q84_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q84_3"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q84_4"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q84_5"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q84_6"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q84_6_TEXT"
+      reverse: true
+    name: "fallasleep"
+
+  sleeppatterns:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_SleepPatterns"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q85", "Q86"]
+          separator: "_"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "typical sleep patterns"
+      ol.problematic:
+        type: "ol.problematic"
+        column: "Q85"
+      neurological.sleeppattern:
+        type: "neurological.sleeppattern"
+        column: "Q86"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "yesterday and today"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q85"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q86"
+      reverse: true
+    name: "sleeppatterns"
+
+
 
 associationDefinitions:
-  # involvedin1:
-  #   fqn: "ol.involvedin"
-  #   entitySetName: "CAFE_MAQ_InvolvedIn"
-  #   src: "subject"
-  #   dst: "sleeparrangement"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.ConcatTransform>
-  #         columns: ["child_id", "Q74_1", "Q74_2", "Q74_3", "Q74_4"]
-  #         separator: "_"
-  # name: "involvedin1"
+  involvedin1:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleeparrangement"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q74_1", "Q74_2", "Q74_3", "Q74_4", "Q74_4_TEXT"]
+          separator: "_"
+    name: "involvedin1"
 
-  # involvedin2:
-  #   fqn: "ol.involvedin"
-  #   entitySetName: "CAFE_MAQ_InvolvedIn"
-  #   src: "subject"
-  #   dst: "sleepposition"
-  #   propertyDefinitions:
-  #     ol.id:
-  #       type: "ol.id"
-  #       transforms:
-  #       - !<transforms.ConcatTransform>
-  #         columns: ["child_id", "Q75_1", "Q75_2", "Q75_3", "Q75_4"]
-  #         separator: "_"
-  #   name: "involvedin2"
+  involvedin2:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleepposition"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q75_1", "Q75_2", "Q75_3", "Q75_4", "Q75_4_TEXT"]
+          separator: "_"
+    name: "involvedin2"
 
   involvedin3:
     fqn: "ol.involvedin"
@@ -228,33 +517,103 @@ associationDefinitions:
           separator: "_"
     name: "involvedin3"
 
-  # reported1:
-  #   fqn: "ol.reported"
-  #   entitySetName: "CAFE_MAQ_Reported"
-  #   src: "respondent"
-  #   dst: "sleeparrangement"
-  #   propertyDefinitions:
-  #     general.id:
-  #       type: "general.id"
-  #       transforms:
-  #       - !<transforms.ConcatTransform>
-  #         columns: ["respondent_id", "Q74_1", "Q74_2", "Q74_3", "Q74_4"]
-  #         separator: "_"
-  #   name: "reported1"
+  involvedin4:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "awaketime"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q77#1_1", "Q77#2_1", "Q77#3_1"]
+          separator: "_"
+    name: "involvedin4"
 
-  # reported2:
-  #   fqn: "ol.reported"
-  #   entitySetName: "CAFE_MAQ_Reported"
-  #   src: "respondent"
-  #   dst: "sleepposition"
-  #   propertyDefinitions:
-  #     general.id:
-  #       type: "general.id"
-  #       transforms:
-  #       - !<transforms.ConcatTransform>
-  #         columns: ["respondent_id", "Q75_1", "Q75_2", "Q75_3", "Q75_4"]
-  #         separator: "_"
-  #   name: "reported2"
+  involvedin5:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleepatnight"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q78"]
+          separator: "_"
+    name: "involvedin5"
+
+  involvedin6:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "napduringday"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q79", "Q81", "Q80#1_1", "Q80#2_1"]
+          separator: "_"
+    name: "involvedin6"
+
+  involvedin7:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "fallasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q84_1", "Q84_2","Q84_3", "Q84_4", "Q84_5","Q84_6","Q84_6_TEXT", "Q82", "Q83"]
+          separator: "_"
+    name: "involvedin7"
+
+  involvedin8:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleeppatterns"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id",  "Q85", "Q86"]
+          separator: "_"
+    name: "involvedin8"
+
+  reported1:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleeparrangement"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q74_1", "Q74_2", "Q74_3", "Q74_4", "Q74_4_TEXT"]
+          separator: "_"
+    name: "reported1"
+
+  reported2:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleepposition"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q75_1", "Q75_2", "Q75_3", "Q75_4", "Q75_4_TEXT"]
+          separator: "_"
+    name: "reported2"
 
   reported3:
     fqn: "ol.reported"
@@ -269,3 +628,73 @@ associationDefinitions:
           columns: ["respondent_id", "Q76#1_1", "Q76#2_1", "Q76#3_1"]
           separator: "_"
     name: "reported3"
+
+  reported4:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "awaketime"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q77#1_1", "Q77#2_1", "Q77#3_1"]
+          separator: "_"
+    name: "reported4"
+
+  reported5:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleepatnight"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q78"]
+          separator: "_"
+    name: "reported5"
+
+  reported6:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "napduringday"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q79", "Q81", "Q80#1_1", "Q80#2_1"]
+          separator: "_"
+    name: "reported6"
+
+  reported7:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "fallasleep"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q84_1", "Q84_2","Q84_3", "Q84_4", "Q84_5","Q84_6","Q84_6_TEXT", "Q82", "Q83"]
+          separator: "_"
+    name: "reported7"
+
+  reported8:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleeppatterns"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q85", "Q86"]
+          separator: "_"
+    name: "reported8"
