@@ -781,10 +781,14 @@ entityDefinitions:
         type: "ol.notes"
         transforms:
         - !<transforms.ValueTransform>
-          value: "public assistance"
+          value: "Public Assistance"
       ol.type:
         type: "ol.type"
         column: "Q12"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Yes", "No"]
+          goal: ["Yes - current", "No - never"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q12"

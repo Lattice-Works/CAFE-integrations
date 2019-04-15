@@ -202,13 +202,18 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         column: "Q12"
+      ol.notes:
+        type: "ol.notes"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Public Assistance"
       ol.type:
         type: "ol.type"
         column: "Q12"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3"]
-          goal: ["public assistance - current", "", "public assistance - past"]
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Yes - current", "No - never", "Yes - in past", "", ""]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q12"
