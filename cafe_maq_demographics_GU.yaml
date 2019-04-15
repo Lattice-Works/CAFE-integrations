@@ -629,14 +629,33 @@ entityDefinitions:
 
   publicassistance:
     fqn: "ol.income"
-    entitySetName: "CAFE_MAQ_Incomes"
+    entitySetName: "CAFE_MAQ_PublicAssistance"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
         column: "Q12"
+      ol.notes:
+        type: "ol.notes"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Public Assistance"
       ol.type:
         type: "ol.type"
-        column: "Q12"
+        # column: "Q12"
+        transforms:
+        - !<transforms.BooleanContainsTransform>
+          column: "Q12"
+          string: "I have received public assistance in the past (more than one year ago), but not within the last year"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "Yes - in past"
+          transformsIfFalse:
+          - !<transforms.ReplaceTransform>
+            column: "Q12"
+            target: ["Yes, I receive public assistance currently", "No, I have never received public assistance", "I have received public assistance in the past (more than one year ago), but not within the last year"]
+            # target: ["I have received public assistance in the past (more than one year ago), but not within the last year"]
+            goal: ["Yes - current", "No - never", ""]
+          # goal: ["Yes - in past"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q12"

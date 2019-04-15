@@ -198,18 +198,23 @@ entityDefinitions:
 
   publicassistance:
     fqn: "ol.income"
-    entitySetName: "CAFE_MAQ_Incomes"
+    entitySetName: "CAFE_MAQ_PublicAssistance"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
         column: "publicassistance"
+      ol.notes:
+        type: "ol.notes"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Public Assistance"
       ol.type:
         type: "ol.type"
         column: "publicassistance"
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3"]
-          goal: ["public assistance - current", "", "public assistance - past"]
+          goal: ["Yes - current", "No - never", "Yes - in past"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "publicassistance"
