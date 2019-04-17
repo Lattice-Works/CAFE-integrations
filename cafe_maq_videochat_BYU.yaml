@@ -291,19 +291,19 @@ entityDefinitions:
 
 
 associationDefinitions:
-    reported2:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "keepintouchvideochatattitude"
-    propertyDefinitions:
-      general.id:
-        type: "general.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q281", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported2"
+  reported2:
+  fqn: "ol.reported"
+  entitySetName: "CAFE_MAQ_Reported"
+  src: "respondent"
+  dst: "keepintouchvideochatattitude"
+  propertyDefinitions:
+    general.id:
+      type: "general.id"
+      transforms:
+      - !<transforms.HashTransform>
+        columns: ["Q281", "ResponseId"]
+        hashFunction: "sha256"
+  name: "reported2"
 
   reported3:
     fqn: "ol.reported"
