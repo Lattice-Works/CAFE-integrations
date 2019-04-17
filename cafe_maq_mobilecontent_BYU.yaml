@@ -329,6 +329,10 @@ entityDefinitions:
       ol.selection:
         type: "ol.selection"
         column: "Q46_7"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["2", "3", "4", "5", "6", "7", "8"]
+          goal: ["Never on a mobile device", "Less than once per week", "About once per week", "2-3 times per week", "4-6 times per week", "Everyday", "Several times per day"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q46_7"
