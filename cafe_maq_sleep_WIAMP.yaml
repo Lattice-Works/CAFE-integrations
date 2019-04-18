@@ -79,6 +79,11 @@ entityDefinitions:
         - !<transforms.ConcatTransform>
           columns: ["Q75_1", "Q75_2", "Q75_3", "Q75_4", "Q75_4_TEXT"]
           separator: "_"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
       ol.position1:
         type: "ol.position"
         column: "Q75_1"
@@ -130,9 +135,9 @@ entityDefinitions:
             column: "RecordedDate"
             separator: " "
             index: 0
-          - !<transforms.BooleanContainsTransform>
+          - !<transforms.BooleanRegexTransform>
             column: "Q76#2_1"
-            string: "0"
+            pattern: "(?i)(\\b0\\b)"
             transformsIfTrue:
             - !<transforms.ConcatCombineTransform>
               separator: ":"
@@ -147,9 +152,9 @@ entityDefinitions:
               separator: ":"
           - !<transforms.ColumnTransform>
             column: "Q76#3_1"
-        - !<transforms.DateAsDateTimeTransform>
+        - !<transforms.DateTimeTransform>
           pattern: ["MM/d/yy hh:mm a", "MM/d/yy h:mm a", "MM/d/yy hh:m a", "MM/d/yy h:m a", "MM/d/yy h:mm a", "M/d/yy hh:mm a", "M/d/yy h:mm a", "M/d/yy hh:m a", "M/d/yy h:m a", "MM/dd/yy hh:mm a", "MM/dd/yy h:mm a", "MM/dd/yy hh:m a", "MM/dd/yy h:m a", "M/dd/yy h a" ]
-          timezone: "America/Menominee"
+          timezone: "America/Chicago"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -198,9 +203,9 @@ entityDefinitions:
             column: "RecordedDate"
             separator: " "
             index: 0
-          - !<transforms.BooleanContainsTransform>
+          - !<transforms.BooleanRegexTransform>
             column: "Q77#2_1"
-            string: "0"
+            pattern: "(?i)(\\b0\\b)"
             transformsIfTrue:
             - !<transforms.ConcatCombineTransform>
               separator: ":"
@@ -215,9 +220,9 @@ entityDefinitions:
               separator: ":"
           - !<transforms.ColumnTransform>
             column: "Q77#3_1"
-        - !<transforms.DateAsDateTimeTransform>
+        - !<transforms.DateTimeTransform>
           pattern: ["MM/d/yy hh:mm a", "MM/d/yy h:mm a", "MM/d/yy hh:m a", "MM/d/yy h:m a", "MM/d/yy h:mm a", "M/d/yy hh:mm a", "M/d/yy h:mm a", "M/d/yy hh:m a", "M/d/yy h:m a", "MM/dd/yy hh:mm a", "MM/dd/yy h:mm a", "MM/dd/yy hh:m a", "MM/dd/yy h:m a", "M/dd/yy h a" ]
-          timezone: "America/Menominee"
+          timezone: "America/Chicago"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -384,7 +389,7 @@ entityDefinitions:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
-          value: "yesterday, during the day"
+          value: "in the evening"
       ol.durationhours:
         type: "ol.durationhours"
         transforms:
