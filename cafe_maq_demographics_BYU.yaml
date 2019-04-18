@@ -16,18 +16,18 @@ entityDefinitions:
         column: "ResponseId"
       nc.PersonRace:
         type: "nc.PersonRace"
-        column: "Q4"
+        column: "race"
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "9999999"]
           goal: ["white", "black", "amindian", "asian", "other", "other", ""]
       nc.PersonEthnicity:
         type: "nc.PersonEthnicity"
-        column: "Q3"
+        column: "ethnicity"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3"]
-          goal: ["hispanic", "nonhispanic", ""]
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["hispanic", "nonhispanic", "", "", ""]
       nc.PersonBirthPlace:
         type: "nc.PersonBirthPlace"
         column: "Q5"
@@ -49,6 +49,10 @@ entityDefinitions:
       person.ageatevent:
         type: "person.ageatevent"
         column: "Q2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: [83, 1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43]
+          goal:   [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
     name: "respondentdetails"
 
   surveymetadata:
@@ -72,7 +76,7 @@ entityDefinitions:
         column: "RecordedDate"
         transforms:
         - !<transforms.DateTimeTransform>
-          pattern: ['MM/dd/yy HH:mm', 'MM/d/yy HH:mm', 'M/d/yy HH:mm', 'M/dd/yy HH:mm', 'M/d/yy H:mm', 'M/dd/yy H:mm', 'MM/dd/yy H:mm']
+          pattern: ['yyyy/MM/dd HH:mm:ss', 'MM/dd/yy HH:mm', 'MM/d/yy HH:mm', 'M/d/yy HH:mm', 'M/dd/yy HH:mm', 'M/d/yy H:mm', 'M/dd/yy H:mm', 'MM/dd/yy H:mm']
     name: "surveymetadata"
 
   employment:
@@ -597,7 +601,6 @@ associationDefinitions:
       general.stringid:
         type: "general.stringid"
         transforms:
-        - !<transforms.ConcatTransform>
+        - !<transforms.HashTransform>
           columns: ["ResponseId", "respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
-          separator: "_"
     name: "participatedin"
