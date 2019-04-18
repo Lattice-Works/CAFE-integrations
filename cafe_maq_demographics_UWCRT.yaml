@@ -12,8 +12,7 @@ entityDefinitions:
         type: "nc.SubjectIdentification"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["ResponseId"]
-          # columns: ["respondent_id"]
+          columns: ["respondent_id"]
           hashFunction: "sha256"
       ol.idnumber:
         type: "ol.idnumber"
@@ -85,8 +84,7 @@ entityDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["ResponseId", "UserLanguage", "Q2", "Q7", "Q5", "Q13"]
-          # columns: ["respondent_id", "UserLanguage", "Q2", "Q7", "Q5", "Q13"]
+          columns: ["respondent_id", "UserLanguage", "Q2", "Q7", "Q5", "Q13"]
           hashFunction: "sha256"
       ol.language:
         type: "ol.language"
@@ -135,8 +133,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
-          columns: ["ResponseId", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
+          columns: ["respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
           hashFunction: "sha256"
       ol.language:
         type: "ol.language"
@@ -158,7 +155,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        # column: child_id
+        column: child_id
         transforms:
         - !<transforms.ConcatTransform>
           columns: ["Q2_1_1", "ResponseId", "Q2_1_1_TEXT", "Q2_1_2", "Q2_1_3"]
@@ -190,8 +187,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["child_id", "Q20", "Q18", "Q19"]
-          columns: ["ResponseId", "Q20", "Q18", "Q19"]
+          columns: ["child_id", "Q20", "Q18", "Q19"]
           hashFunction: "sha256"
       ol.prematurebirth:
         type: "ol.prematurebirth"
@@ -249,8 +245,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          columns: ["ResponseId", "Q8", "Q25", "Q26", "Q27", "Q21_1", "Q21_2", "Q21_3", "Q21_4", "Q21_5", "Q21_7"]
-          # columns: ["child_id", "Q8", "Q25", "Q26", "Q27", "Q21_1", "Q21_2", "Q21_3", "Q21_4", "Q21_5", "Q21_7"]
+          columns: ["child_id", "Q8", "Q25", "Q26", "Q27", "Q21_1", "Q21_2", "Q21_3", "Q21_4", "Q21_5", "Q21_7"]
           hashFunction: "sha256"
       ol.persontoassist:
         type: "ol.persontoassist"
@@ -266,12 +261,20 @@ entityDefinitions:
         column: "Q26"
       ol.durationhours:
         type: "ol.durationhours"
-        column: "Q27"
         transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["10 hours or less", "11-20 hours", "21-35 hours", "35+ hours"]
-          goal: ["10", "15", "30", "35"]
-        - !<transforms.ParseDoubleTransform> {}
+        - !<transforms.BooleanContainsTransform>
+          column: "Q27"
+          string: "35+ hours"
+          transformsIfTrue:
+          - !<transforms.ValueTransform>
+            value: "35"
+          - !<transforms.ParseDoubleTransform> {}
+          transformsIfFalse:
+          - !<transforms.ReplaceTransform>
+            column: "Q27"
+            target: ["10 hours or less", "11-20 hours", "21-35 hours"]
+            goal: ["10", "15", "30"]
+          - !<transforms.ParseDoubleTransform> {}
       ol.relationship1:
         type: "ol.relationship"
         column: "Q21_1"
@@ -335,8 +338,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["child_id", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
-          columns: ["ResponseId", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
+          columns: ["child_id", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
           hashFunction: "sha256"
       ol.relationship1:
         type: "ol.relationship"
@@ -794,8 +796,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["respondent_id", "UserLanguage", "Q2", "Q7", "Q5", "Q13"]
-          columns: ["ResponseId", "UserLanguage", "Q2", "Q7", "Q5", "Q13"]
+          columns: ["respondent_id", "UserLanguage", "Q2", "Q7", "Q5", "Q13"]
           hashFunction: "sha256"
     name: "has1"
 
@@ -809,8 +810,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["respondent_id", "Q10"]
-          columns: ["ResponseId", "Q10"]
+          columns: ["respondent_id", "Q10"]
           hashFunction: "sha256"
     name: "reported1"
 
@@ -824,8 +824,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["respondent_id", "Q9"]
-          columns: ["ResponseId", "Q9"]
+          columns: ["respondent_id", "Q9"]
           hashFunction: "sha256"
     name: "reported2"
 
@@ -839,8 +838,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["respondent_id", "Q11"]
-          columns: ["ResponseId", "Q11"]
+          columns: ["respondent_id", "Q11"]
           hashFunction: "sha256"
     name: "reported3"
 
@@ -854,8 +852,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["respondent_id", "Q12"]
-          columns: ["ResponseId", "Q12"]
+          columns: ["respondent_id", "Q12"]
           hashFunction: "sha256"
     name: "reported4"
 
@@ -869,8 +866,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["respondent_id", "Q5", "Q6"]
-          columns: ["ResponseId", "Q5", "Q6"]
+          columns: ["respondent_id", "Q5", "Q6"]
           hashFunction: "sha256"
     name: "reported5"
 
@@ -885,8 +881,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["Q2_1_3", "child_id", "Q20", "Q18", "Q19"]
-          columns: ["Q2_1_3", "ResponseId", "Q20", "Q18", "Q19"]
+          columns: ["Q2_1_3", "child_id", "Q20", "Q18", "Q19"]
           hashFunction: "sha256"
     name: "has2"
 
@@ -901,8 +896,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["respondent_id", "ResponseId", "child_id", "Q23"]
-          columns: ["ResponseId", "Q23"]
+          columns: ["respondent_id", "ResponseId", "child_id", "Q23"]
           hashFunction: "sha256"
     name: "partof_a"
 
@@ -916,8 +910,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["Q2_1_3", "ResponseId", "child_id", "Q23"]
-          columns: ["Q2_1_3", "ResponseId", "Q23"]
+          columns: ["Q2_1_3", "ResponseId", "child_id", "Q23"]
           hashFunction: "sha256"
     name: "partof_b"
 
@@ -1173,8 +1166,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["respondent_id", "child_id", "Q25"]
-          columns: ["ResponseId", "Q25"]
+          columns: ["respondent_id", "child_id", "Q25"]
           hashFunction: "sha256"
     name: "reported6"
 
@@ -1188,8 +1180,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["respondent_id", "child_id", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
-          columns: ["ResponseId", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
+          columns: ["respondent_id", "child_id", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
           hashFunction: "sha256"
     name: "reported7"
 
@@ -1203,8 +1194,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["child_id", "child_id", "Q25"]
-          columns: ["ResponseId", "Q25"]
+          columns: ["child_id", "child_id", "Q25"]
           hashFunction: "sha256"
     name: "subjectof1"
 
@@ -1218,8 +1208,7 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
-          # columns: ["child_id", "child_id", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
-          columns: ["ResponseId", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
+          columns: ["child_id", "child_id", "Q22_1", "Q22_2", "Q22_3", "Q22_4", "Q22_5", "Q22_7"]
           hashFunction: "sha256"
     name: "subjectof2"
 
@@ -1233,7 +1222,6 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          # columns: ["ResponseId", "respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
-          columns: ["ResponseId", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
+          columns: ["ResponseId", "respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
           separator: "_"
     name: "participatedin"
