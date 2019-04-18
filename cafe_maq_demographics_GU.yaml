@@ -348,225 +348,250 @@ entityDefinitions:
         - !<transforms.ParseIntTransform> {}
     name: "childsubject"
 
-  childsubject2:
-    fqn: "general.person"
-    entitySetName: "CAFE_MAQ_Children"
-    propertyDefinitions:
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["ResponseId", "child_id", "Q2_2_3"]
-          hashFunction: "sha256"
-      nc.PersonGivenName:
-        type: "nc.PersonGivenName"
-        column: "Q2_2_1_TEXT"
-      ol.birthmonth:
-        type: "ol.birthmonth"
-        column: "Q2_2_1"
-      nc.PersonSex:
-        type: "nc.PersonSex"
-        column: "Q2_2_2"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["M", "F"]
-          goal: ["Male", "Female"]
-      ol.birthyear:
-        type: "ol.birthyear"
-        column: "Q2_2_3"
-        transforms:
-        - !<transforms.ParseIntTransform> {}
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_2_1_TEXT"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_2_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_2_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_2_3"
-      reverse: true
-    name: "childsubject2"
-
-  childsubject3:
-    fqn: "general.person"
-    entitySetName: "CAFE_MAQ_Children"
-    propertyDefinitions:
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["ResponseId", "child_id", "Q2_3_3"]
-          hashFunction: "sha256"
-      nc.PersonGivenName:
-        type: "nc.PersonGivenName"
-        column: "Q2_3_1_TEXT"
-      ol.birthmonth:
-        type: "ol.birthmonth"
-        column: "Q2_3_1"
-      nc.PersonSex:
-        type: "nc.PersonSex"
-        column: "Q2_3_2"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["M", "F"]
-          goal: ["Male", "Female"]
-      ol.birthyear:
-        type: "ol.birthyear"
-        column: "Q2_3_3"
-        transforms:
-        - !<transforms.ParseIntTransform> {}
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_3_1_TEXT"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_3_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_3_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_3_3"
-      reverse: true
-    name: "childsubject3"
-
-  childsubject4:
-    fqn: "general.person"
-    entitySetName: "CAFE_MAQ_Children"
-    propertyDefinitions:
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["ResponseId", "child_id", "Q2_4_3"]
-          hashFunction: "sha256"
-      nc.PersonGivenName:
-        type: "nc.PersonGivenName"
-        column: "Q2_4_1_TEXT"
-      ol.birthmonth:
-        type: "ol.birthmonth"
-        column: "Q2_4_1"
-      nc.PersonSex:
-        type: "nc.PersonSex"
-        column: "Q2_4_2"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["M", "F"]
-          goal: ["Male", "Female"]
-      ol.birthyear:
-        type: "ol.birthyear"
-        column: "Q2_4_3"
-        transforms:
-        - !<transforms.ParseIntTransform> {}
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_4_1_TEXT"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_4_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_4_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_4_3"
-      reverse: true
-    name: "childsubject4"
-
-  childsubject5:
-    fqn: "general.person"
-    entitySetName: "CAFE_MAQ_Children"
-    propertyDefinitions:
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["ResponseId", "child_id", "Q2_5_3"]
-          hashFunction: "sha256"
-      nc.PersonGivenName:
-        type: "nc.PersonGivenName"
-        column: "Q2_5_1_TEXT"
-      ol.birthmonth:
-        type: "ol.birthmonth"
-        column: "Q2_5_1"
-      nc.PersonSex:
-        type: "nc.PersonSex"
-        column: "Q2_5_2"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["M", "F"]
-          goal: ["Male", "Female"]
-      ol.birthyear:
-        type: "ol.birthyear"
-        column: "Q2_5_3"
-        transforms:
-        - !<transforms.ParseIntTransform> {}
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_5_1_TEXT"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_5_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_5_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_5_3"
-      reverse: true
-    name: "childsubject5"
-
-  childsubject6:
-    fqn: "general.person"
-    entitySetName: "CAFE_MAQ_Children"
-    propertyDefinitions:
-      nc.SubjectIdentification:
-        type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["ResponseId", "child_id", "Q2_6_3"]
-          hashFunction: "sha256"
-      nc.PersonGivenName:
-        type: "nc.PersonGivenName"
-        column: "Q2_6_1_TEXT"
-      ol.birthmonth:
-        type: "ol.birthmonth"
-        column: "Q2_6_1"
-      nc.PersonSex:
-        type: "nc.PersonSex"
-        column: "Q2_6_2"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["M", "F"]
-          goal: ["Male", "Female"]
-      ol.birthyear:
-        type: "ol.birthyear"
-        column: "Q2_6_3"
-        transforms:
-        - !<transforms.ParseIntTransform> {}
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_6_1_TEXT"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_6_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_6_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_6_3"
-      reverse: true
-    name: "childsubject6"
+  # childsubject2:
+  #   fqn: "general.person"
+  #   entitySetName: "CAFE_MAQ_Children"
+  #   propertyDefinitions:
+  #     nc.SubjectIdentification:
+  #       type: "nc.SubjectIdentification"
+  #       transforms:
+  #       - !<transforms.ConcatCombineTransform>
+  #         separator: "-"
+  #         transforms:
+  #         - !<transforms.ValueTransform>
+  #           value: "x"
+  #         - !<transforms.HashTransform>
+  #           columns: ["ResponseId", "child_id", "Q2_2_3"]
+  #           hashFunction: "sha256"
+  #     nc.PersonGivenName:
+  #       type: "nc.PersonGivenName"
+  #       column: "Q2_2_1_TEXT"
+  #     ol.birthmonth:
+  #       type: "ol.birthmonth"
+  #       column: "Q2_2_1"
+  #     nc.PersonSex:
+  #       type: "nc.PersonSex"
+  #       column: "Q2_2_2"
+  #       transforms:
+  #       - !<transforms.ReplaceTransform>
+  #         target: ["M", "F"]
+  #         goal: ["Male", "Female"]
+  #     ol.birthyear:
+  #       type: "ol.birthyear"
+  #       column: "Q2_2_3"
+  #       transforms:
+  #       - !<transforms.ParseIntTransform> {}
+  #   conditions:
+  #   - !<conditions.ConditionalOr> {}
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_2_1_TEXT"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_2_1"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_2_2"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_2_3"
+  #     reverse: true
+  #   name: "childsubject2"
+  # 
+  # childsubject3:
+  #   fqn: "general.person"
+  #   entitySetName: "CAFE_MAQ_Children"
+  #   propertyDefinitions:
+  #     nc.SubjectIdentification:
+  #       type: "nc.SubjectIdentification"
+  #       transforms:
+  #       - !<transforms.ConcatCombineTransform>
+  #         separator: "-"
+  #         transforms:
+  #         - !<transforms.ValueTransform>
+  #           value: "x"
+  #         - !<transforms.HashTransform>
+  #           columns: ["ResponseId", "child_id", "Q2_3_3"]
+  #           hashFunction: "sha256"
+  #     nc.PersonGivenName:
+  #       type: "nc.PersonGivenName"
+  #       column: "Q2_3_1_TEXT"
+  #     ol.birthmonth:
+  #       type: "ol.birthmonth"
+  #       column: "Q2_3_1"
+  #     nc.PersonSex:
+  #       type: "nc.PersonSex"
+  #       column: "Q2_3_2"
+  #       transforms:
+  #       - !<transforms.ReplaceTransform>
+  #         target: ["M", "F"]
+  #         goal: ["Male", "Female"]
+  #     ol.birthyear:
+  #       type: "ol.birthyear"
+  #       column: "Q2_3_3"
+  #       transforms:
+  #       - !<transforms.ParseIntTransform> {}
+  #   conditions:
+  #   - !<conditions.ConditionalOr> {}
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_3_1_TEXT"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_3_1"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_3_2"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_3_3"
+  #     reverse: true
+  #   name: "childsubject3"
+  # 
+  # childsubject4:
+  #   fqn: "general.person"
+  #   entitySetName: "CAFE_MAQ_Children"
+  #   propertyDefinitions:
+  #     nc.SubjectIdentification:
+  #       type: "nc.SubjectIdentification"
+  #       transforms:
+  #       - !<transforms.ConcatCombineTransform>
+  #         separator: "-"
+  #         transforms:
+  #         - !<transforms.ValueTransform>
+  #           value: "x"
+  #         - !<transforms.HashTransform>
+  #           columns: ["ResponseId", "child_id", "Q2_4_3"]
+  #           hashFunction: "sha256"
+  #     nc.PersonGivenName:
+  #       type: "nc.PersonGivenName"
+  #       column: "Q2_4_1_TEXT"
+  #     ol.birthmonth:
+  #       type: "ol.birthmonth"
+  #       column: "Q2_4_1"
+  #     nc.PersonSex:
+  #       type: "nc.PersonSex"
+  #       column: "Q2_4_2"
+  #       transforms:
+  #       - !<transforms.ReplaceTransform>
+  #         target: ["M", "F"]
+  #         goal: ["Male", "Female"]
+  #     ol.birthyear:
+  #       type: "ol.birthyear"
+  #       column: "Q2_4_3"
+  #       transforms:
+  #       - !<transforms.ParseIntTransform> {}
+  #   conditions:
+  #   - !<conditions.ConditionalOr> {}
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_4_1_TEXT"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_4_1"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_4_2"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_4_3"
+  #     reverse: true
+  #   name: "childsubject4"
+  # 
+  # childsubject5:
+  #   fqn: "general.person"
+  #   entitySetName: "CAFE_MAQ_Children"
+  #   propertyDefinitions:
+  #     nc.SubjectIdentification:
+  #       type: "nc.SubjectIdentification"
+  #       transforms:
+  #       - !<transforms.ConcatCombineTransform>
+  #         separator: "-"
+  #         transforms:
+  #         - !<transforms.ValueTransform>
+  #           value: "x"
+  #         - !<transforms.HashTransform>
+  #           columns: ["ResponseId", "child_id", "Q2_5_3"]
+  #           hashFunction: "sha256"
+  #     nc.PersonGivenName:
+  #       type: "nc.PersonGivenName"
+  #       column: "Q2_5_1_TEXT"
+  #     ol.birthmonth:
+  #       type: "ol.birthmonth"
+  #       column: "Q2_5_1"
+  #     nc.PersonSex:
+  #       type: "nc.PersonSex"
+  #       column: "Q2_5_2"
+  #       transforms:
+  #       - !<transforms.ReplaceTransform>
+  #         target: ["M", "F"]
+  #         goal: ["Male", "Female"]
+  #     ol.birthyear:
+  #       type: "ol.birthyear"
+  #       column: "Q2_5_3"
+  #       transforms:
+  #       - !<transforms.ParseIntTransform> {}
+  #   conditions:
+  #   - !<conditions.ConditionalOr> {}
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_5_1_TEXT"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_5_1"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_5_2"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_5_3"
+  #     reverse: true
+  #   name: "childsubject5"
+  # 
+  # childsubject6:
+  #   fqn: "general.person"
+  #   entitySetName: "CAFE_MAQ_Children"
+  #   propertyDefinitions:
+  #     nc.SubjectIdentification:
+  #       type: "nc.SubjectIdentification"
+  #       transforms:
+  #       - !<transforms.ConcatCombineTransform>
+  #         separator: "-"
+  #         transforms:
+  #         - !<transforms.ValueTransform>
+  #           value: "x"
+  #         - !<transforms.HashTransform>
+  #           columns: ["ResponseId", "child_id", "Q2_6_3"]
+  #           hashFunction: "sha256"
+  #     nc.PersonGivenName:
+  #       type: "nc.PersonGivenName"
+  #       column: "Q2_6_1_TEXT"
+  #     ol.birthmonth:
+  #       type: "ol.birthmonth"
+  #       column: "Q2_6_1"
+  #     nc.PersonSex:
+  #       type: "nc.PersonSex"
+  #       column: "Q2_6_2"
+  #       transforms:
+  #       - !<transforms.ReplaceTransform>
+  #         target: ["M", "F"]
+  #         goal: ["Male", "Female"]
+  #     ol.birthyear:
+  #       type: "ol.birthyear"
+  #       column: "Q2_6_3"
+  #       transforms:
+  #       - !<transforms.ParseIntTransform> {}
+  #   conditions:
+  #   - !<conditions.ConditionalOr> {}
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_6_1_TEXT"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_6_1"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_6_2"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q2_6_3"
+  #     reverse: true
+  #   name: "childsubject6"
 
   subjectdetailshealth:
     fqn: "ol.persondetailshealth"
