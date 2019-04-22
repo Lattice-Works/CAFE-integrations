@@ -38,6 +38,7 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["Black or African American", "999"]
           goal: ["black", ""]
+          partial: true
       nc.PersonRace4:
         type: "nc.PersonRace"
         column: "Q4_4"
@@ -1225,75 +1226,75 @@ associationDefinitions:
           hashFunction: "sha256"
     name: "partof_b"
 
-  partof_c:
-    fqn: "ol.partof"
-    entitySetName: "CAFE_MAQ_PartOf"
-    src: "childsubject2"
-    dst: "household"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id","Q2_2_3",  "ResponseId", "Q23"]
-          hashFunction: "sha256"
-    name: "partof_c"
-
-  partof_d:
-    fqn: "ol.partof"
-    entitySetName: "CAFE_MAQ_PartOf"
-    src: "childsubject3"
-    dst: "household"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id", "Q2_3_3", "ResponseId", "Q23"]
-          hashFunction: "sha256"
-    name: "partof_d"
-
-  partof_e:
-    fqn: "ol.partof"
-    entitySetName: "CAFE_MAQ_PartOf"
-    src: "childsubject4"
-    dst: "household"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id", "Q2_4_3", "ResponseId", "Q23"]
-          hashFunction: "sha256"
-    name: "partof_e"
-
-  partof_f:
-    fqn: "ol.partof"
-    entitySetName: "CAFE_MAQ_PartOf"
-    src: "childsubject5"
-    dst: "household"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id", "Q2_5_3", "ResponseId", "Q23"]
-          hashFunction: "sha256"
-    name: "partof_f"
-
-  partof_g:
-    fqn: "ol.partof"
-    entitySetName: "CAFE_MAQ_PartOf"
-    src: "childsubject6"
-    dst: "household"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id", "Q2_6_3", "ResponseId", "Q23"]
-          hashFunction: "sha256"
-    name: "partof_g"
+  # partof_c:
+  #   fqn: "ol.partof"
+  #   entitySetName: "CAFE_MAQ_PartOf"
+  #   src: "childsubject2"
+  #   dst: "household"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["child_id","Q2_2_3",  "ResponseId", "Q23"]
+  #         hashFunction: "sha256"
+  #   name: "partof_c"
+  # 
+  # partof_d:
+  #   fqn: "ol.partof"
+  #   entitySetName: "CAFE_MAQ_PartOf"
+  #   src: "childsubject3"
+  #   dst: "household"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["child_id", "Q2_3_3", "ResponseId", "Q23"]
+  #         hashFunction: "sha256"
+  #   name: "partof_d"
+  # 
+  # partof_e:
+  #   fqn: "ol.partof"
+  #   entitySetName: "CAFE_MAQ_PartOf"
+  #   src: "childsubject4"
+  #   dst: "household"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["child_id", "Q2_4_3", "ResponseId", "Q23"]
+  #         hashFunction: "sha256"
+  #   name: "partof_e"
+  # 
+  # partof_f:
+  #   fqn: "ol.partof"
+  #   entitySetName: "CAFE_MAQ_PartOf"
+  #   src: "childsubject5"
+  #   dst: "household"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["child_id", "Q2_5_3", "ResponseId", "Q23"]
+  #         hashFunction: "sha256"
+  #   name: "partof_f"
+  # 
+  # partof_g:
+  #   fqn: "ol.partof"
+  #   entitySetName: "CAFE_MAQ_PartOf"
+  #   src: "childsubject6"
+  #   dst: "household"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["child_id", "Q2_6_3", "ResponseId", "Q23"]
+  #         hashFunction: "sha256"
+  #   name: "partof_g"
 
   relatedto1:
     fqn: "ol.relatedto"
@@ -1383,455 +1384,455 @@ associationDefinitions:
             column: "Q15_x1_1_TEXT"
     name: "relatedto1"
 
-  relatedto2:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "respondent"
-    dst: "childsubject2"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id", "Q2_2_3", "respondent_id", "ResponseId"]
-          hashFunction: "sha256"
-      ol.role:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x2_1_1"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x2_1_1"
-      ol.role2:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x2_1_2"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x2_1_2"
-      ol.role3:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x2_1_3"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x2_1_3"
-      ol.role4:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x2_1_4"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x2_1_4"
-      ol.role5:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x2_1_5"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x2_1_5"
-      ol.role6:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x2_1_TEXT"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x2_1_TEXT"
-    name: "relatedto2"
-
-  relatedto3:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "respondent"
-    dst: "childsubject3"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id", "Q2_3_3", "respondent_id", "ResponseId"]
-          hashFunction: "sha256"
-      ol.role:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x3_1_1"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x3_1_1"
-      ol.role2:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x3_1_2"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x3_1_2"
-      ol.role3:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x3_1_3"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x3_1_3"
-      ol.role4:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x3_1_4"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x3_1_4"
-      ol.role5:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x3_1_5"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x3_1_5"
-      ol.role6:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x3_1_TEXT"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x3_1_TEXT"
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x3_1_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x3_1_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x3_1_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x3_1_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x3_1_5"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q15_x3_1_TEXT"
-      reverse: true
-    name: "relatedto3"
-
-  relatedto4:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "respondent"
-    dst: "childsubject4"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id", "Q2_4_3", "respondent_id", "ResponseId"] #this depends on what you make child's PK.
-          hashFunction: "sha256"
-      ol.role:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x4_1_1"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x4_1_1"
-      ol.role2:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x4_1_2"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x4_1_2"
-      ol.role3:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x4_1_3"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x4_1_3"
-      ol.role4:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x4_1_4"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x4_1_4"
-      ol.role5:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x4_1_5"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x4_1_5"
-      ol.role6:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x4_1_TEXT"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x4_1_TEXT"
-    name: "relatedto4"
-
-  relatedto5:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "respondent"
-    dst: "childsubject5"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id", "Q2_5_3", "respondent_id", "ResponseId"] #this depends on what you make child's PK.
-          hashFunction: "sha256"
-      ol.role:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x5_1_1"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x5_1_1"
-      ol.role2:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x5_1_2"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x5_1_2"
-      ol.role3:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x5_1_3"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x5_1_3"
-      ol.role4:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x5_1_4"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x5_1_4"
-      ol.role5:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x5_1_5"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x5_1_5"
-      ol.role6:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x5_1_TEXT"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x5_1_TEXT"
-    name: "relatedto5"
-
-  relatedto6:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "respondent"
-    dst: "childsubject6"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["child_id", "Q2_2_3", "respondent_id", "ResponseId"]
-          hashFunction: "sha256"
-      ol.role:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x5_1_1"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x5_1_1"
-      ol.role2:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x6_1_2"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x6_1_2"
-      ol.role3:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x6_1_3"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x6_1_3"
-      ol.role4:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x6_1_4"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x6_1_4"
-      ol.role5:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x6_1_5"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x6_1_5"
-      ol.role6:
-        type: "ol.role"
-        transforms:
-        - !<transforms.BooleanContainsTransform>
-          column: "Q15_x6_1_TEXT"
-          string: "999"
-          transformsIfTrue:
-          - !<transforms.ValueTransform>
-            value: null
-          transformsIfFalse:
-          - !<transforms.ColumnTransform>
-            column: "Q15_x6_1_TEXT"
-    name: "relatedto6"
+  # relatedto2:
+  #   fqn: "ol.relatedto"
+  #   entitySetName: "CAFE_MAQ_RelatedTo"
+  #   src: "respondent"
+  #   dst: "childsubject2"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["child_id", "Q2_2_3", "respondent_id", "ResponseId"]
+  #         hashFunction: "sha256"
+  #     ol.role:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x2_1_1"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x2_1_1"
+  #     ol.role2:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x2_1_2"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x2_1_2"
+  #     ol.role3:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x2_1_3"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x2_1_3"
+  #     ol.role4:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x2_1_4"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x2_1_4"
+  #     ol.role5:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x2_1_5"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x2_1_5"
+  #     ol.role6:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x2_1_TEXT"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x2_1_TEXT"
+  #   name: "relatedto2"
+  # 
+  # relatedto3:
+  #   fqn: "ol.relatedto"
+  #   entitySetName: "CAFE_MAQ_RelatedTo"
+  #   src: "respondent"
+  #   dst: "childsubject3"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["child_id", "Q2_3_3", "respondent_id", "ResponseId"]
+  #         hashFunction: "sha256"
+  #     ol.role:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x3_1_1"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x3_1_1"
+  #     ol.role2:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x3_1_2"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x3_1_2"
+  #     ol.role3:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x3_1_3"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x3_1_3"
+  #     ol.role4:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x3_1_4"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x3_1_4"
+  #     ol.role5:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x3_1_5"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x3_1_5"
+  #     ol.role6:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x3_1_TEXT"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x3_1_TEXT"
+  #   conditions:
+  #   - !<conditions.ConditionalOr> {}
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q15_x3_1_1"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q15_x3_1_2"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q15_x3_1_3"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q15_x3_1_4"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q15_x3_1_5"
+  #     reverse: true
+  #   - !<conditions.BooleanIsNullCondition>
+  #     column: "Q15_x3_1_TEXT"
+  #     reverse: true
+  #   name: "relatedto3"
+  # 
+  # relatedto4:
+  #   fqn: "ol.relatedto"
+  #   entitySetName: "CAFE_MAQ_RelatedTo"
+  #   src: "respondent"
+  #   dst: "childsubject4"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["child_id", "Q2_4_3", "respondent_id", "ResponseId"] #this depends on what you make child's PK.
+  #         hashFunction: "sha256"
+  #     ol.role:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x4_1_1"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x4_1_1"
+  #     ol.role2:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x4_1_2"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x4_1_2"
+  #     ol.role3:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x4_1_3"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x4_1_3"
+  #     ol.role4:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x4_1_4"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x4_1_4"
+  #     ol.role5:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x4_1_5"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x4_1_5"
+  #     ol.role6:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x4_1_TEXT"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x4_1_TEXT"
+  #   name: "relatedto4"
+  # 
+  # relatedto5:
+  #   fqn: "ol.relatedto"
+  #   entitySetName: "CAFE_MAQ_RelatedTo"
+  #   src: "respondent"
+  #   dst: "childsubject5"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["child_id", "Q2_5_3", "respondent_id", "ResponseId"] #this depends on what you make child's PK.
+  #         hashFunction: "sha256"
+  #     ol.role:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x5_1_1"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x5_1_1"
+  #     ol.role2:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x5_1_2"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x5_1_2"
+  #     ol.role3:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x5_1_3"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x5_1_3"
+  #     ol.role4:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x5_1_4"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x5_1_4"
+  #     ol.role5:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x5_1_5"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x5_1_5"
+  #     ol.role6:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x5_1_TEXT"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x5_1_TEXT"
+  #   name: "relatedto5"
+  # 
+  # relatedto6:
+  #   fqn: "ol.relatedto"
+  #   entitySetName: "CAFE_MAQ_RelatedTo"
+  #   src: "respondent"
+  #   dst: "childsubject6"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["child_id", "Q2_2_3", "respondent_id", "ResponseId"]
+  #         hashFunction: "sha256"
+  #     ol.role:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x5_1_1"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x5_1_1"
+  #     ol.role2:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x6_1_2"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x6_1_2"
+  #     ol.role3:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x6_1_3"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x6_1_3"
+  #     ol.role4:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x6_1_4"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x6_1_4"
+  #     ol.role5:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x6_1_5"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x6_1_5"
+  #     ol.role6:
+  #       type: "ol.role"
+  #       transforms:
+  #       - !<transforms.BooleanContainsTransform>
+  #         column: "Q15_x6_1_TEXT"
+  #         string: "999"
+  #         transformsIfTrue:
+  #         - !<transforms.ValueTransform>
+  #           value: null
+  #         transformsIfFalse:
+  #         - !<transforms.ColumnTransform>
+  #           column: "Q15_x6_1_TEXT"
+  #   name: "relatedto6"
 
   participatedin:
     fqn: "general.participatedin"
