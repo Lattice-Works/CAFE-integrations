@@ -76,7 +76,7 @@ entityDefinitions:
         column: "RecordedDate"
         transforms:
         - !<transforms.DateTimeTransform>
-          pattern: ['yyyy/MM/dd HH:mm:ss', 'MM/dd/yy HH:mm', 'MM/d/yy HH:mm', 'M/d/yy HH:mm', 'M/dd/yy HH:mm', 'M/d/yy H:mm', 'M/dd/yy H:mm', 'MM/dd/yy H:mm']
+          pattern: ['yyyy-MM-dd HH:mm:ss', 'MM/dd/yy HH:mm', 'MM/d/yy HH:mm', 'M/d/yy HH:mm', 'M/dd/yy HH:mm', 'M/d/yy H:mm', 'M/dd/yy H:mm', 'MM/dd/yy H:mm']
     name: "surveymetadata"
 
   employment:
