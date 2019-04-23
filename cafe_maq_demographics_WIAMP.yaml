@@ -928,75 +928,75 @@ associationDefinitions:
           hashFunction: "sha256"
     name: "partof_b"
 
-  partof_c:
-    fqn: "ol.partof"
-    entitySetName: "CAFE_MAQ_PartOf"
-    src: "childsubject2"
-    dst: "household"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q2_2_3", "ResponseId", "child_id", "Q23"]
-          hashFunction: "sha256"
-    name: "partof_c"
-
-  partof_d:
-    fqn: "ol.partof"
-    entitySetName: "CAFE_MAQ_PartOf"
-    src: "childsubject3"
-    dst: "household"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q2_3_3", "ResponseId", "child_id", "Q23"]
-          hashFunction: "sha256"
-    name: "partof_d"
-
-  partof_e:
-    fqn: "ol.partof"
-    entitySetName: "CAFE_MAQ_PartOf"
-    src: "childsubject4"
-    dst: "household"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q2_4_3", "ResponseId", "child_id", "Q23"]
-          hashFunction: "sha256"
-    name: "partof_e"
-
-  partof_f:
-    fqn: "ol.partof"
-    entitySetName: "CAFE_MAQ_PartOf"
-    src: "childsubject5"
-    dst: "household"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q2_5_3", "ResponseId", "child_id", "Q23"]
-          hashFunction: "sha256"
-    name: "partof_f"
-
-  partof_g:
-    fqn: "ol.partof"
-    entitySetName: "CAFE_MAQ_PartOf"
-    src: "childsubject6"
-    dst: "household"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q2_6_3", "ResponseId", "child_id", "Q23"]
-          hashFunction: "sha256"
-    name: "partof_g"
+  # partof_c:
+  #   fqn: "ol.partof"
+  #   entitySetName: "CAFE_MAQ_PartOf"
+  #   src: "childsubject2"
+  #   dst: "household"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q2_2_3", "ResponseId", "child_id", "Q23"]
+  #         hashFunction: "sha256"
+  #   name: "partof_c"
+  # 
+  # partof_d:
+  #   fqn: "ol.partof"
+  #   entitySetName: "CAFE_MAQ_PartOf"
+  #   src: "childsubject3"
+  #   dst: "household"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q2_3_3", "ResponseId", "child_id", "Q23"]
+  #         hashFunction: "sha256"
+  #   name: "partof_d"
+  # 
+  # partof_e:
+  #   fqn: "ol.partof"
+  #   entitySetName: "CAFE_MAQ_PartOf"
+  #   src: "childsubject4"
+  #   dst: "household"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q2_4_3", "ResponseId", "child_id", "Q23"]
+  #         hashFunction: "sha256"
+  #   name: "partof_e"
+  # 
+  # partof_f:
+  #   fqn: "ol.partof"
+  #   entitySetName: "CAFE_MAQ_PartOf"
+  #   src: "childsubject5"
+  #   dst: "household"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q2_5_3", "ResponseId", "child_id", "Q23"]
+  #         hashFunction: "sha256"
+  #   name: "partof_f"
+  # 
+  # partof_g:
+  #   fqn: "ol.partof"
+  #   entitySetName: "CAFE_MAQ_PartOf"
+  #   src: "childsubject6"
+  #   dst: "household"
+  #   propertyDefinitions:
+  #     ol.id:
+  #       type: "ol.id"
+  #       transforms:
+  #       - !<transforms.HashTransform>
+  #         columns: ["Q2_6_3", "ResponseId", "child_id", "Q23"]
+  #         hashFunction: "sha256"
+  #   name: "partof_g"
 
   relatedto1:
     fqn: "ol.relatedto"

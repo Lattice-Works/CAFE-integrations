@@ -131,10 +131,7 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "RecordedDate", "Duration (in seconds)", "UserLanguage"]
-          hashFunction: "sha256"
+        column: respondent_id
       ol.language:
         type: "ol.language"
         column: "UserLanguage"
@@ -156,10 +153,6 @@ entityDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
         column: child_id
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["Q2_1_1", "ResponseId", "Q2_1_1_TEXT", "Q2_1_2", "Q2_1_3"]
-          separator: "_"
       nc.PersonGivenName:
         type: "nc.PersonGivenName"
         column: "Q2_1_1_TEXT"
