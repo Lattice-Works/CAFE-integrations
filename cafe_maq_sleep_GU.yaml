@@ -242,20 +242,31 @@ entityDefinitions:
       ol.arrangement1:
         type: "ol.arrangement"
         column: "Q422_1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Infant crib/cot in a separate room"]
+          goal: ["In separate room"]
       ol.arrangement2:
         type: "ol.arrangement"
         column: "Q422_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Infant crib/cot in parent's room"]
+          goal: ["In parent's room"]
       ol.arrangement3:
         type: "ol.arrangement"
         column: "Q422_3"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Infant crib/cot in room with sibling"]
+          goal: ["In room with sibling"]
       ol.arrangement4:
         type: "ol.arrangement"
         column: "Q422_4"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "yesterday and today"
+        - !<transforms.ReplaceTransform>
+          target: ["In parent's bed"]
+          goal: ["In parent's bed"]
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
@@ -568,6 +579,32 @@ entityDefinitions:
       reverse: true
     name: "fallasleep"
 
+  sleepinghabits:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_SleepConcerns"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "Q429"
+      ol.concerns:
+        type: "ol.concerns"
+        column: "Q429"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult's concern for child"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "concern for child's sleeping habits"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q429"
+      reverse: true
+    name: "sleepinghabits"
+
 associationDefinitions:
   involvedin1:
     fqn: "ol.involvedin"
@@ -709,6 +746,20 @@ associationDefinitions:
           separator: "_"
     name: "involvedin10"
 
+  involvedin11:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleepinghabits"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q429"]
+          separator: "_"
+    name: "involvedin11"
+
   reported1:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
@@ -848,3 +899,17 @@ associationDefinitions:
           columns: ["respondent_id", "Q315_1", "Q315_2"]
           separator: "_"
     name: "reported10"
+
+  reported11:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleepinghabits"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q429"]
+          separator: "_"
+    name: "reported11"
