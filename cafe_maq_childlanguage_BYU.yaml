@@ -2873,7 +2873,7 @@ entityDefinitions:
 
 # *****QUESTIONS FOR 18-30 months*********
 
-  baabaa:
+  baabaa2:
     fqn: "ol.vocabulary"
     entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
     propertyDefinitions:
@@ -2903,9 +2903,9 @@ entityDefinitions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q94_1"
       reverse: true
-    name: "baabaa"
+    name: "baabaa2"
 
-  meow:
+  meow2:
     fqn: "ol.vocabulary"
     entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
     propertyDefinitions:
