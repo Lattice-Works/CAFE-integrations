@@ -20,10 +20,10 @@ entityDefinitions:
         column: child_id
     name: "subject"
 
-# *****QUESTIONS FOR 8-18 months*********
+# *****QUESTIONS FOR 8-17 months*********
   choochoo:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -55,7 +55,7 @@ entityDefinitions:
 
   meow:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -87,7 +87,7 @@ entityDefinitions:
 
   ouch:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -119,7 +119,7 @@ entityDefinitions:
 
   uhoh:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -151,7 +151,7 @@ entityDefinitions:
 
   bird:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -183,7 +183,7 @@ entityDefinitions:
 
   dog:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -215,7 +215,7 @@ entityDefinitions:
 
   duck:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -247,7 +247,7 @@ entityDefinitions:
 
   kitty:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -279,7 +279,7 @@ entityDefinitions:
 
   lion:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -311,7 +311,7 @@ entityDefinitions:
 
   mouse:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -343,7 +343,7 @@ entityDefinitions:
 
   car:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -375,7 +375,7 @@ entityDefinitions:
 
   stroller:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -407,7 +407,7 @@ entityDefinitions:
 
   ball:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -439,7 +439,7 @@ entityDefinitions:
 
   book:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -471,7 +471,7 @@ entityDefinitions:
 
   doll:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -503,7 +503,7 @@ entityDefinitions:
 
   bread:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -535,7 +535,7 @@ entityDefinitions:
 
   candy:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -567,7 +567,7 @@ entityDefinitions:
 
   cereal:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -599,7 +599,7 @@ entityDefinitions:
 
   cookie:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -631,7 +631,7 @@ entityDefinitions:
 
   juice:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -663,7 +663,7 @@ entityDefinitions:
 
   toast:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -695,7 +695,7 @@ entityDefinitions:
 
   hat:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -727,7 +727,7 @@ entityDefinitions:
 
   pants:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -759,7 +759,7 @@ entityDefinitions:
 
   shoe:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -791,7 +791,7 @@ entityDefinitions:
 
   sock:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -823,7 +823,7 @@ entityDefinitions:
 
   eye:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -855,7 +855,7 @@ entityDefinitions:
 
   head:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -887,7 +887,7 @@ entityDefinitions:
 
   leg:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -919,7 +919,7 @@ entityDefinitions:
 
   nose:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -951,7 +951,7 @@ entityDefinitions:
 
   tooth:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -983,7 +983,7 @@ entityDefinitions:
 
   chair:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1015,7 +1015,7 @@ entityDefinitions:
 
   couch:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1047,7 +1047,7 @@ entityDefinitions:
 
   kitchen:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1079,7 +1079,7 @@ entityDefinitions:
 
   table:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1111,7 +1111,7 @@ entityDefinitions:
 
   television:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1143,7 +1143,7 @@ entityDefinitions:
 
   blanket:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1175,7 +1175,7 @@ entityDefinitions:
 
   bottle:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1207,7 +1207,7 @@ entityDefinitions:
 
   cup:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1239,7 +1239,7 @@ entityDefinitions:
 
   dish:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1271,7 +1271,7 @@ entityDefinitions:
 
   lamp:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1303,7 +1303,7 @@ entityDefinitions:
 
   radio:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1335,7 +1335,7 @@ entityDefinitions:
 
   spoon:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1367,7 +1367,7 @@ entityDefinitions:
 
   flower:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1399,7 +1399,7 @@ entityDefinitions:
 
   home:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1431,7 +1431,7 @@ entityDefinitions:
 
   moon:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1465,7 +1465,7 @@ entityDefinitions:
 
   outside:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1497,7 +1497,7 @@ entityDefinitions:
 
   plant:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1529,7 +1529,7 @@ entityDefinitions:
 
   rain:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1561,7 +1561,7 @@ entityDefinitions:
 
   rock:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1593,7 +1593,7 @@ entityDefinitions:
 
   water:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1625,7 +1625,7 @@ entityDefinitions:
 
   babysitter:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1657,7 +1657,7 @@ entityDefinitions:
 
   girl:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1689,7 +1689,7 @@ entityDefinitions:
 
   grandma:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1721,7 +1721,7 @@ entityDefinitions:
 
   mommy:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1753,7 +1753,7 @@ entityDefinitions:
 
   bath:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1785,7 +1785,7 @@ entityDefinitions:
 
   dont:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1817,7 +1817,7 @@ entityDefinitions:
 
   hi:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1849,7 +1849,7 @@ entityDefinitions:
 
   nightnight:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1881,7 +1881,7 @@ entityDefinitions:
 
   pattycake:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1913,7 +1913,7 @@ entityDefinitions:
 
   please:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1945,7 +1945,7 @@ entityDefinitions:
 
   wait:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1977,7 +1977,7 @@ entityDefinitions:
 
   break:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2009,7 +2009,7 @@ entityDefinitions:
 
   feed:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2041,7 +2041,7 @@ entityDefinitions:
 
   finish:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2073,7 +2073,7 @@ entityDefinitions:
 
   help:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2105,7 +2105,7 @@ entityDefinitions:
 
   jump:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2137,7 +2137,7 @@ entityDefinitions:
 
   kick:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2169,7 +2169,7 @@ entityDefinitions:
 
   kiss:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2201,7 +2201,7 @@ entityDefinitions:
 
   push:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2233,7 +2233,7 @@ entityDefinitions:
 
   sing:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2265,7 +2265,7 @@ entityDefinitions:
 
   smile:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2297,7 +2297,7 @@ entityDefinitions:
 
   night:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2329,7 +2329,7 @@ entityDefinitions:
 
   today:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2361,7 +2361,7 @@ entityDefinitions:
 
   allgone:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2393,7 +2393,7 @@ entityDefinitions:
 
   big:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2425,7 +2425,7 @@ entityDefinitions:
 
   broken:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2457,7 +2457,7 @@ entityDefinitions:
 
   dark:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2489,7 +2489,7 @@ entityDefinitions:
 
   fast:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2521,7 +2521,7 @@ entityDefinitions:
 
   hurt:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2553,7 +2553,7 @@ entityDefinitions:
 
   pretty:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2585,7 +2585,7 @@ entityDefinitions:
 
   soft:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2617,7 +2617,7 @@ entityDefinitions:
 
   i:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2649,7 +2649,7 @@ entityDefinitions:
 
   me:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2681,7 +2681,7 @@ entityDefinitions:
 
   how:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2713,7 +2713,7 @@ entityDefinitions:
 
   who:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2745,7 +2745,7 @@ entityDefinitions:
 
   away:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2777,7 +2777,7 @@ entityDefinitions:
 
   out:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2809,7 +2809,7 @@ entityDefinitions:
 
   other:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2841,7 +2841,7 @@ entityDefinitions:
 
   some:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WG"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2873,9 +2873,9 @@ entityDefinitions:
 
 # *****QUESTIONS FOR 18-30 months*********
 
-  baabaa2:
+  baabaa:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2903,11 +2903,11 @@ entityDefinitions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q94_1"
       reverse: true
-    name: "baabaa2"
+    name: "baabaa"
 
   meow2:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2935,11 +2935,11 @@ entityDefinitions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q94_2"
       reverse: true
-    name: "meow"
+    name: "meow2"
 
-  ouch:
+  ouch2:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2967,11 +2967,11 @@ entityDefinitions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q94_3"
       reverse: true
-    name: "ouch"
+    name: "ouch2"
 
-  uhoh:
+  uhoh2:
     fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_ChildLanguageAssessment"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2979,7 +2979,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q94_3"]
+            columns: ["Q94_4"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "uhoh"
@@ -2990,16 +2990,3089 @@ entityDefinitions:
           value: "uhoh"
       ol.name:
         type: "ol.name"
-        column: "Q94_3"
+        column: "Q94_4"
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2"]
           goal: ["Yes (says the word)", "No (does not say the word)"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q94_3"
+      column: "Q94_4"
       reverse: true
-    name: "uhoh"
+    name: "uhoh2"
+
+  woofwoof:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_5"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "woofwoof"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "woof woof"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_5"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_5"
+      reverse: true
+    name: "woofwoof"
+
+  bear:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_6"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "bear"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "bear"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_6"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_6"
+      reverse: true
+    name: "bear"
+
+  bird2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_7"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "bird"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "bird"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_7"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_7"
+      reverse: true
+    name: "bird2"
+
+  cat2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_8"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "cat"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "cat"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_8"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_8"
+      reverse: true
+    name: "cat2"
+
+  dog2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_9"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "dog"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dog"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_9"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_9"
+      reverse: true
+    name: "dog2"
+
+  duck2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_10"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "duck"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "duck"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_10"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_10"
+      reverse: true
+    name: "duck2"
+
+  horse:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_11"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "horse"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "horse"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_11"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_11"
+      reverse: true
+    name: "horse"
+
+  airplane:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_12"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "airplane"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "airplane"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_12"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_12"
+      reverse: true
+    name: "airplane"
+
+  boat:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_13"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "boat"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "boat"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_13"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_13"
+      reverse: true
+    name: "boat"
+
+  car2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_14"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "car"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "car"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_14"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_14"
+      reverse: true
+    name: "car2"
+
+  ball2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_15"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "car"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "car"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_15"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_15"
+      reverse: true
+    name: "ball2"
+
+  book2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_16"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "book"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "book"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_16"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_16"
+      reverse: true
+    name: "book2"
+
+  game:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_17"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "game"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "game"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_17"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_17"
+      reverse: true
+    name: "game"
+
+  applesauce:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_18"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "applesauce"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "applesauce"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_18"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_18"
+      reverse: true
+    name: "applesauce"
+
+  candy2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_19"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "candy"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "candy"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_19"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_19"
+      reverse: true
+    name: "candy2"
+
+  coke:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_20"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "coke"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "coke"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_20"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_20"
+      reverse: true
+    name: "coke"
+
+  cracker:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_21"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "cracker"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "cracker"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_21"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_21"
+      reverse: true
+    name: "cracker"
+
+  juice2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_22"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "juice"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "juice"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_22"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_22"
+      reverse: true
+    name: "juice2"
+
+  meat:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_23"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "meat"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "meat"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_23"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_23"
+      reverse: true
+    name: "meat"
+
+  milk:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_24"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "milk"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "milk"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_24"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_24"
+      reverse: true
+    name: "milk"
+
+  peas:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_25"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "peas"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "peas"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_25"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_25"
+      reverse: true
+    name: "peas"
+
+  hat2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_26"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "hat"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hat"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_26"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_26"
+      reverse: true
+    name: "hat2"
+
+  necklace:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_27"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "necklace"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "necklace"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_27"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_27"
+      reverse: true
+    name: "necklace"
+
+  shoe2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_28"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "shoe"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "shoe"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_28"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_28"
+      reverse: true
+    name: "shoe2"
+
+  sock2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_29"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "sock"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sock"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_29"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_29"
+      reverse: true
+    name: "sock2"
+
+  chin:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_30"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "chin"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "chin"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_30"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_30"
+      reverse: true
+    name: "chin"
+
+  ear:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_31"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "ear"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "ear"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_31"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_31"
+      reverse: true
+    name: "ear"
+
+  hand:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_32"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "hand"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hand"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_32"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_32"
+      reverse: true
+    name: "hand"
+
+  leg2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "leg"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "leg"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_33"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_33"
+      reverse: true
+    name: "leg2"
+
+  broom:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_34"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "broom"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "broom"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_34"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_34"
+      reverse: true
+    name: "broom"
+
+  comb:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_35"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "comb"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "comb"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_35"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_35"
+      reverse: true
+    name: "comb"
+
+  mop:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_36"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mop"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mop"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_36"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_36"
+      reverse: true
+    name: "mop"
+
+  plate:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_37"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "plate"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "plate"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_37"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_37"
+      reverse: true
+    name: "plate"
+
+  trash:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_38"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "trash"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "trash"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_38"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_38"
+      reverse: true
+    name: "trash"
+
+  tray:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_39"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "tray"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "tray"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_39"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_39"
+      reverse: true
+    name: "tray"
+
+  towel:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_40"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "towel"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "towel"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_40"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_40"
+      reverse: true
+    name: "towel"
+
+  bed:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_41"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "bed"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "bed"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_41"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_41"
+      reverse: true
+    name: "bed"
+
+  bedroom:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_42"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "bedroom"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "bedroom"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_42"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_42"
+      reverse: true
+    name: "bedroom"
+
+  bench:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_43"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "bench"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "bench"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_43"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_43"
+      reverse: true
+    name: "bench"
+
+  oven:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_44"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "oven"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "oven"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_44"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_44"
+      reverse: true
+    name: "oven"
+
+  stairs:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_45"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "stairs"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "stairs"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_45"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_45"
+      reverse: true
+    name: "stairs"
+
+  flag:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_46"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "flag"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "flag"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_46"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_46"
+      reverse: true
+    name: "flag"
+
+  rain2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_47"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "rain"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "rain"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_47"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_47"
+      reverse: true
+    name: "rain2"
+
+  star:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_48"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "star"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "star"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_48"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_48"
+      reverse: true
+    name: "star"
+
+  swing:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_49"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "swing"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "swing"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_49"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_49"
+      reverse: true
+    name: "swing"
+
+  school:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q94_50"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "school"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "school"
+      ol.name:
+        type: "ol.name"
+        column: "Q94_50"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q94_50"
+      reverse: true
+    name: "school"
+
+# *****QUESTIONS FOR 18-30 months*********
+  sky:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_1"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "sky"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "sky"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_1"
+      reverse: true
+    name: "sky"
+
+  party:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_2"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "party"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "party"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_2"
+      reverse: true
+    name: "party"
+
+  friend:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_3"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "friend"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "friend"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_3"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_3"
+      reverse: true
+    name: "friend"
+
+  mommy:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_4"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mommy"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mommy"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_4"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_4"
+      reverse: true
+    name: "mommy"
+
+  person:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_5"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "person"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "person"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_5"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_5"
+      reverse: true
+    name: "person"
+
+  bye:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_6"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "bye"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "bye"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_6"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_6"
+      reverse: true
+    name: "bye"
+
+  hi2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_7"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "hi"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hi"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_7"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_7"
+      reverse: true
+    name: "hi2"
+
+  \no:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_8"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "hi"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hi"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_8"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_8"
+      reverse: true
+    name: "no"
+
+  shopping:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_9"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "shopping"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "shopping"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_9"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_9"
+      reverse: true
+    name: "shopping"
+
+  thankyou:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_10"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "thankyou"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "thank you"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_10"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_10"
+      reverse: true
+    name: "thankyou"
+
+  carry:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_11"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "carry"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "carry"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_11"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_11"
+      reverse: true
+    name: "carry"
+
+  chase:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_12"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "chase"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "chase"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_12"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_12"
+      reverse: true
+    name: "chase"
+
+  dump:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_13"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "dump"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "dump"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_13"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_13"
+      reverse: true
+    name: "dump"
+
+  finish2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_14"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "finish"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "finish"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_14"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_14"
+      reverse: true
+    name: "finish2"
+
+  fit:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_15"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "fit"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "fit"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_15"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_15"
+      reverse: true
+    name: "fit"
+
+  hug:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_16"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "hug"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hug"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_16"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_16"
+      reverse: true
+    name: "hug"
+
+  listen:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_17"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "listen"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "listen"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_17"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_17"
+      reverse: true
+    name: "listen"
+
+  like:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_18"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "like"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "like"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_18"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_18"
+      reverse: true
+    name: "like"
+
+  pretend:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_19"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "pretend"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "pretend"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_19"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_19"
+      reverse: true
+    name: "pretend"
+
+  rip:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_20"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "rip"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "rip"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_20"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_20"
+      reverse: true
+    name: "rip"
+
+  shake:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_21"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "shake"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "shake"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_21"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_21"
+      reverse: true
+    name: "shake"
+
+  taste:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_22"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "taste"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "taste"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_22"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_22"
+      reverse: true
+    name: "taste"
+
+  gentle:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_23"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "gentle"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "gentle"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_23"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_23"
+      reverse: true
+    name: "gentle"
+
+  think:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_24"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "think"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "think"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_24"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_24"
+      reverse: true
+    name: "think"
+
+  wish:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_25"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "wish"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "wish"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_25"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_25"
+      reverse: true
+    name: "wish"
+
+  allgone2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_26"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "allgone"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "all gone"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_26"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_26"
+      reverse: true
+    name: "allgone2"
+
+  cold:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_27"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "cold"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "cold"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_27"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_27"
+      reverse: true
+    name: "cold"
+
+  fast2:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_28"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "fast"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "fast"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_28"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_28"
+      reverse: true
+    name: "fast2"
+
+  happy:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_29"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "happy"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "happy"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_29"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_29"
+      reverse: true
+    name: "happy"
+
+  hot:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_30"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "hot"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "hot"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_30"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_30"
+      reverse: true
+    name: "hot"
+
+  last:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_31"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "last"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "last"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_31"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_31"
+      reverse: true
+    name: "last"
+
+  tiny:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_32"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "tiny"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "tiny"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_32"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_32"
+      reverse: true
+    name: "tiny"
+
+  wet:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_33"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "wet"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "wet"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_33"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_33"
+      reverse: true
+    name: "wet"
+
+  after:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_34"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "after"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "after"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_34"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_34"
+      reverse: true
+    name: "after"
+
+  day:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_35"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "day"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "day"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_35"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_35"
+      reverse: true
+    name: "day"
+
+  tonight:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_36"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "tonight"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "tonight"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_36"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_36"
+      reverse: true
+    name: "tonight"
+
+  our:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_37"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "our"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "our"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_37"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_37"
+      reverse: true
+    name: "our"
+
+  them:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_38"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "them"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "them"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_38"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_38"
+      reverse: true
+    name: "them"
+
+  this:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_39"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "this"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "this"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_39"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_39"
+      reverse: true
+    name: "this"
+
+  us:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_40"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "us"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "us"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_40"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_40"
+      reverse: true
+    name: "us"
+
+  where:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_41"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "where"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "where"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_41"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_41"
+      reverse: true
+    name: "where"
+
+  beside:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_42"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "beside"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "beside"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_42"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_42"
+      reverse: true
+    name: "beside"
+
+  down:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_43"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "down"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "down"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_43"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_43"
+      reverse: true
+    name: "down"
+
+  under:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_44"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "under"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "under"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_44"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_44"
+      reverse: true
+    name: "under"
+
+  all:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_45"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "all"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "all"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_45"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_45"
+      reverse: true
+    name: "all"
+
+  much:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_46"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "much"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "much"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_46"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_46"
+      reverse: true
+    name: "much"
+
+  could:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_47"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "could"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "could"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_47"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_47"
+      reverse: true
+    name: "could"
+
+  need:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_48"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "need"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "need"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_48"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_48"
+      reverse: true
+    name: "need"
+
+  would:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_49"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "would"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "would"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_49"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_49"
+      reverse: true
+    name: "would"
+
+  if:
+    fqn: "ol.vocabulary"
+    entitySetName: "CAFE_MAQ_ChildLanguageAssessment_WS"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q299_50"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "if"
+      ol.vocabularyword:
+        type: "ol.vocabularyword"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "if"
+      ol.name:
+        type: "ol.name"
+        column: "Q299_50"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes (says the word)", "No (does not say the word)"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q299_50"
+      reverse: true
+    name: "if"
 
 associationDefinitions:
   screenedwith1:
@@ -4247,3 +7320,1403 @@ associationDefinitions:
           columns: ["child_id", "Q298_44"]
           separator: "_"
     name: "screenedwith89"
+
+  screenedwith90:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "baabaa"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_1"]
+          separator: "_"
+    name: "screenedwith90"
+
+  screenedwith91:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "meow2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_2"]
+          separator: "_"
+    name: "screenedwith91"
+
+  screenedwith92:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "ouch2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_3"]
+          separator: "_"
+    name: "screenedwith92"
+
+  screenedwith93:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "uhoh2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_4"]
+          separator: "_"
+    name: "screenedwith93"
+
+  screenedwith94:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "woofwoof"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_5"]
+          separator: "_"
+    name: "screenedwith94"
+
+  screenedwith95:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "bear"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_6"]
+          separator: "_"
+    name: "screenedwith95"
+
+  screenedwith96:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "bird2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_7"]
+          separator: "_"
+    name: "screenedwith96"
+
+  screenedwith97:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "cat2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_8"]
+          separator: "_"
+    name: "screenedwith97"
+
+  screenedwith98:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "dog2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_9"]
+          separator: "_"
+    name: "screenedwith98"
+
+  screenedwith99:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "duck2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_10"]
+          separator: "_"
+    name: "screenedwith99"
+
+  screenedwith100:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "horse"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_11"]
+          separator: "_"
+    name: "screenedwith100"
+
+  screenedwith101:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "airplane"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_12"]
+          separator: "_"
+    name: "screenedwith101"
+
+  screenedwith102:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "boat"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_13"]
+          separator: "_"
+    name: "screenedwith102"
+
+  screenedwith103:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "car2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_14"]
+          separator: "_"
+    name: "screenedwith103"
+
+  screenedwith104:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "ball2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_15"]
+          separator: "_"
+    name: "screenedwith104"
+
+  screenedwith105:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "book2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_16"]
+          separator: "_"
+    name: "screenedwith105"
+
+  screenedwith106:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "game"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_17"]
+          separator: "_"
+    name: "screenedwith106"
+
+  screenedwith107:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "applesauce"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_18"]
+          separator: "_"
+    name: "screenedwith107"
+
+  screenedwith108:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "candy2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_19"]
+          separator: "_"
+    name: "screenedwith108"
+
+  screenedwith109:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "coke"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_20"]
+          separator: "_"
+    name: "screenedwith109"
+
+  screenedwith110:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "cracker"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_21"]
+          separator: "_"
+    name: "screenedwith110"
+
+  screenedwith111:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "juice2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_22"]
+          separator: "_"
+    name: "screenedwith111"
+
+  screenedwith112:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "meat"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_23"]
+          separator: "_"
+    name: "screenedwith112"
+
+  screenedwith113:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "milk"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_24"]
+          separator: "_"
+    name: "screenedwith113"
+
+  screenedwith114:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "peas"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_25"]
+          separator: "_"
+    name: "screenedwith114"
+
+  screenedwith115:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "hat2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_26"]
+          separator: "_"
+    name: "screenedwith115"
+
+  screenedwith116:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "necklace"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_27"]
+          separator: "_"
+    name: "screenedwith116"
+
+  screenedwith117:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "shoe2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_28"]
+          separator: "_"
+    name: "screenedwith117"
+
+  screenedwith118:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "sock2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_29"]
+          separator: "_"
+    name: "screenedwith118"
+
+  screenedwith119:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "chin"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_30"]
+          separator: "_"
+    name: "screenedwith119"
+
+  screenedwith120:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "ear"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_31"]
+          separator: "_"
+    name: "screenedwith120"
+
+  screenedwith121:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "hand"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_32"]
+          separator: "_"
+    name: "screenedwith121"
+
+  screenedwith122:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "leg2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_33"]
+          separator: "_"
+    name: "screenedwith122"
+
+  screenedwith123:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "broom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_34"]
+          separator: "_"
+    name: "screenedwith123"
+
+  screenedwith124:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "comb"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_35"]
+          separator: "_"
+    name: "screenedwith124"
+
+  screenedwith125:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "mop"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_36"]
+          separator: "_"
+    name: "screenedwith125"
+
+  screenedwith126:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "plate"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_37"]
+          separator: "_"
+    name: "screenedwith126"
+
+  screenedwith127:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "trash"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_38"]
+          separator: "_"
+    name: "screenedwith127"
+
+  screenedwith128:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "tray"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_39"]
+          separator: "_"
+    name: "screenedwith128"
+
+  screenedwith129:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "towel"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_40"]
+          separator: "_"
+    name: "screenedwith129"
+
+  screenedwith130:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "bed"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_41"]
+          separator: "_"
+    name: "screenedwith130"
+
+  screenedwith131:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "bedroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_42"]
+          separator: "_"
+    name: "screenedwith131"
+
+  screenedwith132:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "bench"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_43"]
+          separator: "_"
+    name: "screenedwith132"
+
+  screenedwith133:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "oven"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_44"]
+          separator: "_"
+    name: "screenedwith133"
+
+  screenedwith134:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "stairs"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_45"]
+          separator: "_"
+    name: "screenedwith134"
+
+  screenedwith135:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "flag"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_46"]
+          separator: "_"
+    name: "screenedwith135"
+
+  screenedwith136:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "rain2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_47"]
+          separator: "_"
+    name: "screenedwith136"
+
+  screenedwith137:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "star"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_48"]
+          separator: "_"
+    name: "screenedwith137"
+
+  screenedwith138:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "swing"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_49"]
+          separator: "_"
+    name: "screenedwith138"
+
+  screenedwith139:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "school"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q94_50"]
+          separator: "_"
+    name: "screenedwith139"
+
+  screenedwith140:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "sky"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_1"]
+          separator: "_"
+    name: "screenedwith140"
+
+  screenedwith141:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "party"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_2"]
+          separator: "_"
+    name: "screenedwith141"
+
+  screenedwith142:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "friend"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_3"]
+          separator: "_"
+    name: "screenedwith142"
+
+  screenedwith143:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "mommy"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_4"]
+          separator: "_"
+    name: "screenedwith143"
+
+  screenedwith144:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "person"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_5"]
+          separator: "_"
+    name: "screenedwith144"
+
+  screenedwith145:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "bye"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_6"]
+          separator: "_"
+    name: "screenedwith145"
+
+  screenedwith146:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "hi2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_7"]
+          separator: "_"
+    name: "screenedwith146"
+
+  screenedwith147:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "no"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_8"]
+          separator: "_"
+    name: "screenedwith147"
+
+  screenedwith148:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "shopping"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_9"]
+          separator: "_"
+    name: "screenedwith148"
+
+  screenedwith149:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "thankyou"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_10"]
+          separator: "_"
+    name: "screenedwith149"
+
+  screenedwith150:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "carry"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_11"]
+          separator: "_"
+    name: "screenedwith150"
+
+  screenedwith151:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "chase"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_12"]
+          separator: "_"
+    name: "screenedwith151"
+
+  screenedwith152:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "dump"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_13"]
+          separator: "_"
+    name: "screenedwith152"
+
+  screenedwith153:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "finish2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_14"]
+          separator: "_"
+    name: "screenedwith153"
+
+  screenedwith154:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "fit"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_15"]
+          separator: "_"
+    name: "screenedwith154"
+
+  screenedwith155:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "hug"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_16"]
+          separator: "_"
+    name: "screenedwith155"
+
+  screenedwith156:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "listen"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_17"]
+          separator: "_"
+    name: "screenedwith156"
+
+  screenedwith157:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "like"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_18"]
+          separator: "_"
+    name: "screenedwith157"
+
+  screenedwith158:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "pretend"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_19"]
+          separator: "_"
+    name: "screenedwith158"
+
+  screenedwith159:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "rip"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_20"]
+          separator: "_"
+    name: "screenedwith159"
+
+  screenedwith160:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "shake"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_21"]
+          separator: "_"
+    name: "screenedwith160"
+
+  screenedwith161:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "taste"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_22"]
+          separator: "_"
+    name: "screenedwith161"
+
+  screenedwith162:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "gentle"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_23"]
+          separator: "_"
+    name: "screenedwith162"
+
+  screenedwith163:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "think"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_24"]
+          separator: "_"
+    name: "screenedwith163"
+
+  screenedwith164:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "wish"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_25"]
+          separator: "_"
+    name: "screenedwith164"
+
+  screenedwith165:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "allgone2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_26"]
+          separator: "_"
+    name: "screenedwith165"
+
+  screenedwith166:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "cold"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_27"]
+          separator: "_"
+    name: "screenedwith166"
+
+  screenedwith167:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "fast2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_28"]
+          separator: "_"
+    name: "screenedwith167"
+
+  screenedwith168:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "happy"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_29"]
+          separator: "_"
+    name: "screenedwith168"
+
+  screenedwith169:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "hot"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_30"]
+          separator: "_"
+    name: "screenedwith169"
+
+  screenedwith170:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "last"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_31"]
+          separator: "_"
+    name: "screenedwith170"
+
+  screenedwith171:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "tiny"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_32"]
+          separator: "_"
+    name: "screenedwith171"
+
+  screenedwith172:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "wet"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_33"]
+          separator: "_"
+    name: "screenedwith172"
+
+  screenedwith173:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "after"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_34"]
+          separator: "_"
+    name: "screenedwith173"
+
+  screenedwith174:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "day"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_35"]
+          separator: "_"
+    name: "screenedwith174"
+
+  screenedwith175:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "tonight"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_36"]
+          separator: "_"
+    name: "screenedwith175"
+
+  screenedwith176:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "our"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_37"]
+          separator: "_"
+    name: "screenedwith176"
+
+  screenedwith177:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "them"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_38"]
+          separator: "_"
+    name: "screenedwith177"
+
+  screenedwith178:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "this"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_39"]
+          separator: "_"
+    name: "screenedwith178"
+
+  screenedwith179:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "us"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_40"]
+          separator: "_"
+    name: "screenedwith179"
+
+  screenedwith180:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "where"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_41"]
+          separator: "_"
+    name: "screenedwith180"
+
+  screenedwith181:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "beside"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_42"]
+          separator: "_"
+    name: "screenedwith181"
+
+  screenedwith182:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "down"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_43"]
+          separator: "_"
+    name: "screenedwith182"
+
+  screenedwith183:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "under"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_44"]
+          separator: "_"
+    name: "screenedwith183"
+
+  screenedwith184:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "all"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_45"]
+          separator: "_"
+    name: "screenedwith184"
+
+  screenedwith185:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "much"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_46"]
+          separator: "_"
+    name: "screenedwith185"
+
+  screenedwith186:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "could"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_47"]
+          separator: "_"
+    name: "screenedwith186"
+
+  screenedwith187:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "need"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_48"]
+          separator: "_"
+    name: "screenedwith187"
+
+  screenedwith188:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "would"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_49"]
+          separator: "_"
+    name: "screenedwith188"
+
+  screenedwith189:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "subject"
+    dst: "if"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q299_50"]
+          separator: "_"
+    name: "screenedwith189"
