@@ -173,16 +173,9 @@ entityDefinitions:
         column: "Q78"
         transforms:
         - !<transforms.ParseIntTransform> {}
-        # - !<transforms.BooleanContainsTransform>
-        #   column: "Q78"
-        #   string: "11"
-        #   transformsIfTrue:
-        #   - !<transforms.ValueTransform>
-        #     value: null
-        #   transformsIfFalse:
-        #   - !<transforms.ColumnTransform>
-        #     column: "Q78"
-        #   - !<transforms.ParseIntTransform> {}
+        - !<transforms.ReplaceTransform>
+          target: ["11"]
+          goal: [0]
       ol.description:
         type: "ol.description"
         transforms:
@@ -199,13 +192,8 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "last night"
     conditions:
-    - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q78"
-      reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q78"
-      pattern: "(?i)(\\b11\\b)"
       reverse: true
     name: "sleepatnight"
 
