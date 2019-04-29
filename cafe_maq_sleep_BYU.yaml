@@ -1,0 +1,984 @@
+
+entityDefinitions:
+  respondent:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id"]
+          hashFunction: "sha256"
+    name: "respondent"
+
+  subject:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        column: "child_id"
+    name: "subject"
+
+  sleeptime:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_SleepTimes"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q76#1_1", "Q76#2_1", "Q76#3_1"]
+          separator: "_"
+      ol.datetimestart:
+        type: "ol.datetimestart"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          separator: " "
+          transforms:
+          - !<transforms.SplitTransform>
+            column: "RecordedDate"
+            separator: " "
+            index: 0
+          - !<transforms.BooleanRegexTransform>
+            column: "Q76#2_1"
+            pattern: "(?i)(\\b1\\b)"
+            transformsIfTrue:
+            - !<transforms.ConcatCombineTransform>
+              separator: ":"
+              transforms:
+              - !<transforms.ColumnTransform>
+                column: "Q76#1_1"
+              - !<transforms.ValueTransform>
+                value: "00"
+            transformsIfFalse:
+            - !<transforms.ConcatTransform>
+              columns: ["Q76#1_1", "Q76#2_1"]
+              separator: ":"
+          - !<transforms.ReplaceTransform>
+            column: "Q76#3_1"
+            target: ["1", "2"]
+            goal: ["AM", "PM"]
+        - !<transforms.DateTimeTransform>
+          pattern: ["MM/d/yy hh:mm a", "MM/d/yy h:mm a", "MM/d/yy hh:m a", "MM/d/yy h:m a", "M/d/yy hh:mm a", "M/d/yy h:mm a", "M/d/yy hh:m a", "M/d/yy h:m a", "MM/dd/yy hh:mm a", "MM/dd/yy h:mm a", "MM/dd/yy hh:m a", "MM/dd/yy h:m a", "M/dd/yy h a", "M/dd/yy h:m a", "h:m a", "hh:m a", "h:mm a", "hh:mm a", "M/dd/yy h:mm a", "M/dd/yy hh:m a", "M/dd/yy hh:mm a", "M/d/yy h a", "M/d/yy h" ]
+          timezone: "America/Denver"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "yesterday"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "when child fell asleep at night yesterday"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q76#1_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q76#2_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q76#3_1"
+      reverse: true
+    name: "sleeptime"
+
+  awaketime:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_AwakeTimes"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q77#1_1", "Q77#2_1", "Q77#3_1"]
+          separator: "_"
+      ol.datetimestart:
+        type: "ol.datetimestart"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          separator: " "
+          transforms:
+          - !<transforms.SplitTransform>
+            column: "RecordedDate"
+            separator: " "
+            index: 0
+          - !<transforms.BooleanRegexTransform>
+            column: "Q77#2_1"
+            pattern: "(?i)(\\b1\\b)"
+            transformsIfTrue:
+            - !<transforms.ConcatCombineTransform>
+              separator: ":"
+              transforms:
+              - !<transforms.ColumnTransform>
+                column: "Q77#1_1"
+              - !<transforms.ValueTransform>
+                value: "00"
+            transformsIfFalse:
+            - !<transforms.ConcatTransform>
+              columns: ["Q77#1_1", "Q77#2_1"]
+              separator: ":"
+          - !<transforms.ReplaceTransform>
+            column: "Q76#3_1"
+            target: ["1", "2"]
+            goal: ["AM", "PM"]
+        - !<transforms.DateTimeTransform>
+          pattern: ["MM/d/yy hh:mm a", "MM/d/yy h:mm a", "MM/d/yy hh:m a", "MM/d/yy h:m a", "MM/d/yy h:mm a", "M/d/yy hh:mm a", "M/d/yy h:mm a", "M/d/yy hh:m a", "M/d/yy h:m a", "MM/dd/yy hh:mm a", "MM/dd/yy h:mm a", "MM/dd/yy hh:m a", "MM/dd/yy h:m a", "M/dd/yy h a", "M/dd/yy h:m a", "M/dd/yy h:mm a", "M/dd/yy hh:m a", "M/dd/yy hh:mm a" ]
+          timezone: "America/Denver"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "today"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "when child woke up in the morning"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q77#1_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q77#2_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q77#3_1"
+      reverse: true
+    name: "awaketime"
+
+  sleepatnight:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_InterruptedSleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "Q78"
+      ol.interruptioncount:
+        type: "ol.interruptioncount"
+        column: "Q78"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+        - !<transforms.ReplaceTransform>
+          target: ["11"]
+          goal: [0]
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many times woke up last night"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "last night"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q78"
+      reverse: true
+    name: "sleepatnight"
+
+  sleeppatterns:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_SleepPatterns"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "Q86"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "typical sleep patterns"
+      neurological.sleeppattern:
+        type: "neurological.sleeppattern"
+        column: "Q86"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes", "No"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "yesterday and today"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q86"
+      reverse: true
+    name: "sleeppatterns"
+
+  sleeparrangement:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_SleepArrangements"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "Q422"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.arrangement1:
+        type: "ol.arrangement"
+        column: "Q422"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 0
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4"]
+          goal: ["In separate room", "In parent's room", "In room with sibling", "In parent's bed"]
+      ol.arrangement2:
+        type: "ol.arrangement"
+        column: "Q422"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 1
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4"]
+          goal: ["In separate room", "In parent's room", "In room with sibling", "In parent's bed"]
+      ol.arrangement3:
+        type: "ol.arrangement"
+        column: "Q422"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 2
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4"]
+          goal: ["In separate room", "In parent's room", "In room with sibling", "In parent's bed"]
+      ol.arrangement4:
+        type: "ol.arrangement"
+        column: "Q422"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 3
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4"]
+          goal: ["In separate room", "In parent's room", "In room with sibling", "In parent's bed"]
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q422"
+      reverse: true
+    name: "sleeparrangement"
+
+  sleepposition:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_SleepPositions"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "Q423"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.position1:
+        type: "ol.position"
+        column: "Q423"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 0
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3"]
+          goal: ["Belly", "Side", "Back"]
+      ol.position2:
+        type: "ol.position"
+        column: "Q423"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 1
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3"]
+          goal: ["Belly", "Side", "Back"]
+      ol.position3:
+        type: "ol.position"
+        column: "Q423"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 2
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3"]
+          goal: ["Belly", "Side", "Back"]
+      ol.position4:
+        type: "ol.position"
+        column: "Q423"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 3
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3"]
+          goal: ["Belly", "Side", "Back"]
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "most of the time"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q423"
+      reverse: true
+    name: "sleepposition"
+
+  sleepduringnight:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_SleepNight"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q314_1", "Q314_2"]
+          separator: "_"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.durationhours:
+        type: "ol.durationhours"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          separator: ""
+          transforms:
+          - !<transforms.ReplaceTransform>
+            column: "Q314_1"
+            target: ["9 hours", "43321", "12 hrs", "Twelve", "43385", "43416", "8-11 hrs", "Ten", "10-11 hours"]
+            goal: ["9", "", "12", "12", "", "", "9", "10", "10"]
+          - !<transforms.ValueTransform>
+            value: "."
+          - !<transforms.ReplaceTransform>
+            column: "Q314_2"
+            target: ["0", "1", "2", "6", "8", "10", "13", "15", "20", "25", "30", "33", "34", "40", "45", "50", "0-30", "0 minutes", "Zero", "n/a"]
+            goal: ["0", "02", "03", "1", "13", "17", "22", "25", "33", "42", "5", "55", "57", "66", "75", "83", "25", "0", "0", ""]
+        - !<transforms.ParseDoubleTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how much time spent sleeping during the night"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "night between 7 pm and 7 am"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q314_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q314_2"
+      reverse: true
+    name: "sleepduringnight"
+
+  sleepduringday:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_SleepDay"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q315_1", "Q315_2"]
+          separator: "_"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.durationhours:
+        type: "ol.durationhours"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          separator: ""
+          transforms:
+          - !<transforms.ReplaceTransform>
+            column: "Q315_1"
+            target: ["43102", "43134", "43135", "43102",  "Three", "43103", "2-3 hours", "Two", "2.5"]
+            goal: ["", "", "", "", "3", "", "3", "2", "2"]
+          - !<transforms.ValueTransform>
+            value: "."
+          - !<transforms.ReplaceTransform>
+            column: "Q315_2"
+            target: ["0", "2", "3", "9", "10", "12", "15", "20", "30", "35", "40", "45", "0-30", "hrs", "n/a", "Zero", "60", "90", "P"]
+            goal: ["0", "03", "05", "15", "17", "2", "25", "33", "5", "58", "66", "75", "25", "", "", "0", "99", "99", ""]
+        - !<transforms.ParseDoubleTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how much time spent sleeping during the day"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "day between 7 am and 7 pm"
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q315_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q315_2"
+      reverse: true
+    name: "sleepduringday"
+
+  napduringday:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_NapDuringDay"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q424", "Q426", "Q425#1_2", "Q425#2_2"]
+          separator: "_"
+      ol.status:
+        type: "ol.status"
+        column: "Q424"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["Yes", "No"]
+      ol.eventcount:
+        type: "ol.eventcount"
+        column: "Q426"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how long and how many naps during the day"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "yesterday, during the day"
+      ol.durationhours:
+        type: "ol.durationhours"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          separator: ""
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: "Q425#1_2"
+          - !<transforms.ValueTransform>
+            value: "."
+          - !<transforms.ReplaceTransform>
+            column: "Q425#2_2"
+            target: ["1", "2", "3", "4", "5", "6", "10", "11", "12", "13", "14", "15", "16", "19", "21", "22", "24", "26", "30", "31", "32", "35", "36", "37", "38", "39", "40", "41", "46", "51", "56"]
+            goal: ["0", "02", "03", "05", "07", "08", "15", "17", "18", "2", "22", "23", "25", "3", "33", "35", "38", "42", "48", "5", "53", "57", "58", "6", "62", "63", "65", "66", "75", "83", "92"]
+        - !<transforms.ParseDoubleTransform> {}
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q424"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q426"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q425#1_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q425#2_2"
+      reverse: true
+    name: "napduringday"
+
+  fallasleep:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_FallAsleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q427_1", "Q427_2", "Q428", "Q428_6_TEXT"]
+          separator: "_"
+      ol.method1:
+        type: "ol.method"
+        column: "Q428"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 0
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "7", "6"]
+          goal: ["While feeding", "Being rocked", "Being held", "In bed alone", "In bed near parent", "In parents' bed", ""]
+      ol.method2:
+        type: "ol.method"
+        column: "Q428"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 1
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "7", "6"]
+          goal: ["While feeding", "Being rocked", "Being held", "In bed alone", "In bed near parent", "In parents' bed", ""]
+      ol.method3:
+        type: "ol.method"
+        column: "Q428"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 2
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "7", "6"]
+          goal: ["While feeding", "Being rocked", "Being held", "In bed alone", "In bed near parent", "In parents' bed", ""]
+      ol.method4:
+        type: "ol.method"
+        column: "Q428"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 3
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "7", "6"]
+          goal: ["While feeding", "Being rocked", "Being held", "In bed alone", "In bed near parent", "In parents' bed", ""]
+      ol.method5:
+        type: "ol.method"
+        column: "Q428"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 4
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "7", "6"]
+          goal: ["While feeding", "Being rocked", "Being held", "In bed alone", "In bed near parent", "In parents' bed", ""]
+      ol.method6:
+        type: "ol.method"
+        column: "Q428"
+        transforms:
+        - !<transforms.SplitTransform>
+          index: 5
+          separator: ","
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "7", "6"]
+          goal: ["While feeding", "Being rocked", "Being held", "In bed alone", "In bed near parent", "In parents' bed", ""]
+      ol.method7:
+        type: "ol.method"
+        column: "Q428_6_TEXT"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "putting child to sleep method and length of time"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "in the evening"
+      ol.durationhours:
+        type: "ol.durationhours"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          separator: ""
+          transforms:
+          - !<transforms.ReplaceTransform>
+            column: "Q427_1"
+            target: ["Zero", "One"]
+            goal: ["0", "1"]
+          - !<transforms.ValueTransform>
+            value: "."
+          - !<transforms.ReplaceTransform>
+            column: "Q427_2"
+            target: ["0", "1", "2", "3", "5", "8", "10", "15", "16", "18", "20", "25", "30", "35", "39", "40", "45", "43250", "Twenty", "20-30", "15-30", "15-20", "o"]
+            goal: ["0", "02", "03", "05", "08", "13", "17", "25", "27", "3", "33", "42", "5", "58", "65", "66", "75", "", "33", "42", "38", "29", ""]
+        - !<transforms.ParseDoubleTransform> {}
+    conditions:
+    - !<conditions.ConditionalOr> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q427_1"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q427_2"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q428"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q428_6_TEXT"
+      reverse: true
+    name: "fallasleep"
+
+  sleepinghabits:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_SleepConcerns"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "Q429"
+      ol.concerns:
+        type: "ol.concerns"
+        column: "Q429"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "4", "5"]
+          goal: ["Not at all", "A little", "Somewhat", "A great deal"]
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult's concern for child"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "concern for child's sleeping habits"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q429"
+      reverse: true
+    name: "sleepinghabits"
+
+associationDefinitions:
+  involvedin1:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleeparrangement"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q422"]
+          separator: "_"
+    name: "involvedin1"
+
+  involvedin2:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleepposition"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q423"]
+          separator: "_"
+    name: "involvedin2"
+
+  involvedin3:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleeptime"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q76#1_1", "Q76#2_1", "Q76#3_1"]
+          separator: "_"
+    name: "involvedin3"
+
+  involvedin4:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "awaketime"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q77#1_1", "Q77#2_1", "Q77#3_1"]
+          separator: "_"
+    name: "involvedin4"
+
+  involvedin5:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleepatnight"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q78"]
+          separator: "_"
+    name: "involvedin5"
+
+  involvedin6:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "napduringday"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q424", "Q426", "Q425#1_2", "Q425#2_2"]
+          separator: "_"
+    name: "involvedin6"
+
+  involvedin7:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "fallasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q427_1", "Q427_2", "Q428", "Q428_6_TEXT"]
+          separator: "_"
+    name: "involvedin7"
+
+  involvedin8:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleeppatterns"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q86"]
+          separator: "_"
+    name: "involvedin8"
+
+  involvedin9:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleepduringnight"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q314_1", "Q314_2"]
+          separator: "_"
+    name: "involvedin9"
+
+  involvedin10:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleepduringday"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q315_1", "Q315_2"]
+          separator: "_"
+    name: "involvedin10"
+
+  involvedin11:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleepinghabits"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q429"]
+          separator: "_"
+    name: "involvedin11"
+
+  reported1:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleeparrangement"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q422"]
+          separator: "_"
+    name: "reported1"
+
+  reported2:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleepposition"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q423"]
+          separator: "_"
+    name: "reported2"
+
+  reported3:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleeptime"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q76#1_1", "Q76#2_1", "Q76#3_1"]
+          separator: "_"
+    name: "reported3"
+
+  reported4:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "awaketime"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q77#1_1", "Q77#2_1", "Q77#3_1"]
+          separator: "_"
+    name: "reported4"
+
+  reported5:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleepatnight"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q78"]
+          separator: "_"
+    name: "reported5"
+
+  reported6:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "napduringday"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q424", "Q426", "Q425#1_2", "Q425#2_2"]
+          separator: "_"
+    name: "reported6"
+
+  reported7:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "fallasleep"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q427_1", "Q427_2","Q428","Q428_6_TEXT"]
+          separator: "_"
+    name: "reported7"
+
+  reported8:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleeppatterns"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q86"]
+          separator: "_"
+    name: "reported8"
+
+  reported9:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleepduringnight"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q314_1", "Q314_2"]
+          separator: "_"
+    name: "reported9"
+
+  reported10:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleepduringday"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q315_1", "Q315_2"]
+          separator: "_"
+    name: "reported10"
+
+  reported11:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleepinghabits"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q429"]
+          separator: "_"
+    name: "reported11"
