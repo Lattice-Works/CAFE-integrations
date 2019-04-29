@@ -1,0 +1,475 @@
+# wkday_wakeup
+# wkday_bedtime
+# wkend_wakeup
+# wkend_bedtime
+# fallasleep
+# awakenumber
+
+entityDefinitions:
+  respondent:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id"]
+          hashFunction: "sha256"
+    name: "respondent"
+
+  subject:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        column: child_id
+    name: "subject"
+
+  sleeptimeweekday:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_SleepTimes"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "wkday_bedtime"
+      ol.datetimestart:
+        type: "ol.datetimestart"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          separator: " "
+          transforms:
+          - !<transforms.SplitTransform>
+            column: "RecordedDate"
+            separator: " "
+            index: 0
+          - !<transforms.ReplaceTransform>
+            column: "wkday_bedtime"
+            target: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
+            goal: ["12:00 AM", "12:30 AM", "1:00 AM", "1:30 AM", "2:00 AM", "2:30 AM", "3:00 AM", "3:30 AM", "4:00 AM",  "4:30 AM", "5:00 AM", "5:30 AM", "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM", "9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM"]
+        - !<transforms.DateTimeTransform>
+          pattern: ["MM/d/yyyy hh:mm a", "MM/d/yyyy h:mm a", "MM/d/yyyy hh:m a", "MM/d/yyyy h:m a", "MM/d/yyyy h:mm a", "M/d/yyyy hh:mm a", "M/d/yyyy h:mm a", "M/d/yyyy hh:m a", "M/d/yyyy h:m a", "MM/dd/yyyy hh:mm a", "MM/dd/yyyy h:mm a", "MM/dd/yyyy hh:m a", "MM/dd/yyyy h:m a", "M/dd/yyyy h a", "M/dd/yyyy h:mm a" ]
+          timezone: "America/Detroit"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "weekdays"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "when child falls asleep at night on weekdays"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "wkday_bedtime"
+      reverse: true
+    name: "sleeptimeweekday"
+
+  awaketimeweekday:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_AwakeTimes"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "wkday_wakeup"
+      ol.datetimestart:
+        type: "ol.datetimestart"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          separator: " "
+          transforms:
+          - !<transforms.SplitTransform>
+            column: "RecordedDate"
+            separator: " "
+            index: 0
+          - !<transforms.ReplaceTransform>
+            column: "wkday_wakeup"
+            target: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
+            goal: ["12:00 AM", "12:30 AM", "1:00 AM", "1:30 AM", "2:00 AM", "2:30 AM", "3:00 AM", "3:30 AM", "4:00 AM",  "4:30 AM", "5:00 AM", "5:30 AM", "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM", "9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM"]
+        - !<transforms.DateTimeTransform>
+          # pattern: ["MM/d/yyyy hh:mm t", "MM/d/yyyy h:mm t", "MM/d/yyyy hh:m t", "MM/d/yyyy h:m t", "MM/d/yyyy h:mm t", "M/d/yyyy hh:mm t", "M/d/yyyy h:mm t", "M/d/yyyy h:mm t", "M/d/yyyy hh:m t", "M/d/yyyy h:m t", "MM/dd/yyyy hh:mm t", "MM/dd/yyyy h:mm t", "MM/dd/yyyy hh:m t", "MM/dd/yyyy h:m t", "M/dd/yyyy h t", "M/dd/yyyy h:mm t" ]
+          pattern: ["MM/d/yyyy hh:mm a", "MM/d/yyyy h:mm a", "MM/d/yyyy hh:m a", "MM/d/yyyy h:m a", "MM/d/yyyy h:mm a", "M/d/yyyy hh:mm a", "M/d/yyyy h:mm a", "M/d/yyyy hh:m a", "M/d/yyyy h:m a", "MM/dd/yyyy hh:mm a", "MM/dd/yyyy h:mm a", "MM/dd/yyyy hh:m a", "MM/dd/yyyy h:m a", "M/dd/yyyy h a", "M/dd/yyyy h:mm a" ]
+          timezone: "America/Detroit"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "weekdays"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "when child wakes up in the morning on weekdays"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "wkday_wakeup"
+      reverse: true
+    name: "awaketimeweekday"
+
+  sleeptimeweekend:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_SleepTimes"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "wkend_bedtime"
+      ol.datetimestart:
+        type: "ol.datetimestart"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          separator: " "
+          transforms:
+          - !<transforms.SplitTransform>
+            column: "RecordedDate"
+            separator: " "
+            index: 0
+          - !<transforms.BooleanContainsTransform>
+            column: "wkend_bedtime"
+            string: "0"
+            transformsIfTrue:
+            - !<transforms.ReplaceTransform>
+              column: "wkday_bedtime"
+              target: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
+              goal: ["12:00 AM", "12:30 AM", "1:00 AM", "1:30 AM", "2:00 AM", "2:30 AM", "3:00 AM", "3:30 AM", "4:00 AM",  "4:30 AM", "5:00 AM", "5:30 AM", "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM", "9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM"]
+            transformsIfFalse:
+            - !<transforms.ReplaceTransform>
+              column: "wkend_bedtime"
+              target: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
+              goal: ["12:00 AM", "12:30 AM", "1:00 AM", "1:30 AM", "2:00 AM", "2:30 AM", "3:00 AM", "3:30 AM", "4:00 AM",  "4:30 AM", "5:00 AM", "5:30 AM", "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM", "9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM"]
+        - !<transforms.DateTimeTransform>
+          # pattern: ["MM/d/yyyy hh:mm tt", "MM/d/yyyy h:mm tt", "MM/d/yyyy hh:m tt", "MM/d/yyyy h:m tt", "MM/d/yyyy h:mm tt", "M/d/yyyy hh:mm tt", "M/d/yyyy h:mm tt", "M/d/yyyy hh:m tt", "M/d/yyyy h:m tt", "MM/dd/yyyy hh:mm tt", "MM/dd/yyyy h:mm tt", "MM/dd/yyyy hh:m tt", "MM/dd/yyyy h:m tt", "M/dd/yyyy h tt", "M/dd/yyyy h:mm tt" ]
+          pattern: ["MM/d/yyyy hh:mm a", "MM/d/yyyy h:mm a", "MM/d/yyyy hh:m a", "MM/d/yyyy h:m a", "MM/d/yyyy h:mm a", "M/d/yyyy hh:mm a", "M/d/yyyy h:mm a", "M/d/yyyy h:mm a", "M/d/yyyy hh:m a", "M/d/yyyy h:m a", "MM/dd/yyyy hh:mm a", "MM/dd/yyyy h:mm a", "MM/dd/yyyy hh:m a", "MM/dd/yyyy h:m a", "M/dd/yyyy h a", "M/dd/yyyy h:mm a" ]
+          timezone: "America/Detroit"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "weekend"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "when child falls asleep at night on weekend"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "wkend_bedtime"
+      reverse: true
+    name: "sleeptimeweekend"
+
+  awaketimeweekend:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_AwakeTimes"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "wkend_wakeup"
+      ol.datetimestart:
+        type: "ol.datetimestart"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          separator: " "
+          transforms:
+          - !<transforms.SplitTransform>
+            column: "RecordedDate"
+            separator: " "
+            index: 0
+          - !<transforms.BooleanContainsTransform>
+            column: "wkend_bedtime"
+            string: "0"
+            transformsIfTrue:
+            - !<transforms.ReplaceTransform>
+              column: "wkday_bedtime"
+              target: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
+              goal: ["12:00 AM", "12:30 AM", "1:00 AM", "1:30 AM", "2:00 AM", "2:30 AM", "3:00 AM", "3:30 AM", "4:00 AM",  "4:30 AM", "5:00 AM", "5:30 AM", "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM", "9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM"]
+            transformsIfFalse:
+            - !<transforms.ReplaceTransform>
+              column: "wkend_wakeup"
+              target: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"]
+              goal: ["12:00 AM", "12:30 AM", "1:00 AM", "1:30 AM", "2:00 AM", "2:30 AM", "3:00 AM", "3:30 AM", "4:00 AM",  "4:30 AM", "5:00 AM", "5:30 AM", "6:00 AM", "6:30 AM", "7:00 AM", "7:30 AM", "8:00 AM", "8:30 AM", "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM", "9:30 PM", "10:00 PM", "10:30 PM", "11:00 PM", "11:30 PM"]
+        - !<transforms.DateTimeTransform>
+          pattern: ["MM/d/yyyy hh:mm a", "MM/d/yyyy h:mm a", "MM/d/yyyy hh:m a", "MM/d/yyyy h:m a", "MM/d/yyyy h:mm a", "M/d/yyyy hh:mm a", "M/d/yyyy h:mm a", "M/d/yyyy hh:m a", "M/d/yyyy h:m a", "MM/dd/yyyy hh:mm a", "MM/dd/yyyy h:mm a", "MM/dd/yyyy hh:m a", "MM/dd/yyyy h:m a", "M/dd/yyyy h a", "M/dd/yyyy h:mm a" ]
+          timezone: "America/Detroit"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "weekend"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "when child wakes up in the morning on weekend"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "wkend_wakeup"
+      reverse: true
+    name: "awaketimeweekend"
+
+  sleepatnight:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_InterruptedSleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "awakenumber"
+      ol.interruptioncount:
+        type: "ol.interruptioncount"
+        column: "awakenumber"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["0", "1", "2", "3"]
+          goal: [0, 1, 2, 4]
+          # 0, none | 1, 1 | 2, 2-3 | 3, 4 or more | 9999999, Don't Know/Prefer not to answer
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many times woke up last night"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "last night"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanIsNullCondition>
+      column: "awakenumber"
+      reverse: true
+    - !<conditions.BooleanRegexCondition>
+      column: "awakenumber"
+      pattern: "(?i)(\\b9999999\\b)"
+      reverse: true
+    name: "sleepatnight"
+
+  fallasleep:
+    fqn: "ol.sleep"
+    entitySetName: "CAFE_MAQ_FallAsleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "fallasleep"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "length of time to put child to sleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "in the evening"
+      ol.durationhours:
+        type: "ol.durationhours"
+        column: "fallasleep"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5", "6"]
+          goal: [.05, .2, .5, .75, 1.25, 1.5]
+          # 1, Less than 5 minutes | 2, About 5 to 15 minutes | 3, About 20 to 30 minutes | 4, About 30 to 60 minutes | 5, About 1 to 1.5 hours | 6, Over 1.5 hours
+        - !<transforms.ParseDoubleTransform> {}
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "fallasleep"
+      reverse: true
+    name: "fallasleep"
+
+associationDefinitions:
+  involvedin1:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleeptimeweekday"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "wkday_bedtime"]
+          separator: "_"
+    name: "involvedin1"
+
+  involvedin2:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "awaketimeweekday"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "wkday_wakeup"]
+          separator: "_"
+    name: "involvedin2"
+
+  involvedin3:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleeptimeweekend"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "wkend_bedtime"]
+          separator: "_"
+    name: "involvedin3"
+
+  involvedin4:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "awaketimeweekend"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "wkend_wakeup"]
+          separator: "_"
+    name: "involvedin4"
+
+  involvedin5:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "sleepatnight"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "awakenumber"]
+          separator: "_"
+    name: "involvedin5"
+
+  involvedin6:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "fallasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "fallasleep"]
+          separator: "_"
+    name: "involvedin6"
+
+  reported1:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleeptimeweekday"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "wkday_bedtime"]
+          separator: "_"
+    name: "reported1"
+
+  reported2:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "awaketimeweekday"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "wkday_wakeup"]
+          separator: "_"
+    name: "reported2"
+
+  reported3:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleeptimeweekend"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "wkend_bedtime"]
+          separator: "_"
+    name: "reported3"
+
+  reported4:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "awaketimeweekend"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "wkend_wakeup"]
+          separator: "_"
+    name: "reported4"
+
+  reported5:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "sleepatnight"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "awakenumber"]
+          separator: "_"
+    name: "reported5"
+
+  reported6:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "fallasleep"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "fallasleep"]
+          separator: "_"
+    name: "reported6"
