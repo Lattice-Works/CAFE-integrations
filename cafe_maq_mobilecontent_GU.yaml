@@ -455,9 +455,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q48"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "appsdownloaded_children"
       ol.name:
@@ -472,10 +472,11 @@ entityDefinitions:
           value: "how many apps adult downloaded on mobile device for children"
       ol.number:
         type: "ol.number"
+        column: "Q48"
         transforms:
         - !<transforms.ReplaceTransform>
-          target: ["None", "Fewer than 5", "5-10", "20-Oct", "20-30", "More than 30"]
-          goal: ["0", "2.5", "7.5", "15", "25", "30"]
+          target: ["None", "Fewer than 5", "10-May", "5-10", "20-Oct", "20-30", "More than 30"]
+          goal: ["0", "2.5", "7.5", "7.5", "15", "25", "30"]
         - !<transforms.ParseIntTransform> {}
       ol.servicetype:
         type: "ol.servicetype"
