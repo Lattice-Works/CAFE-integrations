@@ -1281,8 +1281,6 @@ entityDefinitions:
       reverse: true
     name: "moon"
 
-# # *****QUESTIONS FOR >8 to <18 months*********
-
   outside:
     fqn: "ol.vocabulary"
     entitySetName: "CAFE_MAQ_VocabularyAssessment_WG_8_18"
@@ -1293,7 +1291,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_1"]
+            columns: ["Q93_46"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "outside"
@@ -1304,10 +1302,10 @@ entityDefinitions:
           value: "outside"
       ol.name:
         type: "ol.name"
-        column: "Q298_1"
+        column: "Q93_46"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_1"
+      column: "Q93_46"
       reverse: true
     name: "outside"
 
@@ -1321,7 +1319,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_2"]
+            columns: ["Q93_47"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "plant"
@@ -1332,10 +1330,10 @@ entityDefinitions:
           value: "plant"
       ol.name:
         type: "ol.name"
-        column: "Q298_2"
+        column: "Q93_47"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_2"
+      column: "Q93_47"
       reverse: true
     name: "plant"
 
@@ -1349,7 +1347,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_3"]
+            columns: ["Q93_48"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "rain"
@@ -1360,10 +1358,10 @@ entityDefinitions:
           value: "rain"
       ol.name:
         type: "ol.name"
-        column: "Q298_3"
+        column: "Q93_48"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_3"
+      column: "Q93_48"
       reverse: true
     name: "rain"
 
@@ -1377,7 +1375,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_4"]
+            columns: ["Q93_49"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "rock"
@@ -1388,10 +1386,10 @@ entityDefinitions:
           value: "rock"
       ol.name:
         type: "ol.name"
-        column: "Q298_4"
+        column: "Q93_49"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_4"
+      column: "Q93_49"
       reverse: true
     name: "rock"
 
@@ -1405,7 +1403,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_5"]
+            columns: ["Q93_50"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "water"
@@ -1416,10 +1414,10 @@ entityDefinitions:
           value: "water"
       ol.name:
         type: "ol.name"
-        column: "Q298_5"
+        column: "Q93_50"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_5"
+      column: "Q93_50"
       reverse: true
     name: "water"
 
@@ -1433,7 +1431,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_6"]
+            columns: ["Q93_51"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "babysitter"
@@ -1444,10 +1442,10 @@ entityDefinitions:
           value: "babysitter"
       ol.name:
         type: "ol.name"
-        column: "Q298_6"
+        column: "Q93_51"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_6"
+      column: "Q93_51"
       reverse: true
     name: "babysitter"
 
@@ -1461,7 +1459,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_7"]
+            columns: ["Q93_52"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "girl"
@@ -1472,10 +1470,10 @@ entityDefinitions:
           value: "girl"
       ol.name:
         type: "ol.name"
-        column: "Q298_7"
+        column: "Q93_52"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_7"
+      column: "Q93_52"
       reverse: true
     name: "girl"
 
@@ -1489,7 +1487,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_8"]
+            columns: ["Q93_53"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "grandma"
@@ -1500,10 +1498,10 @@ entityDefinitions:
           value: "grandma"
       ol.name:
         type: "ol.name"
-        column: "Q298_8"
+        column: "Q93_53"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_8"
+      column: "Q93_53"
       reverse: true
     name: "grandma"
 
@@ -1517,7 +1515,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_9"]
+            columns: ["Q93_54"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "mommy"
@@ -1528,10 +1526,10 @@ entityDefinitions:
           value: "mommy"
       ol.name:
         type: "ol.name"
-        column: "Q298_9"
+        column: "Q93_54"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_9"
+      column: "Q93_54"
       reverse: true
     name: "mommy"
 
@@ -1545,7 +1543,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_10"]
+            columns: ["Q93_55"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "bath"
@@ -1556,10 +1554,10 @@ entityDefinitions:
           value: "bath"
       ol.name:
         type: "ol.name"
-        column: "Q298_10"
+        column: "Q93_55"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_10"
+      column: "Q93_55"
       reverse: true
     name: "bath"
 
@@ -1573,7 +1571,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_11"]
+            columns: ["Q93_56"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "dont"
@@ -1584,10 +1582,10 @@ entityDefinitions:
           value: "don't"
       ol.name:
         type: "ol.name"
-        column: "Q298_11"
+        column: "Q93_56"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_11"
+      column: "Q93_56"
       reverse: true
     name: "dont"
 
@@ -1601,7 +1599,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_12"]
+            columns: ["Q93_57"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "hi"
@@ -1612,10 +1610,10 @@ entityDefinitions:
           value: "hi"
       ol.name:
         type: "ol.name"
-        column: "Q298_12"
+        column: "Q93_57"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_12"
+      column: "Q93_57"
       reverse: true
     name: "hi"
 
@@ -1629,7 +1627,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_13"]
+            columns: ["Q93_58"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "nightnight"
@@ -1640,10 +1638,10 @@ entityDefinitions:
           value: "night night"
       ol.name:
         type: "ol.name"
-        column: "Q298_13"
+        column: "Q93_58"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_13"
+      column: "Q93_58"
       reverse: true
     name: "nightnight"
 
@@ -1657,7 +1655,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_14"]
+            columns: ["Q93_59"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "pattycake"
@@ -1668,10 +1666,10 @@ entityDefinitions:
           value: "patty cake"
       ol.name:
         type: "ol.name"
-        column: "Q298_14"
+        column: "Q93_59"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_14"
+      column: "Q93_59"
       reverse: true
     name: "pattycake"
 
@@ -1685,7 +1683,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_15"]
+            columns: ["Q93_60"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "please"
@@ -1696,10 +1694,10 @@ entityDefinitions:
           value: "please"
       ol.name:
         type: "ol.name"
-        column: "Q298_15"
+        column: "Q93_60"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_15"
+      column: "Q93_60"
       reverse: true
     name: "please"
 
@@ -1713,7 +1711,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_16"]
+            columns: ["Q93_61"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "wait"
@@ -1724,10 +1722,10 @@ entityDefinitions:
           value: "wait"
       ol.name:
         type: "ol.name"
-        column: "Q298_16"
+        column: "Q93_61"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_16"
+      column: "Q93_61"
       reverse: true
     name: "wait"
 
@@ -1741,7 +1739,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_17"]
+            columns: ["Q93_62"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "break"
@@ -1752,10 +1750,10 @@ entityDefinitions:
           value: "break"
       ol.name:
         type: "ol.name"
-        column: "Q298_17"
+        column: "Q93_62"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_17"
+      column: "Q93_62"
       reverse: true
     name: "break"
 
@@ -1769,7 +1767,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_18"]
+            columns: ["Q93_63"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "feed"
@@ -1780,10 +1778,10 @@ entityDefinitions:
           value: "feed"
       ol.name:
         type: "ol.name"
-        column: "Q298_18"
+        column: "Q93_63"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_18"
+      column: "Q93_63"
       reverse: true
     name: "feed"
 
@@ -1797,7 +1795,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_19"]
+            columns: ["Q93_64"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "finish"
@@ -1808,10 +1806,10 @@ entityDefinitions:
           value: "finish"
       ol.name:
         type: "ol.name"
-        column: "Q298_19"
+        column: "Q93_64"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_19"
+      column: "Q93_64"
       reverse: true
     name: "finish"
 
@@ -1825,7 +1823,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_20"]
+            columns: ["Q93_65"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "help"
@@ -1836,10 +1834,10 @@ entityDefinitions:
           value: "help"
       ol.name:
         type: "ol.name"
-        column: "Q298_20"
+        column: "Q93_65"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_20"
+      column: "Q93_65"
       reverse: true
     name: "help"
 
@@ -1853,7 +1851,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_21"]
+            columns: ["Q93_66"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "jump"
@@ -1864,10 +1862,10 @@ entityDefinitions:
           value: "jump"
       ol.name:
         type: "ol.name"
-        column: "Q298_21"
+        column: "Q93_66"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_21"
+      column: "Q93_66"
       reverse: true
     name: "jump"
 
@@ -1881,7 +1879,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_22"]
+            columns: ["Q93_67"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "kick"
@@ -1892,10 +1890,10 @@ entityDefinitions:
           value: "kick"
       ol.name:
         type: "ol.name"
-        column: "Q298_22"
+        column: "Q93_67"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_22"
+      column: "Q93_67"
       reverse: true
     name: "kick"
 
@@ -1909,7 +1907,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_23"]
+            columns: ["Q93_68"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "kiss"
@@ -1920,10 +1918,10 @@ entityDefinitions:
           value: "kiss"
       ol.name:
         type: "ol.name"
-        column: "Q298_23"
+        column: "Q93_68"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_23"
+      column: "Q93_68"
       reverse: true
     name: "kiss"
 
@@ -1937,7 +1935,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_24"]
+            columns: ["Q93_69"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "push"
@@ -1948,10 +1946,10 @@ entityDefinitions:
           value: "push"
       ol.name:
         type: "ol.name"
-        column: "Q298_24"
+        column: "Q93_69"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_24"
+      column: "Q93_69"
       reverse: true
     name: "push"
 
@@ -1965,7 +1963,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_25"]
+            columns: ["Q93_70"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "sing"
@@ -1976,10 +1974,10 @@ entityDefinitions:
           value: "sing"
       ol.name:
         type: "ol.name"
-        column: "Q298_25"
+        column: "Q93_70"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_25"
+      column: "Q93_70"
       reverse: true
     name: "sing"
 
@@ -1993,7 +1991,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_26"]
+            columns: ["Q93_71"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "smile"
@@ -2004,10 +2002,10 @@ entityDefinitions:
           value: "smile"
       ol.name:
         type: "ol.name"
-        column: "Q298_26"
+        column: "Q93_71"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_26"
+      column: "Q93_71"
       reverse: true
     name: "smile"
 
@@ -2021,7 +2019,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_27"]
+            columns: ["Q93_72"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "night"
@@ -2032,10 +2030,10 @@ entityDefinitions:
           value: "night"
       ol.name:
         type: "ol.name"
-        column: "Q298_27"
+        column: "Q93_72"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_27"
+      column: "Q93_72"
       reverse: true
     name: "night"
 
@@ -2049,7 +2047,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_28"]
+            columns: ["Q93_73"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "today"
@@ -2060,10 +2058,10 @@ entityDefinitions:
           value: "today"
       ol.name:
         type: "ol.name"
-        column: "Q298_28"
+        column: "Q93_73"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_28"
+      column: "Q93_73"
       reverse: true
     name: "today"
 
@@ -2077,7 +2075,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_29"]
+            columns: ["Q93_74"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "allgone"
@@ -2088,10 +2086,10 @@ entityDefinitions:
           value: "allgone"
       ol.name:
         type: "ol.name"
-        column: "Q298_29"
+        column: "Q93_74"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_29"
+      column: "Q93_74"
       reverse: true
     name: "allgone"
 
@@ -2105,7 +2103,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_30"]
+            columns: ["Q93_75"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "big"
@@ -2116,10 +2114,10 @@ entityDefinitions:
           value: "big"
       ol.name:
         type: "ol.name"
-        column: "Q298_30"
+        column: "Q93_75"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_30"
+      column: "Q93_75"
       reverse: true
     name: "big"
 
@@ -2133,7 +2131,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_31"]
+            columns: ["Q93_76"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "broken"
@@ -2144,10 +2142,10 @@ entityDefinitions:
           value: "broken"
       ol.name:
         type: "ol.name"
-        column: "Q298_31"
+        column: "Q93_76"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_31"
+      column: "Q93_76"
       reverse: true
     name: "broken"
 
@@ -2161,7 +2159,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_32"]
+            columns: ["Q93_77"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "dark"
@@ -2172,10 +2170,10 @@ entityDefinitions:
           value: "dark"
       ol.name:
         type: "ol.name"
-        column: "Q298_32"
+        column: "Q93_77"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_32"
+      column: "Q93_77"
       reverse: true
     name: "dark"
 
@@ -2189,7 +2187,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_33"]
+            columns: ["Q93_78"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "fast"
@@ -2200,10 +2198,10 @@ entityDefinitions:
           value: "fast"
       ol.name:
         type: "ol.name"
-        column: "Q298_33"
+        column: "Q93_78"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_33"
+      column: "Q93_78"
       reverse: true
     name: "fast"
 
@@ -2217,7 +2215,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_34"]
+            columns: ["Q93_79"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "hurt"
@@ -2228,10 +2226,10 @@ entityDefinitions:
           value: "hurt"
       ol.name:
         type: "ol.name"
-        column: "Q298_34"
+        column: "Q93_79"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_34"
+      column: "Q93_79"
       reverse: true
     name: "hurt"
 
@@ -2245,7 +2243,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_35"]
+            columns: ["Q93_80"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "pretty"
@@ -2256,10 +2254,10 @@ entityDefinitions:
           value: "pretty"
       ol.name:
         type: "ol.name"
-        column: "Q298_35"
+        column: "Q93_80"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_35"
+      column: "Q93_80"
       reverse: true
     name: "pretty"
 
@@ -2273,7 +2271,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_36"]
+            columns: ["Q93_81"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "soft"
@@ -2284,10 +2282,10 @@ entityDefinitions:
           value: "soft"
       ol.name:
         type: "ol.name"
-        column: "Q298_36"
+        column: "Q93_81"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_36"
+      column: "Q93_81"
       reverse: true
     name: "soft"
 
@@ -2301,7 +2299,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_37"]
+            columns: ["Q93_82"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "i"
@@ -2312,10 +2310,10 @@ entityDefinitions:
           value: "I"
       ol.name:
         type: "ol.name"
-        column: "Q298_37"
+        column: "Q93_82"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_37"
+      column: "Q93_82"
       reverse: true
     name: "i"
 
@@ -2329,7 +2327,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_38"]
+            columns: ["Q93_83"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "me"
@@ -2340,10 +2338,10 @@ entityDefinitions:
           value: "me"
       ol.name:
         type: "ol.name"
-        column: "Q298_38"
+        column: "Q93_83"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_38"
+      column: "Q93_83"
       reverse: true
     name: "me"
 
@@ -2357,7 +2355,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_39"]
+            columns: ["Q93_84"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "how"
@@ -2368,10 +2366,10 @@ entityDefinitions:
           value: "how"
       ol.name:
         type: "ol.name"
-        column: "Q298_39"
+        column: "Q93_84"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_39"
+      column: "Q93_84"
       reverse: true
     name: "how"
 
@@ -2385,7 +2383,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_40"]
+            columns: ["Q93_85"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "who"
@@ -2396,10 +2394,10 @@ entityDefinitions:
           value: "who"
       ol.name:
         type: "ol.name"
-        column: "Q298_40"
+        column: "Q93_85"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_40"
+      column: "Q93_85"
       reverse: true
     name: "who"
 
@@ -2413,7 +2411,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_41"]
+            columns: ["Q93_86"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "away"
@@ -2424,10 +2422,10 @@ entityDefinitions:
           value: "away"
       ol.name:
         type: "ol.name"
-        column: "Q298_41"
+        column: "Q93_86"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_41"
+      column: "Q93_86"
       reverse: true
     name: "away"
 
@@ -2441,7 +2439,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_42"]
+            columns: ["Q93_87"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "out"
@@ -2452,10 +2450,10 @@ entityDefinitions:
           value: "out"
       ol.name:
         type: "ol.name"
-        column: "Q298_42"
+        column: "Q93_87"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_42"
+      column: "Q93_87"
       reverse: true
     name: "out"
 
@@ -2469,7 +2467,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_43"]
+            columns: ["Q93_88"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "other"
@@ -2480,10 +2478,10 @@ entityDefinitions:
           value: "other"
       ol.name:
         type: "ol.name"
-        column: "Q298_43"
+        column: "Q93_88"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_43"
+      column: "Q93_88"
       reverse: true
     name: "other"
 
@@ -2497,7 +2495,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q298_44"]
+            columns: ["Q93_89"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "some"
@@ -2508,10 +2506,10 @@ entityDefinitions:
           value: "some"
       ol.name:
         type: "ol.name"
-        column: "Q298_44"
+        column: "Q93_89"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q298_44"
+      column: "Q93_89"
       reverse: true
     name: "some"
 
@@ -3917,7 +3915,6 @@ entityDefinitions:
       reverse: true
     name: "school"
 
-# # *****QUESTIONS FOR >=18 to <30 months*********
   sky:
     fqn: "ol.vocabulary"
     entitySetName: "CAFE_MAQ_VocabularyAssessment_WS_18_30"
@@ -3928,7 +3925,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_1"]
+            columns: ["Q94_51"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "sky"
@@ -3939,10 +3936,10 @@ entityDefinitions:
           value: "sky"
       ol.name:
         type: "ol.name"
-        column: "Q299_1"
+        column: "Q94_51"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_1"
+      column: "Q94_51"
       reverse: true
     name: "sky"
 
@@ -3956,7 +3953,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_2"]
+            columns: ["Q94_52"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "party"
@@ -3967,10 +3964,10 @@ entityDefinitions:
           value: "party"
       ol.name:
         type: "ol.name"
-        column: "Q299_2"
+        column: "Q94_52"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_2"
+      column: "Q94_52"
       reverse: true
     name: "party"
 
@@ -3984,7 +3981,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_3"]
+            columns: ["Q94_53"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "friend"
@@ -3995,10 +3992,10 @@ entityDefinitions:
           value: "friend"
       ol.name:
         type: "ol.name"
-        column: "Q299_3"
+        column: "Q94_53"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_3"
+      column: "Q94_53"
       reverse: true
     name: "friend"
 
@@ -4012,7 +4009,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_4"]
+            columns: ["Q94_54"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "mommy"
@@ -4023,10 +4020,10 @@ entityDefinitions:
           value: "mommy"
       ol.name:
         type: "ol.name"
-        column: "Q299_4"
+        column: "Q94_54"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_4"
+      column: "Q94_54"
       reverse: true
     name: "mommy"
 
@@ -4040,7 +4037,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_5"]
+            columns: ["Q94_55"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "person"
@@ -4051,10 +4048,10 @@ entityDefinitions:
           value: "person"
       ol.name:
         type: "ol.name"
-        column: "Q299_5"
+        column: "Q94_55"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_5"
+      column: "Q94_55"
       reverse: true
     name: "person"
 
@@ -4068,7 +4065,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_6"]
+            columns: ["Q94_56"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "bye"
@@ -4079,10 +4076,10 @@ entityDefinitions:
           value: "bye"
       ol.name:
         type: "ol.name"
-        column: "Q299_6"
+        column: "Q94_56"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_6"
+      column: "Q94_56"
       reverse: true
     name: "bye"
 
@@ -4096,7 +4093,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_7"]
+            columns: ["Q94_57"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "hi"
@@ -4107,10 +4104,10 @@ entityDefinitions:
           value: "hi"
       ol.name:
         type: "ol.name"
-        column: "Q299_7"
+        column: "Q94_57"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_7"
+      column: "Q94_57"
       reverse: true
     name: "hi2"
 
@@ -4124,7 +4121,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_8"]
+            columns: ["Q94_58"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "hi"
@@ -4135,10 +4132,10 @@ entityDefinitions:
           value: "hi"
       ol.name:
         type: "ol.name"
-        column: "Q299_8"
+        column: "Q94_58"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_8"
+      column: "Q94_58"
       reverse: true
     name: "no"
 
@@ -4152,7 +4149,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_9"]
+            columns: ["Q94_59"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "shopping"
@@ -4163,10 +4160,10 @@ entityDefinitions:
           value: "shopping"
       ol.name:
         type: "ol.name"
-        column: "Q299_9"
+        column: "Q94_59"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_9"
+      column: "Q94_59"
       reverse: true
     name: "shopping"
 
@@ -4180,7 +4177,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_10"]
+            columns: ["Q94_60"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "thankyou"
@@ -4191,10 +4188,10 @@ entityDefinitions:
           value: "thank you"
       ol.name:
         type: "ol.name"
-        column: "Q299_10"
+        column: "Q94_60"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_10"
+      column: "Q94_60"
       reverse: true
     name: "thankyou"
 
@@ -4208,7 +4205,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_11"]
+            columns: ["Q94_61"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "carry"
@@ -4219,10 +4216,10 @@ entityDefinitions:
           value: "carry"
       ol.name:
         type: "ol.name"
-        column: "Q299_11"
+        column: "Q94_61"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_11"
+      column: "Q94_61"
       reverse: true
     name: "carry"
 
@@ -4236,7 +4233,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_12"]
+            columns: ["Q94_62"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "chase"
@@ -4247,10 +4244,10 @@ entityDefinitions:
           value: "chase"
       ol.name:
         type: "ol.name"
-        column: "Q299_12"
+        column: "Q94_62"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_12"
+      column: "Q94_62"
       reverse: true
     name: "chase"
 
@@ -4264,7 +4261,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_13"]
+            columns: ["Q94_63"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "dump"
@@ -4275,10 +4272,10 @@ entityDefinitions:
           value: "dump"
       ol.name:
         type: "ol.name"
-        column: "Q299_13"
+        column: "Q94_63"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_13"
+      column: "Q94_63"
       reverse: true
     name: "dump"
 
@@ -4292,7 +4289,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_14"]
+            columns: ["Q94_64"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "finish"
@@ -4303,10 +4300,10 @@ entityDefinitions:
           value: "finish"
       ol.name:
         type: "ol.name"
-        column: "Q299_14"
+        column: "Q94_64"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_14"
+      column: "Q94_64"
       reverse: true
     name: "finish2"
 
@@ -4320,7 +4317,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_15"]
+            columns: ["Q94_65"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "fit"
@@ -4331,10 +4328,10 @@ entityDefinitions:
           value: "fit"
       ol.name:
         type: "ol.name"
-        column: "Q299_15"
+        column: "Q94_65"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_15"
+      column: "Q94_65"
       reverse: true
     name: "fit"
 
@@ -4348,7 +4345,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_16"]
+            columns: ["Q94_66"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "hug"
@@ -4359,10 +4356,10 @@ entityDefinitions:
           value: "hug"
       ol.name:
         type: "ol.name"
-        column: "Q299_16"
+        column: "Q94_66"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_16"
+      column: "Q94_66"
       reverse: true
     name: "hug"
 
@@ -4376,7 +4373,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_17"]
+            columns: ["Q94_67"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "listen"
@@ -4387,10 +4384,10 @@ entityDefinitions:
           value: "listen"
       ol.name:
         type: "ol.name"
-        column: "Q299_17"
+        column: "Q94_67"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_17"
+      column: "Q94_67"
       reverse: true
     name: "listen"
 
@@ -4404,7 +4401,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_18"]
+            columns: ["Q94_68"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "like"
@@ -4415,10 +4412,10 @@ entityDefinitions:
           value: "like"
       ol.name:
         type: "ol.name"
-        column: "Q299_18"
+        column: "Q94_68"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_18"
+      column: "Q94_68"
       reverse: true
     name: "like"
 
@@ -4432,7 +4429,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_19"]
+            columns: ["Q94_69"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "pretend"
@@ -4443,10 +4440,10 @@ entityDefinitions:
           value: "pretend"
       ol.name:
         type: "ol.name"
-        column: "Q299_19"
+        column: "Q94_69"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_19"
+      column: "Q94_69"
       reverse: true
     name: "pretend"
 
@@ -4460,7 +4457,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_20"]
+            columns: ["Q94_70"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "rip"
@@ -4471,10 +4468,10 @@ entityDefinitions:
           value: "rip"
       ol.name:
         type: "ol.name"
-        column: "Q299_20"
+        column: "Q94_70"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_20"
+      column: "Q94_70"
       reverse: true
     name: "rip"
 
@@ -4488,7 +4485,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_21"]
+            columns: ["Q94_71"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "shake"
@@ -4499,10 +4496,10 @@ entityDefinitions:
           value: "shake"
       ol.name:
         type: "ol.name"
-        column: "Q299_21"
+        column: "Q94_71"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_21"
+      column: "Q94_71"
       reverse: true
     name: "shake"
 
@@ -4516,7 +4513,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_22"]
+            columns: ["Q94_72"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "taste"
@@ -4527,10 +4524,10 @@ entityDefinitions:
           value: "taste"
       ol.name:
         type: "ol.name"
-        column: "Q299_22"
+        column: "Q94_72"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_22"
+      column: "Q94_72"
       reverse: true
     name: "taste"
 
@@ -4544,7 +4541,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_23"]
+            columns: ["Q94_73"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "gentle"
@@ -4555,10 +4552,10 @@ entityDefinitions:
           value: "gentle"
       ol.name:
         type: "ol.name"
-        column: "Q299_23"
+        column: "Q94_73"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_23"
+      column: "Q94_73"
       reverse: true
     name: "gentle"
 
@@ -4572,7 +4569,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_24"]
+            columns: ["Q94_74"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "think"
@@ -4583,10 +4580,10 @@ entityDefinitions:
           value: "think"
       ol.name:
         type: "ol.name"
-        column: "Q299_24"
+        column: "Q94_74"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_24"
+      column: "Q94_74"
       reverse: true
     name: "think"
 
@@ -4600,7 +4597,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_25"]
+            columns: ["Q94_75"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "wish"
@@ -4611,10 +4608,10 @@ entityDefinitions:
           value: "wish"
       ol.name:
         type: "ol.name"
-        column: "Q299_25"
+        column: "Q94_75"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_25"
+      column: "Q94_75"
       reverse: true
     name: "wish"
 
@@ -4628,7 +4625,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_26"]
+            columns: ["Q94_76"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "allgone"
@@ -4639,10 +4636,10 @@ entityDefinitions:
           value: "all gone"
       ol.name:
         type: "ol.name"
-        column: "Q299_26"
+        column: "Q94_76"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_26"
+      column: "Q94_76"
       reverse: true
     name: "allgone2"
 
@@ -4656,7 +4653,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_27"]
+            columns: ["Q94_77"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "cold"
@@ -4667,10 +4664,10 @@ entityDefinitions:
           value: "cold"
       ol.name:
         type: "ol.name"
-        column: "Q299_27"
+        column: "Q94_77"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_27"
+      column: "Q94_77"
       reverse: true
     name: "cold"
 
@@ -4684,7 +4681,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_28"]
+            columns: ["Q94_78"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "fast"
@@ -4695,10 +4692,10 @@ entityDefinitions:
           value: "fast"
       ol.name:
         type: "ol.name"
-        column: "Q299_28"
+        column: "Q94_78"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_28"
+      column: "Q94_78"
       reverse: true
     name: "fast2"
 
@@ -4712,7 +4709,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_29"]
+            columns: ["Q94_79"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "happy"
@@ -4723,10 +4720,10 @@ entityDefinitions:
           value: "happy"
       ol.name:
         type: "ol.name"
-        column: "Q299_29"
+        column: "Q94_79"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_29"
+      column: "Q94_79"
       reverse: true
     name: "happy"
 
@@ -4740,7 +4737,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_30"]
+            columns: ["Q94_80"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "hot"
@@ -4751,10 +4748,10 @@ entityDefinitions:
           value: "hot"
       ol.name:
         type: "ol.name"
-        column: "Q299_30"
+        column: "Q94_80"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_30"
+      column: "Q94_80"
       reverse: true
     name: "hot"
 
@@ -4768,7 +4765,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_31"]
+            columns: ["Q94_81"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "last"
@@ -4779,10 +4776,10 @@ entityDefinitions:
           value: "last"
       ol.name:
         type: "ol.name"
-        column: "Q299_31"
+        column: "Q94_81"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_31"
+      column: "Q94_81"
       reverse: true
     name: "last"
 
@@ -4796,7 +4793,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_32"]
+            columns: ["Q94_82"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "tiny"
@@ -4807,10 +4804,10 @@ entityDefinitions:
           value: "tiny"
       ol.name:
         type: "ol.name"
-        column: "Q299_32"
+        column: "Q94_82"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_32"
+      column: "Q94_82"
       reverse: true
     name: "tiny"
 
@@ -4824,7 +4821,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_33"]
+            columns: ["Q94_83"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "wet"
@@ -4835,10 +4832,10 @@ entityDefinitions:
           value: "wet"
       ol.name:
         type: "ol.name"
-        column: "Q299_33"
+        column: "Q94_83"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_33"
+      column: "Q94_83"
       reverse: true
     name: "wet"
 
@@ -4852,7 +4849,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_34"]
+            columns: ["Q94_84"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "after"
@@ -4863,10 +4860,10 @@ entityDefinitions:
           value: "after"
       ol.name:
         type: "ol.name"
-        column: "Q299_34"
+        column: "Q94_84"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_34"
+      column: "Q94_84"
       reverse: true
     name: "after"
 
@@ -4880,7 +4877,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_35"]
+            columns: ["Q94_85"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "day"
@@ -4891,10 +4888,10 @@ entityDefinitions:
           value: "day"
       ol.name:
         type: "ol.name"
-        column: "Q299_35"
+        column: "Q94_85"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_35"
+      column: "Q94_85"
       reverse: true
     name: "day"
 
@@ -4908,7 +4905,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_36"]
+            columns: ["Q94_86"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "tonight"
@@ -4919,10 +4916,10 @@ entityDefinitions:
           value: "tonight"
       ol.name:
         type: "ol.name"
-        column: "Q299_36"
+        column: "Q94_86"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_36"
+      column: "Q94_86"
       reverse: true
     name: "tonight"
 
@@ -4936,7 +4933,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_37"]
+            columns: ["Q94_87"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "our"
@@ -4947,10 +4944,10 @@ entityDefinitions:
           value: "our"
       ol.name:
         type: "ol.name"
-        column: "Q299_37"
+        column: "Q94_87"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_37"
+      column: "Q94_87"
       reverse: true
     name: "our"
 
@@ -4964,7 +4961,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_38"]
+            columns: ["Q94_88"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "them"
@@ -4975,10 +4972,10 @@ entityDefinitions:
           value: "them"
       ol.name:
         type: "ol.name"
-        column: "Q299_38"
+        column: "Q94_88"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_38"
+      column: "Q94_88"
       reverse: true
     name: "them"
 
@@ -4992,7 +4989,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_39"]
+            columns: ["Q94_89"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "this"
@@ -5003,10 +5000,10 @@ entityDefinitions:
           value: "this"
       ol.name:
         type: "ol.name"
-        column: "Q299_39"
+        column: "Q94_89"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_39"
+      column: "Q94_89"
       reverse: true
     name: "this"
 
@@ -5020,7 +5017,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_40"]
+            columns: ["Q94_90"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "us"
@@ -5031,10 +5028,10 @@ entityDefinitions:
           value: "us"
       ol.name:
         type: "ol.name"
-        column: "Q299_40"
+        column: "Q94_90"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_40"
+      column: "Q94_90"
       reverse: true
     name: "us"
 
@@ -5048,7 +5045,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_41"]
+            columns: ["Q94_91"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "where"
@@ -5059,10 +5056,10 @@ entityDefinitions:
           value: "where"
       ol.name:
         type: "ol.name"
-        column: "Q299_41"
+        column: "Q94_91"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_41"
+      column: "Q94_91"
       reverse: true
     name: "where"
 
@@ -5076,7 +5073,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_42"]
+            columns: ["Q94_92"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "beside"
@@ -5087,10 +5084,10 @@ entityDefinitions:
           value: "beside"
       ol.name:
         type: "ol.name"
-        column: "Q299_42"
+        column: "Q94_92"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_42"
+      column: "Q94_92"
       reverse: true
     name: "beside"
 
@@ -5104,7 +5101,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_43"]
+            columns: ["Q94_93"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "down"
@@ -5115,10 +5112,10 @@ entityDefinitions:
           value: "down"
       ol.name:
         type: "ol.name"
-        column: "Q299_43"
+        column: "Q94_93"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_43"
+      column: "Q94_93"
       reverse: true
     name: "down"
 
@@ -5132,7 +5129,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_44"]
+            columns: ["Q94_94"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "under"
@@ -5143,10 +5140,10 @@ entityDefinitions:
           value: "under"
       ol.name:
         type: "ol.name"
-        column: "Q299_44"
+        column: "Q94_94"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_44"
+      column: "Q94_94"
       reverse: true
     name: "under"
 
@@ -5160,7 +5157,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_45"]
+            columns: ["Q94_95"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "all"
@@ -5171,10 +5168,10 @@ entityDefinitions:
           value: "all"
       ol.name:
         type: "ol.name"
-        column: "Q299_45"
+        column: "Q94_95"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_45"
+      column: "Q94_95"
       reverse: true
     name: "all"
 
@@ -5188,7 +5185,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_46"]
+            columns: ["Q94_96"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "much"
@@ -5199,10 +5196,10 @@ entityDefinitions:
           value: "much"
       ol.name:
         type: "ol.name"
-        column: "Q299_46"
+        column: "Q94_96"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_46"
+      column: "Q94_96"
       reverse: true
     name: "much"
 
@@ -5216,7 +5213,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_47"]
+            columns: ["Q94_97"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "could"
@@ -5227,10 +5224,10 @@ entityDefinitions:
           value: "could"
       ol.name:
         type: "ol.name"
-        column: "Q299_47"
+        column: "Q94_97"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_47"
+      column: "Q94_97"
       reverse: true
     name: "could"
 
@@ -5244,7 +5241,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_48"]
+            columns: ["Q94_98"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "need"
@@ -5255,10 +5252,10 @@ entityDefinitions:
           value: "need"
       ol.name:
         type: "ol.name"
-        column: "Q299_48"
+        column: "Q94_98"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_48"
+      column: "Q94_98"
       reverse: true
     name: "need"
 
@@ -5272,7 +5269,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_49"]
+            columns: ["Q94_99"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "would"
@@ -5283,10 +5280,10 @@ entityDefinitions:
           value: "would"
       ol.name:
         type: "ol.name"
-        column: "Q299_49"
+        column: "Q94_99"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_49"
+      column: "Q94_99"
       reverse: true
     name: "would"
 
@@ -5300,7 +5297,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q299_50"]
+            columns: ["Q94_100"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "if"
@@ -5311,10 +5308,10 @@ entityDefinitions:
           value: "if"
       ol.name:
         type: "ol.name"
-        column: "Q299_50"
+        column: "Q94_100"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q299_50"
+      column: "Q94_100"
       reverse: true
     name: "if"
 
@@ -5344,308 +5341,308 @@ entityDefinitions:
         type: "ol.id"
         transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q402_29", "Q402_30", "Q402_31", "Q402_32", "Q402_33", "Q402_34", "Q402_35", "Q402_36", "Q402_37", "Q402_38", "Q402_39", "Q402_40", "Q402_41", "Q402_42", "Q402_43", "Q402_44", "Q402_45", "Q402_46", "Q402_47", "Q402_48", "Q402_49", "Q402_50", "Q402_51", "Q402_52", "Q402_53", "Q402_54", "Q402_55", "Q402_56", "Q402_57", "Q402_58", "Q402_59", "Q402_60", "Q402_61", "Q402_66", "Q402_67", "Q402_68", "Q402_69", "Q402_70", "Q402_71", "Q402_72", "Q402_73", "Q402_74", "Q402_75", "Q402_76", "Q402_77", "Q402_78", "Q402_79", "Q402_80", "Q402_81", "Q402_82", "Q402_83", "Q402_84", "Q402_85", "Q402_86", "Q402_87", "Q402_88", "Q402_89", "Q402_90", "Q402_91", "Q402_92", "Q402_93", "Q402_94", "Q402_95", "Q402_96", "Q402_97", "Q402_98", "Q402_99", "Q402_100", "Q402_101", "Q402_102", "Q402_103", "Q402_104", "Q402_105", "Q402_106", "Q402_107", "Q402_108", "Q402_109", "Q402_110", "Q402_111", "Q402_112", "Q402_113", "Q402_114", "Q402_115", "Q402_116", "Q402_117", "Q402_118", "Q402_119", "Q402_120", "Q402_121", "Q402_122", "Q402_123", "Q402_124", "Q402_125", "Q402_126", "Q402_127", "Q402_128", "Q402_129", "Q402_130", "Q402_131", "Q402_132"]
+            columns: ["Q95_29", "Q95_30", "Q95_31", "Q95_32", "Q95_33", "Q95_34", "Q95_35", "Q95_36", "Q95_37", "Q95_38", "Q95_39", "Q95_40", "Q95_41", "Q95_42", "Q95_43", "Q95_44", "Q95_45", "Q95_46", "Q95_47", "Q95_48", "Q95_49", "Q95_50", "Q95_51", "Q95_52", "Q95_53", "Q95_54", "Q95_55", "Q95_56", "Q95_57", "Q95_58", "Q95_59", "Q95_60", "Q95_61", "Q95_66", "Q95_67", "Q95_68", "Q95_69", "Q95_70", "Q95_71", "Q95_72", "Q95_73", "Q95_74", "Q95_75", "Q95_76", "Q95_77", "Q95_78", "Q95_79", "Q95_80", "Q95_81", "Q95_82", "Q95_83", "Q95_84", "Q95_85", "Q95_86", "Q95_87", "Q95_88", "Q95_89", "Q95_90", "Q95_91", "Q95_92", "Q95_93", "Q95_94", "Q95_95", "Q95_96", "Q95_97", "Q95_98", "Q95_99", "Q95_100", "Q95_101", "Q95_102", "Q95_103", "Q95_104", "Q95_105", "Q95_106", "Q95_107", "Q95_108", "Q95_109", "Q95_110", "Q95_111", "Q95_112", "Q95_113", "Q95_114", "Q95_115", "Q95_116", "Q95_117", "Q95_118", "Q95_119", "Q95_120", "Q95_121", "Q95_122", "Q95_123", "Q95_124", "Q95_125", "Q95_126", "Q95_127", "Q95_128", "Q95_129", "Q95_130", "Q95_131", "Q95_132"]
             separator: "_"
       ol.vocabularyword0:
         type: "ol.vocabularyword"
         column: "Q95_29"
       ol.vocabularyword1:
         type: "ol.vocabularyword"
-        column: "Q402_30"
+        column: "Q95_30"
       ol.vocabularyword2:
         type: "ol.vocabularyword"
-        column: "Q402_31"
+        column: "Q95_31"
       ol.vocabularyword3:
         type: "ol.vocabularyword"
-        column: "Q402_32"
+        column: "Q95_32"
       ol.vocabularyword4:
         type: "ol.vocabularyword"
-        column: "Q402_33"
+        column: "Q95_33"
       ol.vocabularyword5:
         type: "ol.vocabularyword"
-        column: "Q402_34"
+        column: "Q95_34"
       ol.vocabularyword6:
         type: "ol.vocabularyword"
-        column: "Q402_35"
+        column: "Q95_35"
       ol.vocabularyword7:
         type: "ol.vocabularyword"
-        column: "Q402_36"
+        column: "Q95_36"
       ol.vocabularyword8:
         type: "ol.vocabularyword"
-        column: "Q402_37"
+        column: "Q95_37"
       ol.vocabularyword9:
         type: "ol.vocabularyword"
-        column: "Q402_38"
+        column: "Q95_38"
       ol.vocabularyword10:
         type: "ol.vocabularyword"
-        column: "Q402_39"
+        column: "Q95_39"
       ol.vocabularyword11:
         type: "ol.vocabularyword"
-        column: "Q402_40"
+        column: "Q95_40"
       ol.vocabularyword12:
         type: "ol.vocabularyword"
-        column: "Q402_41"
+        column: "Q95_41"
       ol.vocabularyword13:
         type: "ol.vocabularyword"
-        column: "Q402_42"
+        column: "Q95_42"
       ol.vocabularyword14:
         type: "ol.vocabularyword"
-        column: "Q402_43"
+        column: "Q95_43"
       ol.vocabularyword15:
         type: "ol.vocabularyword"
-        column: "Q402_44"
+        column: "Q95_44"
       ol.vocabularyword16:
         type: "ol.vocabularyword"
-        column: "Q402_45"
+        column: "Q95_45"
       ol.vocabularyword17:
         type: "ol.vocabularyword"
-        column: "Q402_46"
+        column: "Q95_46"
       ol.vocabularyword18:
         type: "ol.vocabularyword"
-        column: "Q402_47"
+        column: "Q95_47"
       ol.vocabularyword19:
         type: "ol.vocabularyword"
-        column: "Q402_48"
+        column: "Q95_48"
       ol.vocabularyword20:
         type: "ol.vocabularyword"
-        column: "Q402_49"
+        column: "Q95_49"
       ol.vocabularyword21:
         type: "ol.vocabularyword"
-        column: "Q402_50"
+        column: "Q95_50"
       ol.vocabularyword22:
         type: "ol.vocabularyword"
-        column: "Q402_51"
+        column: "Q95_51"
       ol.vocabularyword23:
         type: "ol.vocabularyword"
-        column: "Q402_52"
+        column: "Q95_52"
       ol.vocabularyword24:
         type: "ol.vocabularyword"
-        column: "Q402_53"
+        column: "Q95_53"
       ol.vocabularyword25:
         type: "ol.vocabularyword"
-        column: "Q402_54"
+        column: "Q95_54"
       ol.vocabularyword26:
         type: "ol.vocabularyword"
-        column: "Q402_55"
+        column: "Q95_55"
       ol.vocabularyword27:
         type: "ol.vocabularyword"
-        column: "Q402_56"
+        column: "Q95_56"
       ol.vocabularyword28:
         type: "ol.vocabularyword"
-        column: "Q402_57"
+        column: "Q95_57"
       ol.vocabularyword29:
         type: "ol.vocabularyword"
-        column: "Q402_58"
+        column: "Q95_58"
       ol.vocabularyword30:
         type: "ol.vocabularyword"
-        column: "Q402_59"
+        column: "Q95_59"
       ol.vocabularyword31:
         type: "ol.vocabularyword"
-        column: "Q402_60"
+        column: "Q95_60"
       ol.vocabularyword32:
         type: "ol.vocabularyword"
-        column: "Q402_61"
+        column: "Q95_61"
       ol.vocabularyword33:
         type: "ol.vocabularyword"
-        column: "Q402_66"
+        column: "Q95_66"
       ol.vocabularyword34:
         type: "ol.vocabularyword"
-        column: "Q402_67"
+        column: "Q95_67"
       ol.vocabularyword35:
         type: "ol.vocabularyword"
-        column: "Q402_68"
+        column: "Q95_68"
       ol.vocabularyword36:
         type: "ol.vocabularyword"
-        column: "Q402_69"
+        column: "Q95_69"
       ol.vocabularyword37:
         type: "ol.vocabularyword"
-        column: "Q402_70"
+        column: "Q95_70"
       ol.vocabularyword38:
         type: "ol.vocabularyword"
-        column: "Q402_71"
+        column: "Q95_71"
       ol.vocabularyword39:
         type: "ol.vocabularyword"
-        column: "Q402_72"
+        column: "Q95_72"
       ol.vocabularyword40:
         type: "ol.vocabularyword"
-        column: "Q402_73"
+        column: "Q95_73"
       ol.vocabularyword41:
         type: "ol.vocabularyword"
-        column: "Q402_74"
+        column: "Q95_74"
       ol.vocabularyword42:
         type: "ol.vocabularyword"
-        column: "Q402_75"
+        column: "Q95_75"
       ol.vocabularyword43:
         type: "ol.vocabularyword"
-        column: "Q402_76"
+        column: "Q95_76"
       ol.vocabularyword44:
         type: "ol.vocabularyword"
-        column: "Q402_77"
+        column: "Q95_77"
       ol.vocabularyword45:
         type: "ol.vocabularyword"
-        column: "Q402_78"
+        column: "Q95_78"
       ol.vocabularyword46:
         type: "ol.vocabularyword"
-        column: "Q402_79"
+        column: "Q95_79"
       ol.vocabularyword47:
         type: "ol.vocabularyword"
-        column: "Q402_80"
+        column: "Q95_80"
       ol.vocabularyword48:
         type: "ol.vocabularyword"
-        column: "Q402_81"
+        column: "Q95_81"
       ol.vocabularyword49:
         type: "ol.vocabularyword"
-        column: "Q402_82"
+        column: "Q95_82"
       ol.vocabularyword50:
         type: "ol.vocabularyword"
-        column: "Q402_83"
+        column: "Q95_83"
       ol.vocabularyword51:
         type: "ol.vocabularyword"
-        column: "Q402_84"
+        column: "Q95_84"
       ol.vocabularyword52:
         type: "ol.vocabularyword"
-        column: "Q402_85"
+        column: "Q95_85"
       ol.vocabularyword53:
         type: "ol.vocabularyword"
-        column: "Q402_86"
+        column: "Q95_86"
       ol.vocabularyword54:
         type: "ol.vocabularyword"
-        column: "Q402_87"
+        column: "Q95_87"
       ol.vocabularyword55:
         type: "ol.vocabularyword"
-        column: "Q402_88"
+        column: "Q95_88"
       ol.vocabularyword56:
         type: "ol.vocabularyword"
-        column: "Q402_89"
+        column: "Q95_89"
       ol.vocabularyword57:
         type: "ol.vocabularyword"
-        column: "Q402_90"
+        column: "Q95_90"
       ol.vocabularyword58:
         type: "ol.vocabularyword"
-        column: "Q402_91"
+        column: "Q95_91"
       ol.vocabularyword59:
         type: "ol.vocabularyword"
-        column: "Q402_92"
+        column: "Q95_92"
       ol.vocabularyword60:
         type: "ol.vocabularyword"
-        column: "Q402_93"
+        column: "Q95_93"
       ol.vocabularyword61:
         type: "ol.vocabularyword"
-        column: "Q402_94"
+        column: "Q95_94"
       ol.vocabularyword62:
         type: "ol.vocabularyword"
-        column: "Q402_95"
+        column: "Q95_95"
       ol.vocabularyword63:
         type: "ol.vocabularyword"
-        column: "Q402_96"
+        column: "Q95_96"
       ol.vocabularyword64:
         type: "ol.vocabularyword"
-        column: "Q402_97"
+        column: "Q95_97"
       ol.vocabularyword65:
         type: "ol.vocabularyword"
-        column: "Q402_98"
+        column: "Q95_98"
       ol.vocabularyword66:
         type: "ol.vocabularyword"
-        column: "Q402_99"
+        column: "Q95_99"
       ol.vocabularyword67:
         type: "ol.vocabularyword"
-        column: "Q402_100"
+        column: "Q95_100"
       ol.vocabularyword68:
         type: "ol.vocabularyword"
-        column: "Q402_101"
+        column: "Q95_101"
       ol.vocabularyword69:
         type: "ol.vocabularyword"
-        column: "Q402_102"
+        column: "Q95_102"
       ol.vocabularyword70:
         type: "ol.vocabularyword"
-        column: "Q402_103"
+        column: "Q95_103"
       ol.vocabularyword71:
         type: "ol.vocabularyword"
-        column: "Q402_104"
+        column: "Q95_104"
       ol.vocabularyword72:
         type: "ol.vocabularyword"
-        column: "Q402_105"
+        column: "Q95_105"
       ol.vocabularyword73:
         type: "ol.vocabularyword"
-        column: "Q402_106"
+        column: "Q95_106"
       ol.vocabularyword74:
         type: "ol.vocabularyword"
-        column: "Q402_107"
+        column: "Q95_107"
       ol.vocabularyword75:
         type: "ol.vocabularyword"
-        column: "Q402_108"
+        column: "Q95_108"
       ol.vocabularyword76:
         type: "ol.vocabularyword"
-        column: "Q402_109"
+        column: "Q95_109"
       ol.vocabularyword77:
         type: "ol.vocabularyword"
-        column: "Q402_110"
+        column: "Q95_110"
       ol.vocabularyword78:
         type: "ol.vocabularyword"
-        column: "Q402_111"
+        column: "Q95_111"
       ol.vocabularyword79:
         type: "ol.vocabularyword"
-        column: "Q402_112"
+        column: "Q95_112"
       ol.vocabularyword80:
         type: "ol.vocabularyword"
-        column: "Q402_113"
+        column: "Q95_113"
       ol.vocabularyword81:
         type: "ol.vocabularyword"
-        column: "Q402_114"
+        column: "Q95_114"
       ol.vocabularyword82:
         type: "ol.vocabularyword"
-        column: "Q402_115"
+        column: "Q95_115"
       ol.vocabularyword83:
         type: "ol.vocabularyword"
-        column: "Q402_116"
+        column: "Q95_116"
       ol.vocabularyword84:
         type: "ol.vocabularyword"
-        column: "Q402_117"
+        column: "Q95_117"
       ol.vocabularyword85:
         type: "ol.vocabularyword"
-        column: "Q402_118"
+        column: "Q95_118"
       ol.vocabularyword86:
         type: "ol.vocabularyword"
-        column: "Q402_119"
+        column: "Q95_119"
       ol.vocabularyword87:
         type: "ol.vocabularyword"
-        column: "Q402_120"
+        column: "Q95_120"
       ol.vocabularyword88:
         type: "ol.vocabularyword"
-        column: "Q402_121"
+        column: "Q95_121"
       ol.vocabularyword89:
         type: "ol.vocabularyword"
-        column: "Q402_122"
+        column: "Q95_122"
       ol.vocabularyword90:
         type: "ol.vocabularyword"
-        column: "Q402_123"
+        column: "Q95_123"
       ol.vocabularyword91:
         type: "ol.vocabularyword"
-        column: "Q402_124"
+        column: "Q95_124"
       ol.vocabularyword92:
         type: "ol.vocabularyword"
-        column: "Q402_125"
+        column: "Q95_125"
       ol.vocabularyword93:
         type: "ol.vocabularyword"
-        column: "Q402_126"
+        column: "Q95_126"
       ol.vocabularyword94:
         type: "ol.vocabularyword"
-        column: "Q402_127"
+        column: "Q95_127"
       ol.vocabularyword95:
         type: "ol.vocabularyword"
-        column: "Q402_128"
+        column: "Q95_128"
       ol.vocabularyword96:
         type: "ol.vocabularyword"
-        column: "Q402_129"
+        column: "Q95_129"
       ol.vocabularyword97:
         type: "ol.vocabularyword"
-        column: "Q402_130"
+        column: "Q95_130"
       ol.vocabularyword98:
         type: "ol.vocabularyword"
-        column: "Q402_131"
+        column: "Q95_131"
       ol.vocabularyword99:
         type: "ol.vocabularyword"
-        column: "Q402_132"
+        column: "Q95_132"
       ol.name:
         type: "ol.name"
         transforms:
@@ -5654,621 +5651,306 @@ entityDefinitions:
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_29"
+      column: "Q95_29"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_30"
+      column: "Q95_30"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_31"
+      column: "Q95_31"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_32"
+      column: "Q95_32"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_33"
+      column: "Q95_33"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_34"
+      column: "Q95_34"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_35"
+      column: "Q95_35"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_36"
+      column: "Q95_36"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_37"
+      column: "Q95_37"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_38"
+      column: "Q95_38"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_39"
+      column: "Q95_39"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_40"
+      column: "Q95_40"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_41"
+      column: "Q95_41"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_42"
+      column: "Q95_42"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_43"
+      column: "Q95_43"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_44"
+      column: "Q95_44"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_45"
+      column: "Q95_45"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_46"
+      column: "Q95_46"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_47"
+      column: "Q95_47"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_48"
+      column: "Q95_48"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_49"
+      column: "Q95_49"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_50"
+      column: "Q95_50"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_51"
+      column: "Q95_51"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_52"
+      column: "Q95_52"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_53"
+      column: "Q95_53"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_54"
+      column: "Q95_54"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_55"
+      column: "Q95_55"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_56"
+      column: "Q95_56"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_57"
+      column: "Q95_57"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_58"
+      column: "Q95_58"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_59"
+      column: "Q95_59"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_60"
+      column: "Q95_60"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_61"
+      column: "Q95_61"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_66"
+      column: "Q95_66"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_67"
+      column: "Q95_67"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_68"
+      column: "Q95_68"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_69"
+      column: "Q95_69"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_70"
+      column: "Q95_70"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_71"
+      column: "Q95_71"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_72"
+      column: "Q95_72"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_73"
+      column: "Q95_73"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_74"
+      column: "Q95_74"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_75"
+      column: "Q95_75"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_76"
+      column: "Q95_76"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_77"
+      column: "Q95_77"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_78"
+      column: "Q95_78"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_79"
+      column: "Q95_79"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_80"
+      column: "Q95_80"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_81"
+      column: "Q95_81"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_82"
+      column: "Q95_82"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_83"
+      column: "Q95_83"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_84"
+      column: "Q95_84"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_85"
+      column: "Q95_85"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_86"
+      column: "Q95_86"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_87"
+      column: "Q95_87"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_88"
+      column: "Q95_88"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_89"
+      column: "Q95_89"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_90"
+      column: "Q95_90"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_91"
+      column: "Q95_91"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_92"
+      column: "Q95_92"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_93"
+      column: "Q95_93"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_94"
+      column: "Q95_94"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_95"
+      column: "Q95_95"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_96"
+      column: "Q95_96"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_97"
+      column: "Q95_97"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_98"
+      column: "Q95_98"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_99"
+      column: "Q95_99"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_100"
+      column: "Q95_100"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_101"
+      column: "Q95_101"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_102"
+      column: "Q95_102"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_103"
+      column: "Q95_103"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_104"
+      column: "Q95_104"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_105"
+      column: "Q95_105"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_106"
+      column: "Q95_106"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_107"
+      column: "Q95_107"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_108"
+      column: "Q95_108"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_109"
+      column: "Q95_109"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_110"
+      column: "Q95_110"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_111"
+      column: "Q95_111"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_112"
+      column: "Q95_112"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_113"
+      column: "Q95_113"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_114"
+      column: "Q95_114"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_115"
+      column: "Q95_115"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_116"
+      column: "Q95_116"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_117"
+      column: "Q95_117"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_118"
+      column: "Q95_118"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_119"
+      column: "Q95_119"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_120"
+      column: "Q95_120"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_121"
+      column: "Q95_121"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_122"
+      column: "Q95_122"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_123"
+      column: "Q95_123"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_124"
+      column: "Q95_124"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_125"
+      column: "Q95_125"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_126"
+      column: "Q95_126"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_127"
+      column: "Q95_127"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_128"
+      column: "Q95_128"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_129"
+      column: "Q95_129"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_130"
+      column: "Q95_130"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_131"
+      column: "Q95_131"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q402_132"
+      column: "Q95_132"
       reverse: true
     name: "vocabwordsaid"
-
-  vocabwordsaid2:
-    fqn: "ol.vocabulary"
-    entitySetName: "CAFE_MAQ_VocabularyAssessment_WS_30_38"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-          - !<transforms.ConcatTransform>
-            columns: ["Q300_1", "Q300_2", "Q300_3", "Q300_4", "Q300_5", "Q300_6", "Q300_7", "Q300_8", "Q300_9", "Q300_10", "Q300_11", "Q300_12", "Q300_13", "Q300_14", "Q300_15", "Q300_16", "Q300_17", "Q300_18", "Q300_19", "Q300_20", "Q300_21", "Q300_22", "Q300_23", "Q300_24", "Q300_25", "Q300_26", "Q300_27", "Q300_28", "Q300_29", "Q300_30", "Q300_31", "Q300_32", "Q300_33", "Q300_34", "Q300_35", "Q300_36", "Q300_37", "Q300_38", "Q300_39", "Q300_40", "Q300_41", "Q300_42", "Q300_43", "Q300_44", "Q300_45", "Q300_46", "Q300_47", "Q300_48", "Q300_49", "Q300_50"]
-            separator: "_"
-      ol.vocabularyword1:
-        type: "ol.vocabularyword"
-        column: "Q300_1"
-      ol.vocabularyword2:
-        type: "ol.vocabularyword"
-        column: "Q300_2"
-      ol.vocabularyword3:
-        type: "ol.vocabularyword"
-        column: "Q300_3"
-      ol.vocabularyword4:
-        type: "ol.vocabularyword"
-        column: "Q300_4"
-      ol.vocabularyword5:
-        type: "ol.vocabularyword"
-        column: "Q300_5"
-      ol.vocabularyword6:
-        type: "ol.vocabularyword"
-        column: "Q300_6"
-      ol.vocabularyword7:
-        type: "ol.vocabularyword"
-        column: "Q300_7"
-      ol.vocabularyword8:
-        type: "ol.vocabularyword"
-        column: "Q300_8"
-      ol.vocabularyword9:
-        type: "ol.vocabularyword"
-        column: "Q300_9"
-      ol.vocabularyword10:
-        type: "ol.vocabularyword"
-        column: "Q300_10"
-      ol.vocabularyword11:
-        type: "ol.vocabularyword"
-        column: "Q300_11"
-      ol.vocabularyword12:
-        type: "ol.vocabularyword"
-        column: "Q300_12"
-      ol.vocabularyword13:
-        type: "ol.vocabularyword"
-        column: "Q300_13"
-      ol.vocabularyword14:
-        type: "ol.vocabularyword"
-        column: "Q300_14"
-      ol.vocabularyword15:
-        type: "ol.vocabularyword"
-        column: "Q300_15"
-      ol.vocabularyword16:
-        type: "ol.vocabularyword"
-        column: "Q300_16"
-      ol.vocabularyword17:
-        type: "ol.vocabularyword"
-        column: "Q300_17"
-      ol.vocabularyword18:
-        type: "ol.vocabularyword"
-        column: "Q300_18"
-      ol.vocabularyword19:
-        type: "ol.vocabularyword"
-        column: "Q300_19"
-      ol.vocabularyword20:
-        type: "ol.vocabularyword"
-        column: "Q300_20"
-      ol.vocabularyword21:
-        type: "ol.vocabularyword"
-        column: "Q300_21"
-      ol.vocabularyword22:
-        type: "ol.vocabularyword"
-        column: "Q300_22"
-      ol.vocabularyword23:
-        type: "ol.vocabularyword"
-        column: "Q300_23"
-      ol.vocabularyword24:
-        type: "ol.vocabularyword"
-        column: "Q300_24"
-      ol.vocabularyword25:
-        type: "ol.vocabularyword"
-        column: "Q300_25"
-      ol.vocabularyword26:
-        type: "ol.vocabularyword"
-        column: "Q300_26"
-      ol.vocabularyword27:
-        type: "ol.vocabularyword"
-        column: "Q300_27"
-      ol.vocabularyword28:
-        type: "ol.vocabularyword"
-        column: "Q300_28"
-      ol.vocabularyword29:
-        type: "ol.vocabularyword"
-        column: "Q300_29"
-      ol.vocabularyword30:
-        type: "ol.vocabularyword"
-        column: "Q300_30"
-      ol.vocabularyword31:
-        type: "ol.vocabularyword"
-        column: "Q300_31"
-      ol.vocabularyword32:
-        type: "ol.vocabularyword"
-        column: "Q300_32"
-      ol.vocabularyword33:
-        type: "ol.vocabularyword"
-        column: "Q300_33"
-      ol.vocabularyword34:
-        type: "ol.vocabularyword"
-        column: "Q300_34"
-      ol.vocabularyword35:
-        type: "ol.vocabularyword"
-        column: "Q300_35"
-      ol.vocabularyword36:
-        type: "ol.vocabularyword"
-        column: "Q300_36"
-      ol.vocabularyword37:
-        type: "ol.vocabularyword"
-        column: "Q300_37"
-      ol.vocabularyword38:
-        type: "ol.vocabularyword"
-        column: "Q300_38"
-      ol.vocabularyword39:
-        type: "ol.vocabularyword"
-        column: "Q300_39"
-      ol.vocabularyword40:
-        type: "ol.vocabularyword"
-        column: "Q300_40"
-      ol.vocabularyword41:
-        type: "ol.vocabularyword"
-        column: "Q300_41"
-      ol.vocabularyword42:
-        type: "ol.vocabularyword"
-        column: "Q300_42"
-      ol.vocabularyword43:
-        type: "ol.vocabularyword"
-        column: "Q300_43"
-      ol.vocabularyword44:
-        type: "ol.vocabularyword"
-        column: "Q300_44"
-      ol.vocabularyword45:
-        type: "ol.vocabularyword"
-        column: "Q300_45"
-      ol.vocabularyword46:
-        type: "ol.vocabularyword"
-        column: "Q300_46"
-      ol.vocabularyword47:
-        type: "ol.vocabularyword"
-        column: "Q300_47"
-      ol.vocabularyword48:
-        type: "ol.vocabularyword"
-        column: "Q300_48"
-      ol.vocabularyword49:
-        type: "ol.vocabularyword"
-        column: "Q300_49"
-      ol.vocabularyword50:
-        type: "ol.vocabularyword"
-        column: "Q300_50"
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_5"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_6"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_7"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_8"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_9"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_10"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_11"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_12"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_13"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_14"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_15"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_16"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_17"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_18"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_19"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_20"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_21"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_22"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_23"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_24"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_25"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_26"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_27"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_28"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_29"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_30"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_31"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_32"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_33"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_34"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_35"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_36"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_37"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_38"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_39"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_40"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_41"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_42"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_43"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_44"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_45"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_46"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_47"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_48"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_49"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q300_50"
-      reverse: true
-    name: "vocabwordsaid2"
-
 
   childlanguage2:
     fqn: "ol.childlanguage"
@@ -6278,81 +5960,81 @@ entityDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["Q409_1", "Q409_2", "Q409_3", "Q409_4", "Q409_5", "Q409_6", "Q409_7", "Q409_8", "Q409_9", "Q409_10", "Q409_11", "Q409_12"]
+          columns: ["Q97_1", "Q97_2", "Q97_3", "Q97_4", "Q97_5", "Q97_6", "Q97_7", "Q97_8", "Q97_9", "Q97_10", "Q97_11", "Q97_12"]
           separator: "_"
       ol.numbertext:
         type: "ol.numbertext"
-        column: "Q409_1"
+        column: "Q97_1"
       ol.whatwhere:
         type: "ol.whatwhere"
-        column: "Q409_2"
+        column: "Q97_2"
       ol.whyhow:
         type: "ol.whyhow"
-        column: "Q409_3"
+        column: "Q97_3"
       ol.reason:
         type: "ol.reason"
-        column: "Q409_4"
+        column: "Q97_4"
       ol.taxonomy:
         type: "ol.taxonomy"
-        column: "Q409_5"
+        column: "Q97_5"
       ol.shape:
         type: "ol.shape"
-        column: "Q409_6"
+        column: "Q97_6"
       ol.contemplative:
         type: "ol.contemplative"
-        column: "Q409_7"
+        column: "Q97_7"
       ol.definition:
         type: "ol.definition"
-        column: "Q409_8"
+        column: "Q97_8"
       ol.sizecomparison:
         type: "ol.sizecomparison"
-        column: "Q409_9"
+        column: "Q97_9"
       ol.candifferentiateleftfromright:
         type: "ol.candifferentiateleftfromright"
-        column: "Q409_10"
+        column: "Q97_10"
       ol.superlatives:
         type: "ol.superlatives"
-        column: "Q409_11"
+        column: "Q97_11"
       ol.action:
         type: "ol.action"
-        column: "Q409_12"
+        column: "Q97_12"
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
-      column: "Q409_1"
+      column: "Q97_1"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q409_2"
+      column: "Q97_2"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q409_3"
+      column: "Q97_3"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q409_4"
+      column: "Q97_4"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q409_5"
+      column: "Q97_5"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q409_6"
+      column: "Q97_6"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q409_7"
+      column: "Q97_7"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q409_8"
+      column: "Q97_8"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q409_9"
+      column: "Q97_9"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q409_10"
+      column: "Q97_10"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q409_11"
+      column: "Q97_11"
       reverse: true
     - !<conditions.BooleanIsNullCondition>
-      column: "Q409_12"
+      column: "Q97_12"
       reverse: true
     name: "childlanguage2"
 
@@ -6997,7 +6679,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_1"]
+          columns: ["child_id", "Q93_46"]
           separator: "_"
     name: "screenedwith46"
 
@@ -7011,7 +6693,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_2"]
+          columns: ["child_id", "Q93_47"]
           separator: "_"
     name: "screenedwith47"
 
@@ -7025,7 +6707,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_3"]
+          columns: ["child_id", "Q93_48"]
           separator: "_"
     name: "screenedwith48"
 
@@ -7039,7 +6721,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_4"]
+          columns: ["child_id", "Q93_49"]
           separator: "_"
     name: "screenedwith49"
 
@@ -7053,7 +6735,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_5"]
+          columns: ["child_id", "Q93_50"]
           separator: "_"
     name: "screenedwith50"
 
@@ -7067,7 +6749,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_6"]
+          columns: ["child_id", "Q93_51"]
           separator: "_"
     name: "screenedwith51"
 
@@ -7081,7 +6763,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_7"]
+          columns: ["child_id", "Q93_52"]
           separator: "_"
     name: "screenedwith52"
 
@@ -7095,7 +6777,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_8"]
+          columns: ["child_id", "Q93_53"]
           separator: "_"
     name: "screenedwith53"
 
@@ -7109,7 +6791,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_9"]
+          columns: ["child_id", "Q93_54"]
           separator: "_"
     name: "screenedwith54"
 
@@ -7123,7 +6805,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_10"]
+          columns: ["child_id", "Q93_55"]
           separator: "_"
     name: "screenedwith55"
 
@@ -7137,7 +6819,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_11"]
+          columns: ["child_id", "Q93_56"]
           separator: "_"
     name: "screenedwith56"
 
@@ -7151,7 +6833,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_12"]
+          columns: ["child_id", "Q93_57"]
           separator: "_"
     name: "screenedwith57"
 
@@ -7165,7 +6847,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_13"]
+          columns: ["child_id", "Q93_58"]
           separator: "_"
     name: "screenedwith58"
 
@@ -7179,7 +6861,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_14"]
+          columns: ["child_id", "Q93_59"]
           separator: "_"
     name: "screenedwith59"
 
@@ -7193,7 +6875,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_15"]
+          columns: ["child_id", "Q93_60"]
           separator: "_"
     name: "screenedwith60"
 
@@ -7207,7 +6889,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_16"]
+          columns: ["child_id", "Q93_61"]
           separator: "_"
     name: "screenedwith61"
 
@@ -7221,7 +6903,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_17"]
+          columns: ["child_id", "Q93_62"]
           separator: "_"
     name: "screenedwith62"
 
@@ -7235,7 +6917,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_18"]
+          columns: ["child_id", "Q93_63"]
           separator: "_"
     name: "screenedwith63"
 
@@ -7249,7 +6931,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_19"]
+          columns: ["child_id", "Q93_64"]
           separator: "_"
     name: "screenedwith64"
 
@@ -7263,7 +6945,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_20"]
+          columns: ["child_id", "Q93_65"]
           separator: "_"
     name: "screenedwith65"
 
@@ -7277,7 +6959,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_21"]
+          columns: ["child_id", "Q93_66"]
           separator: "_"
     name: "screenedwith66"
 
@@ -7291,7 +6973,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_22"]
+          columns: ["child_id", "Q93_67"]
           separator: "_"
     name: "screenedwith67"
 
@@ -7305,7 +6987,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_23"]
+          columns: ["child_id", "Q93_68"]
           separator: "_"
     name: "screenedwith68"
 
@@ -7319,7 +7001,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_24"]
+          columns: ["child_id", "Q93_69"]
           separator: "_"
     name: "screenedwith69"
 
@@ -7333,7 +7015,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_25"]
+          columns: ["child_id", "Q93_70"]
           separator: "_"
     name: "screenedwith70"
 
@@ -7347,7 +7029,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_26"]
+          columns: ["child_id", "Q93_71"]
           separator: "_"
     name: "screenedwith71"
 
@@ -7361,7 +7043,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_27"]
+          columns: ["child_id", "Q93_72"]
           separator: "_"
     name: "screenedwith72"
 
@@ -7375,7 +7057,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_28"]
+          columns: ["child_id", "Q93_73"]
           separator: "_"
     name: "screenedwith73"
 
@@ -7389,7 +7071,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_29"]
+          columns: ["child_id", "Q93_74"]
           separator: "_"
     name: "screenedwith74"
 
@@ -7403,7 +7085,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_30"]
+          columns: ["child_id", "Q93_75"]
           separator: "_"
     name: "screenedwith75"
 
@@ -7417,7 +7099,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_31"]
+          columns: ["child_id", "Q93_76"]
           separator: "_"
     name: "screenedwith76"
 
@@ -7431,7 +7113,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_32"]
+          columns: ["child_id", "Q93_77"]
           separator: "_"
     name: "screenedwith77"
 
@@ -7445,7 +7127,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_33"]
+          columns: ["child_id", "Q93_78"]
           separator: "_"
     name: "screenedwith78"
 
@@ -7459,7 +7141,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_34"]
+          columns: ["child_id", "Q93_79"]
           separator: "_"
     name: "screenedwith79"
 
@@ -7473,7 +7155,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_35"]
+          columns: ["child_id", "Q93_80"]
           separator: "_"
     name: "screenedwith80"
 
@@ -7487,7 +7169,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_36"]
+          columns: ["child_id", "Q93_81"]
           separator: "_"
     name: "screenedwith81"
 
@@ -7501,7 +7183,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_37"]
+          columns: ["child_id", "Q93_82"]
           separator: "_"
     name: "screenedwith82"
 
@@ -7515,7 +7197,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_38"]
+          columns: ["child_id", "Q93_83"]
           separator: "_"
     name: "screenedwith83"
 
@@ -7529,7 +7211,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_39"]
+          columns: ["child_id", "Q93_84"]
           separator: "_"
     name: "screenedwith84"
 
@@ -7543,7 +7225,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_40"]
+          columns: ["child_id", "Q93_85"]
           separator: "_"
     name: "screenedwith85"
 
@@ -7557,7 +7239,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_41"]
+          columns: ["child_id", "Q93_86"]
           separator: "_"
     name: "screenedwith86"
 
@@ -7571,7 +7253,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_42"]
+          columns: ["child_id", "Q93_87"]
           separator: "_"
     name: "screenedwith87"
 
@@ -7585,7 +7267,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_43"]
+          columns: ["child_id", "Q93_88"]
           separator: "_"
     name: "screenedwith88"
 
@@ -7599,7 +7281,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q298_44"]
+          columns: ["child_id", "Q93_89"]
           separator: "_"
     name: "screenedwith89"
 
@@ -8313,7 +7995,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_1"]
+          columns: ["child_id", "Q94_51"]
           separator: "_"
     name: "screenedwith140"
 
@@ -8327,7 +8009,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_2"]
+          columns: ["child_id", "Q94_52"]
           separator: "_"
     name: "screenedwith141"
 
@@ -8341,7 +8023,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_3"]
+          columns: ["child_id", "Q94_53"]
           separator: "_"
     name: "screenedwith142"
 
@@ -8355,7 +8037,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_4"]
+          columns: ["child_id", "Q94_54"]
           separator: "_"
     name: "screenedwith143"
 
@@ -8369,7 +8051,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_5"]
+          columns: ["child_id", "Q94_55"]
           separator: "_"
     name: "screenedwith144"
 
@@ -8383,7 +8065,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_6"]
+          columns: ["child_id", "Q94_56"]
           separator: "_"
     name: "screenedwith145"
 
@@ -8397,7 +8079,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_7"]
+          columns: ["child_id", "Q94_57"]
           separator: "_"
     name: "screenedwith146"
 
@@ -8411,7 +8093,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_8"]
+          columns: ["child_id", "Q94_58"]
           separator: "_"
     name: "screenedwith147"
 
@@ -8425,7 +8107,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_9"]
+          columns: ["child_id", "Q94_59"]
           separator: "_"
     name: "screenedwith148"
 
@@ -8439,7 +8121,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_10"]
+          columns: ["child_id", "Q94_60"]
           separator: "_"
     name: "screenedwith149"
 
@@ -8453,7 +8135,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_11"]
+          columns: ["child_id", "Q94_61"]
           separator: "_"
     name: "screenedwith150"
 
@@ -8467,7 +8149,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_12"]
+          columns: ["child_id", "Q94_62"]
           separator: "_"
     name: "screenedwith151"
 
@@ -8481,7 +8163,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_13"]
+          columns: ["child_id", "Q94_63"]
           separator: "_"
     name: "screenedwith152"
 
@@ -8495,7 +8177,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_14"]
+          columns: ["child_id", "Q94_64"]
           separator: "_"
     name: "screenedwith153"
 
@@ -8509,7 +8191,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_15"]
+          columns: ["child_id", "Q94_65"]
           separator: "_"
     name: "screenedwith154"
 
@@ -8523,7 +8205,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_16"]
+          columns: ["child_id", "Q94_66"]
           separator: "_"
     name: "screenedwith155"
 
@@ -8537,7 +8219,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_17"]
+          columns: ["child_id", "Q94_67"]
           separator: "_"
     name: "screenedwith156"
 
@@ -8551,7 +8233,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_18"]
+          columns: ["child_id", "Q94_68"]
           separator: "_"
     name: "screenedwith157"
 
@@ -8565,7 +8247,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_19"]
+          columns: ["child_id", "Q94_69"]
           separator: "_"
     name: "screenedwith158"
 
@@ -8579,7 +8261,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_20"]
+          columns: ["child_id", "Q94_70"]
           separator: "_"
     name: "screenedwith159"
 
@@ -8593,7 +8275,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_21"]
+          columns: ["child_id", "Q94_71"]
           separator: "_"
     name: "screenedwith160"
 
@@ -8607,7 +8289,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_22"]
+          columns: ["child_id", "Q94_72"]
           separator: "_"
     name: "screenedwith161"
 
@@ -8621,7 +8303,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_23"]
+          columns: ["child_id", "Q94_73"]
           separator: "_"
     name: "screenedwith162"
 
@@ -8635,7 +8317,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_24"]
+          columns: ["child_id", "Q94_74"]
           separator: "_"
     name: "screenedwith163"
 
@@ -8649,7 +8331,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_25"]
+          columns: ["child_id", "Q94_75"]
           separator: "_"
     name: "screenedwith164"
 
@@ -8663,7 +8345,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_26"]
+          columns: ["child_id", "Q94_76"]
           separator: "_"
     name: "screenedwith165"
 
@@ -8677,7 +8359,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_27"]
+          columns: ["child_id", "Q94_77"]
           separator: "_"
     name: "screenedwith166"
 
@@ -8691,7 +8373,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_28"]
+          columns: ["child_id", "Q94_78"]
           separator: "_"
     name: "screenedwith167"
 
@@ -8705,7 +8387,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_29"]
+          columns: ["child_id", "Q94_79"]
           separator: "_"
     name: "screenedwith168"
 
@@ -8719,7 +8401,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_30"]
+          columns: ["child_id", "Q94_80"]
           separator: "_"
     name: "screenedwith169"
 
@@ -8733,7 +8415,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_31"]
+          columns: ["child_id", "Q94_81"]
           separator: "_"
     name: "screenedwith170"
 
@@ -8747,7 +8429,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_32"]
+          columns: ["child_id", "Q94_82"]
           separator: "_"
     name: "screenedwith171"
 
@@ -8761,7 +8443,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_33"]
+          columns: ["child_id", "Q94_83"]
           separator: "_"
     name: "screenedwith172"
 
@@ -8775,7 +8457,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_34"]
+          columns: ["child_id", "Q94_84"]
           separator: "_"
     name: "screenedwith173"
 
@@ -8789,7 +8471,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_35"]
+          columns: ["child_id", "Q94_85"]
           separator: "_"
     name: "screenedwith174"
 
@@ -8803,7 +8485,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_36"]
+          columns: ["child_id", "Q94_86"]
           separator: "_"
     name: "screenedwith175"
 
@@ -8817,7 +8499,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_37"]
+          columns: ["child_id", "Q94_87"]
           separator: "_"
     name: "screenedwith176"
 
@@ -8831,7 +8513,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_38"]
+          columns: ["child_id", "Q94_88"]
           separator: "_"
     name: "screenedwith177"
 
@@ -8845,7 +8527,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_39"]
+          columns: ["child_id", "Q94_89"]
           separator: "_"
     name: "screenedwith178"
 
@@ -8859,7 +8541,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_40"]
+          columns: ["child_id", "Q94_90"]
           separator: "_"
     name: "screenedwith179"
 
@@ -8873,7 +8555,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_41"]
+          columns: ["child_id", "Q94_91"]
           separator: "_"
     name: "screenedwith180"
 
@@ -8887,7 +8569,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_42"]
+          columns: ["child_id", "Q94_92"]
           separator: "_"
     name: "screenedwith181"
 
@@ -8901,7 +8583,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_43"]
+          columns: ["child_id", "Q94_93"]
           separator: "_"
     name: "screenedwith182"
 
@@ -8915,7 +8597,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_44"]
+          columns: ["child_id", "Q94_94"]
           separator: "_"
     name: "screenedwith183"
 
@@ -8929,7 +8611,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_45"]
+          columns: ["child_id", "Q94_95"]
           separator: "_"
     name: "screenedwith184"
 
@@ -8943,7 +8625,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_46"]
+          columns: ["child_id", "Q94_96"]
           separator: "_"
     name: "screenedwith185"
 
@@ -8957,7 +8639,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_47"]
+          columns: ["child_id", "Q94_97"]
           separator: "_"
     name: "screenedwith186"
 
@@ -8971,7 +8653,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_48"]
+          columns: ["child_id", "Q94_98"]
           separator: "_"
     name: "screenedwith187"
 
@@ -8985,7 +8667,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_49"]
+          columns: ["child_id", "Q94_99"]
           separator: "_"
     name: "screenedwith188"
 
@@ -8999,7 +8681,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q299_50"]
+          columns: ["child_id", "Q94_100"]
           separator: "_"
     name: "screenedwith189"
 
@@ -9027,23 +8709,9 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q402_29", "Q402_30", "Q402_31", "Q402_32", "Q402_33", "Q402_34", "Q402_35", "Q402_36", "Q402_37", "Q402_38", "Q402_39", "Q402_40", "Q402_41", "Q402_42", "Q402_43", "Q402_44", "Q402_45", "Q402_46", "Q402_47", "Q402_48", "Q402_49", "Q402_50", "Q402_51", "Q402_52", "Q402_53", "Q402_54", "Q402_55", "Q402_56", "Q402_57", "Q402_58", "Q402_59", "Q402_60", "Q402_61", "Q402_66", "Q402_67", "Q402_68", "Q402_69", "Q402_70", "Q402_71", "Q402_72", "Q402_73", "Q402_74", "Q402_75", "Q402_76", "Q402_77", "Q402_78", "Q402_79", "Q402_80", "Q402_81", "Q402_82", "Q402_83", "Q402_84", "Q402_85", "Q402_86", "Q402_87", "Q402_88", "Q402_89", "Q402_90", "Q402_91", "Q402_92", "Q402_93", "Q402_94", "Q402_95", "Q402_96", "Q402_97", "Q402_98", "Q402_99", "Q402_100", "Q402_101", "Q402_102", "Q402_103", "Q402_104", "Q402_105", "Q402_106", "Q402_107", "Q402_108", "Q402_109", "Q402_110", "Q402_111", "Q402_112", "Q402_113", "Q402_114", "Q402_115", "Q402_116", "Q402_117", "Q402_118", "Q402_119", "Q402_120", "Q402_121", "Q402_122", "Q402_123", "Q402_124", "Q402_125", "Q402_126", "Q402_127", "Q402_128", "Q402_129", "Q402_130", "Q402_131", "Q402_132"]
+          columns: ["child_id", "Q95_29", "Q95_30", "Q95_31", "Q95_32", "Q95_33", "Q95_34", "Q95_35", "Q95_36", "Q95_37", "Q95_38", "Q95_39", "Q95_40", "Q95_41", "Q95_42", "Q95_43", "Q95_44", "Q95_45", "Q95_46", "Q95_47", "Q95_48", "Q95_49", "Q95_50", "Q95_51", "Q95_52", "Q95_53", "Q95_54", "Q95_55", "Q95_56", "Q95_57", "Q95_58", "Q95_59", "Q95_60", "Q95_61", "Q95_66", "Q95_67", "Q95_68", "Q95_69", "Q95_70", "Q95_71", "Q95_72", "Q95_73", "Q95_74", "Q95_75", "Q95_76", "Q95_77", "Q95_78", "Q95_79", "Q95_80", "Q95_81", "Q95_82", "Q95_83", "Q95_84", "Q95_85", "Q95_86", "Q95_87", "Q95_88", "Q95_89", "Q95_90", "Q95_91", "Q95_92", "Q95_93", "Q95_94", "Q95_95", "Q95_96", "Q95_97", "Q95_98", "Q95_99", "Q95_100", "Q95_101", "Q95_102", "Q95_103", "Q95_104", "Q95_105", "Q95_106", "Q95_107", "Q95_108", "Q95_109", "Q95_110", "Q95_111", "Q95_112", "Q95_113", "Q95_114", "Q95_115", "Q95_116", "Q95_117", "Q95_118", "Q95_119", "Q95_120", "Q95_121", "Q95_122", "Q95_123", "Q95_124", "Q95_125", "Q95_126", "Q95_127", "Q95_128", "Q95_129", "Q95_130", "Q95_131", "Q95_132"]
           separator: "_"
     name: "screenedwith191"
-
-  screenedwith192:
-    fqn: "ol.screenedwith"
-    entitySetName: "CAFE_MAQ_ScreenedWith"
-    src: "subject"
-    dst: "vocabwordsaid2"
-    propertyDefinitions:
-      general.id:
-        type: "general.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q300_1", "Q300_2", "Q300_3", "Q300_4", "Q300_5", "Q300_6", "Q300_7", "Q300_8", "Q300_9", "Q300_10", "Q300_11", "Q300_12", "Q300_13", "Q300_14", "Q300_15", "Q300_16", "Q300_17", "Q300_18", "Q300_19", "Q300_20", "Q300_21", "Q300_22", "Q300_23", "Q300_24", "Q300_25", "Q300_26", "Q300_27", "Q300_28", "Q300_29", "Q300_30", "Q300_31", "Q300_32", "Q300_33", "Q300_34", "Q300_35", "Q300_36", "Q300_37", "Q300_38", "Q300_39", "Q300_40", "Q300_41", "Q300_42", "Q300_43", "Q300_44", "Q300_45", "Q300_46", "Q300_47", "Q300_48", "Q300_49", "Q300_50"]
-          separator: "_"
-    name: "screenedwith192"
 
   screenedwith193:
     fqn: "ol.screenedwith"
@@ -9055,7 +8723,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["child_id", "Q409_1", "Q409_2", "Q409_3", "Q409_4", "Q409_5", "Q409_6", "Q409_7", "Q409_8", "Q409_9", "Q409_10", "Q409_11", "Q409_12"]
+          columns: ["child_id", "Q97_1", "Q97_2", "Q97_3", "Q97_4", "Q97_5", "Q97_6", "Q97_7", "Q97_8", "Q97_9", "Q97_10", "Q97_11", "Q97_12"]
           separator: "_"
     name: "screenedwith193"
 
@@ -9700,7 +9368,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_1"]
+          columns: ["respondent_id", "Q93_46"]
           separator: "_"
     name: "reported46"
 
@@ -9714,7 +9382,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_2"]
+          columns: ["respondent_id", "Q93_47"]
           separator: "_"
     name: "reported47"
 
@@ -9728,7 +9396,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_3"]
+          columns: ["respondent_id", "Q93_48"]
           separator: "_"
     name: "reported48"
 
@@ -9742,7 +9410,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_4"]
+          columns: ["respondent_id", "Q93_49"]
           separator: "_"
     name: "reported49"
 
@@ -9756,7 +9424,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_5"]
+          columns: ["respondent_id", "Q93_50"]
           separator: "_"
     name: "reported50"
 
@@ -9770,7 +9438,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_6"]
+          columns: ["respondent_id", "Q93_51"]
           separator: "_"
     name: "reported51"
 
@@ -9784,7 +9452,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_7"]
+          columns: ["respondent_id", "Q93_52"]
           separator: "_"
     name: "reported52"
 
@@ -9798,7 +9466,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_8"]
+          columns: ["respondent_id", "Q93_53"]
           separator: "_"
     name: "reported53"
 
@@ -9812,7 +9480,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_9"]
+          columns: ["respondent_id", "Q93_54"]
           separator: "_"
     name: "reported54"
 
@@ -9826,7 +9494,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_10"]
+          columns: ["respondent_id", "Q93_55"]
           separator: "_"
     name: "reported55"
 
@@ -9840,7 +9508,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_11"]
+          columns: ["respondent_id", "Q93_56"]
           separator: "_"
     name: "reported56"
 
@@ -9854,7 +9522,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_12"]
+          columns: ["respondent_id", "Q93_57"]
           separator: "_"
     name: "reported57"
 
@@ -9868,7 +9536,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_13"]
+          columns: ["respondent_id", "Q93_58"]
           separator: "_"
     name: "reported58"
 
@@ -9882,7 +9550,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_14"]
+          columns: ["respondent_id", "Q93_59"]
           separator: "_"
     name: "reported59"
 
@@ -9896,7 +9564,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_15"]
+          columns: ["respondent_id", "Q93_60"]
           separator: "_"
     name: "reported60"
 
@@ -9910,7 +9578,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_16"]
+          columns: ["respondent_id", "Q93_61"]
           separator: "_"
     name: "reported61"
 
@@ -9924,7 +9592,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_17"]
+          columns: ["respondent_id", "Q93_62"]
           separator: "_"
     name: "reported62"
 
@@ -9938,7 +9606,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_18"]
+          columns: ["respondent_id", "Q93_63"]
           separator: "_"
     name: "reported63"
 
@@ -9952,7 +9620,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_19"]
+          columns: ["respondent_id", "Q93_64"]
           separator: "_"
     name: "reported64"
 
@@ -9966,7 +9634,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_20"]
+          columns: ["respondent_id", "Q93_65"]
           separator: "_"
     name: "reported65"
 
@@ -9980,7 +9648,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_21"]
+          columns: ["respondent_id", "Q93_66"]
           separator: "_"
     name: "reported66"
 
@@ -9994,7 +9662,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_22"]
+          columns: ["respondent_id", "Q93_67"]
           separator: "_"
     name: "reported67"
 
@@ -10008,7 +9676,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_23"]
+          columns: ["respondent_id", "Q93_68"]
           separator: "_"
     name: "reported68"
 
@@ -10022,7 +9690,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_24"]
+          columns: ["respondent_id", "Q93_69"]
           separator: "_"
     name: "reported69"
 
@@ -10036,7 +9704,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_25"]
+          columns: ["respondent_id", "Q93_70"]
           separator: "_"
     name: "reported70"
 
@@ -10050,7 +9718,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_26"]
+          columns: ["respondent_id", "Q93_71"]
           separator: "_"
     name: "reported71"
 
@@ -10064,7 +9732,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_27"]
+          columns: ["respondent_id", "Q93_72"]
           separator: "_"
     name: "reported72"
 
@@ -10078,7 +9746,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_28"]
+          columns: ["respondent_id", "Q93_73"]
           separator: "_"
     name: "reported73"
 
@@ -10092,7 +9760,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_29"]
+          columns: ["respondent_id", "Q93_74"]
           separator: "_"
     name: "reported74"
 
@@ -10106,7 +9774,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_30"]
+          columns: ["respondent_id", "Q93_75"]
           separator: "_"
     name: "reported75"
 
@@ -10120,7 +9788,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_31"]
+          columns: ["respondent_id", "Q93_76"]
           separator: "_"
     name: "reported76"
 
@@ -10134,7 +9802,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_32"]
+          columns: ["respondent_id", "Q93_77"]
           separator: "_"
     name: "reported77"
 
@@ -10148,7 +9816,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_33"]
+          columns: ["respondent_id", "Q93_78"]
           separator: "_"
     name: "reported78"
 
@@ -10162,7 +9830,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_34"]
+          columns: ["respondent_id", "Q93_79"]
           separator: "_"
     name: "reported79"
 
@@ -10176,7 +9844,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_35"]
+          columns: ["respondent_id", "Q93_80"]
           separator: "_"
     name: "reported80"
 
@@ -10190,7 +9858,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_36"]
+          columns: ["respondent_id", "Q93_81"]
           separator: "_"
     name: "reported81"
 
@@ -10204,7 +9872,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_37"]
+          columns: ["respondent_id", "Q93_82"]
           separator: "_"
     name: "reported82"
 
@@ -10218,7 +9886,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_38"]
+          columns: ["respondent_id", "Q93_83"]
           separator: "_"
     name: "reported83"
 
@@ -10232,7 +9900,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_39"]
+          columns: ["respondent_id", "Q93_84"]
           separator: "_"
     name: "reported84"
 
@@ -10246,7 +9914,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_40"]
+          columns: ["respondent_id", "Q93_85"]
           separator: "_"
     name: "reported85"
 
@@ -10260,7 +9928,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_41"]
+          columns: ["respondent_id", "Q93_86"]
           separator: "_"
     name: "reported86"
 
@@ -10274,7 +9942,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_42"]
+          columns: ["respondent_id", "Q93_87"]
           separator: "_"
     name: "reported87"
 
@@ -10288,7 +9956,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_43"]
+          columns: ["respondent_id", "Q93_88"]
           separator: "_"
     name: "reported88"
 
@@ -10302,7 +9970,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q298_44"]
+          columns: ["respondent_id", "Q93_89"]
           separator: "_"
     name: "reported89"
 
@@ -11016,7 +10684,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_1"]
+          columns: ["respondent_id", "Q94_51"]
           separator: "_"
     name: "reported140"
 
@@ -11030,7 +10698,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_2"]
+          columns: ["respondent_id", "Q94_52"]
           separator: "_"
     name: "reported141"
 
@@ -11044,7 +10712,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_3"]
+          columns: ["respondent_id", "Q94_53"]
           separator: "_"
     name: "reported142"
 
@@ -11058,7 +10726,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_4"]
+          columns: ["respondent_id", "Q94_54"]
           separator: "_"
     name: "reported143"
 
@@ -11072,7 +10740,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_5"]
+          columns: ["respondent_id", "Q94_55"]
           separator: "_"
     name: "reported144"
 
@@ -11086,7 +10754,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_6"]
+          columns: ["respondent_id", "Q94_56"]
           separator: "_"
     name: "reported145"
 
@@ -11100,7 +10768,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_7"]
+          columns: ["respondent_id", "Q94_57"]
           separator: "_"
     name: "reported146"
 
@@ -11114,7 +10782,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_8"]
+          columns: ["respondent_id", "Q94_58"]
           separator: "_"
     name: "reported147"
 
@@ -11128,7 +10796,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_9"]
+          columns: ["respondent_id", "Q94_59"]
           separator: "_"
     name: "reported148"
 
@@ -11142,7 +10810,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_10"]
+          columns: ["respondent_id", "Q94_60"]
           separator: "_"
     name: "reported149"
 
@@ -11156,7 +10824,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_11"]
+          columns: ["respondent_id", "Q94_61"]
           separator: "_"
     name: "reported150"
 
@@ -11170,7 +10838,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_12"]
+          columns: ["respondent_id", "Q94_62"]
           separator: "_"
     name: "reported151"
 
@@ -11184,7 +10852,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_13"]
+          columns: ["respondent_id", "Q94_63"]
           separator: "_"
     name: "reported152"
 
@@ -11198,7 +10866,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_14"]
+          columns: ["respondent_id", "Q94_64"]
           separator: "_"
     name: "reported153"
 
@@ -11212,7 +10880,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_15"]
+          columns: ["respondent_id", "Q94_65"]
           separator: "_"
     name: "reported154"
 
@@ -11226,7 +10894,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_16"]
+          columns: ["respondent_id", "Q94_66"]
           separator: "_"
     name: "reported155"
 
@@ -11240,7 +10908,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_17"]
+          columns: ["respondent_id", "Q94_67"]
           separator: "_"
     name: "reported156"
 
@@ -11254,7 +10922,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_18"]
+          columns: ["respondent_id", "Q94_68"]
           separator: "_"
     name: "reported157"
 
@@ -11268,7 +10936,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_19"]
+          columns: ["respondent_id", "Q94_69"]
           separator: "_"
     name: "reported158"
 
@@ -11282,7 +10950,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_20"]
+          columns: ["respondent_id", "Q94_70"]
           separator: "_"
     name: "reported159"
 
@@ -11296,7 +10964,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_21"]
+          columns: ["respondent_id", "Q94_71"]
           separator: "_"
     name: "reported160"
 
@@ -11310,7 +10978,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_22"]
+          columns: ["respondent_id", "Q94_72"]
           separator: "_"
     name: "reported161"
 
@@ -11324,7 +10992,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_23"]
+          columns: ["respondent_id", "Q94_73"]
           separator: "_"
     name: "reported162"
 
@@ -11338,7 +11006,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_24"]
+          columns: ["respondent_id", "Q94_74"]
           separator: "_"
     name: "reported163"
 
@@ -11352,7 +11020,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_25"]
+          columns: ["respondent_id", "Q94_75"]
           separator: "_"
     name: "reported164"
 
@@ -11366,7 +11034,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_26"]
+          columns: ["respondent_id", "Q94_76"]
           separator: "_"
     name: "reported165"
 
@@ -11380,7 +11048,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_27"]
+          columns: ["respondent_id", "Q94_77"]
           separator: "_"
     name: "reported166"
 
@@ -11394,7 +11062,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_28"]
+          columns: ["respondent_id", "Q94_78"]
           separator: "_"
     name: "reported167"
 
@@ -11408,7 +11076,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_29"]
+          columns: ["respondent_id", "Q94_79"]
           separator: "_"
     name: "reported168"
 
@@ -11422,7 +11090,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_30"]
+          columns: ["respondent_id", "Q94_80"]
           separator: "_"
     name: "reported169"
 
@@ -11436,7 +11104,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_31"]
+          columns: ["respondent_id", "Q94_81"]
           separator: "_"
     name: "reported170"
 
@@ -11450,7 +11118,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_32"]
+          columns: ["respondent_id", "Q94_82"]
           separator: "_"
     name: "reported171"
 
@@ -11464,7 +11132,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_33"]
+          columns: ["respondent_id", "Q94_83"]
           separator: "_"
     name: "reported172"
 
@@ -11478,7 +11146,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_34"]
+          columns: ["respondent_id", "Q94_84"]
           separator: "_"
     name: "reported173"
 
@@ -11492,7 +11160,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_35"]
+          columns: ["respondent_id", "Q94_85"]
           separator: "_"
     name: "reported174"
 
@@ -11506,7 +11174,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_36"]
+          columns: ["respondent_id", "Q94_86"]
           separator: "_"
     name: "reported175"
 
@@ -11520,7 +11188,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_37"]
+          columns: ["respondent_id", "Q94_87"]
           separator: "_"
     name: "reported176"
 
@@ -11534,7 +11202,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_38"]
+          columns: ["respondent_id", "Q94_88"]
           separator: "_"
     name: "reported177"
 
@@ -11548,7 +11216,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_39"]
+          columns: ["respondent_id", "Q94_89"]
           separator: "_"
     name: "reported178"
 
@@ -11562,7 +11230,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_40"]
+          columns: ["respondent_id", "Q94_90"]
           separator: "_"
     name: "reported179"
 
@@ -11576,7 +11244,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_41"]
+          columns: ["respondent_id", "Q94_91"]
           separator: "_"
     name: "reported180"
 
@@ -11590,7 +11258,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_42"]
+          columns: ["respondent_id", "Q94_92"]
           separator: "_"
     name: "reported181"
 
@@ -11604,7 +11272,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_43"]
+          columns: ["respondent_id", "Q94_93"]
           separator: "_"
     name: "reported182"
 
@@ -11618,7 +11286,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_44"]
+          columns: ["respondent_id", "Q94_94"]
           separator: "_"
     name: "reported183"
 
@@ -11632,7 +11300,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_45"]
+          columns: ["respondent_id", "Q94_95"]
           separator: "_"
     name: "reported184"
 
@@ -11646,7 +11314,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_46"]
+          columns: ["respondent_id", "Q94_96"]
           separator: "_"
     name: "reported185"
 
@@ -11660,7 +11328,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_47"]
+          columns: ["respondent_id", "Q94_97"]
           separator: "_"
     name: "reported186"
 
@@ -11674,7 +11342,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_48"]
+          columns: ["respondent_id", "Q94_98"]
           separator: "_"
     name: "reported187"
 
@@ -11688,7 +11356,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_49"]
+          columns: ["respondent_id", "Q94_99"]
           separator: "_"
     name: "reported188"
 
@@ -11702,7 +11370,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q299_50"]
+          columns: ["respondent_id", "Q94_100"]
           separator: "_"
     name: "reported189"
 
@@ -11730,23 +11398,9 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q402_29", "Q402_30", "Q402_31", "Q402_32", "Q402_33", "Q402_34", "Q402_35", "Q402_36", "Q402_37", "Q402_38", "Q402_39", "Q402_40", "Q402_41", "Q402_42", "Q402_43", "Q402_44", "Q402_45", "Q402_46", "Q402_47", "Q402_48", "Q402_49", "Q402_50", "Q402_51", "Q402_52", "Q402_53", "Q402_54", "Q402_55", "Q402_56", "Q402_57", "Q402_58", "Q402_59", "Q402_60", "Q402_61", "Q402_66", "Q402_67", "Q402_68", "Q402_69", "Q402_70", "Q402_71", "Q402_72", "Q402_73", "Q402_74", "Q402_75", "Q402_76", "Q402_77", "Q402_78", "Q402_79", "Q402_80", "Q402_81", "Q402_82", "Q402_83", "Q402_84", "Q402_85", "Q402_86", "Q402_87", "Q402_88", "Q402_89", "Q402_90", "Q402_91", "Q402_92", "Q402_93", "Q402_94", "Q402_95", "Q402_96", "Q402_97", "Q402_98", "Q402_99", "Q402_100", "Q402_101", "Q402_102", "Q402_103", "Q402_104", "Q402_105", "Q402_106", "Q402_107", "Q402_108", "Q402_109", "Q402_110", "Q402_111", "Q402_112", "Q402_113", "Q402_114", "Q402_115", "Q402_116", "Q402_117", "Q402_118", "Q402_119", "Q402_120", "Q402_121", "Q402_122", "Q402_123", "Q402_124", "Q402_125", "Q402_126", "Q402_127", "Q402_128", "Q402_129", "Q402_130", "Q402_131", "Q402_132"]
+          columns: ["respondent_id", "Q95_29", "Q95_30", "Q95_31", "Q95_32", "Q95_33", "Q95_34", "Q95_35", "Q95_36", "Q95_37", "Q95_38", "Q95_39", "Q95_40", "Q95_41", "Q95_42", "Q95_43", "Q95_44", "Q95_45", "Q95_46", "Q95_47", "Q95_48", "Q95_49", "Q95_50", "Q95_51", "Q95_52", "Q95_53", "Q95_54", "Q95_55", "Q95_56", "Q95_57", "Q95_58", "Q95_59", "Q95_60", "Q95_61", "Q95_66", "Q95_67", "Q95_68", "Q95_69", "Q95_70", "Q95_71", "Q95_72", "Q95_73", "Q95_74", "Q95_75", "Q95_76", "Q95_77", "Q95_78", "Q95_79", "Q95_80", "Q95_81", "Q95_82", "Q95_83", "Q95_84", "Q95_85", "Q95_86", "Q95_87", "Q95_88", "Q95_89", "Q95_90", "Q95_91", "Q95_92", "Q95_93", "Q95_94", "Q95_95", "Q95_96", "Q95_97", "Q95_98", "Q95_99", "Q95_100", "Q95_101", "Q95_102", "Q95_103", "Q95_104", "Q95_105", "Q95_106", "Q95_107", "Q95_108", "Q95_109", "Q95_110", "Q95_111", "Q95_112", "Q95_113", "Q95_114", "Q95_115", "Q95_116", "Q95_117", "Q95_118", "Q95_119", "Q95_120", "Q95_121", "Q95_122", "Q95_123", "Q95_124", "Q95_125", "Q95_126", "Q95_127", "Q95_128", "Q95_129", "Q95_130", "Q95_131", "Q95_132"]
           separator: "_"
     name: "reported191"
-
-  reported192:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
-    dst: "vocabwordsaid2"
-    propertyDefinitions:
-      general.id:
-        type: "general.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q300_1", "Q300_2", "Q300_3", "Q300_4", "Q300_5", "Q300_6", "Q300_7", "Q300_8", "Q300_9", "Q300_10", "Q300_11", "Q300_12", "Q300_13", "Q300_14", "Q300_15", "Q300_16", "Q300_17", "Q300_18", "Q300_19", "Q300_20", "Q300_21", "Q300_22", "Q300_23", "Q300_24", "Q300_25", "Q300_26", "Q300_27", "Q300_28", "Q300_29", "Q300_30", "Q300_31", "Q300_32", "Q300_33", "Q300_34", "Q300_35", "Q300_36", "Q300_37", "Q300_38", "Q300_39", "Q300_40", "Q300_41", "Q300_42", "Q300_43", "Q300_44", "Q300_45", "Q300_46", "Q300_47", "Q300_48", "Q300_49", "Q300_50"]
-          separator: "_"
-    name: "reported192"
 
   reported193:
     fqn: "ol.reported"
@@ -11758,6 +11412,6 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q409_1", "Q409_2", "Q409_3", "Q409_4", "Q409_5", "Q409_6", "Q409_7", "Q409_8", "Q409_9", "Q409_10", "Q409_11", "Q409_12"]
+          columns: ["respondent_id", "Q97_1", "Q97_2", "Q97_3", "Q97_4", "Q97_5", "Q97_6", "Q97_7", "Q97_8", "Q97_9", "Q97_10", "Q97_11", "Q97_12"]
           separator: "_"
     name: "reported193"
