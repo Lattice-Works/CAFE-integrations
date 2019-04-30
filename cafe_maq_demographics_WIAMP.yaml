@@ -184,16 +184,16 @@ entityDefinitions:
         column: child_id
       nc.PersonGivenName:
         type: "nc.PersonGivenName"
-        column: "Q2_1_1_TEXT"
+        column: "child_name"
       ol.birthmonth:
         type: "ol.birthmonth"
-        column: "Q2_1_1"
+        column: "child_birthmonth"
       nc.PersonSex:
         type: "nc.PersonSex"
-        column: "Q2_1_2"
+        column: "child_sex"
       ol.birthyear:
         type: "ol.birthyear"
-        column: "Q2_1_3"
+        column: "child_birthyear"
         transforms:
         - !<transforms.ParseIntTransform> {}
     name: "childsubject1"
