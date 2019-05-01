@@ -397,7 +397,7 @@ entityDefinitions:
   #     column: "Q2_2_3"
   #     reverse: true
   #   name: "childsubject2"
-  # 
+  #
   # childsubject3:
   #   fqn: "general.person"
   #   entitySetName: "CAFE_MAQ_Children"
@@ -446,7 +446,7 @@ entityDefinitions:
   #     column: "Q2_3_3"
   #     reverse: true
   #   name: "childsubject3"
-  # 
+  #
   # childsubject4:
   #   fqn: "general.person"
   #   entitySetName: "CAFE_MAQ_Children"
@@ -495,7 +495,7 @@ entityDefinitions:
   #     column: "Q2_4_3"
   #     reverse: true
   #   name: "childsubject4"
-  # 
+  #
   # childsubject5:
   #   fqn: "general.person"
   #   entitySetName: "CAFE_MAQ_Children"
@@ -544,7 +544,7 @@ entityDefinitions:
   #     column: "Q2_5_3"
   #     reverse: true
   #   name: "childsubject5"
-  # 
+  #
   # childsubject6:
   #   fqn: "general.person"
   #   entitySetName: "CAFE_MAQ_Children"
@@ -698,6 +698,10 @@ entityDefinitions:
       ol.type:
         type: "ol.type"
         column: "Q11"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Don't Know", "Prefer not to answer"]
+          goal: ["Don't Know/Prefer not to answer", "Don't Know/Prefer not to answer"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q11"
@@ -1239,7 +1243,7 @@ associationDefinitions:
   #         columns: ["child_id","Q2_2_3",  "ResponseId", "Q23"]
   #         hashFunction: "sha256"
   #   name: "partof_c"
-  # 
+  #
   # partof_d:
   #   fqn: "ol.partof"
   #   entitySetName: "CAFE_MAQ_PartOf"
@@ -1253,7 +1257,7 @@ associationDefinitions:
   #         columns: ["child_id", "Q2_3_3", "ResponseId", "Q23"]
   #         hashFunction: "sha256"
   #   name: "partof_d"
-  # 
+  #
   # partof_e:
   #   fqn: "ol.partof"
   #   entitySetName: "CAFE_MAQ_PartOf"
@@ -1267,7 +1271,7 @@ associationDefinitions:
   #         columns: ["child_id", "Q2_4_3", "ResponseId", "Q23"]
   #         hashFunction: "sha256"
   #   name: "partof_e"
-  # 
+  #
   # partof_f:
   #   fqn: "ol.partof"
   #   entitySetName: "CAFE_MAQ_PartOf"
@@ -1281,7 +1285,7 @@ associationDefinitions:
   #         columns: ["child_id", "Q2_5_3", "ResponseId", "Q23"]
   #         hashFunction: "sha256"
   #   name: "partof_f"
-  # 
+  #
   # partof_g:
   #   fqn: "ol.partof"
   #   entitySetName: "CAFE_MAQ_PartOf"
@@ -1469,7 +1473,7 @@ associationDefinitions:
   #         - !<transforms.ColumnTransform>
   #           column: "Q15_x2_1_TEXT"
   #   name: "relatedto2"
-  # 
+  #
   # relatedto3:
   #   fqn: "ol.relatedto"
   #   entitySetName: "CAFE_MAQ_RelatedTo"
@@ -1575,7 +1579,7 @@ associationDefinitions:
   #     column: "Q15_x3_1_TEXT"
   #     reverse: true
   #   name: "relatedto3"
-  # 
+  #
   # relatedto4:
   #   fqn: "ol.relatedto"
   #   entitySetName: "CAFE_MAQ_RelatedTo"
@@ -1661,7 +1665,7 @@ associationDefinitions:
   #         - !<transforms.ColumnTransform>
   #           column: "Q15_x4_1_TEXT"
   #   name: "relatedto4"
-  # 
+  #
   # relatedto5:
   #   fqn: "ol.relatedto"
   #   entitySetName: "CAFE_MAQ_RelatedTo"
@@ -1747,7 +1751,7 @@ associationDefinitions:
   #         - !<transforms.ColumnTransform>
   #           column: "Q15_x5_1_TEXT"
   #   name: "relatedto5"
-  # 
+  #
   # relatedto6:
   #   fqn: "ol.relatedto"
   #   entitySetName: "CAFE_MAQ_RelatedTo"

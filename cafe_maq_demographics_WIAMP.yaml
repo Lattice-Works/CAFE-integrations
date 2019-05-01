@@ -652,6 +652,10 @@ entityDefinitions:
       ol.type:
         type: "ol.type"
         column: "Q11"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Don't Know", "Prefer not to answer"]
+          goal: ["Don't Know/Prefer not to answer", "Don't Know/Prefer not to answer"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q11"
@@ -941,7 +945,7 @@ associationDefinitions:
   #         columns: ["Q2_2_3", "ResponseId", "child_id", "Q23"]
   #         hashFunction: "sha256"
   #   name: "partof_c"
-  # 
+  #
   # partof_d:
   #   fqn: "ol.partof"
   #   entitySetName: "CAFE_MAQ_PartOf"
@@ -955,7 +959,7 @@ associationDefinitions:
   #         columns: ["Q2_3_3", "ResponseId", "child_id", "Q23"]
   #         hashFunction: "sha256"
   #   name: "partof_d"
-  # 
+  #
   # partof_e:
   #   fqn: "ol.partof"
   #   entitySetName: "CAFE_MAQ_PartOf"
@@ -969,7 +973,7 @@ associationDefinitions:
   #         columns: ["Q2_4_3", "ResponseId", "child_id", "Q23"]
   #         hashFunction: "sha256"
   #   name: "partof_e"
-  # 
+  #
   # partof_f:
   #   fqn: "ol.partof"
   #   entitySetName: "CAFE_MAQ_PartOf"
@@ -983,7 +987,7 @@ associationDefinitions:
   #         columns: ["Q2_5_3", "ResponseId", "child_id", "Q23"]
   #         hashFunction: "sha256"
   #   name: "partof_f"
-  # 
+  #
   # partof_g:
   #   fqn: "ol.partof"
   #   entitySetName: "CAFE_MAQ_PartOf"

@@ -631,6 +631,10 @@ entityDefinitions:
       ol.type:
         type: "ol.type"
         column: "Q11"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Don't Know", "Prefer not to answer"]
+          goal: ["Don't Know/Prefer not to answer", "Don't Know/Prefer not to answer"]
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q11"
