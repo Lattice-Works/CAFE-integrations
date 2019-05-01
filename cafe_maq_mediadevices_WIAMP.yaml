@@ -1949,7 +1949,7 @@ entityDefinitions:
             columns: ["Q36_1_1"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "television_location"
+            value: "television_location_awake"
       ol.description:
         type: "ol.description"
         transforms:
@@ -1985,7 +1985,7 @@ entityDefinitions:
             columns: ["Q36_1_2"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "dvr_location"
+            value: "dvr_location_awake"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2018,7 +2018,7 @@ entityDefinitions:
             columns: ["Q36_1_3"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "dvd_location"
+            value: "dvd_location_awake"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2051,7 +2051,7 @@ entityDefinitions:
             columns: ["Q36_1_4"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "pc_location"
+            value: "pc_location_awake"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2084,7 +2084,7 @@ entityDefinitions:
             columns: ["Q36_1_6"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "landline_location"
+            value: "landline_location_awake"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2117,7 +2117,7 @@ entityDefinitions:
             columns: ["Q36_1_7"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "mobilephone_location"
+            value: "mobilephone_location_awake"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2150,7 +2150,7 @@ entityDefinitions:
             columns: ["Q36_1_8"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "smartphone_location"
+            value: "smartphone_location_awake"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2183,7 +2183,7 @@ entityDefinitions:
             columns: ["Q36_1_9"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "ipad_location"
+            value: "ipad_location_awake"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2216,7 +2216,7 @@ entityDefinitions:
             columns: ["Q36_1_10"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "mp3_location"
+            value: "mp3_location_awake"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2249,7 +2249,7 @@ entityDefinitions:
             columns: ["Q36_1_15"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "edugame_location"
+            value: "edugame_location_awake"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2282,7 +2282,7 @@ entityDefinitions:
             columns: ["Q36_1_17"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "consolegame_location"
+            value: "consolegame_location_awake"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2315,7 +2315,7 @@ entityDefinitions:
             columns: ["Q36_1_18"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "nodevice_location"
+            value: "nodevice_location_awake"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2350,7 +2350,7 @@ entityDefinitions:
             columns: ["Q36_2_1"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "television_location"
+            value: "television_location_asleep"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2383,7 +2383,7 @@ entityDefinitions:
             columns: ["Q36_2_2"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "dvr_location"
+            value: "dvr_location_asleep"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2416,7 +2416,7 @@ entityDefinitions:
             columns: ["Q36_2_3"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "dvd_location"
+            value: "dvd_location_asleep"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2450,7 +2450,7 @@ entityDefinitions:
             columns: ["Q36_2_4"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "pc_location"
+            value: "pc_location_asleep"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2483,7 +2483,7 @@ entityDefinitions:
             columns: ["Q36_2_6"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "landline_location"
+            value: "landline_location_asleep"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2516,7 +2516,7 @@ entityDefinitions:
             columns: ["Q36_2_7"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "mobilephone_location"
+            value: "mobilephone_location_asleep"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2549,7 +2549,7 @@ entityDefinitions:
             columns: ["Q36_2_8"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "smartphone_location"
+            value: "smartphone_location_asleep"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2582,7 +2582,7 @@ entityDefinitions:
             columns: ["Q36_2_9"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "ipad_location"
+            value: "ipad_location_asleep"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2615,7 +2615,7 @@ entityDefinitions:
             columns: ["Q36_2_10"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "mp3_location"
+            value: "mp3_location_asleep"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2648,7 +2648,7 @@ entityDefinitions:
             columns: ["Q36_2_15"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "edugame_location"
+            value: "edugame_location_asleep"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2681,7 +2681,7 @@ entityDefinitions:
             columns: ["Q36_2_17"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "consolegame_location"
+            value: "consolegame_location_asleep"
       ol.description:
         type: "ol.description"
         transforms:
@@ -2714,7 +2714,7 @@ entityDefinitions:
             columns: ["Q36_2_18"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "nodevice_location"
+            value: "nodevice_location_asleep"
       ol.description:
         type: "ol.description"
         transforms:
