@@ -28,7 +28,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_1"
+            columns: ["Q98_1"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "lively"
@@ -56,7 +56,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_2"
+            columns: ["Q98_2"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "Happy"
@@ -84,7 +84,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_3"
+            columns: ["Q98_3"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "sad"
@@ -112,7 +112,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_4"
+            columns: ["Q98_4"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "tired"
@@ -140,7 +140,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_5"
+            columns: ["Q98_5"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "caring"
@@ -168,7 +168,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_6"
+            columns: ["Q98_6"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "content"
@@ -196,7 +196,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_7"
+            columns: ["Q98_7"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "gloomy"
@@ -224,7 +224,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_8"
+            columns: ["Q98_8"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "jittery"
@@ -252,7 +252,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_9"
+            columns: ["Q98_9"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "drowsy"
@@ -280,7 +280,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_10"
+            columns: ["Q98_10"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "grouchy"
@@ -308,7 +308,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_11"
+            columns: ["Q98_11"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "peppy"
@@ -336,7 +336,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_12"
+            columns: ["Q98_12"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "nervous"
@@ -364,7 +364,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_13"
+            columns: ["Q98_13"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "calm"
@@ -392,7 +392,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_14"
+            columns: ["Q98_14"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "loving"
@@ -420,7 +420,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_15"
+            columns: ["Q98_15"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "fedup"
@@ -448,7 +448,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q98_16"
+            columns: ["Q98_16"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "active"
@@ -476,7 +476,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: "Q99"
+            columns: ["Q99"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "overall"
