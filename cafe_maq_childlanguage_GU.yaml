@@ -5344,7 +5344,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
           - !<transforms.HashTransform>
-            columns: ['child_id']
+            columns: ['respondent_id']
       ol.vocabularyword0:
         type: "ol.vocabularyword"
         column: "Q95_29"
@@ -5962,7 +5962,7 @@ entityDefinitions:
         type: "ol.id"
         transforms:
           - !<transforms.HashTransform>
-            columns: ['child_id']
+            columns: ['respondent_id']
       ol.vocabularyword1:
         type: "ol.vocabularyword"
         column: "Q300_1"
