@@ -165,7 +165,7 @@ entityDefinitions:
         column: "RecordedDate"
         transforms:
         - !<transforms.DateTimeTransform>
-          pattern: ['MM/dd/yy hh:mm', 'MM/d/yy hh:mm', 'M/d/yy hh:mm', 'M/dd/yy hh:mm', 'M/dd/yy h:mm', 'MM/dd/yy h:mm', 'MM/dd/yy HH:mm', 'MM/d/yy HH:mm', 'M/d/yy HH:mm', 'M/dd/yy HH:mm', 'M/dd/yy H:mm', 'MM/dd/yy H:mm']
+          pattern: ['yyyy-MM-dd HH:mm:ss','MM/dd/yy hh:mm', 'MM/d/yy hh:mm', 'M/d/yy hh:mm', 'M/dd/yy hh:mm', 'M/dd/yy h:mm', 'MM/dd/yy h:mm', 'MM/dd/yy HH:mm', 'MM/d/yy HH:mm', 'M/d/yy HH:mm', 'M/dd/yy HH:mm', 'M/dd/yy H:mm', 'MM/dd/yy H:mm']
     name: "surveymetadata"
 
   household:

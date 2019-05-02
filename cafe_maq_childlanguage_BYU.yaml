@@ -6102,6 +6102,9 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ['respondent_id']
         column: "Q402"
       ol.vocabularyword1:
         type: "ol.vocabularyword"
@@ -6720,7 +6723,9 @@ entityDefinitions:
     propertyDefinitions:
       ol.id:
         type: "ol.id"
-        column: "Q300"
+        transforms:
+          - !<transforms.HashTransform>
+            columns: ['respondent_id']
       ol.vocabularyword1:
         type: "ol.vocabularyword"
         column: "Q300"
