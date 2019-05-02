@@ -11,13 +11,13 @@ entityDefinitions:
         type: "nc.SubjectIdentification"
         transforms:
         - !<transforms.HashTransform>
-          columns: respondent_id
+          column: respondent_id
           hashFunction: "sha256"
       ol.idnumber:
         type: "ol.idnumber"
         transforms:
         - !<transforms.HashTransform>
-          columns: "ResponseId"
+          column: "ResponseId"
           hashFunction: "sha256"
     name: "respondent"
 
@@ -27,10 +27,7 @@ entityDefinitions:
     propertyDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: child_id
-          hashFunction: "sha256"
+        column: child_id
     name: "subject"
 
 
@@ -171,18 +168,18 @@ entityDefinitions:
 
 associationDefinitions:
   reported2:
-  fqn: "ol.reported"
-  entitySetName: "CAFE_MAQ_Reported"
-  src: "respondent"
-  dst: "keepintouchvideochatattitude"
-  propertyDefinitions:
-    general.id:
-      type: "general.id"
-      transforms:
-      - !<transforms.HashTransform>
-        columns: ["Q262", "ResponseId"]
-        hashFunction: "sha256"
-  name: "reported2"
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "keepintouchvideochatattitude"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q262", "ResponseId"]
+          hashFunction: "sha256"
+    name: "reported2"
 
   reported3:
     fqn: "ol.reported"
