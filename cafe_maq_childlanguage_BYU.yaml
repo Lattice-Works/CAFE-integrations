@@ -6943,13 +6943,13 @@ entityDefinitions:
         - !<transforms.ConcatTransform>
           columns: ["Q409_4", "Q409_5", "Q409_6", "Q409_7", "Q409_8", "Q409_9", "Q409_10", "Q409_11", "Q409_12", "Q409_13", "Q409_14", "Q409_15"]
           separator: "_"
-      ol.numbertext:
-        type: "ol.numbertext"
-        column: "Q409_4"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["1", "2"]
-          goal: ["No", "Yes"]
+      # ol.numbertext:
+      #   type: "ol.numbertext"
+      #   column: "Q409_4"
+      #   transforms:
+      #   - !<transforms.ReplaceTransform>
+      #     target: ["1", "2"]
+      #     goal: ["No", "Yes"]
       ol.whatwhere:
         type: "ol.whatwhere"
         column: "Q409_5"

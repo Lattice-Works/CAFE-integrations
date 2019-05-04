@@ -1,4 +1,3 @@
-2
 entityDefinitions:
   respondent:
     fqn: "general.person"
@@ -5962,9 +5961,9 @@ entityDefinitions:
         - !<transforms.ConcatTransform>
           columns: ["Q97_1", "Q97_2", "Q97_3", "Q97_4", "Q97_5", "Q97_6", "Q97_7", "Q97_8", "Q97_9", "Q97_10", "Q97_11", "Q97_12"]
           separator: "_"
-      ol.numbertext:
-        type: "ol.numbertext"
-        column: "Q97_1"
+      # ol.numbertext:
+      #   type: "ol.numbertext"
+      #   column: "Q97_1"
       ol.whatwhere:
         type: "ol.whatwhere"
         column: "Q97_2"
