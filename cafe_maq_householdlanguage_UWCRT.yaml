@@ -1,0 +1,255 @@
+# Wisconsin-Madison
+# csv filename: CAFE+Questionnaire+v.2+-+Physio+Study+(WI-AMP-BTV)_February+6,+2019_09.01 - CHOICE TEXT.csv
+
+entityDefinitions:
+  respondent:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id"]
+    name: "respondent"
+
+  childsubject:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Children"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        column: child_id
+    name: "childsubject"
+
+  household:
+    fqn: "demographics.household"
+    entitySetName: "CAFE_MAQ_Households"
+    propertyDefinitions:
+      household.id:
+        type: "household.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId", "child_id", "Q23"]
+          hashFunction: "sha256"
+    name: "household"
+
+  communication_household:
+    fqn: "ol.communication"
+    entitySetName: "CAFE_MAQ_Household_Communication"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q28", "Q30_1", "Q31_3", "Q29_45", "Q29_46", "Q29_47", "Q29_48", "Q29_49", "Q29_50", "Q29_51", "Q29_52", "Q29_53", "Q29_54", "Q29_55", "Q29_56", "Q29_57", "Q29_58", "Q29_59", "Q31_3", "Q31_6", "Q31_2", "Q31_7", "Q31_4", "Q31_9", "Q31_8"]
+          hashFunction: "sha256"
+      ol.number:
+        type: "ol.number"
+        column: "Q28"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["Yes", "No"]
+          goal: ["2", "1"]
+        - !<transforms.ParseIntTransform> {}
+      ol.language1:
+        type: "ol.language"
+        column: "Q29_45"
+      ol.language2:
+        type: "ol.language"
+        column: "Q29_46"
+      ol.language3:
+        type: "ol.language"
+        column: "Q29_47"
+      ol.language4:
+        type: "ol.language"
+        column: "Q29_48"
+      ol.language5:
+        type: "ol.language"
+        column: "Q29_49"
+      ol.language6:
+        type: "ol.language"
+        column: "Q29_50"
+      ol.language7:
+        type: "ol.language"
+        column: "Q29_51"
+      ol.language8:
+        type: "ol.language"
+        column: "Q29_52"
+      ol.language9:
+        type: "ol.language"
+        column: "Q29_53"
+      ol.language10:
+        type: "ol.language"
+        column: "Q29_54"
+      ol.language11:
+        type: "ol.language"
+        column: "Q29_55"
+      ol.language12:
+        type: "ol.language"
+        column: "Q29_56"
+      ol.language13:
+        type: "ol.language"
+        column: "Q29_57"
+      ol.language14:
+        type: "ol.language"
+        column: "Q29_58"
+      ol.language15:
+        type: "ol.language"
+        column: "Q29_59"
+      ol.language16:
+        type: "ol.language"
+        column: "Q29_44_TEXT"
+      ol.pcttime:
+        type: "ol.pcttime"
+        column: "Q30_1"
+        transforms:
+        - !<transforms.ParseDoubleTransform> {}
+      ol.status1:
+        type: "ol.status"
+        column: "Q31_3"
+      ol.status2:
+        type: "ol.status"
+        column: "Q31_6"
+      ol.status3:
+        type: "ol.status"
+        column: "Q31_2"
+      ol.status4:
+        type: "ol.status"
+        column: "Q31_7"
+      ol.status5:
+        type: "ol.status"
+        column: "Q31_4"
+      ol.status6:
+        type: "ol.status"
+        column: "Q31_9"
+      ol.status7:
+        type: "ol.status"
+        column: "Q31_8_TEXT"
+    name: "communication_household"
+
+  communication_caregiver:
+    fqn: "ol.communication"
+    entitySetName: "CAFE_MAQ_Caregiver_Communication"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        column: "Q32"
+      ol.language:
+        type: "ol.language"
+        column: "Q32"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q32"
+      reverse: true
+    name: "communication_caregiver"
+
+associationDefinitions:
+# ************************** COMMUNICATION ASSOCIATIONS **********************
+  partof_a:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "respondent"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId", "child_id", "Q23"]
+          hashFunction: "sha256"
+    name: "partof_a"
+
+  partof_b:
+    fqn: "ol.partof"
+    entitySetName: "CAFE_MAQ_PartOf"
+    src: "childsubject"
+    dst: "household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "ResponseId", "child_id", "Q23"]
+          hashFunction: "sha256"
+    name: "partof_b"
+
+  relatedto:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "respondent"
+    dst: "childsubject"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "child_id"]
+          hashFunction: "sha256"
+    name: "relatedto"
+
+  reported1:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "communication_household"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q28", "Q30_1", "Q29_45", "Q29_46", "Q29_47", "Q29_48", "Q29_49", "Q29_50", "Q29_51", "Q29_52", "Q29_53", "Q29_54", "Q29_55", "Q29_56", "Q29_57", "Q29_58", "Q29_59", "Q31_3", "Q31_6", "Q31_2", "Q31_7", "Q31_4", "Q31_9", "Q31_8"]
+          separator: "_"
+    name: "reported1"
+
+  reported2:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "communication_caregiver"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q32"]
+          separator: "_"
+    name: "reported2"
+
+  involvedin1:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "childsubject"
+    dst: "communication_household"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q28", "Q30_1", "Q29_45", "Q29_46", "Q29_47", "Q29_48", "Q29_49", "Q29_50", "Q29_51", "Q29_52", "Q29_53", "Q29_54", "Q29_55", "Q29_56", "Q29_57", "Q29_58", "Q29_59", "Q31_3", "Q31_6", "Q31_2", "Q31_7", "Q31_4", "Q31_9", "Q31_8"]
+          separator: "_"
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+    name: "involvedin1"
+
+  involvedin2:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "childsubject"
+    dst: "communication_caregiver"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q32"]
+          separator: "_"
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+    name: "involvedin2"
