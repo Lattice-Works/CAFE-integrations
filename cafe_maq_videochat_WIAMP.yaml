@@ -32,7 +32,159 @@ entityDefinitions:
 
 
 # ********** VIDEO CHAT ATTITUDES FOR CHILD **********
+  videochat:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q51"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videochat"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "video chat (e.g., FaceTime, Skype, WhatsApp video call"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q51"
+      pattern: "(?i)(\\bYes\\b)"
+      reverse: false
+    name: "videochat"
 
+  videochatchilduse1:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q52_1", "Q51"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videochat_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q51"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "current/ever"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q52_1"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Video chat (e.g., FaceTime, Skype, WhatsApp video call)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q51"
+      reverse: true
+    name: "videochatchilduse1"
+
+  videochatchilduse2:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q52_2", "Q51"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videochat_childuse"
+      ol.status:
+        type: "ol.status"
+        column: "Q51"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "current/ever"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q52_2"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Video chat (e.g., FaceTime, Skype, WhatsApp video call)"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q51"
+      reverse: true
+    name: "videochatchilduse2"
+
+  videochatrelatives1:
+    fqn: "ol.relative"
+    entitySetName: "CAFE_MAQ_Relatives"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q52_1_TEXT"]
+            separator: "_"
+        - !<transforms.ValueTransform>
+          value: "videochat_relative1"
+      ol.name:
+        type: "ol.name"
+        column: "Q52_1_TEXT"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q52_1_TEXT"
+      reverse: true
+    name: "videochatrelatives1"
+
+  videochatrelatives2:
+    fqn: "ol.relative"
+    entitySetName: "CAFE_MAQ_Relatives"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q52_2_TEXT"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videochat_relative2"
+      ol.name:
+        type: "ol.name"
+        column: "Q52_2_TEXT"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q52_2_TEXT"
+      reverse: true
+    name: "videochatrelatives2"
 
   keepintouchvideochatattitude:
     fqn: "ol.mediauseattitude"
@@ -41,8 +193,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "videochat_keepintouch"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q53_1"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videochat_keepintouch"
       ol.levelofagreement:
         type: "ol.levelofagreement"
         column: "Q53_1"
@@ -74,8 +231,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "videochat_parenttraveling"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q53_2"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videochat_parenttraveling"
       ol.levelofagreement:
         type: "ol.levelofagreement"
         column: "Q53_2"
@@ -107,8 +269,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "videochat_connectchild"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q53_3"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videochat_connectchild"
       ol.levelofagreement:
         type: "ol.levelofagreement"
         column: "Q53_3"
@@ -140,8 +307,13 @@ entityDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "videochat_workschedule"
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q53_4"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videochat_workschedule"
       ol.levelofagreement:
         type: "ol.levelofagreement"
         column: "Q53_4"
@@ -167,7 +339,7 @@ entityDefinitions:
     name: "workschedulevideochatattitude"
 
 associationDefinitions:
-  reported2:
+  reported1:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
@@ -176,40 +348,40 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q53_1"]
+          separator: "_"
+    name: "reported1"
+
+  reported2:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "parenttravelingvideochatattitude"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q53_2"]
+          separator: "_"
     name: "reported2"
 
   reported3:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
-    dst: "parenttravelingvideochatattitude"
-    propertyDefinitions:
-      general.id:
-        type: "general.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported3"
-
-  reported4:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "respondent"
     dst: "connectchildvideochatattitude"
     propertyDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported4"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q53_3"]
+          separator: "_"
+    name: "reported3"
 
-  reported5:
+  reported4:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
@@ -218,12 +390,45 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
-    name: "reported5"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q53_4"]
+          separator: "_"
+    name: "reported4"
 
-  subjectof2:
+  usedby:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "videochat"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q51", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly"
+    name: "usedby"
+
+  reported4:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "videochat"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q51"]
+          separator: "_"
+    name: "reported4"
+
+  subjectof1:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
     src: "subject"
@@ -232,12 +437,12 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof2"
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q53_1"]
+          separator: "_"
+    name: "subjectof1"
 
-  subjectof3:
+  subjectof2:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
     src: "subject"
@@ -246,12 +451,12 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof3"
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q53_2"]
+          separator: "_"
+    name: "subjectof2"
 
-  subjectof4:
+  subjectof3:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
     src: "subject"
@@ -260,12 +465,12 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof4"
+        - !<transforms.ConcatTransform>
+          columns: ["child_id, "Q53_3"]
+          separator: "_"
+    name: "subjectof3"
 
-  subjectof5:
+  subjectof4:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
     src: "subject"
@@ -274,7 +479,126 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q53_4"]
+          separator: "_"
+    name: "subjectof4"
+
+  subjectof5:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "videochatchilduse1"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q51", "Q52_1"]
+          separator: "_"
     name: "subjectof5"
+
+  subjectof6:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "videochatchilduse2"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q51", "Q52_2"]
+          separator: "_"
+    name: "subjectof6"
+
+  involvedin1:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "videochatrelatives1"
+    dst: "videochatchilduse1"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q51", "Q52_1", "Q52_1_TEXT", "child_id"]
+          separator: "_"
+    name: "involvedin1"
+
+  involvedin2:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "videochatrelatives2"
+    dst: "videochatchilduse2"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q51", "Q52_2", "Q52_2_TEXT", "child_id"]
+          separator: "_"
+    name: "involvedin2"
+
+
+  relatedto1:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "subject"
+    dst: "videochatrelatives1"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q52_1_TEXT"]
+          separator: "_"
+      ol.role:
+        type: "ol.role"
+        column: "Q52_1_TEXT"
+    name: "relatedto1"
+
+  relatedto2:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "subject"
+    dst: "videochatrelatives2"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q52_2_TEXT"]
+          separator: "_"
+      ol.role:
+        type: "ol.role"
+        column: "Q52_2_TEXT"
+    name: "relatedto2"
+
+  relatedto3:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "videochat"
+    dst: "videochatchilduse1"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q51", "Q52_1", "child_id"]
+          separator: "_"
+    name: "relatedto3"
+
+  relatedto4:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "videochat"
+    dst: "videochatchilduse2"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q51", "Q52_2", "child_id"]
+          separator: "_"
+    name: "relatedto4"
