@@ -330,9 +330,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q53_1"]
+          separator: "_"
     name: "reported1"
 
   reported2:
@@ -344,9 +344,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q53_2"]
+          separator: "_"
     name: "reported2"
 
   reported3:
@@ -358,9 +358,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q53_3"]
+          separator: "_"
     name: "reported3"
 
   reported4:
@@ -372,9 +372,9 @@ associationDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q53_4"]
+          separator: "_"
     name: "reported4"
 
   reported5:
@@ -387,7 +387,7 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q52_1"]
+          columns: ["respondent_id", "Q52_1", "Q51"]
           separator: "_"
     name: "reported5"
 
@@ -401,11 +401,11 @@ associationDefinitions:
         type: "general.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["respondent_id", "Q52_2"]
+          columns: ["respondent_id", "Q52_2", "Q51"]
           separator: "_"
     name: "reported6"
 
-  subjectof2:
+  subjectof1:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
     src: "subject"
@@ -414,12 +414,12 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof2"
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q53_1"]
+          separator: "_"
+    name: "subjectof1"
 
-  subjectof3:
+  subjectof2:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
     src: "subject"
@@ -428,12 +428,12 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof3"
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q53_2"]
+          separator: "_"
+    name: "subjectof2"
 
-  subjectof4:
+  subjectof3:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
     src: "subject"
@@ -442,12 +442,12 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof4"
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q53_3"]
+          separator: "_"
+    name: "subjectof3"
 
-  subjectof5:
+  subjectof4:
     fqn: "ol.subjectof"
     entitySetName: "CAFE_MAQ_SubjectOf"
     src: "subject"
@@ -456,10 +456,38 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["Q262", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q53_4"]
+          separator: "_"
+    name: "subjectof4"
+
+  subjectof5:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "videochatchilduse1"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q51", "Q52_1"]
+          separator: "_"
     name: "subjectof5"
+
+  subjectof6:
+    fqn: "ol.subjectof"
+    entitySetName: "CAFE_MAQ_SubjectOf"
+    src: "subject"
+    dst: "videochatchilduse2"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q51", "Q52_2"]
+          separator: "_"
+    name: "subjectof6"
 
   involvedin1:
     fqn: "ol.involvedin"
@@ -470,9 +498,12 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q51", "Q52_1", "Q52_1_TEXT", "child_id"]
+          separator: "_"
+      ol.role:
+        type: "ol.role"
+        column: "Q52_1_TEXT"
     name: "involvedin1"
 
   involvedin2:
@@ -484,13 +515,16 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-          hashFunction: "sha256"
+        - !<transforms.ConcatTransform>
+          columns: ["Q51", "Q52_2", "Q52_2_TEXT", "child_id"]
+          separator: "_"
+      ol.role:
+        type: "ol.role"
+        column: "Q52_2_TEXT"
     name: "involvedin2"
 
 
-  relatedto39:
+  relatedto1:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "subject"
@@ -499,14 +533,15 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q52_1_TEXT"]
+          separator: "_"
       ol.role:
         type: "ol.role"
         column: "Q52_1_TEXT"
-    name: "relatedto39"
+    name: "relatedto1"
 
-  relatedto40:
+  relatedto2:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "subject"
@@ -515,14 +550,15 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q52_2_TEXT"]
+          separator: "_"
       ol.role:
         type: "ol.role"
         column: "Q52_2_TEXT"
-    name: "relatedto40"
+    name: "relatedto2"
 
-  relatedto41:
+  relatedto3:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "videochat"
@@ -531,11 +567,12 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-    name: "relatedto41"
+        - !<transforms.ConcatTransform>
+          columns: ["Q51", "Q52_1", "child_id"]
+          separator: "_"
+    name: "relatedto3"
 
-  relatedto42:
+  relatedto4:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "videochat"
@@ -544,11 +581,12 @@ associationDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-    name: "relatedto42"
+        - !<transforms.ConcatTransform>
+          columns: ["Q51", "Q52_2", "child_id"]
+          separator: "_"
+    name: "relatedto4"
 
-  usedby39:
+  usedby1:
     fqn: "ol.usedby"
     entitySetName: "CAFE_MAQ_UsedBy"
     src: "videochat"
@@ -557,11 +595,11 @@ associationDefinitions:
       general.stringid:
         type: "general.stringid"
         transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
+        - !<transforms.ConcatTransform>
+          columns: ["Q51", "child_id"]
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "regularly"
-    name: "usedby39"
+    name: "usedby1"
