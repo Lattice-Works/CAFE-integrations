@@ -414,7 +414,7 @@ associationDefinitions:
           value: "regularly"
     name: "usedby"
 
-  reported4:
+  reported5:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
     src: "respondent"
@@ -426,7 +426,35 @@ associationDefinitions:
         - !<transforms.ConcatTransform>
           columns: ["respondent_id", "Q51"]
           separator: "_"
-    name: "reported4"
+    name: "reported5"
+
+  reported6:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "videochatchilduse1"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q52_1", "Q51"]
+          separator: "_"
+    name: "reported6"
+
+  reported7:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "videochatchilduse2"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["respondent_id", "Q52_2", "Q51"]
+          separator: "_"
+    name: "reported7"
 
   subjectof1:
     fqn: "ol.subjectof"
