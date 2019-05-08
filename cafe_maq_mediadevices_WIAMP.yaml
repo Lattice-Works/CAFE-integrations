@@ -13,9 +13,6 @@ entityDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id"]
           hashFunction: "sha256"
-      # ol.idnumber:
-      #   type: "ol.idnumber"
-      #   column: "ResponseId" #not sure if this or Person ID should be PK.
     name: "respondent"
 
   subject:
