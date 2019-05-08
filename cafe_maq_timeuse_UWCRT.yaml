@@ -26,14 +26,18 @@ entityDefinitions:
     name: subject
 
   timespentydayTVorDVD:
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: Q49_1
-      reverse: true
     entitySetName: CAFE_MAQ_Device_Use
     fqn: ol.deviceuse
-    name: timespentydayTVorDVD
     propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: Q49_1
+          - !<transforms.ValueTransform>
+            value: Time spent watching TV or DVDs yesterday
       ol.description:
         transforms:
         - !<transforms.ValueTransform>
@@ -42,15 +46,6 @@ entityDefinitions:
       ol.duration:
         column: Q49_1
         type: ol.duration
-      ol.id:
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.ColumnTransform>
-            column: Q49_1
-          - !<transforms.ValueTransform>
-            value: Time spent watching TV or DVDs yesterday
-        type: ol.id
       ol.name:
         transforms:
         - !<transforms.ValueTransform>
@@ -66,55 +61,15 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: child 1
         type: ol.subject
-  timespentydayebooks:
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: Q49_3
+      column: Q49_1
       reverse: true
-    entitySetName: CAFE_MAQ_Device_Use
-    fqn: ol.deviceuse
-    name: timespentydayebooks
-    propertyDefinitions:
-      ol.description:
-        transforms:
-        - !<transforms.ValueTransform>
-          value: Time spent reading books yesterday
-        type: ol.description
-      ol.duration:
-        column: Q49_3
-        type: ol.duration
-      ol.id:
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.ColumnTransform>
-            column: Q49_3
-          - !<transforms.ValueTransform>
-            value: Time spent reading books yesterday
-        type: ol.id
-      ol.name:
-        transforms:
-        - !<transforms.ValueTransform>
-          value: Read books
-        type: ol.name
-      ol.relevantperiod:
-        transforms:
-        - !<transforms.ValueTransform>
-          value: yesterday
-        type: ol.relevantperiod
-      ol.subject:
-        transforms:
-        - !<transforms.ValueTransform>
-          value: child
-        type: ol.subject
+    name: timespentydayTVorDVD
+
   timespentydaycomputer:
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: Q49_2
-      reverse: true
     entitySetName: CAFE_MAQ_Device_Use
     fqn: ol.deviceuse
-    name: timespentydaycomputer
     propertyDefinitions:
       ol.description:
         transforms:
@@ -148,14 +103,57 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: child
         type: ol.subject
-  timespentydayconsolegames:
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: Q49_4
+      column: Q49_2
       reverse: true
+    name: timespentydaycomputer
+
+  timespentydayebooks:
     entitySetName: CAFE_MAQ_Device_Use
     fqn: ol.deviceuse
-    name: timespentydayconsolegames
+    propertyDefinitions:
+      ol.id:
+        type: ol.id
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ColumnTransform>
+            column: Q49_3
+          - !<transforms.ValueTransform>
+            value: Time spent reading books yesterday
+      ol.description:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Time spent reading books yesterday
+        type: ol.description
+      ol.duration:
+        column: Q49_3
+        type: ol.duration
+      ol.name:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: Read books
+        type: ol.name
+      ol.relevantperiod:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: yesterday
+        type: ol.relevantperiod
+      ol.subject:
+        transforms:
+        - !<transforms.ValueTransform>
+          value: child
+        type: ol.subject
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q49_3
+      reverse: true
+    name: timespentydayebooks
+
+  timespentydayconsolegames:
+    entitySetName: CAFE_MAQ_Device_Use
+    fqn: ol.deviceuse
     propertyDefinitions:
       ol.description:
         transforms:
@@ -189,14 +187,15 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: child
         type: ol.subject
-  timespentydaymobilesdevices:
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: Q49_5
+      column: Q49_4
       reverse: true
+    name: timespentydayconsolegames
+
+  timespentydaymobilesdevices:
     entitySetName: CAFE_MAQ_Device_Use
     fqn: ol.deviceuse
-    name: timespentydaymobilesdevices
     propertyDefinitions:
       ol.description:
         transforms:
@@ -231,14 +230,15 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: child
         type: ol.subject
-  timespentydaysmartphone:
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: Q50_1
+      column: Q49_5
       reverse: true
+    name: timespentydaymobilesdevices
+
+  timespentydaysmartphone:
     entitySetName: CAFE_MAQ_Device_Use
     fqn: ol.deviceuse
-    name: timespentydaysmartphone
     propertyDefinitions:
       ol.description:
         transforms:
@@ -276,22 +276,27 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: child
         type: ol.subject
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: Q50_1
+      reverse: true
+    name: timespentydaysmartphone
+
 associationDefinitions:
   involvedin1:
-    dst: timespentydayTVorDVD
     entitySetName: CAFE_MAQ_InvolvedIn
     fqn: ol.involvedin
-    name: involvedin1
+    dst: timespentydayTVorDVD
+    src: subject
     propertyDefinitions:
       ol.id:
         transforms:
-        - !<transforms.HashTransform>
-          columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
+        - !<transforms.ConcatTransform>
+          columns: ["child_id", "Q49_1"]
+          separator: "_"
         type: ol.id
-    src: subject
+    name: involvedin1
+
   involvedin2:
     dst: timespentydaycomputer
     entitySetName: CAFE_MAQ_InvolvedIn
@@ -300,11 +305,11 @@ associationDefinitions:
     propertyDefinitions:
       ol.id:
         transforms:
-        - !<transforms.HashTransform>
+        - !<transforms.ConcatTransform>
           columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
+          - child_id
+          - Q49_2
+          separator: "_"
         type: ol.id
     src: subject
   involvedin3:
@@ -315,11 +320,11 @@ associationDefinitions:
     propertyDefinitions:
       ol.id:
         transforms:
-        - !<transforms.HashTransform>
+        - !<transforms.ConcatTransform>
           columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
+          - child_id
+          - Q49_3
+          separator: "_"
         type: ol.id
     src: subject
   involvedin4:
@@ -332,8 +337,8 @@ associationDefinitions:
         transforms:
         - !<transforms.HashTransform>
           columns:
-          - Q281
-          - ResponseId
+          - child_id
+          - Q49_4
           hashFunction: sha256
         type: ol.id
     src: subject
@@ -347,8 +352,8 @@ associationDefinitions:
         transforms:
         - !<transforms.HashTransform>
           columns:
-          - Q281
-          - ResponseId
+          - child_id
+          - Q49_5
           hashFunction: sha256
         type: ol.id
     src: subject
@@ -362,8 +367,8 @@ associationDefinitions:
         transforms:
         - !<transforms.HashTransform>
           columns:
-          - Q281
-          - ResponseId
+          - child_id
+          - Q50_1
           hashFunction: sha256
         type: ol.id
     src: subject
@@ -375,11 +380,11 @@ associationDefinitions:
     propertyDefinitions:
       general.id:
         transforms:
-        - !<transforms.HashTransform>
+        - !<transforms.ConcatTransform>
           columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
+          - respondent_id
+          - Q49_1
+          separator: "_"
         type: general.id
     src: respondent
   reported2:
@@ -390,11 +395,11 @@ associationDefinitions:
     propertyDefinitions:
       general.id:
         transforms:
-        - !<transforms.HashTransform>
+        - !<transforms.ConcatTransform>
           columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
+          - respondent_id
+          - Q49_2
+          separator: "_"
         type: general.id
     src: respondent
   reported3:
@@ -405,11 +410,11 @@ associationDefinitions:
     propertyDefinitions:
       general.id:
         transforms:
-        - !<transforms.HashTransform>
+        - !<transforms.ConcatTransform>
           columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
+          - respondent_id
+          - Q49_3
+          separator: "_"
         type: general.id
     src: respondent
   reported4:
@@ -420,11 +425,11 @@ associationDefinitions:
     propertyDefinitions:
       general.id:
         transforms:
-        - !<transforms.HashTransform>
+        - !<transforms.ConcatTransform>
           columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
+          - respondent_id
+          - Q49_4
+          separator: "_"
         type: general.id
     src: respondent
   reported5:
@@ -435,11 +440,11 @@ associationDefinitions:
     propertyDefinitions:
       general.id:
         transforms:
-        - !<transforms.HashTransform>
+        - !<transforms.ConcatTransform>
           columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
+          - respondent_id
+          - Q49_5
+          separator: "_"
         type: general.id
     src: respondent
   reported6:
@@ -450,10 +455,10 @@ associationDefinitions:
     propertyDefinitions:
       general.id:
         transforms:
-        - !<transforms.HashTransform>
+        - !<transforms.ConcatTransform>
           columns:
-          - Q281
-          - ResponseId
-          hashFunction: sha256
+          - respondent_id
+          - Q50_1
+          separator: "_"
         type: general.id
     src: respondent
