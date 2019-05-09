@@ -389,6 +389,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Television"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q34_1_1"
@@ -422,6 +432,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "DVR for recording live televised content"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q34_1_2"
@@ -455,6 +475,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "DVD player"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q34_1_3"
@@ -488,6 +518,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Personal computer"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q34_1_4"
@@ -521,6 +561,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Landline phone"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q34_1_6"
@@ -554,6 +604,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Regular mobile phone (just for talk and text)"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q34_1_7"
@@ -587,6 +647,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Smartphone (can access internet, etc.)"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q34_1_8"
@@ -620,6 +690,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "iPad or other tablet device (e.g., Kindle, Nook, etc.)"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q34_1_9"
@@ -653,6 +733,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "MP3 player (iPod or similar)"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q34_1_10"
@@ -686,6 +776,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Educational game device (e.g., Leapster Explorer or a V-Smile)"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q34_1_15"
@@ -719,6 +819,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Video game console (e.g., Xbox, Nintendo Wii, or Playstation)"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q34_1_17"
@@ -738,7 +848,7 @@ entityDefinitions:
             columns: ["Q34_1_18"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "unspecified"
+            value: "adultuse"
       general.frequency:
         type: "general.frequency"
         column: "Q34_1_18"
@@ -752,6 +862,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how many devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "None"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q34_1_18"
@@ -780,6 +900,16 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "type of mobile phone plan"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mobile phone"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q35"
@@ -816,7 +946,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q37_1"
@@ -861,7 +991,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q37_2"
@@ -899,7 +1029,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q37_3"
@@ -944,7 +1074,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q37_4"
@@ -989,7 +1119,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q37_6"
@@ -1027,7 +1157,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q37_7"
@@ -1072,7 +1202,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q37_8"
@@ -1110,7 +1240,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q37_9"
@@ -1148,7 +1278,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q37_10"
@@ -1186,7 +1316,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q37_15"
@@ -1224,7 +1354,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q37_17"
@@ -1262,7 +1392,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q37_18"
@@ -1303,7 +1433,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q39_1"
@@ -1341,7 +1471,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q39_2"
@@ -1379,7 +1509,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q39_3"
@@ -1417,7 +1547,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q39_4"
@@ -1455,7 +1585,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q39_6"
@@ -1493,7 +1623,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q39_7"
@@ -1531,7 +1661,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q39_8"
@@ -1569,7 +1699,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q39_9"
@@ -1597,7 +1727,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.timelimits:
         type: "ol.timelimits"
         column: "Q67_4"
@@ -1645,7 +1775,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q39_10"
@@ -1683,7 +1813,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q39_15"
@@ -1721,7 +1851,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q39_17"
@@ -1759,7 +1889,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.name:
         type: "ol.name"
         column: "Q39_18"
@@ -1787,7 +1917,7 @@ entityDefinitions:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "child 1"
+          value: "child"
       ol.timelimits:
         type: "ol.timelimits"
         column: "Q67_7"
@@ -2192,7 +2322,7 @@ entityDefinitions:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "unspecified"
+          value: "device regularly located in child's room"
       ol.subject:
         type: "ol.subject"
         column: "Q36_1_18"

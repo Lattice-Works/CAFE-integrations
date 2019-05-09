@@ -874,6 +874,11 @@ entityDefinitions:
       general.frequency:
         type: "general.frequency"
         column: "Q43"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Television"
       ol.subject:
         type: "ol.subject"
         transforms:
