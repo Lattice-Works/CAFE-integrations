@@ -1,5 +1,5 @@
-# Wisconsin-Madison
-# csv filename: CAFE+Questionnaire+v.2+-+Physio+Study+(WI-AMP-BTV)_February+6,+2019_09.01 - CHOICE TEXT.csv
+# UWCRT
+# csv filename: CAFE+Part+1+-+Survey+-+CREATE_February+6,+2019_08.38 - CHOICE TEXT.csv
 # Media Devices section of survey
 
 entityDefinitions:
@@ -22,14 +22,6 @@ entityDefinitions:
       nc.SubjectIdentification:
         type: "nc.SubjectIdentification"
         column: child_id
-    conditions:
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_1_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q2_1_3"
-      reverse: true
     name: "subject"
 
 # ******************* DEVICES OWNED BY RESPONDENT *******************************
@@ -264,7 +256,7 @@ entityDefinitions:
       reverse: true
     name: "educationalgame"
 
-  videogames:
+  consolegame:
     entitySetName: "CAFE_MAQ_Devices"
     fqn: "o.device"
     propertyDefinitions:
@@ -285,7 +277,7 @@ entityDefinitions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q33_17"
       reverse: true
-    name: "videogames"
+    name: "consolegame"
 
   nodevice:
     entitySetName: "CAFE_MAQ_Devices"
@@ -311,53 +303,6 @@ entityDefinitions:
       column: "Q33_18"
       reverse: true
     name: "nodevice"
-
-  internet:
-    entitySetName: "CAFE_MAQ_Devices"
-    fqn: "o.device"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.ConcatTransform>
-            columns: ["Q67_4"]
-            separator: "_"
-          - !<transforms.ValueTransform>
-            value: "internet"
-      ol.name:
-        type: "ol.name"
-        column: "Q67_4"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_4"
-      reverse: true
-    name: "internet"
-
-  otherdevice:
-    entitySetName: "CAFE_MAQ_Devices"
-    fqn: "o.device"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.ConcatTransform>
-            columns: ["Q67_7"]
-            separator: "_"
-          - !<transforms.ValueTransform>
-            value: "Other"
-      ol.name:
-        type: "ol.name"
-        column: "Q67_7"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_7"
-      reverse: true
-    name: "otherdevice"
-
 
 
 # *********************DEVICE USE BY RESPONDENT LAST 2 WEEKS *********************
@@ -928,7 +873,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q37_1", "Q67_1"]
+            columns: ["Q37_1"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "television_recent_childuse"
@@ -950,16 +895,9 @@ entityDefinitions:
       ol.name:
         type: "ol.name"
         column: "Q37_1"
-      ol.timelimits:
-        type: "ol.timelimits"
-        column: "Q67_1"
     conditions:
-    - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q37_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_1"
       reverse: true
     name: "televisionrecentchilduse"
 
@@ -1011,7 +949,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q37_3", "Q67_3"]
+            columns: ["Q37_3"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "dvd_recent_childuse"
@@ -1033,16 +971,9 @@ entityDefinitions:
       ol.name:
         type: "ol.name"
         column: "Q37_3"
-      ol.timelimits:
-        type: "ol.timelimits"
-        column: "Q67_3"
     conditions:
-    - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q37_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_3"
       reverse: true
     name: "dvdrecentchilduse"
 
@@ -1056,7 +987,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q37_4", "Q67_2"]
+            columns: ["Q37_4"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "personalcomputer_recent_childuse"
@@ -1078,16 +1009,9 @@ entityDefinitions:
       ol.name:
         type: "ol.name"
         column: "Q37_4"
-      ol.timelimits:
-        type: "ol.timelimits"
-        column: "Q67_2"
     conditions:
-    - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q37_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_2"
       reverse: true
     name: "personalcomputerrecentchilduse"
 
@@ -1139,7 +1063,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q37_7", "Q67_5"]
+            columns: ["Q37_7"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "mobilephone_recent_childuse"
@@ -1161,16 +1085,9 @@ entityDefinitions:
       ol.name:
         type: "ol.name"
         column: "Q37_7"
-      ol.timelimits:
-        type: "ol.timelimits"
-        column: "Q67_5"
     conditions:
-    - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>
       column: "Q37_7"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_5"
       reverse: true
     name: "mobilephonerecentchilduse"
 
@@ -1377,12 +1294,12 @@ entityDefinitions:
             columns: ["Q37_18"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "unspecified"
+            value: "none_recent_childuse"
       ol.status:
         type: "ol.status"
         transforms:
         - !<transforms.ValueTransform>
-          value: "None used very recently"
+          value: "used very recently"
       ol.duration:
         type: "ol.duration"
         transforms:
@@ -1709,44 +1626,6 @@ entityDefinitions:
       reverse: true
     name: "ipadtabletstartchilduse"
 
-  internetchilduse:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_Device_Use"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.ConcatTransform>
-            columns: ["Q67_4"]
-            separator: "_"
-          - !<transforms.ValueTransform>
-            value: "internet_childuse"
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child"
-      ol.timelimits:
-        type: "ol.timelimits"
-        column: "Q67_4"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Internet"
-      ol.duration:
-        type: "ol.duration"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "current/ever"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q67_4"
-      reverse: true
-    name: "internetchilduse"
-
   mp3startchilduse:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_Device_Use"
@@ -1890,16 +1769,14 @@ entityDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child"
-      ol.name:
-        type: "ol.name"
-        column: "Q39_18"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q39_18"
       reverse: true
     name: "nonestartchilduse"
 
-  otherchilduse:
+# ************** SUBJECT DEVICE USE AS FALLING ASLEEP ***********
+  televisionfallingasleepchilduse:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions:
@@ -1909,33 +1786,540 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q67_7"]
+            columns: ["Q40_1"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "other_childuse"
+            value: "television_fallingasleep_childuse"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses as falling asleep"
       ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
           value: "child"
-      ol.timelimits:
-        type: "ol.timelimits"
-        column: "Q67_7"
+      ol.name:
+        type: "ol.name"
+        column: "Q40_1"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40_1"
+      reverse: true
+    name: "televisionfallingasleepchilduse"
+
+  dvrfallingasleepchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q40_2"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "dvr_fallingasleep_childuse"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses as falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        column: "Q40_2"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40_2"
+      reverse: true
+    name: "dvrfallingasleepchilduse"
+
+  dvdfallingasleepchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q40_3"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "dvd_fallingasleep_childuse"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses as falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        column: "Q40_3"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40_3"
+      reverse: true
+    name: "dvdfallingasleepchilduse"
+
+  computerfallingasleepchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q40_4"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "computer_fallingasleep_childuse"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses as falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        column: "Q40_4"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40_4"
+      reverse: true
+    name: "computerfallingasleepchilduse"
+
+  landlinefallingasleepchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q40_6"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "landline_fallingasleep_childuse"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses as falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        column: "Q40_6"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40_6"
+      reverse: true
+    name: "landlinefallingasleepchilduse"
+
+  mobilephonefallingasleepchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q40_7"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mobilephone_fallingasleep_childuse"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses as falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        column: "Q40_7"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40_7"
+      reverse: true
+    name: "mobilephonefallingasleepchilduse"
+
+  smartphonefallingasleepchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q40_8"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "smartphone_fallingasleep_childuse"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses as falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        column: "Q40_8"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40_8"
+      reverse: true
+    name: "smartphonefallingasleepchilduse"
+
+  ipadfallingasleepchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q40_9"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "ipad_fallingasleep_childuse"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses as falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        column: "Q40_9"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40_9"
+      reverse: true
+    name: "ipadfallingasleepchilduse"
+
+  mp3fallingasleepchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q40_10"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mp3_fallingasleep_childuse"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses as falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        column: "Q40_10"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40_10"
+      reverse: true
+    name: "mp3fallingasleepchilduse"
+
+  educationalgamefallingasleepchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q40_15"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "educationalgame_fallingasleep_childuse"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses as falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        column: "Q40_15"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40_15"
+      reverse: true
+    name: "educationalgamefallingasleepchilduse"
+
+  consolegamefallingasleepchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q40_17"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "consolegame_fallingasleep_childuse"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses as falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        column: "Q40_17"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40_17"
+      reverse: true
+    name: "consolegamefallingasleepchilduse"
+
+  nodevicefallingasleepchilduse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q40_18"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "nodevice_fallingasleep_childuse"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses as falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+      ol.name:
+        type: "ol.name"
+        column: "Q40_18"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40_18"
+      reverse: true
+    name: "nodevicefallingasleepchilduse"
+
+# ***************** WIFI/INTERNET ********
+  internetmediaexposure:
+    fqn: "ol.mediaexposure"
+    entitySetName: "CAFE_MAQ_MediaExposure"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q41"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "internet_access"
+      ol.type:
+        type: "ol.type"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regular wireless internet (Wi-Fi) in home"
+      ol.status:
+        type: "ol.status"
+        column: "Q41"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q41"
+      reverse: true
+    name: "internetmediaexposure"
+
+# ****************** MEDIA WHEN IN TRANSIT ********************
+  transitactivity:
+    fqn: "ol.primaryactivity"
+    entitySetName: "CAFE_MAQ_Activities"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q42"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "media_in_transit"
+      ol.activity:
+        type: "ol.activity"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "put shows or movies on when in transit (i.e., car or public transit)"
+      ol.participant:
+        type: "ol.participant"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q42"
+      reverse: true
+    name: "transitactivity"
+
+  transitdeviceuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q42"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mediause_in_transit"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "mobile apps, shows, or movies in transit"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q42"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q42"
+      reverse: true
+    name: "transitdeviceuse"
+
+# *************** BACKGROUND MEDIA USE & ACCESS *******
+  televisiononinhouse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q43"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "television_in_home"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "how often a TV is on (even if not watching) in household"
+      general.frequency:
+        type: "general.frequency"
+        column: "Q43"
       ol.name:
         type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "Other"
-      ol.duration:
-        type: "ol.duration"
+          value: "Television"
+      ol.subject:
+        type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
-          value: "current/ever"
+          value: "household"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "current"
     conditions:
     - !<conditions.BooleanIsNullCondition>
-      column: "Q67_7"
+      column: "Q43"
       reverse: true
-    name: "otherchilduse"
+    name: "televisiononinhouse"
+
+  household:
+    fqn: "demographics.household"
+    entitySetName: "CAFE_MAQ_Households"
+    propertyDefinitions:
+      household.id:
+        type: "household.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId", "child_id", "Q23"]
+          hashFunction: "sha256"
+    name: "household"
 
 # ************** SUBJECT DEVICE LOCATION AWAKE***********
   televisionlocationawake:
@@ -1960,9 +2344,6 @@ entityDefinitions:
       ol.subject:
         type: "ol.subject"
         column: "Q36_1_1"
-        # transforms:
-        # - !<transforms.ValueTransform>
-        #   value: "Television"
       ol.status:
         type: "ol.status"
         transforms:
@@ -2749,12 +3130,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_1", "respondent_id"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_1"
-      reverse: true
     name: "ownedby1"
 
   ownedby2:
@@ -2767,12 +3144,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_2", "respondent_id"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_2"
-      reverse: true
     name: "ownedby2"
 
   ownedby3:
@@ -2785,12 +3158,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_3", "respondent_id"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_3"
-      reverse: true
     name: "ownedby3"
 
   ownedby4:
@@ -2803,12 +3172,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_4", "respondent_id"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_4"
-      reverse: true
     name: "ownedby4"
 
   ownedby5: #new association type
@@ -2821,12 +3186,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_6", "respondent_id"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_6"
-      reverse: true
     name: "owns5"
 
   ownedby6: #new association type
@@ -2839,12 +3200,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_7", "respondent_id"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_7"
-      reverse: true
     name: "ownedby6"
 
   ownedby7: #new association type
@@ -2857,12 +3214,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_8", "respondent_id"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_8"
-      reverse: true
     name: "ownedby7"
 
   ownedby8: #new association type
@@ -2875,12 +3228,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_9", "respondent_id"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_9"
-      reverse: true
     name: "ownedby8"
 
   ownedby9:
@@ -2893,12 +3242,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_10", "respondent_id"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_10"
-      reverse: true
     name: "ownedby9"
 
   ownedby10:
@@ -2911,30 +3256,22 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_15", "respondent_id"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_15"
-      reverse: true
     name: "ownedby10"
 
   ownedby11:
     fqn: "ol.ownedby"
     entitySetName: "CAFE_MAQ_OwnedBy"
-    src: "videogames"
+    src: "consolegame"
     dst: "respondent"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_17", "respondent_id"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_17"
-      reverse: true
     name: "ownedby11"
 
   ownedby12:
@@ -2947,12 +3284,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_18", "respondent_id"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_18"
-      reverse: true
     name: "ownedby12"
 
 # ********************* DEVICE RESPONDENT USE ASSNS ****************
@@ -2967,17 +3300,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q34_1_1", "respondent_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_1"
-      reverse: true
     name: "usedby1"
 
   usedby2:
@@ -2990,17 +3319,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q34_1_2", "respondent_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_2"
-      reverse: true
     name: "usedby2"
 
   usedby3:
@@ -3013,17 +3338,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q34_1_3", "respondent_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_3"
-      reverse: true
     name: "usedby3"
 
   usedby4:
@@ -3036,17 +3357,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q34_1_4", "respondent_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_4"
-      reverse: true
     name: "usedby4"
 
   usedby5:
@@ -3059,17 +3376,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q34_1_6", "respondent_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_6"
-      reverse: true
     name: "usedby5"
 
   usedby6:
@@ -3082,17 +3395,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q34_1_7", "respondent_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_7"
-      reverse: true
     name: "usedby6"
 
   usedby7:
@@ -3105,7 +3414,7 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q34_1_8", "respondent_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
@@ -3128,17 +3437,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q34_1_9", "respondent_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_9"
-      reverse: true
     name: "usedby8"
 
   usedby9:
@@ -3151,17 +3456,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q34_1_10", "respondent_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_10"
-      reverse: true
     name: "usedby9"
 
   usedby10:
@@ -3174,40 +3475,32 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q34_1_15", "respondent_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_15"
-      reverse: true
     name: "usedby10"
 
   usedby11:
     fqn: "ol.usedby"
     entitySetName: "CAFE_MAQ_UsedBy"
-    src: "videogames"
+    src: "consolegame"
     dst: "respondent"
     propertyDefinitions:
       general.stringid:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q34_1_17", "respondent_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_17"
-      reverse: true
     name: "usedby11"
 
   usedby12:
@@ -3220,17 +3513,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q34_1_18", "respondent_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_18"
-      reverse: true
     name: "usedby12"
 
 # ********************* DEVICE SUBJECT USE ASSNS ****************
@@ -3244,17 +3533,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q37_1", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "in last 2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_1"
-      reverse: true
     name: "usedby13"
 
   usedby14:
@@ -3267,17 +3552,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q37_2", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "in last 2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_2"
-      reverse: true
     name: "usedby14"
 
   usedby15:
@@ -3290,17 +3571,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q37_3", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "in last 2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_3"
-      reverse: true
     name: "usedby15"
 
   usedby16:
@@ -3313,17 +3590,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q37_4", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "in last 2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_4"
-      reverse: true
     name: "usedby16"
 
   usedby17:
@@ -3336,17 +3609,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q37_6", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "in last 2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_6"
-      reverse: true
     name: "usedby17"
 
   usedby18:
@@ -3359,17 +3628,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q37_7", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "in last 2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_7"
-      reverse: true
     name: "usedby18"
 
   usedby19:
@@ -3382,17 +3647,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q37_8", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "in last 2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_8"
-      reverse: true
     name: "usedby19"
 
   usedby20:
@@ -3405,17 +3666,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q37_9", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "in last 2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_9"
-      reverse: true
     name: "usedby20"
 
   usedby21:
@@ -3428,17 +3685,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q37_10", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "in last 2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_10"
-      reverse: true
     name: "usedby21"
 
   usedby22:
@@ -3451,40 +3704,32 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q37_15", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "in last 2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_15"
-      reverse: true
     name: "usedby22"
 
   usedby23:
     fqn: "ol.usedby"
     entitySetName: "CAFE_MAQ_UsedBy"
-    src: "videogames"
+    src: "consolegame"
     dst: "subject"
     propertyDefinitions:
       general.stringid:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q37_17", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "in last 2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_17"
-      reverse: true
     name: "usedby23"
 
   usedby24:
@@ -3497,17 +3742,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q37_18", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "in last 2 weeks"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_18"
-      reverse: true
     name: "usedby24"
 
 # ********************** DEVICE SUBJECT STARTED USING ASSNS ***********
@@ -3522,17 +3763,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q39_1", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "started using in last 6 months"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_1"
-      reverse: true
     name: "usedby25"
 
   usedby26:
@@ -3545,17 +3782,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q39_2", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "started using in last 6 months"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_2"
-      reverse: true
     name: "usedby26"
 
   usedby27:
@@ -3568,17 +3801,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q39_3", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "started using in last 6 months"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_3"
-      reverse: true
     name: "usedby27"
 
   usedby28:
@@ -3591,17 +3820,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q39_4", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "started using in last 6 months"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_4"
-      reverse: true
     name: "usedby28"
 
   usedby29:
@@ -3614,17 +3839,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q39_6", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "started using in last 6 months"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_6"
-      reverse: true
     name: "usedby29"
 
   usedby30:
@@ -3637,17 +3858,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q39_7", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "started using in last 6 months"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_7"
-      reverse: true
     name: "usedby30"
 
   usedby31:
@@ -3660,17 +3877,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q39_8", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "started using in last 6 months"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_8"
-      reverse: true
     name: "usedby31"
 
   usedby32:
@@ -3683,17 +3896,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q39_9", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "started using in last 6 months"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_9"
-      reverse: true
     name: "usedby32"
 
   usedby33:
@@ -3706,17 +3915,13 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q39_10", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "started using in last 6 months"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_10"
-      reverse: true
     name: "usedby33"
 
   usedby34:
@@ -3729,40 +3934,32 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q39_15", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "started using in last 6 months"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_15"
-      reverse: true
     name: "usedby34"
 
   usedby35:
     fqn: "ol.usedby"
     entitySetName: "CAFE_MAQ_UsedBy"
-    src: "videogames"
+    src: "consolegame"
     dst: "subject"
     propertyDefinitions:
       general.stringid:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q39_17", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "started using in last 6 months"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_17"
-      reverse: true
     name: "usedby35"
 
   usedby36:
@@ -3775,56 +3972,14 @@ associationDefinitions:
         type: "general.stringid"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q39_18", "child_id"]
           separator: "_"
       ol.relevantperiod:
         type: "ol.relevantperiod"
         transforms:
         - !<transforms.ValueTransform>
           value: "started using in last 6 months"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_18"
-      reverse: true
     name: "usedby36"
-
-  usedby37:
-    fqn: "ol.usedby"
-    entitySetName: "CAFE_MAQ_UsedBy"
-    src: "internet"
-    dst: "subject"
-    propertyDefinitions:
-      general.stringid:
-        type: "general.stringid"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "current/ever"
-    name: "usedby37"
-
-  usedby38:
-    fqn: "ol.usedby"
-    entitySetName: "CAFE_MAQ_UsedBy"
-    src: "otherdevice"
-    dst: "subject"
-    propertyDefinitions:
-      general.stringid:
-        type: "general.stringid"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "current/ever"
-    name: "usedby38"
 
 
 # ****************** ASSOCIATIONS B/T DEVICES TO DEVICE USE ENTITIES ********************
@@ -3839,16 +3994,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_1", "Q34_1_1"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_1"
-      reverse: true
     name: "relatedto1"
 
   relatedto2:
@@ -3861,16 +4008,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_2", "Q34_1_2"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_2"
-      reverse: true
     name: "relatedto2"
 
   relatedto3:
@@ -3883,16 +4022,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_3", "Q34_1_3"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_3"
-      reverse: true
     name: "relatedto3"
 
   relatedto4:
@@ -3905,16 +4036,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_4", "Q34_1_4"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_4"
-      reverse: true
     name: "relatedto4"
 
   relatedto5:
@@ -3927,16 +4050,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_6", "Q34_1_6"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_6"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_6"
-      reverse: true
     name: "relatedto5"
 
   relatedto6:
@@ -3949,16 +4064,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_7", "Q34_1_7"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_7"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_7"
-      reverse: true
     name: "relatedto6"
 
   relatedto7:
@@ -3971,16 +4078,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_8", "Q34_1_8"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_8"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_8"
-      reverse: true
     name: "relatedto7"
 
   relatedto8:
@@ -3993,16 +4092,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_9", "Q34_1_9"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_9"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_9"
-      reverse: true
     name: "relatedto8"
 
   relatedto9:
@@ -4015,16 +4106,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_10", "Q34_1_10"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_10"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_10"
-      reverse: true
     name: "relatedto9"
 
   relatedto10:
@@ -4037,38 +4120,22 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_15", "Q34_1_15"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_15"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_15"
-      reverse: true
     name: "relatedto10"
 
   relatedto11:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "videogames"
+    src: "consolegame"
     dst: "consolegameadultuse"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_17", "Q34_1_17"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_17"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_17"
-      reverse: true
     name: "relatedto11"
 
   relatedto12:
@@ -4081,16 +4148,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_18", "Q34_1_18"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_18"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q34_1_18"
-      reverse: true
     name: "relatedto12"
 
   relatedto13:
@@ -4103,16 +4162,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_1", "Q37_1"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_1"
-      reverse: true
     name: "relatedto13"
 
   relatedto14:
@@ -4125,16 +4176,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_2", "Q37_2"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_2"
-      reverse: true
     name: "relatedto14"
 
   relatedto15:
@@ -4147,16 +4190,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_3", "Q37_3"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_3"
-      reverse: true
     name: "relatedto15"
 
   relatedto16:
@@ -4169,16 +4204,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_4", "Q37_4"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_4"
-      reverse: true
     name: "relatedto16"
 
   relatedto17:
@@ -4191,16 +4218,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_6", "Q37_6"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_6"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_6"
-      reverse: true
     name: "relatedto17"
 
   relatedto18:
@@ -4213,16 +4232,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_7", "Q37_7"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_7"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_7"
-      reverse: true
     name: "relatedto18"
 
   relatedto19:
@@ -4235,16 +4246,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_8", "Q37_8"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_8"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_8"
-      reverse: true
     name: "relatedto19"
 
   relatedto20:
@@ -4257,16 +4260,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_9", "Q37_9"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_9"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_9"
-      reverse: true
     name: "relatedto20"
 
   relatedto21:
@@ -4279,16 +4274,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_10", "Q37_10"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_10"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_10"
-      reverse: true
     name: "relatedto21"
 
   relatedto22:
@@ -4301,38 +4288,22 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_15", "Q37_15"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_15"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_15"
-      reverse: true
     name: "relatedto22"
 
   relatedto23:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "videogames"
+    src: "consolegame"
     dst: "consolegamerecentchilduse"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_17", "Q37_17"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_17"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_17"
-      reverse: true
     name: "relatedto23"
 
   relatedto24:
@@ -4345,16 +4316,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_18", "Q37_18"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_18"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_18"
-      reverse: true
     name: "relatedto24"
 
   relatedto25:
@@ -4367,16 +4330,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_1", "Q39_1"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_1"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_1"
-      reverse: true
     name: "relatedto25"
 
   relatedto26:
@@ -4389,16 +4344,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_2", "Q39_2"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_2"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_2"
-      reverse: true
     name: "relatedto26"
 
   relatedto27:
@@ -4411,16 +4358,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_3", "Q39_3"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_3"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_3"
-      reverse: true
     name: "relatedto27"
 
   relatedto28:
@@ -4433,16 +4372,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_4", "Q39_4"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_4"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_4"
-      reverse: true
     name: "relatedto28"
 
   relatedto29:
@@ -4455,16 +4386,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_6", "Q39_6"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_6"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_6"
-      reverse: true
     name: "relatedto29"
 
   relatedto30:
@@ -4477,16 +4400,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_7", "Q39_7"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_7"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_7"
-      reverse: true
     name: "relatedto30"
 
   relatedto31:
@@ -4499,16 +4414,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_8", "Q39_8"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_8"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_8"
-      reverse: true
     name: "relatedto31"
 
   relatedto32:
@@ -4521,16 +4428,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_9", "Q39_9"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_9"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_9"
-      reverse: true
     name: "relatedto32"
 
   relatedto33:
@@ -4543,16 +4442,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_10d", "Q39_10"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_10"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_10"
-      reverse: true
     name: "relatedto33"
 
   relatedto34:
@@ -4565,38 +4456,22 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_15", "Q39_15"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_15"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_15"
-      reverse: true
     name: "relatedto34"
 
   relatedto35:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "videogames"
+    src: "consolegame"
     dst: "consolegamestartchilduse"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_17", "Q39_17"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_17"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_17"
-      reverse: true
     name: "relatedto35"
 
   relatedto36:
@@ -4609,45 +4484,9 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_18", "Q39_18"]
           separator: "_"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q33_18"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q39_18"
-      reverse: true
     name: "relatedto36"
-
-  relatedto37:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "internet"
-    dst: "internetchilduse"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    name: "relatedto37"
-
-  relatedto38:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "otherdevice"
-    dst: "otherchilduse"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    name: "relatedto38"
 
 
 # ******** ASSOCIATIONS B/T DEVICES & DEVICE LOCATION ENTITIES *****
@@ -4661,12 +4500,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_1", "Q36_1_1"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_1"
-      reverse: true
     name: "concurrentto1"
 
   concurrentto2:
@@ -4679,12 +4514,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_2", "Q36_1_2"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_2"
-      reverse: true
     name: "concurrentto2"
 
   concurrentto3:
@@ -4697,12 +4528,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_3", "Q36_1_3"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_3"
-      reverse: true
     name: "concurrentto3"
 
   concurrentto4:
@@ -4715,12 +4542,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_4", "Q36_1_4"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_4"
-      reverse: true
     name: "concurrentto4"
 
   concurrentto5:
@@ -4733,12 +4556,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_6", "Q36_1_6"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_6"
-      reverse: true
     name: "concurrentto5"
 
   concurrentto6:
@@ -4751,12 +4570,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_7", "Q36_1_7"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_7"
-      reverse: true
     name: "concurrentto6"
 
   concurrentto7:
@@ -4769,12 +4584,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_8", "Q36_1_8"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_8"
-      reverse: true
     name: "concurrentto7"
 
   concurrentto8:
@@ -4787,12 +4598,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_9", "Q36_1_9"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_9"
-      reverse: true
     name: "concurrentto8"
 
   concurrentto9:
@@ -4805,12 +4612,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_10", "Q36_1_10"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_10"
-      reverse: true
     name: "concurrentto9"
 
   concurrentto10:
@@ -4823,30 +4626,22 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_15", "Q36_1_15"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_15"
-      reverse: true
     name: "concurrentto10"
 
   concurrentto11:
     fqn: "ol.concurrentto"
     entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "videogames"
+    src: "consolegame"
     dst: "consolegamelocationawake"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_17", "Q36_1_17"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_17"
-      reverse: true
     name: "concurrentto11"
 
   concurrentto12:
@@ -4859,12 +4654,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_18", "Q36_1_18"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_18"
-      reverse: true
     name: "concurrentto12"
 
   concurrentto13:
@@ -4877,12 +4668,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_1", "Q36_2_1"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_1"
-      reverse: true
     name: "concurrentto13"
 
   concurrentto14:
@@ -4895,12 +4682,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_2", "Q36_2_2"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_2"
-      reverse: true
     name: "concurrentto14"
 
   concurrentto15:
@@ -4913,12 +4696,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_3", "Q36_2_3"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_3"
-      reverse: true
     name: "concurrentto15"
 
   concurrentto16:
@@ -4931,12 +4710,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_4", "Q36_2_4"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_4"
-      reverse: true
     name: "concurrentto16"
 
   concurrentto17:
@@ -4949,12 +4724,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_6", "Q36_2_6"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_6"
-      reverse: true
     name: "concurrentto17"
 
   concurrentto18:
@@ -4967,12 +4738,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_7", "Q36_2_7"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_7"
-      reverse: true
     name: "concurrentto18"
 
   concurrentto19:
@@ -4985,12 +4752,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_8", "Q36_2_8"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_8"
-      reverse: true
     name: "concurrentto19"
 
   concurrentto20:
@@ -5003,12 +4766,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_9", "Q36_2_9"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_9"
-      reverse: true
     name: "concurrentto20"
 
   concurrentto21:
@@ -5021,12 +4780,8 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_10", "Q36_2_10"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_10"
-      reverse: true
     name: "concurrentto21"
 
   concurrentto22:
@@ -5039,30 +4794,22 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_15", "Q36_2_15"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_15"
-      reverse: true
     name: "concurrentto22"
 
   concurrentto23:
     fqn: "ol.concurrentto"
     entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "videogames"
+    src: "consolegame"
     dst: "consolegamelocationasleep"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_17", "Q36_2_17"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_17"
-      reverse: true
     name: "concurrentto23"
 
   concurrentto24:
@@ -5075,15 +4822,11 @@ associationDefinitions:
         type: "ol.id"
         transforms:
         - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
+          columns: ["Q33_18", "Q36_2_18"]
           separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_18"
-      reverse: true
     name: "concurrentto24"
 
-  relatedto43:
+  relatedto37:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
     src: "mobilephone"
@@ -5094,4 +4837,236 @@ associationDefinitions:
         transforms:
         - !<transforms.ConcatTransform>
           columns: ["respondent_id", "Q33_7", "Q35"]
+    name: "relatedto37"
+
+  relatedto38:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "TV"
+    dst: "televisionfallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_1", "Q40_1"]
+          separator: "_"
+    name: "relatedto38"
+
+  relatedto39:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "DVR"
+    dst: "dvrfallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_2", "Q40_2"]
+          separator: "_"
+    name: "relatedto39"
+
+  relatedto40:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "DVD"
+    dst: "dvdfallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_3", "Q40_3"]
+          separator: "_"
+    name: "relatedto40"
+
+  relatedto41:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "personalcomputer"
+    dst: "computerfallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_4", "Q40_4"]
+          separator: "_"
+    name: "relatedto41"
+
+  relatedto42:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "landline"
+    dst: "landlinefallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_6", "Q40_6"]
+          separator: "_"
+    name: "relatedto42"
+
+  relatedto43:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "mobilephone"
+    dst: "mobilephonefallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_7", "Q40_7"]
+          separator: "_"
     name: "relatedto43"
+
+  relatedto44:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "smartphone"
+    dst: "smartphonefallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_8", "Q40_8"]
+          separator: "_"
+    name: "relatedto44"
+
+  relatedto45:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "ipad_tablet"
+    dst: "ipadfallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_9", "Q40_9"]
+          separator: "_"
+    name: "relatedto45"
+
+  relatedto46:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "mp3_player"
+    dst: "mp3fallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_10", "Q40_10"]
+          separator: "_"
+    name: "relatedto46"
+
+  relatedto47:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "educationalgame"
+    dst: "educationalgamefallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_15", "Q40_15"]
+          separator: "_"
+    name: "relatedto47"
+
+  relatedto48:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "consolegame"
+    dst: "consolegamefallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_17", "Q40_17"]
+          separator: "_"
+    name: "relatedto48"
+
+  relatedto49:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "nodevice"
+    dst: "nodevicefallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_18", "Q40_18"]
+          separator: "_"
+    name: "relatedto49"
+
+  involvedin1:
+    fqn: "ol.concurrentto"
+    entitySetName: "CAFE_MAQ_ConcurrentTo"
+    src: "personalcomputer"
+    dst: "internetmediaexposure"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_4", "Q41"]
+          separator: "_"
+    name: "involvedin1"
+
+  involvedin2:
+    fqn: "ol.concurrentto"
+    entitySetName: "CAFE_MAQ_ConcurrentTo"
+    src: "personalcomputer"
+    dst: "internetmediaexposure"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_8", "Q41"]
+          separator: "_"
+    name: "involvedin2"
+
+  usedby39:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "TV"
+    dst: "household"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q33_1", "ResponseId", "child_id", "Q23"]
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q43"
+      pattern: "(?i)(\\bNever\\b)"
+      reverse: true
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q43"
+      reverse: true
+    name: "usedby39"
+
+  involvedin3:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "TV"
+    dst: "televisiononinhouse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33_1", "Q43"]
+          separator: "_"
+    name: "involvedin3"
