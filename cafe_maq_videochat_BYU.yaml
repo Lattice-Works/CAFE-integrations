@@ -11,13 +11,13 @@ entityDefinitions:
         type: "nc.SubjectIdentification"
         transforms:
         - !<transforms.HashTransform>
-          column: respondent_id
+          columns: [respondent_id]
           hashFunction: "sha256"
       ol.idnumber:
         type: "ol.idnumber"
         transforms:
         - !<transforms.HashTransform>
-          column: "ResponseId"
+          columns: ["ResponseId"]
           hashFunction: "sha256"
     name: "respondent"
 
