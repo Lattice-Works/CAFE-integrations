@@ -51,7 +51,7 @@ entityDefinitions:
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5"]
-          goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Very often"]
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -93,7 +93,7 @@ entityDefinitions:
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5"]
-          goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Very often"]
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -135,7 +135,7 @@ entityDefinitions:
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5"]
-          goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Very often"]
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -177,7 +177,7 @@ entityDefinitions:
         transforms:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5"]
-          goal: ["Strongly disagree", "Somewhat disagree", "Neither agree nor disagree", "Somewhat agree", "Strongly agree"]
+          goal: ["Never", "Rarely", "Sometimes", "Often", "Very often"]
       ol.subject:
         type: "ol.subject"
         transforms:
