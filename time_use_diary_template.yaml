@@ -836,13 +836,9 @@ associationDefinitions:
     src: primary_activity
     dst: survey_metadata
     propertyDefinitions:
-      date.completeddatetime:
-        column: RecordedDate
-        type: date.completeddatetime
-        transforms:
-        - !<transforms.DateTimeTransform>
-          pattern: ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd HH:mm']
-          timezone: Etc/GMT
+      ol.id:
+        column: unique_id
+        type: ol.id
   engaged_in:
     entitySetName: CAFE_ES_engagedin
     fqn: ol.engagedin
@@ -852,13 +848,6 @@ associationDefinitions:
       ol.id:
         type: ol.id
         column: unique_id
-      date.completeddatetime:
-        column: ActionTime
-        type: date.completeddatetime
-        transforms:
-        - !<transforms.DateTimeTransform>
-          pattern: ["yyyy-MM-dd HH:mm:ss"]
-          timezone: Etc/GMT
   involved_in_1: # primary media exposure in activity
     entitySetName:  CAFE_ES_involvedin
     name: involved_in_1

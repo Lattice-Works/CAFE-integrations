@@ -77,7 +77,7 @@ entityDefinitions:
     name: "surveymetadata"
 
   employment:
-    fqn: "ol.employment"
+    fqn: "ol.occupation"
     entitySetName: "CAFE_MAQ_Employment"
     propertyDefinitions:
       ol.id:
