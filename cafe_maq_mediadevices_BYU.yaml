@@ -3212,7 +3212,7 @@ entityDefinitions:
             columns: ["Q40b"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "fallingasleep_childdeviceuse"
+            value: "nodevice_fallingasleep_childuse"
       ol.name:
         type: "ol.name"
         transforms:
@@ -3229,9 +3229,13 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "child"
     conditions:
+    - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanRegexCondition>
       column: "Q40b"
       pattern: "(?i)(\\b14\\b)"
+      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b"
       reverse: false
     name: "nodevicefallingasleep"
 
