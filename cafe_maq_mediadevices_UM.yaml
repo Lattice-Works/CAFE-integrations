@@ -3046,6 +3046,42 @@ entityDefinitions:
       reverse: false
     name: "otherfallingasleep"
 
+  nodevicefallingasleep:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q40b"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "nodevice_fallingasleep_childuse"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "None. My child uses no media devices while falling asleep"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b"
+      pattern: "(?i)(\\bNone.\\b)"
+      reverse: false
+    name: "nodevicefallingasleep"
+
 
 associationDefinitions:
 # ********************* DEVICE OWNERSHIP ASSNS ****************
@@ -5147,10 +5183,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q41"
-      reverse: true
     name: "concurrentto2"
 
   concurrentto3:
@@ -5165,10 +5197,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q41"
-      reverse: true
     name: "concurrentto3"
 
   involvedin1:
@@ -5183,10 +5211,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q41"
-      reverse: true
     name: "involvedin1"
 
 
@@ -5202,10 +5226,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q41"
-      reverse: true
     name: "involvedin2"
 
   involvedin3:
@@ -5220,10 +5240,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q41"
-      reverse: true
     name: "involvedin3"
 
 
@@ -5245,15 +5261,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "frequency of TV on in household"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q43"
-      reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q43"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
     name: "relatedto1"
 
 # ******* DEVICE TO DEVICE USE RELATIONS: START USE *************
@@ -5274,15 +5281,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's TV start use"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q37_1"
-      pattern: "(?i)(\\bDoes not use\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_1"
-      reverse: true
     name: "relatedto2"
 
   relatedto3:
@@ -5301,15 +5299,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's DVR start use"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q37_2"
-      pattern: "(?i)(\\bDoes not use\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_2"
-      reverse: true
     name: "relatedto3"
 
   relatedto4:
@@ -5328,15 +5317,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's DVD start use"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q37_3"
-      pattern: "(?i)(\\bDoes not use\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_3"
-      reverse: true
     name: "relatedto4"
 
   relatedto5:
@@ -5355,15 +5335,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's PC start use"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q37_4"
-      pattern: "(?i)(\\bDoes not use\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_4"
-      reverse: true
     name: "relatedto5"
 
   relatedto6:
@@ -5382,15 +5353,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's mobile phone start use"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q37_5"
-      pattern: "(?i)(\\bDoes not use\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_5"
-      reverse: true
     name: "relatedto6"
 
   relatedto7:
@@ -5409,15 +5371,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's smartphone start use"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q37_6"
-      pattern: "(?i)(\\bDoes not use\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_6"
-      reverse: true
     name: "relatedto7"
 
   relatedto8:
@@ -5436,15 +5389,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's ipad/tablet start use"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q37_7"
-      pattern: "(?i)(\\bDoes not use\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_7"
-      reverse: true
     name: "relatedto8"
 
   relatedto9:
@@ -5463,15 +5407,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's mp3 start use"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q37_8"
-      pattern: "(?i)(\\bDoes not use\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_8"
-      reverse: true
     name: "relatedto9"
 
   relatedto10:
@@ -5490,15 +5425,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's edu game start use"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q37_9"
-      pattern: "(?i)(\\bDoes not use\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_9"
-      reverse: true
     name: "relatedto10"
 
   relatedto11:
@@ -5517,15 +5443,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's console game start use"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q37_10"
-      pattern: "(?i)(\\bDoes not use\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_10"
-      reverse: true
     name: "relatedto11"
 
   relatedto12:
@@ -5544,15 +5461,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's virtual asst start use"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q37_11"
-      pattern: "(?i)(\\bDoes not use\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_11"
-      reverse: true
     name: "relatedto12"
 
   relatedto13:
@@ -5571,15 +5479,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's video streaming start use"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q37_12"
-      pattern: "(?i)(\\bDoes not use\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_12"
-      reverse: true
     name: "relatedto13"
 
 # ******* DEVICE TO DEVICE USE RELATIONS: HOUR BEFORE BED *************
@@ -5600,15 +5499,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's TV use before bed"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40a2_1"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_1"
-      reverse: true
     name: "relatedto14"
 
   relatedto15:
@@ -5627,15 +5517,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's DVR use before bed"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40a2_2"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_2"
-      reverse: true
     name: "relatedto15"
 
   relatedto16:
@@ -5654,15 +5535,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's DVD use before bed"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40a2_3"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_3"
-      reverse: true
     name: "relatedto16"
 
   relatedto17:
@@ -5681,15 +5553,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's PC use before bed"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40a2_4"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_4"
-      reverse: true
     name: "relatedto17"
 
   relatedto18:
@@ -5708,15 +5571,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's mobile phone use before bed"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40a2_5"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_5"
-      reverse: true
     name: "relatedto18"
 
   relatedto19:
@@ -5735,15 +5589,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's smartphone use before bed"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40a2_6"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_6"
-      reverse: true
     name: "relatedto19"
 
   relatedto20:
@@ -5762,15 +5607,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's ipad use before bed"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40a2_7"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_7"
-      reverse: true
     name: "relatedto20"
 
   relatedto21:
@@ -5789,15 +5625,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's mp3 use before bed"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40a2_8"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_8"
-      reverse: true
     name: "relatedto21"
 
   relatedto22:
@@ -5816,15 +5643,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's edu game use before bed"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40a2_9"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_9"
-      reverse: true
     name: "relatedto22"
 
   relatedto23:
@@ -5843,15 +5661,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's console game use before bed"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40a2_10"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_10"
-      reverse: true
     name: "relatedto23"
 
   relatedto24:
@@ -5870,15 +5679,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's virtual assistant use before bed"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40a2_11"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_11"
-      reverse: true
     name: "relatedto24"
 
   relatedto25:
@@ -5897,15 +5697,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's video streaming use before bed"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40a2_12"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_12"
-      reverse: true
     name: "relatedto25"
 
 # ******* DEVICE TO DEVICE USE RELATIONS: FALLING ASLEEP *************
@@ -5926,20 +5717,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's TV use falling asleep"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b2_1"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_1"
-      reverse: true
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bTelevision\\b)"
-      reverse: false
     name: "relatedto26"
 
   relatedto27:
@@ -5958,20 +5735,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's DVR use falling asleep"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b2_2"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_2"
-      reverse: true
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bDVR\\b)"
-      reverse: false
     name: "relatedto27"
 
   relatedto28:
@@ -5990,20 +5753,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's DVD use falling asleep"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b2_3"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_3"
-      reverse: true
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bDVD\\b)"
-      reverse: false
     name: "relatedto28"
 
   relatedto29:
@@ -6022,20 +5771,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's PC use falling asleep"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b2_4"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_4"
-      reverse: true
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bcomputer\\b)"
-      reverse: false
     name: "relatedto29"
 
   relatedto30:
@@ -6054,20 +5789,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's mobile phone use falling asleep"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b2_5"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_5"
-      reverse: true
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bmobile phone\\b)"
-      reverse: false
     name: "relatedto30"
 
   relatedto31:
@@ -6086,20 +5807,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's smartphone use falling asleep"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b2_6"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_6"
-      reverse: true
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bsmartphone\\b)"
-      reverse: false
     name: "relatedto31"
 
   relatedto32:
@@ -6118,20 +5825,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's iPad use falling asleep"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b2_7"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_7"
-      reverse: true
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\biPad\\b)"
-      reverse: false
     name: "relatedto32"
 
   relatedto33:
@@ -6150,20 +5843,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's mp3 use falling asleep"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b2_8"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_8"
-      reverse: true
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bmp3\\b)"
-      reverse: false
     name: "relatedto33"
 
   relatedto34:
@@ -6182,20 +5861,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's edu game use falling asleep"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b2_9"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_9"
-      reverse: true
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bEducational game\\b)"
-      reverse: false
     name: "relatedto34"
 
   relatedto35:
@@ -6214,20 +5879,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's console game use falling asleep"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b2_10"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_10"
-      reverse: true
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bConsole\\b)"
-      reverse: false
     name: "relatedto35"
 
   relatedto36:
@@ -6246,20 +5897,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's virtual assistant use falling asleep"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b2_11"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_11"
-      reverse: true
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bVirtual assistant\\b)"
-      reverse: false
     name: "relatedto36"
 
   relatedto37:
@@ -6278,20 +5915,6 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's video streaming use falling asleep"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b2_11"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_11"
-      reverse: true
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bVideo streaming\\b)"
-      reverse: false
     name: "relatedto37"
 
   relatedto38:
@@ -6310,21 +5933,25 @@ associationDefinitions:
         transforms:
         - !<transforms.ValueTransform>
           value: "child's other device use falling asleep"
-    conditions:
-    - !<conditions.ConditionalAnd> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b2_13"
-      pattern: "(?i)(\\bNever\\b)"
-      reverse: true
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_13"
-      reverse: true
-    - !<conditions.ConditionalOr> {}
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bOther\\b)"
-      reverse: false
     name: "relatedto38"
+
+  relatedto39:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "nodevice"
+    dst: "nodevicefallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's no device use while falling asleep"
+    name: "relatedto39"
 # ********* ASSOCIATIONS BETWEEN DEVICE USE AND PEOPLE *******
 
   involvedin4:
@@ -6339,10 +5966,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_1"
-      reverse: true
     name: "involvedin4"
 
   involvedin5:
@@ -6357,10 +5980,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_2"
-      reverse: true
     name: "involvedin5"
 
   involvedin6:
@@ -6375,10 +5994,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_3"
-      reverse: true
     name: "involvedin6"
 
   involvedin7:
@@ -6393,10 +6008,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_4"
-      reverse: true
     name: "involvedin7"
 
   involvedin8:
@@ -6411,10 +6022,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_5"
-      reverse: true
     name: "involvedin8"
 
   involvedin9:
@@ -6429,10 +6036,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_6"
-      reverse: true
     name: "involvedin9"
 
   involvedin10:
@@ -6447,10 +6050,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_7"
-      reverse: true
     name: "involvedin10"
 
   involvedin11:
@@ -6465,10 +6064,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_8"
-      reverse: true
     name: "involvedin11"
 
   involvedin12:
@@ -6483,10 +6078,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_9"
-      reverse: true
     name: "involvedin12"
 
   involvedin13:
@@ -6501,10 +6092,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_10"
-      reverse: true
     name: "involvedin13"
 
   involvedin14:
@@ -6519,10 +6106,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_11"
-      reverse: true
     name: "involvedin14"
 
   involvedin15:
@@ -6537,10 +6120,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q37_12"
-      reverse: true
     name: "involvedin15"
 
   involvedin16:
@@ -6555,10 +6134,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_1"
-      reverse: true
     name: "involvedin16"
 
   involvedin17:
@@ -6573,10 +6148,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_2"
-      reverse: true
     name: "involvedin17"
 
   involvedin18:
@@ -6591,10 +6162,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_3"
-      reverse: true
     name: "involvedin18"
 
   involvedin19:
@@ -6609,10 +6176,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_4"
-      reverse: true
     name: "involvedin19"
 
   involvedin20:
@@ -6627,10 +6190,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_5"
-      reverse: true
     name: "involvedin20"
 
   involvedin21:
@@ -6645,10 +6204,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_6"
-      reverse: true
     name: "involvedin21"
 
   involvedin22:
@@ -6663,10 +6218,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_7"
-      reverse: true
     name: "involvedin22"
 
   involvedin23:
@@ -6681,10 +6232,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_8"
-      reverse: true
     name: "involvedin23"
 
   involvedin24:
@@ -6699,10 +6246,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_9"
-      reverse: true
     name: "involvedin24"
 
   involvedin25:
@@ -6717,10 +6260,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_10"
-      reverse: true
     name: "involvedin25"
 
   involvedin26:
@@ -6735,10 +6274,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_11"
-      reverse: true
     name: "involvedin26"
 
   involvedin27:
@@ -6753,10 +6288,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40a2_12"
-      reverse: true
     name: "involvedin27"
 
   involvedin28:
@@ -6771,10 +6302,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_1"
-      reverse: true
     name: "involvedin28"
 
   involvedin29:
@@ -6789,10 +6316,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_2"
-      reverse: true
     name: "involvedin29"
 
   involvedin30:
@@ -6807,10 +6330,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_3"
-      reverse: true
     name: "involvedin30"
 
   involvedin31:
@@ -6825,10 +6344,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_4"
-      reverse: true
     name: "involvedin31"
 
   involvedin32:
@@ -6843,10 +6358,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_5"
-      reverse: true
     name: "involvedin32"
 
   involvedin33:
@@ -6861,10 +6372,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_6"
-      reverse: true
     name: "involvedin33"
 
   involvedin34:
@@ -6879,10 +6386,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_7"
-      reverse: true
     name: "involvedin34"
 
   involvedin35:
@@ -6897,10 +6400,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_8"
-      reverse: true
     name: "involvedin35"
 
   involvedin36:
@@ -6915,10 +6414,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_9"
-      reverse: true
     name: "involvedin36"
 
   involvedin37:
@@ -6933,10 +6428,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_10"
-      reverse: true
     name: "involvedin37"
 
   involvedin38:
@@ -6951,10 +6442,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_11"
-      reverse: true
     name: "involvedin38"
 
   involvedin39:
@@ -6969,10 +6456,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_12"
-      reverse: true
     name: "involvedin39"
 
   involvedin40:
@@ -6987,10 +6470,6 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q40b2_13"
-      reverse: true
     name: "involvedin40"
 
   involvedin41:
@@ -7011,7 +6490,7 @@ associationDefinitions:
       reverse: true
     name: "involvedin41"
 
-  involvedin41:
+  involvedin42:
     fqn: "ol.involvedin"
     entitySetName: "CAFE_MAQ_InvolvedIn"
     src: "household"
@@ -7023,11 +6502,22 @@ associationDefinitions:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q43"
-      reverse: true
-    name: "involvedin41"
+    name: "involvedin42"
+
+  involvedin43:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "nodevicefallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin43"
+
 
 
 # *********** ASSOCIATIONS FOR REGULARLY LOCATED DEVICES & PERSONS *************
