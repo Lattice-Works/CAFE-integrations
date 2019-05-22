@@ -415,32 +415,6 @@ entityDefinitions:
       reverse: true
     name: "otherdevice"
 
-  videochat:
-    entitySetName: "CAFE_MAQ_Devices"
-    fqn: "o.device"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.ConcatTransform>
-            columns: ["Q51"]
-            separator: "_"
-          - !<transforms.ValueTransform>
-            value: "videochat"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "video chat (e.g., FaceTime, Skype, WhatsApp video call"
-    conditions:
-    - !<conditions.BooleanRegexCondition>
-      column: "Q51"
-      pattern: "(?i)(\\b1\\b)"
-      reverse: false
-    name: "videochat"
-
 # ******** DEVICE LOCATIONS *********
 
   childsroom:
@@ -2716,10 +2690,9 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "Television"
     conditions:
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bTelevision\\b)"
-      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_1"
+      reverse: true
     name: "televisionfallingasleep"
 
   dvrfallingasleep:
@@ -2759,15 +2732,9 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "DVR for recording live televised content"
     conditions:
-    # - !<conditions.ConditionalOr> {}
-    # - !<conditions.BooleanRegexCondition>
-    #   column: "Q40b2_2"
-    #   pattern: "(?i)(\\bNever\\b)"
-    #   reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bDVR\\b)"
-      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_2"
+      reverse: true
     name: "dvrfallingasleep"
 
   dvdfallingasleep:
@@ -2807,15 +2774,9 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "DVD or VCR player"
     conditions:
-    # - !<conditions.ConditionalOr> {}
-    # - !<conditions.BooleanRegexCondition>
-    #   column: "Q40b2_3"
-    #   pattern: "(?i)(\\bNever\\b)"
-    #   reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bDVD or VCR\\b)"
-      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_3"
+      reverse: true
     name: "dvdfallingasleep"
 
   computerfallingasleep:
@@ -2855,15 +2816,9 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "Personal computer"
     conditions:
-    # - !<conditions.ConditionalOr> {}
-    # - !<conditions.BooleanRegexCondition>
-    #   column: "Q40b2_4"
-    #   pattern: "(?i)(\\bNever\\b)"
-    #   reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bPersonal computer\\b)"
-      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_4"
+      reverse: true
     name: "computerfallingasleep"
 
   mobilephonefallingasleep:
@@ -2903,15 +2858,9 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "Regular mobile phone (just for talk and text)"
     conditions:
-    # - !<conditions.ConditionalOr> {}
-    # - !<conditions.BooleanRegexCondition>
-    #   column: "Q40b2_5"
-    #   pattern: "(?i)(\\bNever\\b)"
-    #   reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bRegular mobile phone\\b)"
-      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_5"
+      reverse: true
     name: "mobilephonefallingasleep"
 
   smartphonefallingasleep:
@@ -2951,15 +2900,9 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "Smartphone (can access internet, etc.)"
     conditions:
-    # - !<conditions.ConditionalOr> {}
-    # - !<conditions.BooleanRegexCondition>
-    #   column: "Q40b2_6"
-    #   pattern: "(?i)(\\bNever\\b)"
-    #   reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bSmartphone\\b)"
-      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_6"
+      reverse: true
     name: "smartphonefallingasleep"
 
   ipadfallingasleep:
@@ -2999,15 +2942,9 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "iPad or other tablet device or e-reader (e.g., Kindle, Nook, etc.)"
     conditions:
-    # - !<conditions.ConditionalOr> {}
-    # - !<conditions.BooleanRegexCondition>
-    #   column: "Q40b2_7"
-    #   pattern: "(?i)(\\bNever\\b)"
-    #   reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\biPad\\b)"
-      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_7"
+      reverse: true
     name: "ipadfallingasleep"
 
   mp3fallingasleep:
@@ -3047,15 +2984,9 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "MP3 player (iPod or similar)"
     conditions:
-    # - !<conditions.ConditionalOr> {}
-    # - !<conditions.BooleanRegexCondition>
-    #   column: "Q40b2_8"
-    #   pattern: "(?i)(\\bNever\\b)"
-    #   reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bMP3\\b)"
-      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_8"
+      reverse: true
     name: "mp3fallingasleep"
 
   educationalgamefallingasleep:
@@ -3095,15 +3026,9 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "Educational game device (e.g., Leapster Explorer or a V-Smile)"
     conditions:
-    # - !<conditions.ConditionalOr> {}
-    # - !<conditions.BooleanRegexCondition>
-    #   column: "Q40b2_9"
-    #   pattern: "(?i)(\\bNever\\b)"
-    #   reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bEducational game device\\b)"
-      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_9"
+      reverse: true
     name: "educationalgamefallingasleep"
 
   consolegamefallingasleep:
@@ -3143,15 +3068,9 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "Console-based gaming system (e.g., Xbox, Nintendo, or Playstation) or handheld gaming system (e.g., Nintendo 3DS)"
     conditions:
-    # - !<conditions.ConditionalOr> {}
-    # - !<conditions.BooleanRegexCondition>
-    #   column: "Q40b2_10"
-    #   pattern: "(?i)(\\bNever\\b)"
-    #   reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bConsole-based gaming\\b)"
-      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_10"
+      reverse: true
     name: "consolegamefallingasleep"
 
   virtualassistantfallingasleep:
@@ -3191,15 +3110,9 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "Virtual Assistant (e.g., Alexa/Echo device, Google Home, Apple Home Pod)"
     conditions:
-    # - !<conditions.ConditionalOr> {}
-    # - !<conditions.BooleanRegexCondition>
-    #   column: "Q40b2_11"
-    #   pattern: "(?i)(\\bNever\\b)"
-    #   reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bVirtual Assistant\\b)"
-      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_11"
+      reverse: true
     name: "virtualassistantfallingasleep"
 
   videostreamingfallingasleep:
@@ -3239,15 +3152,9 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "Video streaming services (e.g., Hulu, Netflix, etc.)"
     conditions:
-    # - !<conditions.ConditionalOr> {}
-    # - !<conditions.BooleanRegexCondition>
-    #   column: "Q40b2_12"
-    #   pattern: "(?i)(\\bNever\\b)"
-    #   reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bVideo streaming services\\b)"
-      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_12"
+      reverse: true
     name: "videostreamingfallingasleep"
 
   otherfallingasleep:
@@ -3287,18 +3194,12 @@ entityDefinitions:
         - !<transforms.ValueTransform>
           value: "Other (NOT Including white noise makers)"
     conditions:
-    # - !<conditions.ConditionalOr> {}
-    # - !<conditions.BooleanRegexCondition>
-    #   column: "Q40b2_13"
-    #   pattern: "(?i)(\\bNever\\b)"
-    #   reverse: true
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\bOther\\b)"
-      reverse: false
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q40b2_13"
+      reverse: true
     name: "otherfallingasleep"
 
-  videochatchilduse1:
+  nodevicefallingasleep:
     fqn: "ol.deviceuse"
     entitySetName: "CAFE_MAQ_Device_Use"
     propertyDefinitions:
@@ -3308,139 +3209,31 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q52_1"]
+            columns: ["Q40b"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "videochat_childuse"
-      ol.status:
-        type: "ol.status"
-        column: "Q51"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["1", "2"]
-          goal: ["Yes", "No"]
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
+            value: "nodevice_fallingasleep_childuse"
+      ol.name:
+        type: "ol.name"
         transforms:
         - !<transforms.ValueTransform>
-          value: "current/ever"
-      general.frequency:
-        type: "general.frequency"
-        column: "Q52_1"
+          value: "None. My child uses no media devices while falling asleep"
+      ol.description:
+        type: "ol.description"
         transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4", "5", "6", "7"]
-          goal: ["Less than once a month", "About once a month", "2-3 times per month", "Once a week", "2-3 times per week", "4-5 times per week", "6 or more times per week"]
+        - !<transforms.ValueTransform>
+          value: "uses while falling asleep"
       ol.subject:
         type: "ol.subject"
         transforms:
         - !<transforms.ValueTransform>
           value: "child"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Video chat (e.g., FaceTime, Skype, WhatsApp video call)"
     conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q51"
-      reverse: true
-    name: "videochatchilduse1"
-
-  videochatchilduse2:
-    fqn: "ol.deviceuse"
-    entitySetName: "CAFE_MAQ_Device_Use"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.ConcatTransform>
-            columns: ["Q52_2"]
-            separator: "_"
-          - !<transforms.ValueTransform>
-            value: "videochat_childuse"
-      ol.status:
-        type: "ol.status"
-        column: "Q51"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["1", "2"]
-          goal: ["Yes", "No"]
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "current/ever"
-      general.frequency:
-        type: "general.frequency"
-        column: "Q52_2"
-        transforms:
-        - !<transforms.ReplaceTransform>
-          target: ["1", "2", "3", "4", "5", "6", "7"]
-          goal: ["Less than once a month", "About once a month", "2-3 times per month", "Once a week", "2-3 times per week", "4-5 times per week", "6 or more times per week"]
-      ol.subject:
-        type: "ol.subject"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "child"
-      ol.name:
-        type: "ol.name"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Video chat (e.g., FaceTime, Skype, WhatsApp video call)"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q51"
-      reverse: true
-    name: "videochatchilduse2"
-
-  videochatrelatives1:
-    fqn: "ol.relative"
-    entitySetName: "CAFE_MAQ_Relatives"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.ConcatTransform>
-            columns: ["Q52_1_TEXT"]
-            separator: "_"
-        - !<transforms.ValueTransform>
-          value: "videochat_relative1"
-      ol.name:
-        type: "ol.name"
-        column: "Q52_1_TEXT"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q52_1_TEXT"
-      reverse: true
-    name: "videochatrelatives1"
-
-  videochatrelatives2:
-    fqn: "ol.relative"
-    entitySetName: "CAFE_MAQ_Relatives"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatCombineTransform>
-          transforms:
-          - !<transforms.ConcatTransform>
-            columns: ["Q52_2_TEXT"]
-            separator: "_"
-          - !<transforms.ValueTransform>
-            value: "videochat_relative2"
-      ol.name:
-        type: "ol.name"
-        column: "Q52_2_TEXT"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q52_2_TEXT"
-      reverse: true
-    name: "videochatrelatives2"
+    - !<conditions.BooleanRegexCondition>
+      column: "Q40b"
+      pattern: "(?i)(\\b14\\b)"
+      reverse: false
+    name: "nodevicefallingasleep"
 
 associationDefinitions:
 # ********************* DEVICE OWNERSHIP ASSNS ****************
@@ -3671,25 +3464,6 @@ associationDefinitions:
       pattern: "(?i)(\\b18\\b)"
       reverse: false
     name: "ownedby12"
-
-  reported:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
-    src: "nodevice"
-    dst: "respondent"
-    propertyDefinitions:
-      general.id:
-        type: "general.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-          hashFunction: "sha256"
-    conditions:
-    - !<conditions.BooleanRegexCondition>
-      column: "Q40b"
-      pattern: "(?i)(\\b14\\b)"
-      reverse: false
-    name: "reported"
 
   ownedby14:
     fqn: "ol.ownedby"
@@ -6693,6 +6467,24 @@ associationDefinitions:
       pattern: "(?i)(\\b13\\b)"
       reverse: false
     name: "relatedto38"
+
+  relatedto39:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "nodevice"
+    dst: "nodevicefallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+      ol.role:
+        type: "ol.role"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child's no device use while falling asleep"
+    name: "relatedto39"
 # ********* ASSOCIATIONS BETWEEN DEVICE USE AND PEOPLE *******
 
   involvedin4:
@@ -7395,7 +7187,21 @@ associationDefinitions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q43"
       reverse: true
-    name: "involvedin42 "
+    name: "involvedin42"
+
+  involvedin43:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "nodevicefallingasleep"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "involvedin43"
 
 
 # *********** ASSOCIATIONS FOR REGULARLY LOCATED DEVICES & PERSONS *************
@@ -8047,136 +7853,3 @@ associationDefinitions:
         - !<transforms.ValueTransform>
           value: "regularly"
     name: "usedby74"
-
-  subjectof1:
-    fqn: "ol.subjectof"
-    entitySetName: "CAFE_MAQ_SubjectOf"
-    src: "subject"
-    dst: "videochatchilduse1"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof1"
-
-  subjectof2:
-    fqn: "ol.subjectof"
-    entitySetName: "CAFE_MAQ_SubjectOf"
-    src: "subject"
-    dst: "videochatchilduse2"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-          hashFunction: "sha256"
-    name: "subjectof2"
-
-  involvedin43:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "videochatrelatives1"
-    dst: "videochatchilduse1"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-          hashFunction: "sha256"
-    name: "involvedin43"
-
-  involvedin44:
-    fqn: "ol.involvedin"
-    entitySetName: "CAFE_MAQ_InvolvedIn"
-    src: "videochatrelatives2"
-    dst: "videochatchilduse2"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-          hashFunction: "sha256"
-    name: "involvedin44"
-
-
-  relatedto39:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "subject"
-    dst: "videochatrelatives1"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-      ol.role:
-        type: "ol.role"
-        column: "Q52_1_TEXT"
-    name: "relatedto39"
-
-  relatedto40:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "subject"
-    dst: "videochatrelatives2"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-      ol.role:
-        type: "ol.role"
-        column: "Q52_2_TEXT"
-    name: "relatedto40"
-
-  relatedto41:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "videochat"
-    dst: "videochatchilduse1"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-    name: "relatedto41"
-
-  relatedto42:
-    fqn: "ol.relatedto"
-    entitySetName: "CAFE_MAQ_RelatedTo"
-    src: "videochat"
-    dst: "videochatchilduse2"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-    name: "relatedto42"
-
-  usedby75:
-    fqn: "ol.usedby"
-    entitySetName: "CAFE_MAQ_UsedBy"
-    src: "videochat"
-    dst: "subject"
-    propertyDefinitions:
-      general.stringid:
-        type: "general.stringid"
-        transforms:
-        - !<transforms.HashTransform>
-          columns: ["respondent_id", "ResponseId"]
-      ol.relevantperiod:
-        type: "ol.relevantperiod"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "regularly"
-    name: "usedby75"

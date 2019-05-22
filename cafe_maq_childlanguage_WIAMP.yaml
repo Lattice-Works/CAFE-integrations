@@ -46,7 +46,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_1 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: choo choo
@@ -55,7 +55,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_2 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: meow
@@ -64,7 +64,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_3 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: ouch
@@ -73,7 +73,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_4 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: uh oh
@@ -82,7 +82,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_5 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: bird
@@ -91,7 +91,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_6 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: dog
@@ -100,7 +100,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_7 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: duck
@@ -109,7 +109,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_8 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: kitty
@@ -118,7 +118,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_9 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: lion
@@ -127,7 +127,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_10 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: mouse
@@ -136,7 +136,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_11 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: car
@@ -145,7 +145,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_12 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: stroller
@@ -154,7 +154,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_13 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: ball
@@ -163,7 +163,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_14 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: book
@@ -172,7 +172,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_15 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: doll
@@ -181,7 +181,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_16 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: bread
@@ -190,7 +190,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_17 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: candy
@@ -199,7 +199,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_18 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: cereal
@@ -208,7 +208,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_19 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: cookie
@@ -217,7 +217,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_20 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: juice
@@ -226,7 +226,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_21 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: toast
@@ -235,7 +235,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_22 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: hat
@@ -244,7 +244,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_23 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: pants
@@ -253,7 +253,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_24 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: shoe
@@ -262,7 +262,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_25 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: sock
@@ -271,7 +271,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_26 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: eye
@@ -280,7 +280,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_27 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: head
@@ -289,7 +289,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_28 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: leg
@@ -298,7 +298,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_29 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: nose
@@ -307,7 +307,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_30 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: tooth
@@ -316,7 +316,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_31 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: chair
@@ -325,7 +325,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_32 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: couch
@@ -334,7 +334,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_33 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: kitchen
@@ -343,7 +343,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_34 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: table
@@ -352,7 +352,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_35 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: television
@@ -361,7 +361,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_36 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: blanket
@@ -370,7 +370,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_37 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: bottle
@@ -379,7 +379,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_38 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: cup
@@ -388,7 +388,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_39 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: dish
@@ -397,7 +397,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_40 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: lamp
@@ -406,7 +406,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_41 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: radio
@@ -415,7 +415,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_42 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: spoon
@@ -424,7 +424,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_43 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: flower
@@ -433,7 +433,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_44 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: home
@@ -442,7 +442,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_45 
-          pattern: 1 
+          pattern: "Understands the word and says it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: moon
@@ -472,7 +472,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_1 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: choo choo
@@ -481,7 +481,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_2 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: meow
@@ -490,7 +490,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_3 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: ouch
@@ -499,7 +499,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_4 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: uh oh
@@ -508,7 +508,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_5 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: bird
@@ -517,7 +517,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_6 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: dog
@@ -526,7 +526,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_7 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: duck
@@ -535,7 +535,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_8 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: kitty
@@ -544,7 +544,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_9 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: lion
@@ -553,7 +553,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_10 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: mouse
@@ -562,7 +562,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_11 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: car
@@ -571,7 +571,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_12 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: stroller
@@ -580,7 +580,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_13 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: ball
@@ -589,7 +589,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_14 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: book
@@ -598,7 +598,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_15 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: doll
@@ -607,7 +607,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_16 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: bread
@@ -616,7 +616,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_17 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: candy
@@ -625,7 +625,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_18 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: cereal
@@ -634,7 +634,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_19 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: cookie
@@ -643,7 +643,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_20 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: juice
@@ -652,7 +652,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_21 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: toast
@@ -661,7 +661,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_22 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: hat
@@ -670,7 +670,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_23 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: pants
@@ -679,7 +679,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_24 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: shoe
@@ -688,7 +688,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_25 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: sock
@@ -697,7 +697,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_26 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: eye
@@ -706,7 +706,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_27 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: head
@@ -715,7 +715,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_28 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: leg
@@ -724,7 +724,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_29 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: nose
@@ -733,7 +733,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_30 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: tooth
@@ -742,7 +742,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_31 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: chair
@@ -751,7 +751,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_32 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: couch
@@ -760,7 +760,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_33 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: kitchen
@@ -769,7 +769,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_34 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: table
@@ -778,7 +778,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_35 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: television
@@ -787,7 +787,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_36 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: blanket
@@ -796,7 +796,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_37 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: bottle
@@ -805,7 +805,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_38 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: cup
@@ -814,7 +814,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_39 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: dish
@@ -823,7 +823,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_40 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: lamp
@@ -832,7 +832,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_41 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: radio
@@ -841,7 +841,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_42 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: spoon
@@ -850,7 +850,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_43 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: flower
@@ -859,7 +859,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_44 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: home
@@ -868,7 +868,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_45 
-          pattern: 2 
+          pattern: "Understands the word but does not yet say it" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: moon
@@ -898,7 +898,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_1 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: choo choo
@@ -907,7 +907,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_2 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: meow
@@ -916,7 +916,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_3 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: ouch
@@ -925,7 +925,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_4 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: uh oh
@@ -934,7 +934,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_5 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: bird
@@ -943,7 +943,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_6 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: dog
@@ -952,7 +952,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_7 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: duck
@@ -961,7 +961,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_8 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: kitty
@@ -970,7 +970,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_9 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: lion
@@ -979,7 +979,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_10 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: mouse
@@ -988,7 +988,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_11 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: car
@@ -997,7 +997,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_12 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: stroller
@@ -1006,7 +1006,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_13 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: ball
@@ -1015,7 +1015,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_14 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: book
@@ -1024,7 +1024,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_15 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: doll
@@ -1033,7 +1033,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_16 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: bread
@@ -1042,7 +1042,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_17 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: candy
@@ -1051,7 +1051,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_18 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: cereal
@@ -1060,7 +1060,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_19 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: cookie
@@ -1069,7 +1069,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_20 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: juice
@@ -1078,7 +1078,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_21 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: toast
@@ -1087,7 +1087,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_22 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: hat
@@ -1096,7 +1096,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_23 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: pants
@@ -1105,7 +1105,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_24 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: shoe
@@ -1114,7 +1114,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_25 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: sock
@@ -1123,7 +1123,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_26 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: eye
@@ -1132,7 +1132,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_27 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: head
@@ -1141,7 +1141,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_28 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: leg
@@ -1150,7 +1150,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_29 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: nose
@@ -1159,7 +1159,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_30 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: tooth
@@ -1168,7 +1168,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_31 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: chair
@@ -1177,7 +1177,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_32 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: couch
@@ -1186,7 +1186,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_33 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: kitchen
@@ -1195,7 +1195,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_34 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: table
@@ -1204,7 +1204,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_35 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: television
@@ -1213,7 +1213,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_36 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: blanket
@@ -1222,7 +1222,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_37 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: bottle
@@ -1231,7 +1231,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_38 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: cup
@@ -1240,7 +1240,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_39 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: dish
@@ -1249,7 +1249,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_40 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: lamp
@@ -1258,7 +1258,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_41 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: radio
@@ -1267,7 +1267,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_42 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: spoon
@@ -1276,7 +1276,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_43 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: flower
@@ -1285,7 +1285,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_44 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: home
@@ -1294,7 +1294,7 @@ entityDefinitions:
         transforms:
         - !<transforms.BooleanRegexTransform>
           column: Q93_45 
-          pattern: 3 
+          pattern: "Does not understand the word" 
           transformsIfTrue:
           - !<transforms.ValueTransform>
             value: moon
@@ -1326,7 +1326,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_1 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: baabaa
@@ -1335,7 +1335,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_2 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: meow
@@ -1344,7 +1344,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_3 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: ouch
@@ -1353,7 +1353,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_4 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: uhoh
@@ -1362,7 +1362,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_5 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: woof woof
@@ -1371,7 +1371,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_6 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: bear
@@ -1380,7 +1380,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_7 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: bird
@@ -1389,7 +1389,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_8 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: cat
@@ -1398,7 +1398,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_9 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: dog
@@ -1407,7 +1407,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_10 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: duck
@@ -1416,7 +1416,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_11 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: horse
@@ -1425,7 +1425,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_12 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: airplane
@@ -1434,7 +1434,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_13 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: boat
@@ -1443,7 +1443,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_14 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: car
@@ -1452,7 +1452,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_15 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: car
@@ -1461,7 +1461,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_16 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: book
@@ -1470,7 +1470,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_17 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: game
@@ -1479,7 +1479,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_18 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: applesauce
@@ -1488,7 +1488,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_19 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: candy
@@ -1497,7 +1497,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_20 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: coke
@@ -1506,7 +1506,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_21 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: cracker
@@ -1515,7 +1515,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_22 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: juice
@@ -1524,7 +1524,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_23 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: meat
@@ -1533,7 +1533,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_24 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: milk
@@ -1542,7 +1542,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_25 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: peas
@@ -1551,7 +1551,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_26 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: hat
@@ -1560,7 +1560,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_27 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: necklace
@@ -1569,7 +1569,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_28 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: shoe
@@ -1578,7 +1578,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_29 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: sock
@@ -1587,7 +1587,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_30 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: chin
@@ -1596,7 +1596,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_31 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: ear
@@ -1605,7 +1605,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_32 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: hand
@@ -1614,7 +1614,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_33 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: leg
@@ -1623,7 +1623,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_34 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: broom
@@ -1632,7 +1632,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_35 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: comb
@@ -1641,7 +1641,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_36 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: mop
@@ -1650,7 +1650,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_37 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: plate
@@ -1659,7 +1659,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_38 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: trash
@@ -1668,7 +1668,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_39 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: tray
@@ -1677,7 +1677,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_40 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: towel
@@ -1686,7 +1686,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_41 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: bed
@@ -1695,7 +1695,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_42 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: bedroom
@@ -1704,7 +1704,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_43 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: bench
@@ -1713,7 +1713,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_44 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: oven
@@ -1722,7 +1722,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_45 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: stairs
@@ -1731,7 +1731,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_46 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: flag
@@ -1740,7 +1740,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_47 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: rain
@@ -1749,7 +1749,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_48 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: star
@@ -1758,7 +1758,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_49 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: swing
@@ -1767,7 +1767,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_50 
-            pattern: 1 
+            pattern: "Yes (says the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: school
@@ -1797,7 +1797,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_1 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: baabaa
@@ -1806,7 +1806,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_2 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: meow
@@ -1815,7 +1815,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_3 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: ouch
@@ -1824,7 +1824,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_4 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: uhoh
@@ -1833,7 +1833,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_5 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: woof woof
@@ -1842,7 +1842,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_6 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: bear
@@ -1851,7 +1851,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_7 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: bird
@@ -1860,7 +1860,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_8 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: cat
@@ -1869,7 +1869,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_9 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: dog
@@ -1878,7 +1878,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_10 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: duck
@@ -1887,7 +1887,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_11 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: horse
@@ -1896,7 +1896,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_12 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: airplane
@@ -1905,7 +1905,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_13 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: boat
@@ -1914,7 +1914,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_14 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: car
@@ -1923,7 +1923,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_15 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: car
@@ -1932,7 +1932,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_16 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: book
@@ -1941,7 +1941,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_17 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: game
@@ -1950,7 +1950,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_18 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: applesauce
@@ -1959,7 +1959,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_19 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: candy
@@ -1968,7 +1968,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_20 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: coke
@@ -1977,7 +1977,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_21 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: cracker
@@ -1986,7 +1986,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_22 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: juice
@@ -1995,7 +1995,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_23 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: meat
@@ -2004,7 +2004,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_24 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: milk
@@ -2013,7 +2013,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_25 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: peas
@@ -2022,7 +2022,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_26 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: hat
@@ -2031,7 +2031,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_27 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: necklace
@@ -2040,7 +2040,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_28 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: shoe
@@ -2049,7 +2049,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_29 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: sock
@@ -2058,7 +2058,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_30 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: chin
@@ -2067,7 +2067,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_31 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: ear
@@ -2076,7 +2076,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_32 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: hand
@@ -2085,7 +2085,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_33 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: leg
@@ -2094,7 +2094,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_34 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: broom
@@ -2103,7 +2103,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_35 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: comb
@@ -2112,7 +2112,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_36 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: mop
@@ -2121,7 +2121,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_37 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: plate
@@ -2130,7 +2130,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_38 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: trash
@@ -2139,7 +2139,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_39 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: tray
@@ -2148,7 +2148,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_40 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: towel
@@ -2157,7 +2157,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_41 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: bed
@@ -2166,7 +2166,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_42 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: bedroom
@@ -2175,7 +2175,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_43 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: bench
@@ -2184,7 +2184,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_44 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: oven
@@ -2193,7 +2193,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_45 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: stairs
@@ -2202,7 +2202,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_46 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: flag
@@ -2211,7 +2211,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_47 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: rain
@@ -2220,7 +2220,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_48 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: star
@@ -2229,7 +2229,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_49 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: swing
@@ -2238,7 +2238,7 @@ entityDefinitions:
           transforms:
           - !<transforms.BooleanRegexTransform>
             column: Q94_50 
-            pattern: 2 
+            pattern: "No (does not say the word)" 
             transformsIfTrue:
             - !<transforms.ValueTransform>
               value: school
