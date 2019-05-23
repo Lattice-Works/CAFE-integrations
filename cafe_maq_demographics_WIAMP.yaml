@@ -191,6 +191,10 @@ entityDefinitions:
       nc.PersonSex:
         type: "nc.PersonSex"
         column: "child_sex"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: [M, F]
+          goal: [Male, Female]
       ol.birthyear:
         type: "ol.birthyear"
         column: "child_birthyear"
