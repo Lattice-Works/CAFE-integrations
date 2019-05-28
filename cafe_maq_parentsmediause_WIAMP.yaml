@@ -1780,7 +1780,7 @@ entityDefinitions:
         - !<transforms.ConcatCombineTransform>
           transforms:
           - !<transforms.ConcatTransform>
-            columns: ["Q63_8"]
+            columns: ["Q63_8", "Q63_8_TEXT"]
             separator: "_"
           - !<transforms.ValueTransform>
             value: "apps_adultuse_other"
@@ -1802,6 +1802,52 @@ entityDefinitions:
       column: "Q63_8"
       reverse: true
     name: "otherappwhilewithchild"
+
+  nonenglishmediaexposure:
+    fqn: "ol.mediaexposure"
+    entitySetName: "CAFE_MAQ_MediaExposure"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q64", "Q65"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "nonenglish_mediaexposure_adult"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+      ol.type:
+        type: "ol.type"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "videos, TV shows, movies, music, podcasts, and books"
+      ol.duration:
+        type: "ol.duration"
+        column: "Q65"
+      ol.status:
+        type: "ol.status"
+        column: "Q64"
+      ol.units:
+        type: "ol.units"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "percentage"
+      ol.language:
+        type: "ol.language"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "non-English"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q64"
+      reverse: true
+    name: "nonenglishmediaexposure"
 
 associationDefinitions:
   # ********************* DEVICE RESPONDENT USE ASSNS ****************
@@ -2703,3 +2749,17 @@ associationDefinitions:
           columns: ["respondent_id", "Q63_8"]
           hashFunction: "sha256"
     name: "involvedin31"
+
+  reported3:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "nonenglishmediaexposure"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q64", "Q65"]
+          hashFunction: "sha256"
+    name: "reported3"
