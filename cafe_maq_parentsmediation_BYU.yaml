@@ -190,12 +190,12 @@ entityDefinitions:
             columns: ["Q72", "Q73"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "nonenglish_mediaexposure"
-      # ol.subject:
-      #   type: "ol.subject"
-      #   transforms:
-      #   - !<transforms.ValueTransform>
-      #     value: "child"
+            value: "nonenglish_mediaexposure_child"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "child"
       ol.type:
         type: "ol.type"
         transforms:

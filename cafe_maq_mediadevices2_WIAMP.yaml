@@ -1603,3 +1603,201 @@ associationDefinitions:
           columns: ["respondent_id", "ResponseId"]
           hashFunction: "sha256"
     name: "involvedin3"
+
+# ASSOCIATIONS BETWEEN SUBJECTS AND DEVICEUSE
+
+  involvedin4:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "televisionfallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q40_1"]
+          hashFunction: "sha256"
+    name: "involvedin4"
+
+  involvedin5:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "dvrfallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q40_2"]
+          hashFunction: "sha256"
+    name: "involvedin5"
+
+  involvedin6:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "dvdfallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q40_3"]
+          hashFunction: "sha256"
+    name: "involvedin6"
+
+  involvedin7:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "computerfallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q40_4"]
+          hashFunction: "sha256"
+    name: "involvedin7"
+
+  involvedin8:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "landlinefallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q40_6"]
+          hashFunction: "sha256"
+    name: "involvedin8"
+
+  involvedin9:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "mobilephonefallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q40_7"]
+          hashFunction: "sha256"
+    name: "involvedin9"
+
+  involvedin10:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "smartphonefallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q40_8"]
+          hashFunction: "sha256"
+    name: "involvedin10"
+
+  involvedin11:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "ipadfallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q40_9"]
+          hashFunction: "sha256"
+    name: "involvedin11"
+
+  involvedin12:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "mp3fallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q40_10"]
+          hashFunction: "sha256"
+    name: "involvedin12"
+
+  involvedin13:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "educationalgamefallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q40_15"]
+          hashFunction: "sha256"
+    name: "involvedin13"
+
+  involvedin14:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "consolegamefallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q40_17"]
+          hashFunction: "sha256"
+    name: "involvedin14"
+
+  involvedin15:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "nodevicefallingasleepchilduse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q40_18"]
+          hashFunction: "sha256"
+    name: "involvedin15"
+
+  involvedin16:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "subject"
+    dst: "transitdeviceuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id", "Q42"]
+          hashFunction: "sha256"
+    name: "involvedin16"
+
+  involvedin17:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "household"
+    dst: "televisiononinhouse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["ResponseId", "child_id", "Q23", "Q43"]
+          hashFunction: "sha256"
+    name: "involvedin17"

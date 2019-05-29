@@ -246,7 +246,587 @@ entityDefinitions:
       reverse: true
     name: "consolegames"
 
-  # ************USING DEVICES WHEN WITH CHILDREN ********************
+# *********************PARENTS DEVICE USE IN LAST 2 WEEKS *********************
+
+  televisionadultuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_1"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "television_adultuse"
+      ol.number:
+        type: "ol.number"
+        column: "Q316_1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["More than 1"]
+          goal: ["2"]
+        - !<transforms.ParseIntTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "number of devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Television"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q316_1"
+      reverse: true
+    name: "televisionadultuse"
+
+  dvradultuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_2"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "dvr_adultuse"
+      ol.number:
+        type: "ol.number"
+        column: "Q316_2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "number of devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "DVR for recording live televised content"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q316_2"
+      reverse: true
+    name: "dvradultuse"
+
+  dvdadultuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_3"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "dvd_adultuse"
+      ol.number:
+        type: "ol.number"
+        column: "Q316_3"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["More than 1"]
+          goal: [2]
+        - !<transforms.ParseIntTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "number of devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "DVD or VCR player"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q316_3"
+      reverse: true
+    name: "dvdadultuse"
+
+  personalcomputeradultuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_4"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "personalcomputer_adultuse"
+      ol.number:
+        type: "ol.number"
+        column: "Q316_4"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "number of devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Personal computer"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q316_4"
+      reverse: true
+    name: "personalcomputeradultuse"
+
+  mobilephoneadultuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_5"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mobilephone_adultuse"
+      ol.number:
+        type: "ol.number"
+        column: "Q316_5"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["More than 1"]
+          goal: [2]
+        - !<transforms.ParseIntTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "number of devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Regular mobile phone (just for talk and text)"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q316_5"
+      reverse: true
+    name: "mobilephoneadultuse"
+
+  smartphoneadultuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_6"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "smartphone_adultuse"
+      ol.number:
+        type: "ol.number"
+        column: "Q316_6"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "number of devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Smartphone (can access internet, etc.)"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q316_6"
+      reverse: true
+    name: "smartphoneadultuse"
+
+  ipadadultuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_7"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "ipad_adultuse"
+      ol.number:
+        type: "ol.number"
+        column: "Q316_7"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["More than 1"]
+          goal: [2]
+        - !<transforms.ParseIntTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "number of devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "iPad or other tablet device or e-reader (e.g., Kindle, Nook, etc.)"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q316_7"
+      reverse: true
+    name: "ipadadultuse"
+
+  mp3adultuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_8"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "mp3_adultuse"
+      ol.number:
+        type: "ol.number"
+        column: "Q316_8"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "number of devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "MP3 player (iPod or similar)"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q316_8"
+      reverse: true
+    name: "mp3adultuse"
+
+  educationalgameadultuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_9"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "educationalgame_adultuse"
+      ol.number:
+        type: "ol.number"
+        column: "Q316_9"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["More than 1"]
+          goal: [2]
+        - !<transforms.ParseIntTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "number of devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Educational game device (e.g., Leapster Explorer or a V-Smile)"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q316_9"
+      reverse: true
+    name: "educationalgameadultuse"
+
+  consolegameadultuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_10"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "consolegame_adultuse"
+      ol.number:
+        type: "ol.number"
+        column: "Q316_10"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "number of devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Console-based gaming system (e.g., Xbox, Nintendo, or Playstation) or handheld gaming system (e.g., Nintendo 3DS)"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q316_10"
+      reverse: true
+    name: "consolegameadultuse"
+
+  virtualassistantadultuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_11"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "virtualassistant_adultuse"
+      ol.number:
+        type: "ol.number"
+        column: "Q316_11"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "number of devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Virtual Assistant (e.g., Alexa/Echo device, Google Home, Apple Home Pod, etc.)"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q316_11"
+      reverse: true
+    name: "virtualassistantadultuse"
+
+  videostreamingadultuse:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q316_12"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "videostreaming_adultuse"
+      ol.number:
+        type: "ol.number"
+        column: "Q316_12"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ['More than 1']
+          goal: ['2']
+        - !<transforms.ParseIntTransform> {}
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "number of devices used"
+      ol.name:
+        type: "ol.name"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "Video streaming services (e.g., Hulu, Netflix, etc.)"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "2 weeks"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q316_12"
+      reverse: true
+    name: "videostreamingadultuse"
+
+
+# ************USING DEVICES WHEN WITH CHILDREN ********************
   duringmealsactivity:
     fqn: "ol.primaryactivity"
     entitySetName: "CAFE_MAQ_Activities"
@@ -1393,8 +1973,608 @@ entityDefinitions:
       column: "Q61"
       reverse: true
     name: "smartphonechecksaday"
+# apps using while with child
+
+  workemailwhilewithchild:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q63_1"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "apps_adultuse_workemail"
+      ol.name:
+        type: "ol.name"
+        column: "Q63_1"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "what app usually using while with child"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q63_1"
+      reverse: true
+    name: "workemailwhilewithchild"
+
+  personalemailwhilewithchild:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q63_2"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "apps_adultuse_personalemail"
+      ol.name:
+        type: "ol.name"
+        column: "Q63_2"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "what app usually using while with child"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q63_2"
+      reverse: true
+    name: "personalemailwhilewithchild"
+
+  socialmediawhilewithchild:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q63_3"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "apps_adultuse_socialmedia"
+      ol.name:
+        type: "ol.name"
+        column: "Q63_3"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "what app usually using while with child"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q63_3"
+      reverse: true
+    name: "socialmediawhilewithchild"
+
+  readingnewswhilewithchild:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q63_4"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "apps_adultuse_readingnews"
+      ol.name:
+        type: "ol.name"
+        column: "Q63_4"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "what app usually using while with child"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q63_4"
+      reverse: true
+    name: "readingnewswhilewithchild"
+
+  lookingsomethingupwhilewithchild:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q63_5"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "apps_adultuse_lookingsomethingup"
+      ol.name:
+        type: "ol.name"
+        column: "Q63_5"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "what app usually using while with child"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q63_5"
+      reverse: true
+    name: "lookingsomethingupwhilewithchild"
+
+  watchingvideojustmewhilewithchild:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q63_6"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "apps_adultuse_watchingvideojustme"
+      ol.name:
+        type: "ol.name"
+        column: "Q63_6"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "what app usually using while with child"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q63_6"
+      reverse: true
+    name: "watchingvideojustmewhilewithchild"
+
+  watchingvideotogetherwhilewithchild:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q63_7"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "apps_adultuse_watchingvideotogether"
+      ol.name:
+        type: "ol.name"
+        column: "Q63_7"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "what app usually using while with child"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q63_7"
+      reverse: true
+    name: "watchingvideotogetherwhilewithchild"
+
+  otherappwhilewithchild:
+    fqn: "ol.deviceuse"
+    entitySetName: "CAFE_MAQ_Device_Use"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q63_8", "Q63_8_TEXT"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "apps_adultuse_other"
+      ol.name:
+        type: "ol.name"
+        column: "Q63_8_TEXT"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+      ol.description:
+        type: "ol.description"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "what app usually using while with child"
+    conditions:
+    - !<conditions.BooleanRegexCondition>
+      column: "Q63_8"
+      pattern: "(?i)(\\bOther\\b)"
+      reverse: false
+    name: "otherappwhilewithchild"
+
+  nonenglishmediaexposure:
+    fqn: "ol.mediaexposure"
+    entitySetName: "CAFE_MAQ_MediaExposure"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatCombineTransform>
+          transforms:
+          - !<transforms.ConcatTransform>
+            columns: ["Q64", "Q65"]
+            separator: "_"
+          - !<transforms.ValueTransform>
+            value: "nonenglish_mediaexposure_adult"
+      ol.subject:
+        type: "ol.subject"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "adult"
+      ol.type:
+        type: "ol.type"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "videos, TV shows, movies, music, podcasts, and books"
+      ol.duration:
+        type: "ol.duration"
+        column: "Q65"
+      ol.status:
+        type: "ol.status"
+        column: "Q64"
+      ol.units:
+        type: "ol.units"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "percentage"
+      ol.language:
+        type: "ol.language"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "non-English"
+    conditions:
+    - !<conditions.BooleanIsNullCondition>
+      column: "Q64"
+      reverse: true
+    name: "nonenglishmediaexposure"
 
 associationDefinitions:
+  relatedto1:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "TV"
+    dst: "televisionadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_1"]
+          separator: "_"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\bTelevizor\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q316_1"
+      pattern: "(?i)(\\b1\\b|\\bMore than 1\\b)"
+      reverse: false
+    name: "relatedto1"
+
+  relatedto2:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "DVR"
+    dst: "dvradultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_2"]
+          separator: "_"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\bDVR\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q316_2"
+      pattern: "(?i)(\\b1\\b|\\bMore than 1\\b)"
+      reverse: false
+    name: "relatedto2"
+
+  relatedto3:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "DVD"
+    dst: "dvdadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_3"]
+          separator: "_"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\bDVD\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q316_3"
+      pattern: "(?i)(\\b1\\b|\\bMore than 1\\b)"
+      reverse: false
+    name: "relatedto3"
+
+  relatedto4:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "personalcomputer"
+    dst: "personalcomputeradultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_4"]
+          separator: "_"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\bcomputer\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q316_4"
+      pattern: "(?i)(\\b1\\b|\\bMore than 1\\b)"
+      reverse: false
+    name: "relatedto4"
+
+  relatedto5:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "mobilephone"
+    dst: "mobilephoneadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_5"]
+          separator: "_"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\bmobile phone\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q316_5"
+      pattern: "(?i)(\\b1\\b|\\bMore than 1\\b)"
+      reverse: false
+    name: "relatedto5"
+
+  relatedto6:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "smartphone"
+    dst: "smartphoneadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_6"]
+          separator: "_"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\bSmartphone\\b|\\bSmart phone\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q316_6"
+      pattern: "(?i)(\\b1\\b|\\bMore than 1\\b)"
+      reverse: false
+    name: "relatedto6"
+
+  relatedto7:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "ipadtablet"
+    dst: "ipadadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_7"]
+          separator: "_"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\biPad\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q316_7"
+      pattern: "(?i)(\\b1\\b|\\bMore than 1\\b)"
+      reverse: false
+    name: "relatedto7"
+
+  relatedto8:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "mp3player"
+    dst: "mp3adultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_8"]
+          separator: "_"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\bMP3\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q316_8"
+      pattern: "(?i)(\\b1\\b|\\bMore than 1\\b)"
+      reverse: false
+    name: "relatedto8"
+
+  relatedto9:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "educationalgame"
+    dst: "educationalgameadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_9"]
+          separator: "_"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\bEducational\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q316_9"
+      pattern: "(?i)(\\b1\\b|\\bMore than 1\\b)"
+      reverse: false
+    name: "relatedto9"
+
+  relatedto10:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "consolegames"
+    dst: "consolegameadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_10"]
+          separator: "_"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\bConsole\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q316_10"
+      pattern: "(?i)(\\b1\\b|\\bMore than 1\\b)"
+      reverse: false
+    name: "relatedto10"
+
+  relatedto11:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "virtualassistant"
+    dst: "virtualassistantadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_11"]
+          separator: "_"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\bVirtual Assistant\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q316_11"
+      pattern: "(?i)(\\b1\\b|\\bMore than 1\\b)"
+      reverse: false
+    name: "relatedto11"
+
+  relatedto12:
+    fqn: "ol.relatedto"
+    entitySetName: "CAFE_MAQ_RelatedTo"
+    src: "videostreaming"
+    dst: "videostreamingadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q33", "Q316_12"]
+          separator: "_"
+    conditions:
+    - !<conditions.ConditionalAnd> {}
+    - !<conditions.BooleanRegexCondition>
+      column: "Q33"
+      pattern: "(?i)(\\bVideo streaming\\b)"
+      reverse: false
+    - !<conditions.BooleanRegexCondition>
+      column: "Q316_12"
+      pattern: "(?i)(\\b1\\b|\\bMore than 1\\b)"
+      reverse: false
+    name: "relatedto12"
+
   usedby1:
     fqn: "ol.usedby"
     entitySetName: "CAFE_MAQ_UsedBy"
@@ -2065,6 +3245,174 @@ associationDefinitions:
           hashFunction: "sha256"
     name: "involvedin14"
 
+  involvedin17:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "televisionadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q316_1"]
+          hashFunction: "sha256"
+    name: "involvedin17"
+
+  involvedin18:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "dvradultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q316_2"]
+          hashFunction: "sha256"
+    name: "involvedin18"
+
+  involvedin19:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "dvdadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q316_3"]
+          hashFunction: "sha256"
+    name: "involvedin19"
+
+  involvedin20:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "personalcomputeradultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q316_4"]
+          hashFunction: "sha256"
+    name: "involvedin20"
+
+  involvedin21:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "mobilephoneadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q316_5"]
+          hashFunction: "sha256"
+    name: "involvedin21"
+
+  involvedin22:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "smartphoneadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q316_6"]
+          hashFunction: "sha256"
+    name: "involvedin22"
+
+  involvedin23:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "ipadadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q316_7"]
+          hashFunction: "sha256"
+    name: "involvedin23"
+
+  involvedin24:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "mp3adultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q316_8"]
+          hashFunction: "sha256"
+    name: "involvedin24"
+
+  involvedin25:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "educationalgameadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q316_9"]
+          hashFunction: "sha256"
+    name: "involvedin25"
+
+  involvedin26:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "consolegameadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q316_10"]
+          hashFunction: "sha256"
+    name: "involvedin26"
+
+  involvedin27:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "virtualassistantadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q316_11"]
+          hashFunction: "sha256"
+    name: "involvedin27"
+
+  involvedin28:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "videostreamingadultuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q316_12"]
+          hashFunction: "sha256"
+    name: "involvedin28"
+
   reported1:
     fqn: "ol.reported"
     entitySetName: "CAFE_MAQ_Reported"
@@ -2092,3 +3440,213 @@ associationDefinitions:
           columns: ["respondent_id", "Q61"]
           hashFunction: "sha256"
     name: "reported2"
+
+  involvedin29:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "duringmealsdeviceuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q62_1"]
+          hashFunction: "sha256"
+    name: "involvedin29"
+
+  involvedin30:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "readyforschooldeviceuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q62_2"]
+          hashFunction: "sha256"
+    name: "involvedin30"
+
+  involvedin31:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "playtimedeviceuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q62_3"]
+          hashFunction: "sha256"
+    name: "involvedin31"
+
+  involvedin32:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "bedtimedeviceuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q62_4"]
+          hashFunction: "sha256"
+    name: "involvedin32"
+
+  involvedin33:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "drivingdeviceuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q62_5"]
+          hashFunction: "sha256"
+    name: "involvedin33"
+
+  involvedin34:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "playgrounddeviceuse"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q62_6"]
+          hashFunction: "sha256"
+    name: "involvedin34"
+
+  involvedin35:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "workemailwhilewithchild"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q63_1"]
+          hashFunction: "sha256"
+    name: "involvedin35"
+
+  involvedin36:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "personalemailwhilewithchild"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q63_2"]
+          hashFunction: "sha256"
+    name: "involvedin36"
+
+  involvedin37:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "socialmediawhilewithchild"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q63_3"]
+          hashFunction: "sha256"
+    name: "involvedin37"
+
+  involvedin38:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "readingnewswhilewithchild"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q63_4"]
+          hashFunction: "sha256"
+    name: "involvedin38"
+
+  involvedin39:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "lookingsomethingupwhilewithchild"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q63_5"]
+          hashFunction: "sha256"
+    name: "involvedin39"
+
+  involvedin40:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "watchingvideojustmewhilewithchild"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q63_6"]
+          hashFunction: "sha256"
+    name: "involvedin40"
+
+  involvedin41:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "watchingvideotogetherwhilewithchild"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q63_7"]
+          hashFunction: "sha256"
+    name: "involvedin41"
+
+  involvedin42:
+    fqn: "ol.involvedin"
+    entitySetName: "CAFE_MAQ_InvolvedIn"
+    src: "respondent"
+    dst: "otherappwhilewithchild"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q63_8"]
+          hashFunction: "sha256"
+    name: "involvedin42"
+
+  reported3:
+    fqn: "ol.reported"
+    entitySetName: "CAFE_MAQ_Reported"
+    src: "respondent"
+    dst: "nonenglishmediaexposure"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "Q63_11", "Q63_12"]
+          hashFunction: "sha256"
+    name: "reported3"
