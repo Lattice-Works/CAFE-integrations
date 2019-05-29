@@ -4,7 +4,7 @@
 entityDefinitions:
   survey_metadata:
     entitySetName: CAFE_ES_survey_metadata
-    fqn: ol.surveymetadata
+    fqn: ol.surveymetadata 
     name: survey_metadata
     propertyDefinitions:
       ol.id:
@@ -1299,6 +1299,7 @@ associationDefinitions:
     fqn: ol.locatedat
     src: primary_activity
     dst: location
+    name: located
     propertyDefinitions:
       ol.id:
         type: general.id
@@ -1308,6 +1309,7 @@ associationDefinitions:
     fqn: ol.locatedat
     src: primary_activity
     dst: studylocation
+    name: located2
     propertyDefinitions:
       ol.id:
         type: general.id
