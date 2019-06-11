@@ -1579,6 +1579,9 @@ entityDefinitions:
       general.frequency:
         type: "general.frequency"
         column: "Q61"
+        - !<transforms.ReplaceTransform>
+          target: ["4", "11", "5", "6", "7", "8", "9", "10", "12"]
+          goal: ["", "Once or twice a day", "Every three hours", "Every two hours", "Every hour", "Every half hour", "Every fifteen minutes", "Every ten minutes", "Every five minutes"]
       ol.description:
         type: "ol.description"
         transforms:
