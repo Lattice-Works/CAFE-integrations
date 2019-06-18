@@ -34,9 +34,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_1"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "watchtv_mobileactivities"
       ol.description:
@@ -77,9 +77,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_2"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "watchmovies_mobileactivities"
       ol.description:
@@ -120,9 +120,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_3"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "playgames_mobileactivities"
       ol.description:
@@ -163,9 +163,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_4"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "apps_mobileactivities"
       ol.description:
@@ -206,9 +206,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_5"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "ebooks_mobileactivities"
       ol.description:
@@ -249,9 +249,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_6"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "audio_mobileactivities"
       ol.description:
@@ -320,9 +320,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_8"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "takingphotos_mobileactivities"
       ol.description:
@@ -363,9 +363,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q46_9"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "lookingphotos_mobileactivities"
       ol.description:
@@ -407,9 +407,9 @@ entityDefinitions:
         transforms:
         - !<transforms.ConcatCombineTransform>
           transforms:
-          - !<transforms.HashTransform>
+          - !<transforms.ConcatTransform>
             columns: ["Q47"]
-            hashFunction: "sha256"
+            separator: "_"
           - !<transforms.ValueTransform>
             value: "appsdownloaded"
       ol.name:
