@@ -3313,14 +3313,14 @@ associationDefinitions:
       reverse: false
     name: "ownedby12"
 
-  reported:
-    fqn: "ol.reported"
-    entitySetName: "CAFE_MAQ_Reported"
+  ownedby13:
+    fqn: "ol.ownedby"
+    entitySetName: "CAFE_MAQ_OwnedBy"
     src: "nodevice"
     dst: "household"
     propertyDefinitions:
-      general.id:
-        type: "general.id"
+      ol.id:
+        type: "ol.id"
         transforms:
         - !<transforms.HashTransform>
           columns: ["respondent_id", "Q33"]
@@ -3330,7 +3330,7 @@ associationDefinitions:
       column: "Q33"
       pattern: "(?i)(\\bNone\\b)"
       reverse: false
-    name: "reported"
+    name: "ownedby13"
 
   ownedby14:
     fqn: "ol.ownedby"
