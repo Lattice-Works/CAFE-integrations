@@ -415,8 +415,8 @@ entityDefinitions:
       general.id:
         type: "general.id"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "childsroom"
+        - !<transforms.HashTransform>
+          columns: ["child_id"]
     name: "childsroom"
 
 # ************** SUBJECT DEVICE LOCATION IN ROOM - NO ***********
@@ -4397,6 +4397,20 @@ associationDefinitions:
 
 
 # ****************** ASSOCIATIONS B/T CHILDS ROOM AND DEVICES ********************
+
+  locatedat0:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "subject"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "locatedat0"
 
   locatedat1:
     fqn: "ol.locatedat"
