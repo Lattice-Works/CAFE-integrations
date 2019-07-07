@@ -31,6 +31,10 @@ entityDefinitions:
       nc.PersonBirthPlace:
         type: "nc.PersonBirthPlace"
         column: "parentbirthplace"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2"]
+          goal: ["United States and Territories", "Other"]
     name: "respondent"
 
   respondentdetails:
