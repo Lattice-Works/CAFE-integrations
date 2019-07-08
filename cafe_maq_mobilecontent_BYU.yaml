@@ -528,6 +528,7 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["1", "2", "3", "4", "5", "6", "7"]
           goal: ["0", "5", "25", "50", "75", "100", ""]
+        - !<transforms.ParseDoubleTransform> {}
     conditions:
     - !<conditions.ConditionalAnd> {}
     - !<conditions.BooleanIsNullCondition>

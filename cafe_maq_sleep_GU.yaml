@@ -171,11 +171,11 @@ entityDefinitions:
         column: "Q78"
         transforms:
         - !<transforms.ParseIntTransform> {}
-    ol.description:
-        type: "ol.description"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "how many times woke up last night"
+      ol.description:
+          type: "ol.description"
+          transforms:
+          - !<transforms.ValueTransform>
+            value: "how many times woke up last night"
       ol.subject:
         type: "ol.subject"
         transforms:
