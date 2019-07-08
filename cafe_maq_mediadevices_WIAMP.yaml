@@ -1417,10 +1417,24 @@ entityDefinitions:
       reverse: true
     name: "otherchilduse"
 
-# ************** SUBJECT DEVICE LOCATION AWAKE***********
-  televisionlocationawake:
-    fqn: "ol.sleep"
+
+# ******** DEVICE LOCATIONS *********
+
+  childsroom:
+    fqn: "ol.location"
     entitySetName: "CAFE_MAQ_DeviceLocations"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["child_id"]
+    name: "childsroom"
+
+# ************** SUBJECT DEVICE LOCATION IN ROOM - AWAKE***********
+  televisionroomawake:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1431,32 +1445,24 @@ entityDefinitions:
             columns: ["Q36_1_1"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "television_location_awake"
+            value: "television_room_awake"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when awake"
+      ol.name:
+        type: "ol.name"
         column: "Q36_1_1"
-        # transforms:
-        # - !<transforms.ValueTransform>
-        #   value: "Television"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Awake"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_1_1"
       reverse: true
-    name: "televisionlocationawake"
+    name: "televisionroomawake"
 
-  dvrlocationawake:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  dvrroomawake:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1467,29 +1473,24 @@ entityDefinitions:
             columns: ["Q36_1_2"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "dvr_location_awake"
+            value: "dvr_room_awake"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when awake"
+      ol.name:
+        type: "ol.name"
         column: "Q36_1_2"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Awake"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_1_2"
       reverse: true
-    name: "dvrlocationawake"
+    name: "dvrroomawake"
 
-  dvdlocationawake:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  dvdroomawake:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1500,29 +1501,24 @@ entityDefinitions:
             columns: ["Q36_1_3"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "dvd_location_awake"
+            value: "dvd_room_awake"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when awake"
+      ol.name:
+        type: "ol.name"
         column: "Q36_1_3"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Awake"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_1_3"
       reverse: true
-    name: "dvdlocationawake"
+    name: "dvdroomawake"
 
-  pclocationawake:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  pcroomawake:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1533,29 +1529,24 @@ entityDefinitions:
             columns: ["Q36_1_4"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "pc_location_awake"
+            value: "pc_room_awake"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when awake"
+      ol.name:
+        type: "ol.name"
         column: "Q36_1_4"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Awake"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_1_4"
       reverse: true
-    name: "pclocationawake"
+    name: "pcroomawake"
 
-  landlinelocationawake:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  landlineroomawake:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1566,29 +1557,24 @@ entityDefinitions:
             columns: ["Q36_1_6"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "landline_location_awake"
+            value: "landline_room_awake"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when awake"
+      ol.name:
+        type: "ol.name"
         column: "Q36_1_6"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Awake"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_1_6"
       reverse: true
-    name: "landlinelocationawake"
+    name: "landlineroomawake"
 
-  mobilephonelocationawake:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  mobilephoneroomawake:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1599,29 +1585,24 @@ entityDefinitions:
             columns: ["Q36_1_7"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "mobilephone_location_awake"
+            value: "mobilephone_room_awake"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when awake"
+      ol.name:
+        type: "ol.name"
         column: "Q36_1_7"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Awake"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_1_7"
       reverse: true
-    name: "mobilephonelocationawake"
+    name: "mobilephoneroomawake"
 
-  smartphonelocationawake:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  smartphoneroomawake:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1632,29 +1613,24 @@ entityDefinitions:
             columns: ["Q36_1_8"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "smartphone_location_awake"
+            value: "smartphone_room_awake"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when awake"
+      ol.name:
+        type: "ol.name"
         column: "Q36_1_8"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Awake"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_1_8"
       reverse: true
-    name: "smartphonelocationawake"
+    name: "smartphoneroomawake"
 
-  ipadlocationawake:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  ipadroomawake:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1665,29 +1641,24 @@ entityDefinitions:
             columns: ["Q36_1_9"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "ipad_location_awake"
+            value: "ipad_room_awake"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when awake"
+      ol.name:
+        type: "ol.name"
         column: "Q36_1_9"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Awake"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_1_9"
       reverse: true
-    name: "ipadlocationawake"
+    name: "ipadroomawake"
 
-  mp3locationawake:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  mp3roomawake:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1698,29 +1669,24 @@ entityDefinitions:
             columns: ["Q36_1_10"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "mp3_location_awake"
+            value: "mp3_room_awake"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when awake"
+      ol.name:
+        type: "ol.name"
         column: "Q36_1_10"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Awake"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_1_10"
       reverse: true
-    name: "mp3locationawake"
+    name: "mp3roomawake"
 
-  educationalgamelocationawake:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  educationalgameroomawake:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1731,29 +1697,24 @@ entityDefinitions:
             columns: ["Q36_1_15"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "edugame_location_awake"
+            value: "edugame_room_awake"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when awake"
+      ol.name:
+        type: "ol.name"
         column: "Q36_1_15"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Awake"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_1_15"
       reverse: true
-    name: "educationalgamelocationawake"
+    name: "educationalgameroomawake"
 
-  consolegamelocationawake:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  consolegameroomawake:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1764,29 +1725,24 @@ entityDefinitions:
             columns: ["Q36_1_17"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "consolegame_location_awake"
+            value: "consolegame_room_awake"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when awake"
+      ol.name:
+        type: "ol.name"
         column: "Q36_1_17"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Awake"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_1_17"
       reverse: true
-    name: "consolegamelocationawake"
+    name: "consolegameroomawake"
 
-  nodevicelocationawake:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  nodeviceroomawake:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1797,31 +1753,26 @@ entityDefinitions:
             columns: ["Q36_1_18"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "nodevice_location_awake"
+            value: "nodevice_room_awake"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when awake"
+      ol.name:
+        type: "ol.name"
         column: "Q36_1_18"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Awake"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_1_18"
       reverse: true
-    name: "nodevicelocationawake"
+    name: "nodeviceroomawake"
 
-# ************** SUBJECT DEVICE LOCATION ASLEEP ***********
+# ************** SUBJECT DEVICE room - ASLEEP ***********
 
-  televisionlocationasleep:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  televisionroomasleep:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1832,29 +1783,24 @@ entityDefinitions:
             columns: ["Q36_2_1"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "television_location_asleep"
+            value: "television_room_asleep"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when asleep"
+      ol.name:
+        type: "ol.name"
         column: "Q36_2_1"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Asleep"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_2_1"
       reverse: true
-    name: "televisionlocationasleep"
+    name: "televisionroomasleep"
 
-  dvrlocationasleep:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  dvrroomasleep:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1865,29 +1811,24 @@ entityDefinitions:
             columns: ["Q36_2_2"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "dvr_location_asleep"
+            value: "dvr_room_asleep"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when asleep"
+      ol.name:
+        type: "ol.name"
         column: "Q36_2_2"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Asleep"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_2_2"
       reverse: true
-    name: "dvrlocationasleep"
+    name: "dvrroomasleep"
 
-  dvdlocationasleep:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  dvdroomasleep:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1898,30 +1839,25 @@ entityDefinitions:
             columns: ["Q36_2_3"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "dvd_location_asleep"
+            value: "dvd_room_asleep"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when asleep"
+      ol.name:
+        type: "ol.name"
         column: "Q36_2_3"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Asleep"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_2_3"
       reverse: true
-    name: "dvdlocationasleep"
+    name: "dvdroomasleep"
 
 
-  pclocationasleep:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  pcroomasleep:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1932,29 +1868,24 @@ entityDefinitions:
             columns: ["Q36_2_4"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "pc_location_asleep"
+            value: "pc_room_asleep"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when asleep"
+      ol.name:
+        type: "ol.name"
         column: "Q36_2_4"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Asleep"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_2_4"
       reverse: true
-    name: "pclocationasleep"
+    name: "pcroomasleep"
 
-  landlinelocationasleep:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  landlineroomasleep:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1965,29 +1896,24 @@ entityDefinitions:
             columns: ["Q36_2_6"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "landline_location_asleep"
+            value: "landline_room_asleep"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when asleep"
+      ol.name:
+        type: "ol.name"
         column: "Q36_2_6"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Asleep"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_2_6"
       reverse: true
-    name: "landlinelocationasleep"
+    name: "landlineroomasleep"
 
-  mobilephonelocationasleep:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  mobilephoneroomasleep:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -1998,29 +1924,24 @@ entityDefinitions:
             columns: ["Q36_2_7"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "mobilephone_location_asleep"
+            value: "mobilephone_room_asleep"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when asleep"
+      ol.name:
+        type: "ol.name"
         column: "Q36_2_7"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Asleep"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_2_7"
       reverse: true
-    name: "mobilephonelocationasleep"
+    name: "mobilephoneroomasleep"
 
-  smartphonelocationasleep:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  smartphoneroomasleep:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2031,29 +1952,24 @@ entityDefinitions:
             columns: ["Q36_2_8"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "smartphone_location_asleep"
+            value: "smartphone_room_asleep"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when asleep"
+      ol.name:
+        type: "ol.name"
         column: "Q36_2_8"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Asleep"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_2_8"
       reverse: true
-    name: "smartphonelocationasleep"
+    name: "smartphoneroomasleep"
 
-  ipadlocationasleep:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  ipadroomasleep:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2064,29 +1980,24 @@ entityDefinitions:
             columns: ["Q36_2_9"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "ipad_location_asleep"
+            value: "ipad_room_asleep"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when asleep"
+      ol.name:
+        type: "ol.name"
         column: "Q36_2_9"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Asleep"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_2_9"
       reverse: true
-    name: "ipadlocationasleep"
+    name: "ipadroomasleep"
 
-  mp3locationasleep:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  mp3roomasleep:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2097,29 +2008,24 @@ entityDefinitions:
             columns: ["Q36_2_10"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "mp3_location_asleep"
+            value: "mp3_room_asleep"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when asleep"
+      ol.name:
+        type: "ol.name"
         column: "Q36_2_10"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Asleep"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_2_10"
       reverse: true
-    name: "mp3locationasleep"
+    name: "mp3roomasleep"
 
-  edugamelocationasleep:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  edugameroomasleep:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2130,29 +2036,24 @@ entityDefinitions:
             columns: ["Q36_2_15"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "edugame_location_asleep"
+            value: "edugame_room_asleep"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when asleep"
+      ol.name:
+        type: "ol.name"
         column: "Q36_2_15"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Asleep"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_2_15"
       reverse: true
-    name: "edugamelocationasleep"
+    name: "edugameroomasleep"
 
-  consolegamelocationasleep:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  consolegameroomasleep:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2163,29 +2064,24 @@ entityDefinitions:
             columns: ["Q36_2_17"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "consolegame_location_asleep"
+            value: "consolegame_room_asleep"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when asleep"
+      ol.name:
+        type: "ol.name"
         column: "Q36_2_17"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Asleep"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_2_17"
       reverse: true
-    name: "consolegamelocationasleep"
+    name: "consolegameroomasleep"
 
-  nodevicelocationasleep:
-    fqn: "ol.sleep"
-    entitySetName: "CAFE_MAQ_DeviceLocations"
+  nodeviceroomasleep:
+    fqn: "o.device"
+    entitySetName: "CAFE_MAQ_RegularlyLocatedDevices"
     propertyDefinitions:
       ol.id:
         type: "ol.id"
@@ -2196,25 +2092,20 @@ entityDefinitions:
             columns: ["Q36_2_18"]
             separator: "_"
           - !<transforms.ValueTransform>
-            value: "nodevice_location_asleep"
+            value: "nodevice_room_asleep"
       ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
-          value: "device regularly located in child's room"
-      ol.subject:
-        type: "ol.subject"
+          value: "device regularly located in child's room when asleep"
+      ol.name:
+        type: "ol.name"
         column: "Q36_2_18"
-      ol.status:
-        type: "ol.status"
-        transforms:
-        - !<transforms.ValueTransform>
-          value: "Asleep"
     conditions:
     - !<conditions.BooleanIsNullCondition>
       column: "Q36_2_18"
       reverse: true
-    name: "nodevicelocationasleep"
+    name: "nodeviceroomasleep"
 
 associationDefinitions:
 # ********************* DEVICE OWNERSHIP ASSNS ****************
@@ -3587,440 +3478,6 @@ associationDefinitions:
           separator: "_"
     name: "relatedto38"
 
-
-# ******** ASSOCIATIONS B/T DEVICES & DEVICE LOCATION ENTITIES *****
-  concurrentto1:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "TV"
-    dst: "televisionlocationawake"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_1"
-      reverse: true
-    name: "concurrentto1"
-
-  concurrentto2:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "DVR"
-    dst: "dvrlocationawake"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_2"
-      reverse: true
-    name: "concurrentto2"
-
-  concurrentto3:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "DVD"
-    dst: "dvdlocationawake"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_3"
-      reverse: true
-    name: "concurrentto3"
-
-  concurrentto4:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "personalcomputer"
-    dst: "pclocationawake"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_4"
-      reverse: true
-    name: "concurrentto4"
-
-  concurrentto5:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "landline"
-    dst: "landlinelocationawake"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_6"
-      reverse: true
-    name: "concurrentto5"
-
-  concurrentto6:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "mobilephone"
-    dst: "mobilephonelocationawake"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_7"
-      reverse: true
-    name: "concurrentto6"
-
-  concurrentto7:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "smartphone"
-    dst: "smartphonelocationawake"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_8"
-      reverse: true
-    name: "concurrentto7"
-
-  concurrentto8:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "ipad_tablet"
-    dst: "ipadlocationawake"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_9"
-      reverse: true
-    name: "concurrentto8"
-
-  concurrentto9:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "mp3_player"
-    dst: "mp3locationawake"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_10"
-      reverse: true
-    name: "concurrentto9"
-
-  concurrentto10:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "educationalgame"
-    dst: "educationalgamelocationawake"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_15"
-      reverse: true
-    name: "concurrentto10"
-
-  concurrentto11:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "videogames"
-    dst: "consolegamelocationawake"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_17"
-      reverse: true
-    name: "concurrentto11"
-
-  concurrentto12:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "nodevice"
-    dst: "nodevicelocationawake"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_1_18"
-      reverse: true
-    name: "concurrentto12"
-
-  concurrentto13:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "TV"
-    dst: "televisionlocationasleep"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_1"
-      reverse: true
-    name: "concurrentto13"
-
-  concurrentto14:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "DVR"
-    dst: "dvrlocationasleep"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_2"
-      reverse: true
-    name: "concurrentto14"
-
-  concurrentto15:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "DVD"
-    dst: "dvdlocationasleep"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_3"
-      reverse: true
-    name: "concurrentto15"
-
-  concurrentto16:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "personalcomputer"
-    dst: "pclocationasleep"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_4"
-      reverse: true
-    name: "concurrentto16"
-
-  concurrentto17:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "landline"
-    dst: "landlinelocationasleep"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_6"
-      reverse: true
-    name: "concurrentto17"
-
-  concurrentto18:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "mobilephone"
-    dst: "mobilephonelocationasleep"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_7"
-      reverse: true
-    name: "concurrentto18"
-
-  concurrentto19:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "smartphone"
-    dst: "smartphonelocationasleep"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_8"
-      reverse: true
-    name: "concurrentto19"
-
-  concurrentto20:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "ipad_tablet"
-    dst: "ipadlocationasleep"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_9"
-      reverse: true
-    name: "concurrentto20"
-
-  concurrentto21:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "mp3_player"
-    dst: "mp3locationasleep"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_10"
-      reverse: true
-    name: "concurrentto21"
-
-  concurrentto22:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "educationalgame"
-    dst: "edugamelocationasleep"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_15"
-      reverse: true
-    name: "concurrentto22"
-
-  concurrentto23:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "videogames"
-    dst: "consolegamelocationasleep"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_17"
-      reverse: true
-    name: "concurrentto23"
-
-  concurrentto24:
-    fqn: "ol.concurrentto"
-    entitySetName: "CAFE_MAQ_ConcurrentTo"
-    src: "nodevice"
-    dst: "nodevicelocationasleep"
-    propertyDefinitions:
-      ol.id:
-        type: "ol.id"
-        transforms:
-        - !<transforms.ConcatTransform>
-          columns: ["ResponseId", "RecordedDate"]
-          separator: "_"
-    conditions:
-    - !<conditions.BooleanIsNullCondition>
-      column: "Q36_2_18"
-      reverse: true
-    name: "concurrentto24"
-
   relatedto43:
     fqn: "ol.relatedto"
     entitySetName: "CAFE_MAQ_RelatedTo"
@@ -4033,6 +3490,939 @@ associationDefinitions:
         - !<transforms.ConcatTransform>
           columns: ["respondent_id", "Q33_7", "Q35"]
     name: "relatedto43"
+
+
+# *********** ASSOCIATIONS FOR REGULARLY LOCATED DEVICES & PERSONS *************
+
+  usedby39:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "televisionroomawake"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_1_1", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby39"
+
+  usedby40:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "dvrroomawake"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_1_2", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby40"
+
+  usedby41:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "dvdroomawake"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_1_3", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby41"
+
+  usedby42:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "pcroomawake"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_1_4", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby42"
+
+  usedby43:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "landlineroomawake"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_1_6", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby43"
+
+  usedby44:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "mobilephoneroomawake"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_1_7", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby44"
+
+  usedby45:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "smartphoneroomawake"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_1_8", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby45"
+
+  usedby46:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "ipadroomawake"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_1_9", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby46"
+
+  usedby47:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "mp3roomawake"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_1_10", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby47"
+
+  usedby48:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "educationalgameroomawake"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_1_15", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby48"
+
+  usedby49:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "consolegameroomawake"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_1_17", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby49"
+
+  usedby50:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "nodeviceroomawake"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_1_18", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby50"
+
+  usedby51:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "televisionroomasleep"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_2_1", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby51"
+
+  usedby52:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "dvrroomasleep"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_2_2", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby52"
+
+  usedby53:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "dvdroomasleep"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_2_3", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby53"
+
+  usedby54:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "pcroomasleep"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_2_4", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby54"
+
+  usedby55:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "landlineroomasleep"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_2_6", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby55"
+
+  usedby56:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "mobilephoneroomasleep"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_2_7", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby56"
+
+  usedby57:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "smartphoneroomasleep"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_2_8", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby57"
+
+  usedby58:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "ipadroomasleep"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_2_9", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby58"
+
+  usedby59:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "mp3roomasleep"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_2_10", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby59"
+
+  usedby60:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "edugameroomasleep"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_2_15", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby60"
+
+  usedby61:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "consolegameroomasleep"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_2_17", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby61"
+
+  usedby62:
+    fqn: "ol.usedby"
+    entitySetName: "CAFE_MAQ_UsedBy"
+    src: "nodeviceroomasleep"
+    dst: "subject"
+    propertyDefinitions:
+      general.stringid:
+        type: "general.stringid"
+        transforms:
+        - !<transforms.ConcatTransform>
+          columns: ["Q36_2_18", "child_id"]
+          separator: "_"
+      ol.relevantperiod:
+        type: "ol.relevantperiod"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "regularly in room when awake"
+    name: "usedby62"
+
+# ****************** ASSOCIATIONS B/T CHILDS ROOM AND DEVICES ********************
+
+  locatedat0:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "subject"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id", "ResponseId"]
+          hashFunction: "sha256"
+    name: "locatedat0"
+
+  locatedat1:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "televisionroomawake"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_1_1", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat1"
+
+  locatedat2:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "dvrroomawake"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_1_2", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat2"
+
+  locatedat3:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "dvdroomawake"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_1_3", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat3"
+
+  locatedat4:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "pcroomawake"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_1_4", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat4"
+
+  locatedat5:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "landlineroomawake"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_1_6", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat5"
+
+  locatedat6:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "mobilephoneroomawake"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_1_7", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat6"
+
+  locatedat7:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "smartphoneroomawake"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_1_8", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat7"
+
+  locatedat8:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "ipadroomawake"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_1_9", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat8"
+
+  locatedat9:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "mp3roomawake"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_1_10", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat9"
+
+  locatedat10:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "educationalgameroomawake"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_1_15", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat10"
+
+  locatedat11:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "consolegameroomawake"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_1_17", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat11"
+
+  locatedat12:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "nodeviceroomawake"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_1_18", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat12"
+
+  locatedat13:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "televisionroomasleep"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_2_1", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat13"
+
+  locatedat14:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "dvrroomasleep"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_2_2", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat14"
+
+  locatedat15:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "dvdroomasleep"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_2_3", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat15"
+
+  locatedat16:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "pcroomasleep"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_2_4", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat16"
+
+  locatedat17:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "landlineroomasleep"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_2_6", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat17"
+
+  locatedat18:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "mobilephoneroomasleep"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_2_7", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat18"
+
+  locatedat19:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "smartphoneroomasleep"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_2_8", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat19"
+
+  locatedat20:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "ipadroomasleep"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_2_9", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat20"
+
+  locatedat21:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "mp3roomasleep"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_2_10", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat21"
+
+  locatedat22:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "edugameroomasleep"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_2_15", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat22"
+
+  locatedat23:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "consolegameroomasleep"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_2_17", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat23"
+
+  locatedat24:
+    fqn: "ol.locatedat"
+    entitySetName: "CAFE_MAQ_LocatedAt"
+    src: "nodeviceroomasleep"
+    dst: "childsroom"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q36_2_18", "ResponseId"]
+          hashFunction: "sha256"
+      ol.status:
+        type: "ol.status"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "located in child's room when awake"
+    name: "locatedat24"
+
+
 # ********* ASSOCIATIONS BETWEEN DEVICE USE AND PEOPLE *******
 
   involvedin1:
