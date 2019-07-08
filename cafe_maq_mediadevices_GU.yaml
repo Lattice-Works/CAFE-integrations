@@ -3317,7 +3317,7 @@ associationDefinitions:
   ownedby8:
     fqn: "ol.ownedby"
     entitySetName: "CAFE_MAQ_OwnedBy"
-    src: "ipadtabletstartchilduse"
+    src: "ipad_tablet"
     dst: "household"
     propertyDefinitions:
       ol.id:

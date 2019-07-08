@@ -246,6 +246,28 @@ entityDefinitions:
       reverse: true
     name: "consolegames"
 
+  virtualassistant:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+        value: "virtualassistant"
+    name: "virtualassistant"
+
+  videostreaming:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+        value: "videostreaming"
+    name: "videostreaming"
+
 # *********************PARENTS DEVICE USE IN LAST 2 WEEKS *********************
 
   televisionadultuse:

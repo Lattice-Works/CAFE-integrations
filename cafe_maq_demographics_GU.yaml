@@ -640,6 +640,7 @@ entityDefinitions:
           transformsIfFalse:
           - !<transforms.ColumnTransform>
             column: "Q19"
+        - !<transforms.ParseIntTransform> {}
     conditions:
     - !<conditions.ConditionalOr> {}
     - !<conditions.BooleanIsNullCondition>

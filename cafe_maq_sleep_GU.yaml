@@ -169,11 +169,13 @@ entityDefinitions:
       ol.interruptioncount:
         type: "ol.interruptioncount"
         column: "Q78"
-      ol.description:
-        type: "ol.description"
         transforms:
-        - !<transforms.ValueTransform>
-          value: "how many times woke up last night"
+        - !<transforms.ParseIntTransform> {}
+      ol.description:
+          type: "ol.description"
+          transforms:
+          - !<transforms.ValueTransform>
+            value: "how many times woke up last night"
       ol.subject:
         type: "ol.subject"
         transforms:
@@ -441,6 +443,8 @@ entityDefinitions:
       ol.eventcount:
         type: "ol.eventcount"
         column: "Q426"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:

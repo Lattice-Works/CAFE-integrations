@@ -297,6 +297,8 @@ entityDefinitions:
       ol.interruptioncount:
         type: "ol.interruptioncount"
         column: "Q78"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -334,6 +336,8 @@ entityDefinitions:
       ol.eventcount:
         type: "ol.eventcount"
         column: "Q81"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:
@@ -490,6 +494,8 @@ entityDefinitions:
       ol.problematic:
         type: "ol.problematic"
         column: "Q85"
+        transforms:
+        - !<transforms.ParseBoolTransform> {}
       neurological.sleeppattern:
         type: "neurological.sleeppattern"
         column: "Q86"
