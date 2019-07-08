@@ -169,7 +169,9 @@ entityDefinitions:
       ol.interruptioncount:
         type: "ol.interruptioncount"
         column: "Q78"
-      ol.description:
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+    ol.description:
         type: "ol.description"
         transforms:
         - !<transforms.ValueTransform>
@@ -441,6 +443,8 @@ entityDefinitions:
       ol.eventcount:
         type: "ol.eventcount"
         column: "Q426"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
       ol.description:
         type: "ol.description"
         transforms:

@@ -360,6 +360,16 @@ entityDefinitions:
       reverse: true
     name: "otherdevice"
 
+  consolegame:
+    entitySetName: "CAFE_MAQ_Devices"
+    fqn: "o.device"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.ValueTransform>
+          value: "consolegame"
+    name: "consolegame"
 
 # ************** SUBJECT DEVICE USE AS FALLING ASLEEP ***********
   televisionfallingasleepchilduse:

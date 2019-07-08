@@ -75,6 +75,8 @@ entityDefinitions:
       ol.pcttime: # Percent of time main language is spoken in home - %
         type: "ol.pcttime"
         column: "Q30_1"
+        transforms:
+        - !<transforms.ParseDoubleTransform> {}
       ol.status1:
       # Who speaks the main language to [Field-kid1]? Please check all that apply. - Selected Choice
         type: "ol.status"

@@ -241,6 +241,7 @@ entityDefinitions:
         - !<transforms.ReplaceTransform>
           target: ["0", "1", "2", "3"]
           goal: [0, 1, 2, 4]
+        - !<transforms.ParseIntTransform> {}
           # 0, none | 1, 1 | 2, 2-3 | 3, 4 or more | 9999999, Don't Know/Prefer not to answer
       ol.description:
         type: "ol.description"
