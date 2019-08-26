@@ -1,0 +1,295 @@
+# cafe MAQ BYU
+# csv filename: MAQs_BYU_V3_2018_20181004_Returning.csv
+# PSI Assessment Tool Questions
+
+entityDefinitions:
+  respondent:
+    fqn: "general.person"
+    entitySetName: "CAFE_MAQ_Respondents"
+    propertyDefinitions:
+      nc.SubjectIdentification:
+        type: "nc.SubjectIdentification"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: [respondent_id]
+          hashFunction: "sha256"
+      ol.idnumber:
+        type: "ol.idnumber"
+        column: "ResponseId" #not sure if this or Person ID should be PK.
+    name: "respondent"
+
+  parentingstressindex:
+    fqn: "ol.parentingstressindex"
+    entitySetName: "CAFE_MAQ_PSI_Assessment"
+    propertyDefinitions:
+      ol.id:
+        type: "ol.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["respondent_id"]
+          hashFunction: "sha256"
+      ol.overwhelmed:
+        type: "ol.overwhelmed"
+        column: "psi1"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.parentalresponsibilities:
+        type: "ol.parentalresponsibilities"
+        column: "psi2"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.feelingtrapped:
+        type: "ol.feelingtrapped"
+        column: "psi3"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.opportunitycost:
+        type: "ol.opportunitycost"
+        column: "psi4"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.restrictedactivities:
+        type: "ol.restrictedactivities"
+        column: "psi5"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.dissatisfiedwithpurchase:
+        type: "ol.dissatisfiedwithpurchase"
+        column: "psi6"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.dissatisfiedwithlife:
+        type: "ol.dissatisfiedwithlife"
+        column: "psi7"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.relationshipissues:
+        type: "ol.relationshipissues"
+        column: "psi8"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.loneliness:
+        type: "ol.loneliness"
+        column: "psi9"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.expectations:
+        type: "ol.expectations"
+        column: "psi10"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.socialdisinterest:
+        type: "ol.socialdisinterest"
+        column: "psi11"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.anhedonia:
+        type: "ol.anhedonia"
+        column: "psi12"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.dissatisfiedwithparenting:
+        type: "ol.dissatisfiedwithparenting"
+        column: "psi13"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.emotionallydistant:
+        type: "ol.emotionallydistant"
+        column: "psi14"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.facialexpression:
+        type: "ol.facialexpression"
+        column: "psi15"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.unappreciated:
+        type: "ol.unappreciated"
+        column: "psi16"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.laughter:
+        type: "ol.laughter"
+        column: "psi17"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.relativespeed:
+        type: "ol.relativespeed"
+        column: "psi18"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.relativefrequency:
+        type: "ol.relativefrequency"
+        column: "psi19"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.limitations:
+        type: "ol.limitations"
+        column: "psi20"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.behaviorchange:
+        type: "ol.behaviorchange"
+        column: "psi21"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.parentingquality:
+        type: "ol.parentingquality"
+        column: "psi22"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["5", "4", "3", "2", "1"]
+          goal: ["A very good parent", "A better than average parent", "An average parent", "A person who has some trouble being a parent", "Not very good at being a parent"]
+      ol.strengthofemotion:
+        type: "ol.strengthofemotion"
+        column: "psi23"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.behavioralissue:
+        type: "ol.behavioralissue"
+        column: "psi24"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.affect:
+        type: "ol.affect"
+        column: "psi25"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      bhr.disposition:
+        type: "bhr.disposition"
+        column: "psi26"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.mood:
+        type: "ol.mood"
+        column: "psi27"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.botheredbyperson:
+        type: "ol.botheredbyperson"
+        column: "psi28"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.reactionseverity:
+        type: "ol.reactionseverity"
+        column: "psi29"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.easilyupset:
+        type: "ol.easilyupset"
+        column: "psi30"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      neurological.sleeppattern:
+        type: "neurological.sleeppattern"
+        column: "psi31"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.discipline:
+        type: "ol.discipline"
+        column: "psi32"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["4", "5", "6", "7", "8"]
+          goal: ["Much easier than I expected", "Somewhat easier than I expected", "About as hard as I expected", "Somewhat harder than I expected", "Much harder than I expected"]
+      ol.number:
+        type: "ol.number"
+        column: "psi33"
+        transforms:
+        - !<transforms.ParseIntTransform> {}
+      ol.botheredbyactions:
+        type: "ol.botheredbyactions"
+        column: "psi34"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.moreproblematic:
+        type: "ol.moreproblematic"
+        column: "psi35"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+      ol.demanding:
+        type: "ol.demanding"
+        column: "psi36"
+        transforms:
+        - !<transforms.ReplaceTransform>
+          target: ["1", "2", "3", "4", "5"]
+          goal: ["Strongly disagree", "Disagree", "Not Sure", "Agree", "Strongly Agree"]
+
+associationDefinitions:
+  screenedwith:
+    fqn: "ol.screenedwith"
+    entitySetName: "CAFE_MAQ_ScreenedWith"
+    src: "respondent"
+    dst: "parentingstressindex"
+    propertyDefinitions:
+      general.id:
+        type: "general.id"
+        transforms:
+        - !<transforms.HashTransform>
+          columns: ["Q281", "ResponseId"]
+          hashFunction: "sha256"
+    name: "screenedwith"
